@@ -214,7 +214,7 @@ to be much like Apache in concept taking many of the ideas
 <sect1>
 <title>Who codes/maintains Proftpd?</title>
 
-<para>As with all Open source projects no one person can really lay claim to
+<para>As with all Open source projects, no one person can really lay claim to
 the entire package.  The ProFTPD project was started by Floody who took
 it to approximately 1.2.0pre2/3 before he found that his available time
 was insufficient to handle this project as well as his other commitments.
@@ -223,7 +223,7 @@ it forward getting 1.2.0 out into the wild.  From early 2002 TJ took
 the reins of the project and started to get releases and new features
 into the code.</para> 
 
-<para>There are also numerous people involved in developing modules, and
+<para>There are also numerous people involved in developing modules and
 documentation for the project.  A number of these have been merged into
 the core distribution and more are likely to follow.</para>
 </sect1>
@@ -355,7 +355,7 @@ will be announced.</para>
 	  anonymous user are locked down.</para>
 
 	  <para>Anonymous servers are one of the great resources of
-	  the Internet over the years they collectively have become a
+	  the Internet, over the years they collectively have become a
 	  massive redundant public storage system for information and
 	  programs.  This is partly due to the open nature of many
 	  admins in what they will allow to be hosted and partly in
@@ -4461,8 +4461,8 @@ man pages for more information.</para>
 
       <para>ProFTPD is a ftp server primarily written for the various
       unix variants though it will now compile under win32.  It has
-      been designed to be much like Apache in concept taking many of
-      the ideas (configuration format, modular design, etc) from
+      been designed to be much like Apache in concept, taking many of
+      the ideas (configuration format, modular design, etc.) from
       it.</para>
 
       <sect1>
