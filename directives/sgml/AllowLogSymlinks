@@ -1,0 +1,92 @@
+<refentry id="Allow">
+<?dbhtml filename="config_ref_AllowLogSymlinks.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AllowLogSymlinks</primary></indexterm>
+Allow
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AllowLogSymlinks</refname>
+<refpurpose>Permit logging to symlinked files</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>Allow</command>
+<arg choice="opt">
+  <option>&quot;on&quot;|&quot;off&quot;</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+AllowLogSymlinks off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_log
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.2rc2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+By default, the server will the path of any configured SystemLog and
+any configured ExtendedLogs to see if they are symbolic links.  If the
+paths are symbolic links, the server will refuse to log to that link
+unless explicitly configured to do via this directive
+</para>
+
+<refsect2>
+<title>Security note:</title>
+<para>
+Security note: this behaviour should not be allowed unless for
+a very good reason.  By allowing the server to open symbolic links with
+its root privileges, you are allowing a potential symlink attack where
+the server could be tricked into overwriting arbitrary system files.
+You have been warned.
+</para>
+</refsect2>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+AllowLogSymlinks on
+</programlisting>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</refsect1>
+
+</refentry>
