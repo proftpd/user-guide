@@ -13,14 +13,14 @@ HideFiles
 </refmeta>
 <refnamediv>
 <refname>HideFiles</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Enable hiding of files based on regular expressions</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>HideFiles</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>[!]regexp|"none" ["user"|"group"|"class" expression]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ HideFiles
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+&lt;Directory&gt;, .ftpaccess
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_core
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-%%VERSION%% and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,30 +56,58 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+The HideFiles directive configures a &lt;Directory&gt; section to hide all
+directory entries, e.g. its files and sub-directories, that match the given
+regular expression. These files can still be operated on by other FTP commands
+(DELE, RETR, etc), as constrained by any applicable &lt;Limit&gt;s, but this
+can be modified using the IgnoreHidden directive.  Note that this directive
+manipulates a file's "hidden-ness", but doesn't do any hiding by itself.  A
+&lt;Limit&gt; section, with IgnoreHidden enabled, does the actual hiding of the
+files from the &lt;Limit&gt;ed commands.
 </para>
-</refsect1>
-
-<refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
-</refsect1>
-
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-FIXFIXFIX
-</literallayout>
 
 <para>
-FIXFIX
+As &lt;Directory&gt; configurations are inherited by sub-directories, the "none"
+parameter can be used to disable any inherited file hiding within a
+sub-directory, usually through the use of a .ftpaccess file.
 </para>
 
+<para>
+The optional parameters are used to restrict the rule for hiding files only
+to specific users.  If "user" restriction is given, then expression is a
+user-expression specifying to which users the rule applies.  Similarly for the
+"group" restriction.  For the "class" restriction, the expression is simply
+the name of connection class for whom the rule will apply.
+</para>
+
+<para>
+An unrestricted HideFiles directive and an unrestriected ShowFiles directive
+cannot be used simultaneously in the context.
+</para>
+
+<para>
+Example:
+
+  # Hide configuration and passwd files from view
+  HideFiles "(\\.conf|passwd)$"
+
+  # ...or the same regex, without the quotes
+  HideFiles (\.conf|passwd)$
+
+  # Hide those same files from everyone _except_ a special user
+  HideFiles (\.conf|passwd)$ user !tj
+
+  # Using the ! prefix to "invert" the regular expression matching,
+  # allow only .txt and .html files to be seen
+  HideFiles !(\.txt|\.html)$
+
+  # Only let users of the webmaster group see HTML files, but nothing else
+  HideFiles !(\.htm|\.html)$ group webmaster
+</para>
+
+<para>
+See Also: HideGroup, HideUser, HideNoAccess
+</para>
 </refsect1>
 </refentry>
 
