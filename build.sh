@@ -2,10 +2,10 @@
 #
 # Script to manage the building of the userguide
 #
-BASE="$HOME/Proftpd/userguide/"
-INSTALL_ROOT="$HOME/Repository/"
-WEB="$INSTALL_ROOT/hamster.wibble.org/proftpd/"
-FTP="$INSTALL_ROOT/ftp.linux.co.uk/proftpd/"
+BASE="$HOME/Proftpd/Userguide/"
+INSTALL_ROOT="$HOME/Proftpd/"
+WEB="$INSTALL_ROOT/www.pdd/"
+FTP="$INSTALL_ROOT/ftp.pdd/"
 DSL="/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl"
 #
 function clean
@@ -24,7 +24,7 @@ function build
 {
 	clean
 	echo -n "Building "
-	if [ ! -f directive_list.sgml ]
+	if [ ! -f directives/other/directive_list.sgml ]
 	then
 		echo "The directive list is missing, aborting"
 		exit

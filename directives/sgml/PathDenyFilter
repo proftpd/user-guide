@@ -71,7 +71,7 @@ to the client. This can be especially useful for forbidding .ftpaccess or
 <title>Examples</title>
 <programlisting>
 # We don't want .ftpaccess or .htaccess files to be uploaded
-PathDenyFilter &quot;(\.ftpaccess)|(\.htaccess)$&quot;
+PathDenyFilter &quot;(\\.ftpaccess)|(\\.htaccess)$&quot;
 </programlisting>
 <para>
 <!--

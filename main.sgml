@@ -1,6 +1,6 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
-<!ENTITY alldirectives SYSTEM "directive_list.sgml">
-<!ENTITY directivesbymodule SYSTEM "by_module_source.sgml">
+<!ENTITY alldirectives SYSTEM "directives/other/directive_list.sgml">
+<!ENTITY directivesbymodule SYSTEM "directives/by_module_source.sgml">
 ]>
 <book ID="PROFTPD"><?dbhtml filename="userguide.html">
 <bookinfo>
@@ -20,9 +20,9 @@
     <ISBN>None.</ISBN>
     <RELEASEINFO>Build 20001005 - draft</RELEASEINFO>
     <PUBDATE>$Date$</PUBDATE>
-    <edition>Edition #1 (Version 0.1.0)</edition>
-    <pubdate>2000</pubdate>
-    <copyright><year>2000</year>
+    <edition>Version 0.1.1</edition>
+    <pubdate>07/Jan/2001</pubdate>
+    <copyright><year>2001</year>
       <holder>Mark Lowes</holder>
     </copyright>
 
@@ -591,6 +591,21 @@ DEC OFS/1
 	  function properly if compiled with the compiler shipped with
 	  the OS.  Experiences vary and at this time there is no
 	  reliable list of which platform requires what.</para>
+
+<sect3>
+<title>FreeBSD</title>
+
+<para>ProFTPD is part of the FreeBSD ports collection. The minimal install
+commands on a system with a properly installed ports tree are:</para>
+<literallayout>
+ cd /usr/ports/ftp/proftpd
+ make install
+</literallayout>
+<para>More information can be found in the README.html file in the same
+directory.</para>
+
+</sect3>
+
 	</sect2>
 	
 	<sect2>
@@ -1002,6 +1017,23 @@ CDB based Authentication
 	is closed.  Passive support is brainlessly simple by
 	comparision, opening ports 20 and 21 is sufficient, nothing
 	more complex is required.</para>
+
+<sect2>
+<title>ProFTPD behind a firewall</title>
+<para>Due to the multiple socket and semi-random port assignment nature of
+the ftp protocol Because of the bi-socket nature of the ftp protocol
+additional care must be taken when setting up ProFTPD behind a
+firewall.  Setting the firewall to allow the control socket through is
+easy enough, allow tcp packets destined for port 21 on the target
+server.  However the data socket in passive mode may be targetted on a
+random port number on the server side resulting in either a highly
+complex or very weak firewall.  The PassivePorts directive allows the
+admin to specify the range of ports the server will use to service
+ftp-data connections, this range can then be configured on the
+firewall. 
+</para>
+</sect2>
+
       </sect1>
 
       <sect1>
@@ -1640,6 +1672,242 @@ ServerName              "Linux.co.uk FTP Archive"
   <part id="PROFTPD-CONFIG">
     <?dbhtml filename="part2.html">
     <title>Configuration</title>
+<chapter id="config-gettingready">
+<title>Getting ready</title>
+
+<sect1>
+<title>What do you want from your server?</title>
+<para>
+Deciding what you want to get from your server is often the most
+important part and usually the most often ignored part of the whole
+process of configuring any server software for use.  Working out the
+details of the server, the loading expected and the levels of access
+to be given are critical to ensuring that you provide the service
+levels required.
+</para>
+
+<sect2>
+<title>Config file</title>
+<para>Do you know where the daemon is expecting to find the config
+file?  If not check now, the two most likely places are
+/usr/local/etc/proftpd.conf and /etc/proftpd.conf.  The compile time
+default as shipped with the bare source is the former however the
+latter is the the default for many of the packaged versions of
+ProFTPD.  
+</para>
+</sect2>
+
+<sect2>
+<title>Scoreboard file</title>
+<para></para>
+</sect2>
+
+<sect2>
+<title>Standalone or inetd?</title>
+
+<para>
+
+
+On Thu, Nov 30, 2000 at 08:01:42PM -0000, Tanuj Shah, -  mailings wrote:
+> Is ProFTPd (1.2.0) better to run as standalone or via (x)inetd?
+Both runs fine. Only on one Solaris box I was forced to run in
+standalone mode cause it said all the time that there is another
+programm listening on Port 21 whenn I tried inetd.
+ 
+> What are the differences etc. etc. etc. ?
+One difference is that the process controll (childs etc) is mananaged
+bei the inetd.  Another thing is that you can start proftpd with the
+tcpd when you're using the inetd.
+In the standanlone mode you can use Virtual Hosts.
+
+
+Personal preference, inetd for lightly used systems where resources
+are an issue.  Standalone for production machines which are likely to
+get pounded into the dirt and I need the additional configuration
+features not available under inetd.
+
+
+Well, after reading here about Redhat 7 having xinetd, and needing to =
+put the server in standalone I noticed something fairly big....
+I used to be able to edit the proftpd.conf file and the changes would =
+take place immediately, now I have to kill the process and restart the =
+server....anyone have any solutions?
+
+
+If I'm not mistaken, that's normal.  A big advantage of inetd
+(or xinetd) is that it listens on ports for you.  Only when it
+gets a connection on a port does it launch the respective
+program.  So basically proftpd gets re-launched with every
+connection, thus you can edit the config and it will be in
+effect for the next user.  Standalone mode though is always
+running with the config it saw when it first started up,
+so you do have to kill it and restart it to see the new config.
+
+
+Well, after reading here about Redhat 7 having xinetd, and needing to put
+the server in standalone I noticed something fairly big....
+I used to be able to edit the proftpd.conf file and the changes would take
+place immediately, now I have to kill the process and restart the
+server....anyone have any solutions?
+ 
+
+If you send the main proftpd process the HUP signal, it will re-read it's
+configuration file without stopping...
+
+
+I'm a Linux (RH6.0) newbie and I'm trying to get ProFtpD running on my
+box...  I'm having some little problems tough :(
+
+My first question... should I run it in standalone or inetd mode?  My ftp
+won't have much traffic...  the box is a 486 dx 33 w/ 8 megs of ram...
+nothing fancy...
+
+Second question...  I tried to run it from commandline in inetd mode... it
+said that in order to run it from commandline it needs to be in standalone
+mode... and for inetd mode, proftpd has to be started by the inetd
+super-server.  What is this super-server and how do I get this thing to
+start proftpd?
+
+Right now when I do ftp localhost, i get a 'connection refused' error
+message...  maybe proftpd isn't even running (that's my guess)... how do I
+make sure it is running?
+
+
+On Sun, 13 Aug 2000, Carl Mercier wrote:
+> 
+> My first question... should I run it in standalone or inetd mode?  My ftp
+> won't have much traffic...  the box is a 486 dx 33 w/ 8 megs of ram...
+> nothing fancy...
+
+if you won't be taking on that much traffic, inetd is the preferred
+method. If it's going to be a busy or "production" FTP server, standalone
+is best. Frankly, it doesn't matter that much in your case.
+
+> 
+> Second question...  I tried to run it from commandline in inetd mode... it
+> said that in order to run it from commandline it needs to be in standalone
+> mode... and for inetd mode, proftpd has to be started by the inetd
+> super-server.  What is this super-server and how do I get this thing to
+> start proftpd?
+
+type "man inetd". Reading the manual page will tell you everything you
+need to know.
+
+
+> 
+> Right now when I do ftp localhost, i get a 'connection refused' error
+> message...  maybe proftpd isn't even running (that's my guess)... how do I
+> make sure it is running?
+
+in standalone mode, you will see "proftpd" in the output of 'ps -ef'. In
+inetd mode, it will be running provided you have inetd up and
+configured to accept connections for proftpd.
+
+
+    One thing to add... if you run proftpd in standalone mode and not
+through the "inetd" server, then you must edit your /etc/inetd.conf
+file and comment out the reference to ftp (the only line starting
+with ftp).
+
+    If you are going to run it through inetd, instead of commenting
+out that one line, change it to run proftpd... Again see "man inetd."
+
+    My 2 cents would be on your system to run it in inetd. That way
+you don't have a ftpd server taking up memory all the time. With
+inetd, the server will only take up memory when you want to use it.
+Not to mention processor time, even idle processes have to be polled
+by the kernel.
+
+Later,
+
+Hello, I have a limited use server 10+ logins a week, 20mb a week transfers
+(usually upload).
+I have the server setup as inetd (changing to xinetd).
+
+Can anyone give a guideline table of when you want to use standalone vs
+inetd server model?
+
+
+Well, off the top of my head:
+
+INETD
+    PROS
+    Can use TCP wrappers
+    Not using system resources when not in use
+    Does not have to run as root (better security)
+
+    CONS
+    Can't use MaxClients
+    Overhead from launching process for each session (although in my
+experience this is negligible)
+
+DAEMON
+    PROS
+    Better performance, since the daemon is always ready to take calls
+    Can use MaxClients to allot resources or avoid a DOS attack
+
+    CONS
+    Daemon must run as root to bind to port 21, although I believe ProFTPD
+has some internal mechanisms to reduce risks
+    Is always using system resources even when idle
+
+There are certainly other reasons that I am sure other users can add.
+
+I have always felt that the primary reason for choosing one over the other
+is volume. Low volume tends to indicates inetd, while high volume almost
+always indicates daemon. But its a balance of security and performance
+either way.
+
+A few less important pro/cons:
+
+ INETD
+      no User lockouts after too many false logins
+      no reset needed after changing configuration
+
+ DAEMON
+      may suffer from memory leaks (system libs, modules,..)
+
+
+
+
+Things that run on ports <1024 (as does everything in inetd.conf) have to
+be run as root initially, which opens the possibility of exploitation. 
+I think (keyword=think) running as standalone uses more memory than inetd.
+Speed isn't an issue for me since I have logins capped at 3 simultaneous.
+As for security I have a firewall router between the ftp box and well...all
+I can do is all I can do. 
+
+Stand alone is faster in theory.  I don't run anything from inetd.  My
+ftp, www, ssh all run standalone.  
+
+Given proftpd 1.2.0pre10, what are the relative merits of running it 
+via inetd as opposed to standalone?
+
+I imagine that there's greater security with inetd given its use of 
+host.deny.  True?  Are there any other security issues related to 
+these 2 mode of running proftpd?
+
+If you insist not running it in standalone mode, something like tcpserver
+would be much better.  Inetd does nasty things to busy systems because of
+the rate limiting it has.
+
+I run proftpd in standalone, and used to run it from inetd ;)
+
+Are there any performance differences between the two implementations
+or is the gap down entirely to the inetd overhead? if so another
+superserver (tcpserver?) could be used instead and one could have the
+superior rules access with a minimal overhead and performance
+degredation.
+
+</para>
+
+</sect2>
+
+</sect1>
+
+<!-- one of (CALLOUTLIST GLOSSLIST ITEMIZEDLIST ORDEREDLIST SEGMENTEDLIST SIMPLELIST VARIABLELIST CAUTION IMPORTANT NOTE TIP WARNING LITERALLAYOUT PROGRAMLISTING PROGRAMLISTINGCO SCREEN SCREENCO SCREENSHOT SYNOPSIS CMDSYNOPSIS FUNCSYNOPSIS CLASSSYNOPSIS FIELDSYNOPSIS CONSTRUCTORSYNOPSIS DESTRUCTORSYNOPSIS METHODSYNOPSIS FORMALPARA PARA SIMPARA ADDRESS BLOCKQUOTE GRAPHIC GRAPHICCO MEDIAOBJECT MEDIAOBJECTCO INFORMALEQUATION INFORMALEXAMPLE INFORMALFIGURE INFORMALTABLE EQUATION EXAMPLE FIGURE TABLE MSGSET PROCEDURE SIDEBAR QANDASET ANCHOR BRIDGEHEAD REMARK HIGHLIGHTS ABSTRACT AUTHORBLURB EPIGRAPH INDEXTERM SECTION SIMPLESECT REFENTRY SECT1) -->
+</chapter>
+
 
 <chapter id="generic">
 <title>Generic issues</title>
@@ -2986,8 +3254,8 @@ mysql> select * from proftp;
 +----------+------+------+----------+----------+-------+
 | username | uid  | gid  | password | homedir  | count |
 +----------+------+------+----------+----------+-------+
-| oli      |  500 |  500 | test     | /home/om |     2 |
-| oli2     |  500 |  500 | test     | /        |     1 |
+| oli      | 1000 | 1000 | test     | /home/om |     2 |
+| oli2     | 1000 | 1000 | test     | /        |     1 |
 +----------+------+------+----------+----------+-------+
 </programlisting>
 </example>
@@ -3830,32 +4098,21 @@ Later,
 
 Chandima Cumaranatunge wrote:
 
-> In order to install Proftpd with mod_mysql support:mod_sqlpw support do I
-> need to
+&lt; In order to install Proftpd with mod_mysql support:mod_sqlpw support do I
+&lt; need to
 
-> also compile mod_pam?
->
-> Also how do I find out if Proftpd is querying the MySQL database for
-> authentication of users?
->
-> Is there a web page which describes all the intricacies of installing with
-> mod_sqlpw support.
->
-> Thanks.
->
-> Chandi.
->
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
->
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
->
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
+&lt; also compile mod_pam?
+&lt;
+&lt; Also how do I find out if Proftpd is querying the MySQL database for
+&lt; authentication of users?
+&lt;
+&lt; Is there a web page which describes all the intricacies of installing with
+&lt; mod_sqlpw support.
+&lt;
+&lt; Thanks.
 
+</para>
+<para>
 
 
 I need to jail several users (in the same group - gid > 1000) who only
@@ -4248,10 +4505,8 @@ does not seem to work for mysql users.
 Is what I want to do possible with sqlpw? If so can anyone give me some
 pointers on how to do it.
 
-Thanks much.
-
-Chandima.
-
+</para>
+<para>
 
     Assuming you meant to configure with "--with-modules=mod_sqlpw:mod_mysql"
 
@@ -4277,29 +4532,8 @@ proftpd has to be able to link to libmysqlclient, which means that you
 have to install mysql on your server, but not necesarily mysqld (give
 mysql's configure script the --without-server) flag.
 
-devon
-
-"Lester A. Mesa" wrote:
-> 
-> In order to install Proftpd with mod_mysql support:mod_sqlpw support do I
-> need to have mysql installed on the server?
-> I'm trying to get Proftpd to authenticate through another server that is
-> hosting the username and password database.  Is this possible by just
-> changing the
-> MySQLInfo localhost proftpd ******* admin  localhost to the hostname of the
-> machine that is hosting the database?
-> 
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
-> 
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
-> 
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
+</para>
+<para>
 
 
 Ok. my problem is the following error while trying to make from FreeBSD 4.0
@@ -4364,68 +4598,6 @@ Later,
 
 "Lester A. Mesa" wrote:
 
-> Ok. my problem is the following error while trying to make from FreeBSD 4.0
-> ports
->
-> gmake[1]: Leaving directory
-> `/usr/ports/ftp/proftpd/work/proftpd-1.2.0pre10/modules'
-> cc -Llib  -o proftpd src/main.o src/timers.o src/sets.o src/pool.o
-> src/dirtree.o src/support.o src/inet.o src/log.o src/io.o src/ident.o
-> src/data.o src/modules.o src/auth.o src/fs.o modules/mod_core.o
-> modules/mod_auth.o modules/mod_xfer.o modules/mod_site.o modules/mod_ls.o
-> modules/mod_unixpw.o modules/mod_log.o modules/mod_pam.o modules/mod_mysql.o
-> modules/mod_sqlpw.o modules/mod_readme.o modules/mod_ratio.o
-> modules/module_glue.o -lsupp -lcrypt  -lutil -lm -lmysqlclient  -lpam
-> /usr/libexec/elf/ld: cannot open -lmysqlclient: No such file or directory
-> gmake: *** [proftpd] Error 1
-> *** Error code 2
->
-> Stop in /usr/ports/ftp/proftpd.
-> *** Error code 1
->
-> I already change the #include </usr/local/include/mysql/mysql.h> in
-> mod_mysql.c and mod_sqlpw.c to match my mysql.h path .. But I'm getting the
-> error above.. do I have the specify the path to my lib/mysql as well?
->
-> Thank for the help
->
-> -----Original Message-----
-> From: devon@starbase.tos.net [mailto:devon@starbase.tos.net]On Behalf Of
-> Devon Bleak
-> Sent: Monday, May 01, 2000 2:26 PM
-> To: proftpd@proftpd.net
-> Subject: Re: [ProFTPD] MySQL Authentication
->
-> proftpd has to be able to link to libmysqlclient, which means that you
-> have to install mysql on your server, but not necesarily mysqld (give
-> mysql's configure script the --without-server) flag.
->
-> devon
->
-> "Lester A. Mesa" wrote:
-> >
-> > In order to install Proftpd with mod_mysql support:mod_sqlpw support do I
-> > need to have mysql installed on the server?
-> > I'm trying to get Proftpd to authenticate through another server that is
-> > hosting the username and password database.  Is this possible by just
-> > changing the
-> > MySQLInfo localhost proftpd ******* admin  localhost to the hostname of
-> the
-> > machine that is hosting the database?
-> >
-> > --
-> > To unsubscribe, send mail to proftpd-request@proftpd.net with
-> "unsubscribe"
-> > in the subject field of the message.
-> >
-> > Please read the documentation and the FAQ before posting a question --
-> chances
-> > are it's already been answered.
-> >
-> > http://www.proftpd.net           -- The Official ProFTPD web site.
-> > http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> > http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and
-> FAQ.
 
 
     I thought about this my self, but then decided if I was going to mix FTP and
@@ -4449,42 +4621,6 @@ all out to me.  :-)
 
 
 Clement wrote:
-
-> Hi all,
->
-> I love to use MySQL authentication.  But it would not be too much
-> different if I must maintain a separate table for the user names and
-> passwords.
->
-> Can we specify some SQL command for authentication purpose, like
->
->         select uid,gid,password
->         from users
->         where status = 'ACTIVE' and svc_type = 'FTP';
->
-> Regards,
->
-> Clement
->
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
->
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
->
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
---
-Strider Centaur
-HTTP://www.Scifi-Fantasy.com
-
-   " It is my observation that unless you really understand the issues, you are
-hardly in a position to criticize.   Nearly all Linux users have used Windows,
-but very few Windows users have used Linux. " -- Me
-
 
 
 
@@ -4518,9 +4654,8 @@ PersistentPasswd                off
     I copied all the SQL* info straight from the FAQ:
 http://www.proftpd.net/docs/proftpdfaq-8.html#ss8.14
 
-Later,
-    Mike
-
+</para>
+<para>
 
 On Thu, Apr 20, 2000 at 12:33:31PM -0500, jacob@freecommunity.com wrote:
 > okay i started over and here's what i have now:
@@ -4633,18 +4768,6 @@ thanks.
 
 Make sure that the user actually exists.
 
----
-Greg Kopp
-Web & New Media Developer
-IdeaStar, Inc.
-v.(216) 587-9300 f.(216) 587-9301
-gkopp@ideastar.com
-
------Original Message-----
-From: jacob@freecommunity.com [mailto:jacob@freecommunity.com]
-Sent: Thursday, April 20, 2000 11:43 AM
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] Unable to use Anonftp or SQL authentication
 
 
 On Thu, Apr 20, 2000 at 05:10:06PM -0400, Greg Kopp wrote:
@@ -4669,60 +4792,6 @@ Jacob
         May your backups be plentiful, may your restores be few.
         And when your job's on the line, may they all contain BRU.
                                    -- Darrell R. Bingham
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question --
-chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and
-FAQ.
-
-
-
-From proftpd-request@tos.net Thu Apr 20 18:42:06 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12iKxq-00076W-00
-	for mark@weasel.vom.tm; Thu, 20 Apr 2000 18:42:06 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12iKxo-0003wO-00
-	for <hamster@vom.tm>; Thu, 20 Apr 2000 18:42:04 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id MAA02683;
-	Thu, 20 Apr 2000 12:40:28 -0500
-Resent-Date: Thu, 20 Apr 2000 12:40:28 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <38FF3084.429FE7DC@popd.isinet.com>
-Date: Thu, 20 Apr 2000 12:29:56 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] proftpd and MySQL Auth clues
-References: <38FEF7A5.174D198A@dirbg.com>
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id MAA02223
-Resent-Message-ID: <MXfedC.A.8i.K7z_4@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4393
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1258
-Lines: 36
 
     From your Proftpd.conf file, what is on the line:
 MySQLInfo
@@ -4779,9 +4848,9 @@ Lines: 30
 
     Well there is one I have not tried. :-)
 
-    Don't know if this would work, but the straight forward approach would be to
-put all the SQL* directives in the Global block (or surrounded by <Global>). Then
-in your virutal host directives (<VirtualHost IP#>) put separate MySQLInfo lines.
+Don't know if this would work, but the straight forward approach would be to
+put all the SQL* directives in the Global block (or surrounded by &lt;Global&gt;). Then
+in your virutal host directives (&lt;VirtualHost IP#&gt;) put separate MySQLInfo lines.
 
     If that works, tell us all. :-)
 
@@ -4894,39 +4963,6 @@ fox@theendoftime.net wrote:
 > http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
-From proftpd-request@tos.net Wed Apr 12 17:40:00 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12fQBM-0001Ep-00
-	for mark@weasel.vom.tm; Wed, 12 Apr 2000 17:40:00 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12fQBL-00044H-00
-	for <hamster@vom.tm>; Wed, 12 Apr 2000 17:39:59 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id LAA14579;
-	Wed, 12 Apr 2000 11:39:21 -0500
-Resent-Date: Wed, 12 Apr 2000 11:39:21 -0500
-Date: Wed, 12 Apr 2000 09:15:50 -0600 (MDT)
-From: <fox@theendoftime.net>
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-In-Reply-To: <38F48302.EDB4C14D@popd.isinet.com>
-Message-ID: <Pine.LNX.4.21.0004120910200.31146-100000@theendoftime.net>
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Resent-Message-ID: <EytR4B.A.odD.DNK94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4288
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 3613
-Lines: 102
 
 Hi;
 
@@ -5005,69 +5041,6 @@ On Wed, 12 Apr 2000, Michael Grabenstein wrote:
 > >
 > > I'm running RedHat Linux 6.2 with kernel 2.2.14.  If anyone has any light
 > > to shed on this, I would be very appreciative.
-> >
-> > Regards,
-> >
-> > Tren Blackburn.
-> >
-> > --
-> > To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> > in the subject field of the message.
-> >
-> > Please read the documentation and the FAQ before posting a question -- chances
-> > are it's already been answered.
-> >
-> > http://www.proftpd.net           -- The Official ProFTPD web site.
-> > http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> > http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-> 
-> 
-
--- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-- Tren Blackburn - Owner                mailto:fox@theendoftime.net  =
-= End of Time Networks                  http://www.theendoftime.net  -
-- (403) 269-2122                                                     =
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-
-From proftpd-request@tos.net Wed Apr 12 19:34:33 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12fRyD-0001Q1-00
-	for mark@weasel.vom.tm; Wed, 12 Apr 2000 19:34:33 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12fRyB-0004dp-00
-	for <hamster@vom.tm>; Wed, 12 Apr 2000 19:34:31 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id NAA17363;
-	Wed, 12 Apr 2000 13:33:32 -0500
-Resent-Date: Wed, 12 Apr 2000 13:33:32 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <38F4BF3B.144235D0@popd.isinet.com>
-Date: Wed, 12 Apr 2000 14:23:56 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-References: <Pine.LNX.4.21.0004120910200.31146-100000@theendoftime.net>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <z4miCD.A.RME.C_L94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4290
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1600
-Lines: 39
 
     I have proftpd v1.2.0pre10 running with MySQL, but I have RedHat v6.1 and MySQL v3.23.13a...
 
@@ -5095,57 +5068,6 @@ fox@theendoftime.net wrote:
 > distribution with the SQL modules.  Everything works perfectly there and
 > the users can authenticate to my MySQL database.  I guess it seems to be
 > an issue specific to Pre10.
->
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Wed Apr 12 21:15:34 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12fTXy-0001ZP-00
-	for mark@weasel.vom.tm; Wed, 12 Apr 2000 21:15:34 +0100
-Received: from library.lspace.org ([195.200.1.58] ident=mail)
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12fTXx-00058P-00
-	for <hamster@flyhmstr.vom.tm>; Wed, 12 Apr 2000 21:15:33 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by library.lspace.org with esmtp (Exim 3.11 #1)
-	id 12fSzW-0008FL-00
-	for hamster@vom.tm; Wed, 12 Apr 2000 20:39:58 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id OAA20299;
-	Wed, 12 Apr 2000 14:33:37 -0500
-Resent-Date: Wed, 12 Apr 2000 14:33:37 -0500
-Date: Wed, 12 Apr 2000 12:08:53 -0600 (MDT)
-From: <fox@theendoftime.net>
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-In-Reply-To: <38F4BF3B.144235D0@popd.isinet.com>
-Message-ID: <Pine.LNX.4.21.0004121202290.32135-100000@theendoftime.net>
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Resent-Message-ID: <om18IB.A.DyE.SvM94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4293
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 5518
-Lines: 140
 
 More info! 
 
@@ -5251,84 +5173,6 @@ On Wed, 12 Apr 2000, Michael Grabenstein wrote:
 >     Mike
 > 
 > fox@theendoftime.net wrote:
-> 
-> > Hi;
-> >
-> > Yes, I've gone through all documentation I could find on the SQL setup in
-> > great depth (Including the page you have referenced)  I noticed,
-> > point-in-fact that *none* of the SQL directives for the proftpd.conf file
-> > are documented in the directives list.  The server is in stand alone mode,
-> > and no, there is no entry in the /etc/inetd.conf.  I appologise as I
-> > should have stated this originally.
-> >
-> > Also, as some extra information, I downloaded and compiled the pre9
-> > distribution with the SQL modules.  Everything works perfectly there and
-> > the users can authenticate to my MySQL database.  I guess it seems to be
-> > an issue specific to Pre10.
-> >
-> 
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
-> 
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
-> 
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-> 
-> 
-
--- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-- Tren Blackburn - Owner                mailto:fox@theendoftime.net  =
-= End of Time Networks                  http://www.theendoftime.net  -
-- (403) 269-2122                                                     =
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-
-From proftpd-request@tos.net Wed Apr 12 21:15:19 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12fTXj-0001Xb-00
-	for mark@weasel.vom.tm; Wed, 12 Apr 2000 21:15:19 +0100
-Received: from library.lspace.org ([195.200.1.58] ident=mail)
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12fTXi-00058P-00
-	for <hamster@flyhmstr.vom.tm>; Wed, 12 Apr 2000 21:15:18 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by library.lspace.org with esmtp (Exim 3.11 #1)
-	id 12fTVl-0000VG-00
-	for hamster@vom.tm; Wed, 12 Apr 2000 21:13:17 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id PAA23149;
-	Wed, 12 Apr 2000 15:12:37 -0500
-Resent-Date: Wed, 12 Apr 2000 15:12:37 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <38F4D58F.FF0F626A@popd.isinet.com>
-Date: Wed, 12 Apr 2000 15:59:11 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-References: <Pine.LNX.4.21.0004121202290.32135-100000@theendoftime.net>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <vBGMGD.A.paF.iYN94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4297
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 6305
-Lines: 139
 
     I e-mailed extensively to someone else about this and he could not get it working either... The
 similarity between the two is that "mod_sqlpw/2.0" reported the "unconfigured: no backend could
@@ -5366,145 +5210,8 @@ localhost(localhost.isinet.com[127.0.0.1]) -
 system can increment the count field. From your 1.2.0pre9 I can see that you did not give the Mysql user
 update privileges...
 
-Later,
-    Mike
-
-fox@theendoftime.net wrote:
-
-> More info!
->
-> I've found the debug option for proftpd.  I ran it in debug mode and found
-> this from pre10:
->
-> theendoftime.net (theendoftime.net[127.0.0.1]) - connected - local
-> : 127.0.0.1:
-> 150
-> theendoftime.net (theendoftime.net[127.0.0.1]) - connected - remote
-> : 127.0.0.1:
-> 4746
-> theendoftime.net (theendoftime.net[127.0.0.1]) -
-> mod_sqlpw/2.0: unconfigured: no
->  backend could connect
-> theendoftime.net (theendoftime.net[127.0.0.1]) -
-> mod_mysql/2.0: configured: db v
-> popmail at test@localhost
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: USER test
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: USER test
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: USER test
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: PASS (hidden)
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: PASS (hidden)
-> theendoftime.net (theendoftime.net[127.0.0.1]) - USER test (Login
-> failed): Can't
->  find user.
->
-> It can't seem to find the user, however, when I try and do the same thing
-> with pre9:
->
-> theendoftime.net - ProFTPD 1.2.0pre9 standalone mode STARTUP
-> theendoftime.net (theendoftime.net[127.0.0.1]) - connected - local
-> : 127.0.0.1:
-> 150
-> theendoftime.net (theendoftime.net[127.0.0.1]) - connected - remote
-> : 127.0.0.1:
-> 4756
-> theendoftime.net (theendoftime.net[127.0.0.1]) -
-> mod_mysql/2.0: configured: db v
-> popmail at test@localhost
-> theendoftime.net (theendoftime.net[127.0.0.1]) - mysql: open [1] for
-> mod_sqlpw/2
-> .0
-> theendoftime.net (theendoftime.net[127.0.0.1]) - mysql: connect OK 3.22.30
-> -> 3.
-> 22.30 (test@localhost)
-> theendoftime.net (theendoftime.net[127.0.0.1]) -
-> mod_sqlpw/2.0: configured: auth
->  homedirfield
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: USER test
-> theendoftime.net (theendoftime.net[127.0.0.1]) - mysql: select
-> OK: [vpopmail] "s
-> elect pw_passwd from vpopmail where pw_name = 'test'"
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: USER test
-> theendoftime.net (theendoftime.net[127.0.0.1]) - mysql: select
-> OK: [vpopmail] "s
-> elect homedir from vpopmail where pw_name = 'test'"
-> theendoftime.net (theendoftime.net[127.0.0.1]) - mysql: select
-> OK: [vpopmail] "s
-> elect uid from vpopmail where pw_name = 'test'"
-> theendoftime.net (theendoftime.net[127.0.0.1]) - mysql: select
-> OK: [vpopmail] "s
-> elect gid from vpopmail where pw_name = 'test'"
-> theendoftime.net (theendoftime.net[127.0.0.1]) - sqlpw: user
-> "test" (521/505) fo
-> r /home/www/theendoftime.net/members/test
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: PASS (hidden)
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: PASS (hidden)
-> theendoftime.net (theendoftime.net[127.0.0.1]) - mysql: select
-> OK: [vpopmail] "s
-> elect pw_passwd from vpopmail where pw_name = 'test' limit 2"
-> popmail set count = count + 1 where pw_name = 'test'": update command
-> denied to
-> user: 'test@localhost' for table 'vpopmail'
-> theendoftime.net (theendoftime.net[127.0.0.1]) - mysql: close [1] for
-> mod_sqlpw/
-> 2.0
-> theendoftime.net (theendoftime.net[127.0.0.1]) - received: SYST
->
-> Well, obviously pre9 is connecting properly, but why isn't pre10?  I'm
-> *very* confused about this.  And I'm aware of the update command failure
-> as I've not gotten around to granting update rights to this test user.
->
-> If anyone has any suggestions about what I might be doing wrong, it would
-> be appreciated, and I do appologise for all the log information, but I
-> hope it will be helpful for someone out there.
->
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Apr 13 18:51:03 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12fnlf-0003Ye-00
-	for mark@weasel.vom.tm; Thu, 13 Apr 2000 18:51:03 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12fnle-0003IK-00
-	for <hamster@vom.tm>; Thu, 13 Apr 2000 18:51:02 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id MAA06147;
-	Thu, 13 Apr 2000 12:49:04 -0500
-Resent-Date: Thu, 13 Apr 2000 12:49:04 -0500
-Date: Thu, 13 Apr 2000 12:39:24 -0500
-From: jake buchholz <jake@execpc.com>
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-Message-ID: <20000413123924.A4306@earth.execpc.com>
-References: <Pine.LNX.4.21.0004121202290.32135-100000@theendoftime.net> <38F4D58F.FF0F626A@popd.isinet.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Mailer: Mutt 1.0i
-In-Reply-To: <38F4D58F.FF0F626A@popd.isinet.com>; from mgrabens@popd.isinet.com on Wed, Apr 12, 2000 at 03:59:11PM -0400
-Resent-Message-ID: <-ClwZD.A.6ZB.sZg94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4305
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1275
-Lines: 29
+</para>
+<para>
 
 On Wed, Apr 12, 2000 at 03:59:11PM -0400, Michael Grabenstein wrote:
 >     I e-mailed extensively to someone else about this and he could not get it working either... The
@@ -5518,140 +5225,16 @@ so ago.  Try reversing the order of your modules, i.e.
 
 I believe that's what did the trick for me.
 
--- 
-Jake Buchholz, Senior Systems Administrator     :           /~\
-ExecPC (a Voyager.net company, NASDAQ: VOYN)    :    ASCII  \ /  Against
-Voyager.net Hosting Solutions Lead R&D Engineer :   Ribbon   X   HTML
-GnuPG (PGP5/6) and PGP 2.6.2 pub keys available : Campaign  / \  Mail
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Apr 13 19:58:25 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12foor-0003ge-00
-	for mark@weasel.vom.tm; Thu, 13 Apr 2000 19:58:25 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12foop-0003d6-00
-	for <hamster@vom.tm>; Thu, 13 Apr 2000 19:58:24 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id NAA08321;
-	Thu, 13 Apr 2000 13:58:11 -0500
-Resent-Date: Thu, 13 Apr 2000 13:58:11 -0500
-Date: Thu, 13 Apr 2000 11:34:52 -0600 (MDT)
-From: <fox@theendoftime.net>
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-In-Reply-To: <20000413123924.A4306@earth.execpc.com>
-Message-ID: <Pine.LNX.4.21.0004131131220.7777-100000@theendoftime.net>
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Resent-Message-ID: <bphyxB.A.A8B.LWh94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4309
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1862
-Lines: 45
-
+</para>
+<para>
 *hangs head in shame*  That is the only thing I did not try.  I just
 recompiled pre10 after running the configure script with the modules in
 that order and it works perfectly.  Thank you very much for the
 help.  Maybe it wouldn't be a bad idea to have the documentation state
 that the configure must have the modules in that order, or find out why it
 only works with the modules in that order.
-
-Thanks for the help everyone gave.
-
-Tren.
-
-On Thu, 13 Apr 2000, jake buchholz wrote:
-
-> On Wed, Apr 12, 2000 at 03:59:11PM -0400, Michael Grabenstein wrote:
-> >     I e-mailed extensively to someone else about this and he could not get it working either... The
-> > similarity between the two is that "mod_sqlpw/2.0" reported the "unconfigured: no backend could
-> > connect" before the mod_mysql/2.0 reports configured DB...
-> 
-> I seem to remember something like this when I was playing with it a month or
-> so ago.  Try reversing the order of your modules, i.e.
-> 
-> 	--with-modules=mod_sqlpw:mod_mysql
-> 
-> I believe that's what did the trick for me.
-> 
-> 
-
--- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-- Tren Blackburn - Owner                mailto:fox@theendoftime.net  =
-= End of Time Networks                  http://www.theendoftime.net  -
-- (403) 269-2122                                                     =
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Wed Apr 12 20:16:03 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12fScN-0001V0-00
-	for mark@weasel.vom.tm; Wed, 12 Apr 2000 20:16:03 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12fScL-0004sY-00
-	for <hamster@vom.tm>; Wed, 12 Apr 2000 20:16:02 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id OAA19512;
-	Wed, 12 Apr 2000 14:15:16 -0500
-Resent-Date: Wed, 12 Apr 2000 14:15:16 -0500
-Date: Wed, 12 Apr 2000 11:54:15 -0600 (MDT)
-From: <fox@theendoftime.net>
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-In-Reply-To: <38F4BF3B.144235D0@popd.isinet.com>
-Message-ID: <Pine.LNX.4.21.0004121150550.31938-100000@theendoftime.net>
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Resent-Message-ID: <eYS84B.A.SkE.rhM94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4292
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 2717
-Lines: 67
-
-Hi All;
-
+</para>
+<para>
 Nope, I downloaded and built from source MySQL 3.22.30.  That is the only
 version on this server.  And as I had said in my previous message, the
 exact same setup works with ProFTPd 1.2.0.pre9, built in the exact same
@@ -5665,101 +5248,8 @@ product.
 Thanks for your help,
 
 Tren.
-
-
-On Wed, 12 Apr 2000, Michael Grabenstein wrote:
-
->     I have proftpd v1.2.0pre10 running with MySQL, but I have RedHat v6.1 and MySQL v3.23.13a...
-> 
->     If it is not connecting to your MySQL DB... sounds like it did not pick up a valid libmysqlclient.a
-> 
-> But you say it built with out errors... Is it possible that you have two versions of MySQL on the
-> system ? Even if you are only using one of the version... You may have been unlucky and built proftpd
-> with the other libmysqlclient.a...
-> 
-> later,
->     Mike
-> 
-> fox@theendoftime.net wrote:
-> 
-> > Hi;
-> >
-> > Yes, I've gone through all documentation I could find on the SQL setup in
-> > great depth (Including the page you have referenced)  I noticed,
-> > point-in-fact that *none* of the SQL directives for the proftpd.conf file
-> > are documented in the directives list.  The server is in stand alone mode,
-> > and no, there is no entry in the /etc/inetd.conf.  I appologise as I
-> > should have stated this originally.
-> >
-> > Also, as some extra information, I downloaded and compiled the pre9
-> > distribution with the SQL modules.  Everything works perfectly there and
-> > the users can authenticate to my MySQL database.  I guess it seems to be
-> > an issue specific to Pre10.
-> >
-> 
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
-> 
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
-> 
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-> 
-> 
-
--- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-- Tren Blackburn - Owner                mailto:fox@theendoftime.net  =
-= End of Time Networks                  http://www.theendoftime.net  -
-- (403) 269-2122                                                     =
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-
-From proftpd-request@tos.net Wed Apr 12 21:15:41 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12fTY5-0001aN-00
-	for mark@weasel.vom.tm; Wed, 12 Apr 2000 21:15:41 +0100
-Received: from library.lspace.org ([195.200.1.58] ident=mail)
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12fTY4-00058P-00
-	for <hamster@flyhmstr.vom.tm>; Wed, 12 Apr 2000 21:15:40 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by library.lspace.org with esmtp (Exim 3.11 #1)
-	id 12fT8R-0008QE-00
-	for hamster@vom.tm; Wed, 12 Apr 2000 20:49:11 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id OAA21300;
-	Wed, 12 Apr 2000 14:46:35 -0500
-Resent-Date: Wed, 12 Apr 2000 14:46:35 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <38F4CD78.BF83ED6F@popd.isinet.com>
-Date: Wed, 12 Apr 2000 15:24:40 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-References: <Pine.LNX.4.21.0004121150550.31938-100000@theendoftime.net>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <tHxfxB.A.r5E.N4M94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4295
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1476
-Lines: 35
-
+</para>
+<para>
     If you run the proftpd with the option "-d2" you will get debugging output and we could see where it is
 stopping at. (If Mark is reading... May be he can offer some more advice... :-)
 
@@ -5783,55 +5273,8 @@ fox@theendoftime.net wrote:
 > doesn't?  I have to admit that I'm not too familiar with debugging this
 > product.
 >
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Wed Apr 12 21:14:59 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12fTXP-0001XF-00
-	for mark@weasel.vom.tm; Wed, 12 Apr 2000 21:14:59 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12fTXO-00057K-00
-	for <hamster@vom.tm>; Wed, 12 Apr 2000 21:14:59 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id PAA23512;
-	Wed, 12 Apr 2000 15:14:27 -0500
-Resent-Date: Wed, 12 Apr 2000 15:14:27 -0500
-Date: Wed, 12 Apr 2000 12:56:47 -0600 (MDT)
-From: <fox@theendoftime.net>
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication and ProFTPd Pre-10
-In-Reply-To: <38F4CD78.BF83ED6F@popd.isinet.com>
-Message-ID: <Pine.LNX.4.21.0004121255060.32383-100000@theendoftime.net>
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Resent-Message-ID: <_-KgcB.A.DgF.ScN94@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4298
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 2327
-Lines: 58
-
-Hi Mike;
-
+</para>
+<para>
 I've included the debug information in another message for both my pre9
 and pre10 builds.  And to answer your question about the version I'm
 using, the 3.22.30 was the current release when I installed it (back in
@@ -5866,67 +5309,8 @@ On Wed, 12 Apr 2000, Michael Grabenstein wrote:
 > > way of extra research that might help show why pre9 connects and pre10
 > > doesn't?  I have to admit that I'm not too familiar with debugging this
 > > product.
-> >
-> 
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
-> 
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
-> 
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-> 
-> 
-
--- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-- Tren Blackburn - Owner                mailto:fox@theendoftime.net  =
-= End of Time Networks                  http://www.theendoftime.net  -
-- (403) 269-2122                                                     =
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-
-From proftpd-request@tos.net Tue Apr 11 14:37:05 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12f0qn-0007Ha-00
-	for mark@weasel.vom.tm; Tue, 11 Apr 2000 14:37:05 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12f0ql-0004IT-00
-	for <hamster@vom.tm>; Tue, 11 Apr 2000 14:37:03 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id IAA18049;
-	Tue, 11 Apr 2000 08:36:41 -0500
-Resent-Date: Tue, 11 Apr 2000 08:36:41 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <38F327BE.302A5999@popd.isinet.com>
-Date: Tue, 11 Apr 2000 09:25:18 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] Wired wtmp entries with mod_sqlpw
-References: <200004102259.RAA06579@starbase.tos.net>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <zUFWdC.A.aNE.Phy84@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4258
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 898
-Lines: 24
-
+</para>
+<para>
 Tsanko Stoev wrote:
 
 > The solution fixes the vulnerability, but what if you want to log the user?
@@ -5936,58 +5320,8 @@ Tsanko Stoev wrote:
 page there is some information about log analizers. The analizers are not from
 the proftpd group, but they can process proftpd log files. Check them out,
 I think one of them will give you a report like you want.
-
-Later,
-    Mike
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Apr 11 08:59:26 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12eva2-0006qw-00
-	for mark@weasel.vom.tm; Tue, 11 Apr 2000 08:59:26 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12eva0-0002hI-00
-	for <hamster@vom.tm>; Tue, 11 Apr 2000 08:59:25 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id CAA13875;
-	Tue, 11 Apr 2000 02:59:06 -0500
-Resent-Date: Tue, 11 Apr 2000 02:59:06 -0500
-X-Authentication-Warning: hit.inetcomm.net: rk owned process doing -bs
-Date: Tue, 11 Apr 2000 11:51:08 +0400 (MSD)
-From: Roman Korolyov <rk@podolsk.ru>
-X-Sender: rk@hit.inetcomm.net
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mod_sqlpw and SQLAuthoritative
-In-Reply-To: <38F1F23B.EE6B1EE8@popd.isinet.com>
-Message-ID: <Pine.LNX.4.10.10004111139001.16039-100000@hit.inetcomm.net>
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Resent-Message-ID: <y91wD.A.4TD.Lmt84@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4255
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1294
-Lines: 30
-
+</para>
+<para>
 On Mon, 10 Apr 2000, Michael Grabenstein wrote:
 
 >     To rephrase your question:
@@ -6006,57 +5340,8 @@ uses uid,gid and home from sql and not from system password file.
 So proftpd (or mod_auth) should getpwnam again if previous auth module
 fails. Or maybe there is a way to manually specify the order of auth
 modules (i want passwd auth before sql)?
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Apr 11 14:46:14 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12f0ze-0007IZ-00
-	for mark@weasel.vom.tm; Tue, 11 Apr 2000 14:46:14 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12f0zd-0004LE-00
-	for <hamster@vom.tm>; Tue, 11 Apr 2000 14:46:13 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id IAA18950;
-	Tue, 11 Apr 2000 08:45:53 -0500
-Resent-Date: Tue, 11 Apr 2000 08:45:53 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <38F32A32.C5448191@popd.isinet.com>
-Date: Tue, 11 Apr 2000 09:35:46 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mod_sqlpw and SQLAuthoritative
-References: <Pine.LNX.4.10.10004111139001.16039-100000@hit.inetcomm.net>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <3BI6QC.A.NdE.Gry84@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4261
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1895
-Lines: 46
-
+</para>
+<para>
 Roman Korolyov wrote:
 
 > On Mon, 10 Apr 2000, Michael Grabenstein wrote:
@@ -6089,44 +5374,8 @@ again, you have to disconnect and then re-connect.
 words, I don't know if it will work in any state other than "on." Mark can correct
 me here...
 
-Later,
-    Mike
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From bruno@openline.com.br Thu Feb 17 17:42:34 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12LUwk-0005M0-00
-	for mark@weasel.vom.tm; Thu, 17 Feb 2000 17:42:34 +0000
-Received: from openline.com.br ([200.241.199.2] helo=zeus.openline.com.br)
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12LUwg-0000M4-00
-	for <hamster@vom.tm>; Thu, 17 Feb 2000 17:42:31 +0000
-Received: (from bruno@localhost)
-	by zeus.openline.com.br (8.8.5/8.8.7) id PAA04022
-	for hamster@vom.tm; Thu, 17 Feb 2000 15:42:16 -0200
-From: "Bruno Lopes F. Cabral" <bruno@openline.com.br>
-Message-Id: <200002171742.PAA04022@zeus.openline.com.br>
-Subject: Re: mod_mysql & mod_sqlpw
-To: hamster@vom.tm
-Date: Thu, 17 Feb 100 15:42:14 -0200 (EDT)
-Content-Type: text
-X-Procmail: Addressed to a known domain
-Status: RO
-Content-Length: 10973
-Lines: 351
-
+</para>
+<para>
 Hi there
 
 a bit late, I feel, but here it goes anyway
@@ -6281,7 +5530,7 @@ Context: server config
    Specifies whether the password in the database may be in UNIX crypt()
 format.  Default is true, with this being the only check done.  A tool
 for generating crypted password text may be found at
-<ftp://ftp.linpeople.org/pub/People/lilo/source/makepasswd-1.07.tar.gz>.
+ftp://ftp.linpeople.org/pub/People/lilo/source/makepasswd-1.07.tar.gz
 
 SQLAuthoritative
 ----------------
@@ -6476,163 +5725,12 @@ proftpd.conf and restart proftpd:
      -----------------------------------------------------------------
 
    Please report bugs or missing features in this module to Johnie
-Ingram <johnie@netgod.net>.
+Ingram johnie@netgod.net
+
+</para>
+<para>
 
 
-From john@hermsen.cx Wed Feb 16 20:26:45 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12LB25-0003nI-00
-	for mark@weasel.vom.tm; Wed, 16 Feb 2000 20:26:45 +0000
-Received: from c18746100.telekabel.chello.nl
-	([212.187.46.100] helo=hermsen.hermsen.cx ident=root)
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12LB22-0000yC-00
-	for <hamster@vom.tm>; Wed, 16 Feb 2000 20:26:43 +0000
-Received: from john ([192.168.1.2])
-	by hermsen.hermsen.cx (8.9.3/8.8.7) with SMTP id VAA03135
-	for <hamster@vom.tm>; Wed, 16 Feb 2000 21:27:51 +0100
-From: "John Hermsen" <john@Hermsen>
-To: <hamster@vom.tm>
-Subject: Password SQL?
-Date: Wed, 16 Feb 2000 19:47:30 +0100
-Message-ID: <000001bf78bc$805fa5c0$0201a8c0@hermsen.cx>
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3 (Normal)
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook CWS, Build 9.0.2416 (9.0.2910.0)
-Importance: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2615.200
-X-Procmail: Addressed to a known domain
-Status: RO
-Content-Length: 129
-Lines: 5
-
-There is said on http://hamster.wibble.org/proftpd/x422.html that there is
-an proftpd.sql, but where can I find the file?
-
-John
-
-
-From proftpd-request@tos.net Tue Jun 20 22:09:22 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134VGs-0003jW-00
-	for mark@weasel.vom.tm; Tue, 20 Jun 2000 22:09:22 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134VGq-0007hZ-00
-	for <hamster@vom.tm>; Tue, 20 Jun 2000 22:09:20 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id QAA15573;
-	Tue, 20 Jun 2000 16:09:01 -0500
-Resent-Date: Tue, 20 Jun 2000 16:09:01 -0500
-Message-ID: <001101bfdafb$5353a3a0$b312fea9@jackinthebox>
-From: "Thilo Bangert" <thilo.bangert@gmx.net>
-To: <proftpd@proftpd.net>
-Date: Tue, 20 Jun 2000 23:03:18 +0200
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="iso-8859-1"
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 5.00.2314.1300
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2314.1300
-Subject: [ProFTPD] WEB-Interface for MySQL-Authentication
-Resent-Message-ID: <9LnAMC.A.ovD.6v9T5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5187
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by starbase.tos.net id QAA15573
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 791
-Lines: 33
-
-Hello all,
-
-I was wondering if any of you have been working on a web-interface for th=
-e
-mysql-authentication method.
-
-Basically I am talking about a way to easily add and edit users to the
-respective database.
-
-I=B4ve been working on something like this lately in PHP. If there is any=
-body
-interested - mail me ;-)
-
-greetings
-
-Thilo
-
-
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscrib=
-e"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- ch=
-ances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and =
-FAQ.
-
-
-From proftpd-request@tos.net Wed Jun 21 18:19:19 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134o9n-00062n-00
-	for mark@weasel.vom.tm; Wed, 21 Jun 2000 18:19:19 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134o9m-00057P-00
-	for <hamster@vom.tm>; Wed, 21 Jun 2000 18:19:18 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id MAA06791;
-	Wed, 21 Jun 2000 12:18:45 -0500
-Resent-Date: Wed, 21 Jun 2000 12:18:45 -0500
-Message-Id: <4.3.2.7.2.20000621130304.029da2b8@sensun.gtri.gatech.edu>
-X-Sender: howland@sensun.gtri.gatech.edu
-X-Mailer: QUALCOMM Windows Eudora Version 4.3.2
-Date: Wed, 21 Jun 2000 13:10:54 -0400
-To: proftpd@proftpd.net
-From: Trey Howland <howland@sensun.gtri.gatech.edu>
-Subject: Re: [ProFTPD] WEB-Interface for MySQL-Authentication
-In-Reply-To: <001101bfdafb$5353a3a0$b312fea9@jackinthebox>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"; format=flowed
-X-MIME-Autoconverted: from quoted-printable to 8bit by starbase.tos.net id MAA06587
-Resent-Message-ID: <6r0QjC.A.MnB.mdPU5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5212
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by starbase.tos.net id MAA06791
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 1469
-Lines: 56
-
-Howdy,
 
 I also have been working on this.  Feel free to check out my setup at=20
 http://etreeftpd.sourceforge.net  The source code in the cvs is much more=
@@ -6641,195 +5739,16 @@ up-to-date than the tar.gz  And things are still a little rough around th=
 e=20
 edges but its getting there.
 
-The only problem i have run into so far is the inability to create an=20
-<anonymous> block for the mysql users.  I have tried the Useralias=20
+The only problem i have run into so far is the inability to create an
+&lt;anonymous&gt; block for the mysql users.  I have tried the Useralias
 directive with no luck.
 
-If anyone knows the best way to set the Maxclient directive seperately fo=
-r=20
+If anyone knows the best way to set the Maxclient directive seperately for
 mysql users and shell/ftp users, please let me know.
 
-Later,
-Trey
-trey@etree.org
+</para>
+<para>
 
-
-At 11:03 PM 6/20/2000 +0200, Thilo Bangert wrote:
->Hello all,
->
->I was wondering if any of you have been working on a web-interface for t=
-he
->mysql-authentication method.
->
->Basically I am talking about a way to easily add and edit users to the
->respective database.
->
->I=B4ve been working on something like this lately in PHP. If there is an=
-ybody
->interested - mail me ;-)
->
->greetings
->
->Thilo
->
->
->
->--
->To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscri=
-be"
->in the subject field of the message.
->
->Please read the documentation and the FAQ before posting a question -- c=
-hances
->are it's already been answered.
->
->http://www.proftpd.net           -- The Official ProFTPD web site.
->http://bugs.proftpd.net          -- Bug reporting and feature requests.
->http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and=
- FAQ.
-
-
-From proftpd-request@tos.net Wed Jun 21 05:31:46 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134cB0-0004YZ-00
-	for mark@weasel.vom.tm; Wed, 21 Jun 2000 05:31:46 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134cAx-0001R5-00
-	for <hamster@vom.tm>; Wed, 21 Jun 2000 05:31:44 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id XAA25167;
-	Tue, 20 Jun 2000 23:30:35 -0500
-Resent-Date: Tue, 20 Jun 2000 23:30:35 -0500
-Message-ID: <000001bfdb38$5214a740$fa00a8c0@pekas>
-From: "dalmata.com" <dalmata@dalmata.com>
-To: <proftpd@proftpd.net>
-References: <001101bfdafb$5353a3a0$b312fea9@jackinthebox>
-Subject: RE: [ProFTPD] WEB-Interface for MySQL-Authentication
-Date: Wed, 21 Jun 2000 06:09:43 +0200
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="iso-8859-1"
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 5.00.2013.1300
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2013.1300
-Resent-Message-ID: <Hies5.A.oFG.CMEU5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5197
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by starbase.tos.net id XAA25167
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 1202
-Lines: 58
-
-Hi,
-
-
-I recently compiled proftpd with mod_mysql and would be fun to add users
-with PHP.
-
-How did you solve the uid/gid selection thing??
-
-If you want to share your work I would like to review it.
-
-Cheers,
-Jordi
-
-
------ Original Message -----
-From: Thilo Bangert <thilo.bangert@gmx.net>
-To: <proftpd@proftpd.net>
-Sent: Tuesday, June 20, 2000 11:03 PM
-Subject: [ProFTPD] WEB-Interface for MySQL-Authentication
-
-
-Hello all,
-
-I was wondering if any of you have been working on a web-interface for th=
-e
-mysql-authentication method.
-
-Basically I am talking about a way to easily add and edit users to the
-respective database.
-
-I=B4ve been working on something like this lately in PHP. If there is any=
-body
-interested - mail me ;-)
-
-greetings
-
-Thilo
-
-
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscrib=
-e"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question --
-chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and
-FAQ.
-
-
-
-
-
-
-From proftpd-request@tos.net Tue Jun 20 01:50:31 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134CFL-0000yC-00
-	for mark@weasel.vom.tm; Tue, 20 Jun 2000 01:50:31 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134CFK-0001hV-00
-	for <hamster@vom.tm>; Tue, 20 Jun 2000 01:50:30 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id TAA29475;
-	Mon, 19 Jun 2000 19:50:20 -0500
-Resent-Date: Mon, 19 Jun 2000 19:50:20 -0500
-From: "Bjorn Sodergren" <sweede@gallatinriver.net>
-To: <proftpd@proftpd.net>
-Date: Mon, 19 Jun 2000 19:42:01 -0500
-Message-ID: <IKEKJHNPPEGDKLELMEGKKEHPCCAA.sweede@gallatinriver.net>
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3 (Normal)
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook IMO, Build 9.0.2416 (9.0.2910.0)
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2919.6700
-Importance: Normal
-Subject: [ProFTPD] MySQL Authentication problems
-Resent-Message-ID: <qpfqGC.A.iJH.u6rT5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5167
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1373
-Lines: 43
 
 i've read the entire list that concerns pre9 and pre10, MySQL and
 authentication.
@@ -6860,61 +5779,8 @@ in the list. and nothing has worked.
 Is there anyone who can send me working instructions on getting total
 mysql_authentication without having the user in /etc/passwd ?
 
-thanks, bjorn
-
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Jun 20 15:13:58 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134Oms-0002cB-00
-	for mark@weasel.vom.tm; Tue, 20 Jun 2000 15:13:58 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134Omq-0005fP-00
-	for <hamster@vom.tm>; Tue, 20 Jun 2000 15:13:57 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id JAA07339;
-	Tue, 20 Jun 2000 09:13:43 -0500
-Resent-Date: Tue, 20 Jun 2000 09:13:43 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <394F79BB.642A6A63@popd.isinet.com>
-Date: Tue, 20 Jun 2000 10:03:39 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication problems
-References: <IKEKJHNPPEGDKLELMEGKKEHPCCAA.sweede@gallatinriver.net>
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id JAA06761
-Resent-Message-ID: <CTMrS.A.2pB.7o3T5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5177
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 698
-Lines: 23
-
+</para>
+<para>
     The user id and password to the MySQL DB, can you use that to log
 into MySQL on the command line ?
 
@@ -6923,60 +5789,8 @@ proftpd -d9 -n
 
     And try to log in from somewhere and then send the output to the
 list...
-
-Later,
-    Mike
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Wed Jun 21 14:41:49 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134klJ-0005YV-00
-	for mark@weasel.vom.tm; Wed, 21 Jun 2000 14:41:49 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134klI-00042y-00
-	for <hamster@vom.tm>; Wed, 21 Jun 2000 14:41:48 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id IAA01632;
-	Wed, 21 Jun 2000 08:41:07 -0500
-Resent-Date: Wed, 21 Jun 2000 08:41:07 -0500
-From: sweede@gallatinriver.net
-Sender: sweede@mail.gallatinriver.net
-Message-ID: <3950C2BE.6B268255@gallatinriver.net>
-Date: Wed, 21 Jun 2000 08:27:26 -0500
-X-Mailer: Mozilla 4.73 [en] (X11; I; Linux 2.2.15-4mdk i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication problems
-References: <IKEKJHNPPEGDKLELMEGKKEHPCCAA.sweede@gallatinriver.net> <394F79BB.642A6A63@popd.isinet.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <8H6D_D.A.dT.YOMU5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5204
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 2187
-Lines: 75
+</para>
+<para>
 
 I noticed this in the logs....
 - connected - remote : 63.72.96.166:1046
@@ -7027,72 +5841,8 @@ machine, but not defined in the proftpd config file, this shows up.
 the relavent section of the config file was in my ealier post,  what am i missing
 ?
 
-
-Michael Grabenstein wrote:
-
->     The user id and password to the MySQL DB, can you use that to log
-> into MySQL on the command line ?
->
->     If so try running proftpd with:
-> proftpd -d9 -n
->
->     And try to log in from somewhere and then send the output to the
-> list...
->
-> Later,
->     Mike
->
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
->
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
->
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Wed Jun 21 16:34:25 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134mWH-0005nM-00
-	for mark@weasel.vom.tm; Wed, 21 Jun 2000 16:34:25 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134mWF-0004aK-00
-	for <hamster@vom.tm>; Wed, 21 Jun 2000 16:34:24 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id KAA04181;
-	Wed, 21 Jun 2000 10:33:49 -0500
-Resent-Date: Wed, 21 Jun 2000 10:33:49 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <3950DDF1.F7978633@popd.isinet.com>
-Date: Wed, 21 Jun 2000 11:23:30 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication problems
-References: <IKEKJHNPPEGDKLELMEGKKEHPCCAA.sweede@gallatinriver.net> <394F79BB.642A6A63@popd.isinet.com> <3950C2BE.6B268255@gallatinriver.net>
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id KAA03908
-Resent-Message-ID: <RQtTHB.A.S9.v5NU5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5208
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 2845
-Lines: 91
+</para>
+<para>
 
     What OS is this ?
 
@@ -7169,61 +5919,9 @@ sweede@gallatinriver.net wrote:
 > > proftpd -d9 -n
 > >
 > >     And try to log in from somewhere and then send the output to the
-> > list...
-> >
-> > Later,
-> >     Mike
-> >
-> > --
-> > To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> > in the subject field of the message.
-> >
-> > Please read the documentation and the FAQ before posting a question -- chances
-> > are it's already been answered.
-> >
-> > http://www.proftpd.net           -- The Official ProFTPD web site.
-> > http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> > http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
 
-
-From proftpd-request@tos.net Wed Jun 21 21:12:37 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134qrV-0006UB-00
-	for mark@weasel.vom.tm; Wed, 21 Jun 2000 21:12:37 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134qrT-0005zf-00
-	for <hamster@vom.tm>; Wed, 21 Jun 2000 21:12:36 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id PAA09003;
-	Wed, 21 Jun 2000 15:12:01 -0500
-Resent-Date: Wed, 21 Jun 2000 15:12:01 -0500
-Sender: sweede@mail.gallatinriver.net
-Message-ID: <39511F46.414EB75E@gallatinriver.net>
-Date: Wed, 21 Jun 2000 15:02:14 -0500
-From: Bjorn Sodergren <sweede@gallatinriver.net>
-X-Mailer: Mozilla 4.73 [en] (X11; I; Linux 2.2.15-4mdk i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] MySQL Authentication problems
-References: <IKEKJHNPPEGDKLELMEGKKEHPCCAA.sweede@gallatinriver.net> <394F79BB.642A6A63@popd.isinet.com> <3950C2BE.6B268255@gallatinriver.net> <3950DDF1.F7978633@popd.isinet.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <xRqumB.A.rKC.TASU5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5213
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 3011
-Lines: 104
+</para>
+<para>
 
 >     What OS is this ?
 >
@@ -7314,62 +6012,6 @@ yep
 > > >
 > > >     And try to log in from somewhere and then send the output to the
 > > > list...
-> > >
-> > > Later,
-> > >     Mike
-> > >
-> > > --
-> > > To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> > > in the subject field of the message.
-> > >
-> > > Please read the documentation and the FAQ before posting a question -- chances
-> > > are it's already been answered.
-> > >
-> > > http://www.proftpd.net           -- The Official ProFTPD web site.
-> > > http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> > > http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Jun 20 06:49:47 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 134Gux-0001bh-00
-	for mark@weasel.vom.tm; Tue, 20 Jun 2000 06:49:47 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 134Guw-0003JN-00
-	for <hamster@vom.tm>; Tue, 20 Jun 2000 06:49:46 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id AAA00618;
-	Tue, 20 Jun 2000 00:49:30 -0500
-Resent-Date: Tue, 20 Jun 2000 00:49:30 -0500
-Message-ID: <005701bfda7a$90670880$1d69fea9@jackinthebox>
-From: "Thilo Bangert" <thilo.bangert@gmx.net>
-To: <proftpd@proftpd.net>
-References: <IKEKJHNPPEGDKLELMEGKKEHPCCAA.sweede@gallatinriver.net>
-Subject: Re: [ProFTPD] MySQL Authentication problems
-Date: Tue, 20 Jun 2000 07:44:04 +0200
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 5.00.2314.1300
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2314.1300
-Resent-Message-ID: <ggqKMD.A.eH.zPwT5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5171
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1953
-Lines: 66
 
 Hi Bjorn,
 just a couple days ago I had a problem that would exactly match your
@@ -7382,13 +6024,6 @@ I needed to start proftpd this way
 I do not have a reasonable answer why this is so, though.
 Hope this helps.
 Thilo
-
------ Original Message -----
-From: Bjorn Sodergren <sweede@gallatinriver.net>
-To: <proftpd@proftpd.net>
-Sent: Tuesday, June 20, 2000 2:42 AM
-Subject: [ProFTPD] MySQL Authentication problems
-
 
 > i've read the entire list that concerns pre9 and pre10, MySQL and
 > authentication.
@@ -7418,61 +6053,6 @@ Subject: [ProFTPD] MySQL Authentication problems
 >
 > Is there anyone who can send me working instructions on getting total
 > mysql_authentication without having the user in /etc/passwd ?
->
-> thanks, bjorn
->
->
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with
-"unsubscribe"
-> in the subject field of the message.
->
-> Please read the documentation and the FAQ before posting a question --
-chances
-> are it's already been answered.
->
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and
-FAQ.
->
-
-
-From proftpd-request@tos.net Thu Jun 15 12:57:51 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 132YHP-0003K5-00
-	for mark@weasel.vom.tm; Thu, 15 Jun 2000 12:57:51 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 132YHO-0003cQ-00
-	for <hamster@vom.tm>; Thu, 15 Jun 2000 12:57:50 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id GAA13732;
-	Thu, 15 Jun 2000 06:57:46 -0500
-Resent-Date: Thu, 15 Jun 2000 06:57:46 -0500
-Date: Thu, 15 Jun 2000 14:51:20 +0300 (EEST)
-From: Sami Nieminen <samppa@k213a.lanhovi.ton.tut.fi>
-To: proftpd@proftpd.net
-Message-ID: <Pine.LNX.4.21.0006151438500.6315-100000@butthead.ton.tut.fi>
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Subject: [ProFTPD] Upload problems with MySQL auth
-Resent-Message-ID: <gWSUtB.A.BVD.DMMS5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5081
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 2998
-Lines: 109
-
-Hi!
 
 I am running pre10 with MySQL authentication. Users can login and download
 but uploading to uploads dir causes permission denied. I guess I have
@@ -7511,7 +6091,7 @@ DisplayFirstChdir               .message
 
 AuthPAMAuthoritative            off
 
-<Global>
+&lt;Global&gt;
 # auth using mysql              host      login   pass    db
 MySQLInfo                       localhost proftpd proftpd proftpd
 SQLUserTable                    account_ftp
@@ -7529,13 +6109,13 @@ SQLPlaintextPasswords           on
 SQLLogDirs                      fcdir
 SQLLogHosts                     on
 #SQLLogHosts                     fhost  faddr  ftime
-</Global>
+&lt;/Global&gt;
 
-&lt;Directory /*>
+&lt;Directory /*&gt;
   AllowOverwrite		on
-</Directory>
+&lt;/Directory&gt;
 
-&lt;Anonymous ~>
+&lt;Anonymous ~&gt;
   User			        ftp
   Group				samppa
   
@@ -7550,77 +6130,19 @@ SQLLogHosts                     on
   RateReadHardBPS               on
   
   &lt;Directory *>
-    <Limit SEND MKD RNFR RNTO DELE RMD STOR>
+    &lt;Limit SEND MKD RNFR RNTO DELE RMD STOR>
       DenyAll 
-    </Limit>
-    <Limit RETR LIST CWD>
+    &lt;/Limit>
+    &lt;Limit RETR LIST CWD>
       AllowAll
-    </Limit>
-  </Directory>
+    &lt;/Limit>
+  &lt;/Directory>
   &lt;Directory uploads>
-    <Limit CWD MKD RETR SEND STOR>
+    &lt;Limit CWD MKD RETR SEND STOR>
       AllowAll
-    </Limit>
-  </Directory>
-</Anonymous>
-
-
--samppa-
-
--- 
-Whoa...I did a 'zcat /vmlinuz > /dev/audio' and I think I heard God...
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Jun 15 16:08:09 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 132bFZ-0003i0-00
-	for mark@weasel.vom.tm; Thu, 15 Jun 2000 16:08:09 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 132bFX-0004Z3-00
-	for <hamster@vom.tm>; Thu, 15 Jun 2000 16:08:08 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id KAA17307;
-	Thu, 15 Jun 2000 10:07:48 -0500
-Resent-Date: Thu, 15 Jun 2000 10:07:48 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <3948EEA7.EF39A8C8@popd.isinet.com>
-Date: Thu, 15 Jun 2000 10:56:39 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] Upload problems with MySQL auth
-References: <Pine.LNX.4.21.0006151438500.6315-100000@butthead.ton.tut.fi>
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id JAA16963
-Resent-Message-ID: <dcPzk.A.QJE.S9OS5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5087
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 659
-Lines: 20
+    &lt;/Limit>
+  &lt;/Directory>
+&lt;/Anonymous>
 
     But your probably probably lies in the ownership, and/or mode of
 the upload directory...
@@ -7628,55 +6150,6 @@ the upload directory...
     The user's uid comes from MySQL and it has to have privledges to
 write to the upload directory.
 
-Later,
-    Mike
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Fri Jun 16 08:17:11 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 132qNL-0005da-00
-	for mark@weasel.vom.tm; Fri, 16 Jun 2000 08:17:11 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 132qNK-00010F-00
-	for <hamster@vom.tm>; Fri, 16 Jun 2000 08:17:10 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id CAA30408;
-	Fri, 16 Jun 2000 02:17:01 -0500
-Resent-Date: Fri, 16 Jun 2000 02:17:01 -0500
-Date: Fri, 16 Jun 2000 10:09:55 +0300 (EEST)
-From: Sami Nieminen <samppa@k213a.lanhovi.ton.tut.fi>
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] Upload problems with MySQL auth
-In-Reply-To: <3948EEA7.EF39A8C8@popd.isinet.com>
-Message-ID: <Pine.LNX.4.21.0006160955270.13702-100000@butthead.ton.tut.fi>
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Resent-Message-ID: <675EQ.A.haH.8JdS5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5101
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1312
-Lines: 33
 
 On Thu, 15 Jun 2000, Michael Grabenstein wrote:
 
@@ -7692,63 +6165,10 @@ that all the users can delete all the dirs/files in uploads dir. I use the
 same config that I posted here earlier. I have Limited uploads dir there
 to Allow only CWD, MKD, SEND and STOR - or at least I think I have. I even
 tried to Limit ALL, but didn't do any difference. So, it looks like those
-<Limit> blocks are not read at all by proftpd or I have screwed with
+&lt;Limit&gt; blocks are not read at all by proftpd or I have screwed with
 something.
-
--samppa-
-
--- 
-Whoa...I did a 'zcat /vmlinuz > /dev/audio' and I think I heard God...
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Wed Jun 14 04:17:46 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 1323gY-0007wF-00
-	for mark@weasel.vom.tm; Wed, 14 Jun 2000 04:17:46 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 1323gX-0002Oy-00
-	for <hamster@vom.tm>; Wed, 14 Jun 2000 04:17:45 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id WAA24772;
-	Tue, 13 Jun 2000 22:17:32 -0500
-Resent-Date: Tue, 13 Jun 2000 22:17:32 -0500
-Sender: sweede@mail.gallatinriver.net
-Message-ID: <3946F6DA.D4D58B9C@gallatinriver.net>
-Date: Tue, 13 Jun 2000 22:07:06 -0500
-From: Bjorn Sodergren <sweede@gallatinriver.net>
-X-Mailer: Mozilla 4.72 [en] (X11; U; Linux 2.4.0-test1 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Subject: [ProFTPD] proftpd pre10 and MySQL/SQL_PW
-Resent-Message-ID: <7vCS0C.A.0BG.mevR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5056
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 4606
-Lines: 183
+</para>
+<para>
 
 im using proftpd with mySQL authentication, what i want to do is use it
 in a virtual hosting environment with each domain having its own user
@@ -7772,7 +6192,7 @@ Umask				022
 User				nobody
 Group				nobody
 
-<Global>
+&lt;Global&gt;
  MySQLInfo localhost proftpd xxxxx proftpd
  SQLUsernameField username
  SQLUidField uid
@@ -7782,9 +6202,9 @@ Group				nobody
  SQLLoginCountField count
  SQLAuthoritative on
  SQLPlaintextPasswords on 
-</Global>
+&lt;/Global&gt;
 
-<VirtualHost xx.xx.xx.xx> 
+&lt;VirtualHost xx.xx.xx.xx&gt;
 
 ServerName ftp.domain.net
 SQLUserTable domain_net
@@ -7800,7 +6220,7 @@ DefaultRoot ~
           HideGroup wheel
           HideGroup root
           HideUser root 
-        </Directory>
+        &lt;/Directory>
 
         &lt;Anonymous ~/ftp>
           UseFtpUsers                   on
@@ -7810,20 +6230,19 @@ DefaultRoot ~
           UserAlias                     anonymous ftp
           DisplayLogin                  welcome.msg
           DisplayFirstChdir             .message
-          <Limit WRITE>
+          &lt;Limit WRITE>
             DenyAll
-          </Limit>
+          &lt;/Limit>
           &lt;Directory incoming>
-              <Limit STOR>
+              &lt;Limit STOR>
               AllowAll
-              </Limit>
-              <Limit WRITE READ>
+              &lt;/Limit>
+              &lt;Limit WRITE READ>
               DenyAll
-              </Limit>  
-          </Directory>  
-        </Anonymous>
-</VirtualHost>
-
+              &lt;/Limit>  
+          &lt;/Directory>  
+        &lt;/Anonymous>
+&lt;/VirtualHost>
 
 and i have a user in the databae
 username = user
@@ -7861,7 +6280,7 @@ Umask				022
 User				nobody
 Group				nobody
 
-<Global>
+&lt;Global>
  MySQLInfo localhost proftpd xxxxx proftpd
  SQLUsernameField username
  SQLUidField uid
@@ -7871,9 +6290,9 @@ Group				nobody
  SQLLoginCountField count
  SQLAuthoritative on
  SQLPlaintextPasswords on 
-</Global>
+&lt;/Global>
 
-<Global>
+&lt;Global>
 MaxClients 6 "Sorry, this ftp server has reached its maximum user count
 (%m).  Please try again later"
 
@@ -7886,7 +6305,7 @@ DefaultRoot ~
           HideGroup wheel
           HideGroup root
           HideUser root 
-        </Directory>
+        &lt;/Directory>
 
         &lt;Anonymous ~/ftp>
           UseFtpUsers                   on
@@ -7896,83 +6315,28 @@ DefaultRoot ~
           UserAlias                     anonymous ftp
           DisplayLogin                  welcome.msg
           DisplayFirstChdir             .message
-          <Limit WRITE>
+          &lt;Limit WRITE>
             DenyAll
-          </Limit>
+          &lt;/Limit>
           &lt;Directory incoming>
-              <Limit STOR>
+              &lt;Limit STOR>
               AllowAll
-              </Limit>
-              <Limit WRITE READ>
+              &lt;/Limit>
+              &lt;Limit WRITE READ>
               DenyAll
-              </Limit>  
-          </Directory>  
-        </Anonymous>
-</Global>
+              &lt;/Limit>  
+          &lt;/Directory>  
+        &lt;/Anonymous>
+&lt;/Global>
 
 
-<VirtualHost xx.xx.xx.xx> 
+&lt;VirtualHost xx.xx.xx.xx> 
   ServerName ftp.domain.net
   SQLUserTable domain_net
-</VirtualHost>
+&lt;/VirtualHost>
 
 .. more virtual host containers...
 
-
-thanks
-bjorn
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Jun 01 02:23:29 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12xJhp-0006Kd-00
-	for mark@weasel.vom.tm; Thu, 01 Jun 2000 02:23:29 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12xJho-0006c7-00
-	for <hamster@vom.tm>; Thu, 01 Jun 2000 02:23:28 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id UAA31479;
-	Wed, 31 May 2000 20:23:10 -0500
-Resent-Date: Wed, 31 May 2000 20:23:10 -0500
-X-Sender: crb#highpoint.co.uk@mail.highpoint.co.uk
-X-Mailer: QUALCOMM Windows Eudora Pro Version 4.0
-Date: Thu, 01 Jun 2000 02:38:49 +0100
-To: proftpd@proftpd.net
-From: "Craig R. Belcham" <crb@highpoint.co.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Message-Id: <E12xJlr-0004TK-00@mail.highpoint.co.uk>
-Subject: [ProFTPD] Mysql + Proftpd.
-Resent-Message-ID: <er_so.A.WmH.9jbN5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4929
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1673
-Lines: 58
-
-
-
-Hi.
 
 Im trying to get Proftp talking to mysql.  Im getting an error of 'Can't
 find user', but the user exists and proftpd is sending the correct query.
@@ -8009,65 +6373,6 @@ I have followed everything from the FAQ/Docs... still no joy.
 
 Any ideas?
 
-Cheers.
-Craig
-
--- 
-Craig R. Belcham.  Freelance PERL, DBI, MySQL, MOD_PERL and CGI
-Personal: http://www.highpoint.co.uk/crb       Email: crb@highpoint.co.uk
-Technical Consultant,    Net Gain Limited.     http://www.cardstream.com.
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Jun 01 06:33:18 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12xNbZ-0006n0-00
-	for mark@weasel.vom.tm; Thu, 01 Jun 2000 06:33:17 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12xNbV-0007xV-00
-	for <hamster@vom.tm>; Thu, 01 Jun 2000 06:33:14 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id AAA02640;
-	Thu, 1 Jun 2000 00:33:08 -0500
-Resent-Date: Thu, 1 Jun 2000 00:33:08 -0500
-Sender: strider@mindspring.com
-Message-ID: <3935DFA5.854C44A1@scifi-fantasy.com>
-Date: Wed, 31 May 2000 23:59:33 -0400
-From: Strider Centaur <strider@scifi-fantasy.com>
-Reply-To: strider@scifi-fantasy.com
-Organization: Scifi-Fantasy.com
-X-Mailer: Mozilla 4.7 [en] (X11; I; Linux 2.2.14-15mdk i586)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] Mysql + Proftpd.
-References: <E12xJlr-0004TK-00@mail.highpoint.co.uk>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <StT95C.A.bj.3OfN5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4933
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 2344
-Lines: 74
 
     Make sure you tell it NOT to use PAM.  By Default it tries pam and if that
 fails, it seems to cause authentication to fail.  At least we had to do this to
@@ -8143,51 +6448,6 @@ but very few Windows users have used Linux. " -- Me
 
 
 
-
-From proftpd-request@tos.net Thu Jun 01 05:10:05 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12xMJ3-0006c6-00
-	for mark@weasel.vom.tm; Thu, 01 Jun 2000 05:10:05 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12xMJ2-0007XF-00
-	for <hamster@vom.tm>; Thu, 01 Jun 2000 05:10:04 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id XAA01271;
-	Wed, 31 May 2000 23:09:45 -0500
-Resent-Date: Wed, 31 May 2000 23:09:45 -0500
-From: "Bongho,Lee" <techcap@nownuri.net>
-To: <proftpd@proftpd.net>
-Subject: Re: [ProFTPD] Mysql + Proftpd.
-Date: Thu, 1 Jun 2000 13:06:22 +0900
-Message-ID: <NEBBIDPOGLIBCCGJDLDBCEGFCAAA.techcap@nownuri.net>
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="ks_c_5601-1987"
-X-Priority: 3 (Normal)
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook IMO, Build 9.0.2416 (9.0.2910.0)
-Importance: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2615.200
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id XAA01077
-Resent-Message-ID: <5RvOBB.A.CR.5CeN5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4931
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 692
-Lines: 26
-
-Hello,
-
 Did you compile with --with-modules=mod_sqlpw:mod_mysql ?
 
 Did you edit /etc/ld.so.conf ?
@@ -8205,50 +6465,6 @@ Goodluck to you.
 To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
 in the subject field of the message.
 
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Jun 01 02:45:21 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12xK2y-0006NA-00
-	for mark@weasel.vom.tm; Thu, 01 Jun 2000 02:45:21 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12xK2x-0006iY-00
-	for <hamster@vom.tm>; Thu, 01 Jun 2000 02:45:20 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id UAA32149;
-	Wed, 31 May 2000 20:45:15 -0500
-Resent-Date: Wed, 31 May 2000 20:45:15 -0500
-User-Agent: Microsoft-Outlook-Express-Macintosh-Edition/5.02.2022
-Date: Wed, 31 May 2000 18:37:12 -0700
-Subject: Re: [ProFTPD] Mysql + Proftpd.
-From: Gavin Clark <gavin@datacor.com>
-To: <proftpd@proftpd.net>
-Message-ID: <B55B0C58.ADE%gavin@datacor.com>
-In-Reply-To: <E12xJlr-0004TK-00@mail.highpoint.co.uk>
-Mime-version: 1.0
-Content-type: text/plain; charset="US-ASCII"
-Content-transfer-encoding: 7bit
-Resent-Message-ID: <acNSyC.A.dyH.h5bN5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4930
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1579
-Lines: 50
 
 Did you give proftp access to the database with mysql admin?
 
@@ -8289,249 +6505,6 @@ on 5/31/00 6:38 PM, Craig R. Belcham  wrote:
 > Cheers.
 > Craig
 
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Jun 01 09:29:21 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12xQLx-00073b-00
-	for mark@weasel.vom.tm; Thu, 01 Jun 2000 09:29:21 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12xQLw-0000Pl-00
-	for <hamster@vom.tm>; Thu, 01 Jun 2000 09:29:20 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id DAA03958;
-	Thu, 1 Jun 2000 03:28:51 -0500
-Resent-Date: Thu, 1 Jun 2000 03:28:51 -0500
-X-Sender: crb#highpoint.co.uk@mail.highpoint.co.uk
-X-Mailer: QUALCOMM Windows Eudora Pro Version 4.0
-Date: Thu, 01 Jun 2000 09:43:37 +0100
-To: proftpd@proftpd.net
-From: "Craig R. Belcham" <crb@highpoint.co.uk>
-Subject: Re: [ProFTPD] Mysql + Proftpd.
-In-Reply-To: <B55B0C58.ADE%gavin@datacor.com>
-References: <E12xJlr-0004TK-00@mail.highpoint.co.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Message-Id: <E12xQOy-00052f-00@mail.highpoint.co.uk>
-Resent-Message-ID: <ubNCpD.A.p7.fyhN5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4934
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 878
-Lines: 24
-
-At 18:37 31/05/00 -0700, you wrote:
->Did you give proftp access to the database with mysql admin?
-
-
-As I said, Mysql is showing the query in the debug, if it didnt have the
-access, then it would fail on connect.
-
-
--- 
-Craig R. Belcham.  Freelance PERL, DBI, MySQL, MOD_PERL and CGI
-Personal: http://www.highpoint.co.uk/crb       Email: crb@highpoint.co.uk
-Technical Consultant,    Net Gain Limited.     http://www.cardstream.com.
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Jun 01 09:48:19 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12xQeJ-00075B-00
-	for mark@weasel.vom.tm; Thu, 01 Jun 2000 09:48:19 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12xQeI-0000Ua-00
-	for <hamster@vom.tm>; Thu, 01 Jun 2000 09:48:18 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id DAA04551;
-	Thu, 1 Jun 2000 03:48:14 -0500
-Resent-Date: Thu, 1 Jun 2000 03:48:14 -0500
-X-Sender: crb#highpoint.co.uk@mail.highpoint.co.uk
-X-Mailer: QUALCOMM Windows Eudora Pro Version 4.0
-Date: Thu, 01 Jun 2000 10:05:21 +0100
-To: proftpd@proftpd.net
-From: "Craig R. Belcham" <crb@highpoint.co.uk>
-Subject: Re: [ProFTPD] Mysql + Proftpd.
-In-Reply-To: <E12xQOy-00052f-00@mail.highpoint.co.uk>
-References: <B55B0C58.ADE%gavin@datacor.com>
- <E12xJlr-0004TK-00@mail.highpoint.co.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Message-Id: <E12xQk0-00055v-00@mail.highpoint.co.uk>
-Resent-Message-ID: <bwqNLD.A.FCB.pGiN5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4935
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 868
-Lines: 25
-
-At 09:43 01/06/00 +0100, you wrote:
-
-OK Now Ive compiled it --without-pam  and it STILL cant find the user. By
-looking at the source code 'Can't find user' is generated after
-auth_getpwnam fails
-
-Craig
-
-
--- 
-Craig R. Belcham.  Freelance PERL, DBI, MySQL, MOD_PERL and CGI
-Personal: http://www.highpoint.co.uk/crb       Email: crb@highpoint.co.uk
-Technical Consultant,    Net Gain Limited.     http://www.cardstream.com.
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Fri May 26 20:42:26 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12vQ02-0005yK-00
-	for mark@weasel.vom.tm; Fri, 26 May 2000 20:42:26 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12vQ00-0002vO-00
-	for <hamster@vom.tm>; Fri, 26 May 2000 20:42:25 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id OAA15486;
-	Fri, 26 May 2000 14:42:20 -0500
-Resent-Date: Fri, 26 May 2000 14:42:20 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <392ED1CE.18F9F5D3@popd.isinet.com>
-Date: Fri, 26 May 2000 15:34:38 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id OAA15369
-Subject: [ProFTPD] NIS and mos_mysql ?
-Resent-Message-ID: <nc0E4B.A.YwD.jItL5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4879
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 769
-Lines: 23
-
-    OK... I had mod_sqlpw and mod_mysql working fine, then
-I configured my box for NIS...
-
-    I seem to remember something about NIS problems... I don't want
-to authenticate through NIS, I just want mod_mysql to work.
-
-    Sorry this is Friday and I am asking before I have researched
-this much... :-)
-
-Thanks,
-    Mike
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue May 30 16:25:51 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12wntu-0002Vp-00
-	for mark@weasel.vom.tm; Tue, 30 May 2000 16:25:50 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12wntt-0004Oa-00
-	for <hamster@vom.tm>; Tue, 30 May 2000 16:25:50 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id KAA08916;
-	Tue, 30 May 2000 10:25:19 -0500
-Resent-Date: Tue, 30 May 2000 10:25:19 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <3933DAA6.E61E0D33@popd.isinet.com>
-Date: Tue, 30 May 2000 11:13:42 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] NIS and mos_mysql ?
-References: <392ED1CE.18F9F5D3@popd.isinet.com>
-Content-Type: text/plain; charset=iso-8859-1
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id KAA08675
-Resent-Message-ID: <v7CcF.A.wHC.Ys9M5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4900
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by starbase.tos.net id KAA08916
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1143
-Lines: 37
 
     OK, never e-mail late on Friday. :-)
 
@@ -8552,64 +6525,6 @@ directory
 better... (Hey Charles... :-)
 
     Updated my table and everything is fine now.
-
-Thanks,
-    Mike
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscrib=
-e"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- ch=
-ances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and =
-FAQ.
-
-
-From proftpd-request@tos.net Thu May 25 23:04:13 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12v5jh-0003X7-00
-	for mark@weasel.vom.tm; Thu, 25 May 2000 23:04:13 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12v5jg-0005Bo-00
-	for <hamster@vom.tm>; Thu, 25 May 2000 23:04:12 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id RAA01265;
-	Thu, 25 May 2000 17:04:08 -0500
-Resent-Date: Thu, 25 May 2000 17:04:08 -0500
-Message-ID: <001701bfc694$90905220$a28d21d4@klmoberg.no>
-From: "Martin Sarajervi" <post@klmoberg.no>
-To: <proftpd@proftpd.net>
-Date: Thu, 25 May 2000 23:59:57 +0200
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 5.00.2314.1300
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2314.1300
-Subject: [ProFTPD] mod_mysql problems.
-Resent-Message-ID: <8Uc8JB.A.IQ.aHaL5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4857
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1709
-Lines: 56
 
 hey, I am trying to install you proftpd module mod_mysql.
 I enable it, but the compile fails:
@@ -8655,161 +6570,12 @@ Please respond to this message, I am kind of clueless now.   :-)
 - Martin Sarajervi
 
 
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Fri May 26 04:57:16 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12vBFM-000441-00
-	for mark@weasel.vom.tm; Fri, 26 May 2000 04:57:16 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12vBFK-0006vG-00
-	for <hamster@vom.tm>; Fri, 26 May 2000 04:57:15 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id WAA05288;
-	Thu, 25 May 2000 22:57:10 -0500
-Resent-Date: Thu, 25 May 2000 22:57:10 -0500
-From: Richard Howland <howland@sensun.gtri.gatech.edu>
-Message-Id: <200005260351.e4Q3pIc04643@sensun.gtri.gatech.edu>
-Subject: Re: [ProFTPD] mod_mysql problems.
-To: proftpd@proftpd.net
-Date: Thu, 25 May 100 23:51:17 -0400 (EDT)
-In-Reply-To: <001701bfc694$90905220$a28d21d4@klmoberg.no> from "Martin Sarajervi" at May 25, 0 11:59:57 pm
-X-Mailer: ELM [version 2.4 PL25]
-Content-Type: text
-Resent-Message-ID: <LGO6BD.A.9NB.XTfL5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4865
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 2060
-Lines: 68
-
 Hey Martin,
 
 you have to hardcode the location of mysqlclient.a in the source.  Thats the only way i could
 get it to compile on my debian machine.
 
 Try locate mysqlclient, then paste the location into the source.
-
-Trey
-trey@etree.org
-
-> 
-> hey, I am trying to install you proftpd module mod_mysql.
-> I enable it, but the compile fails:
-> 
-> ....
-> make[1]: Leaving directory `/install/proftpd-1.2.0pre10/modules'
-> gcc -Llib  -o proftpd src/main.o src/timers.o src/sets.o src/pool.o
-> src/dirtree.
-> o src/support.o src/inet.o src/log.o src/io.o src/ident.o src/data.o
-> src/modules
-> .o src/auth.o src/fs.o modules/mod_core.o modules/mod_auth.o
-> modules/mod_xfer.o
-> modules/mod_site.o modules/mod_ls.o modules/mod_unixpw.o modules/mod_log.o
-> modul
-> es/mod_mysql.o modules/mod_sqlpw.o
-> modules/module_glue.o -lsupp -lcrypt  -lm -l
-> mysqlclient
-> /usr/i386-slackware-linux/bin/ld: cannot open -lmysqlclient: No such file or
-> dir
-> ectory
-> collect2: ld returned 1 exit status
-> make: *** [proftpd] Error 1
-> 
-> 
-> I looked at your source and saw the line:
-> 
-> /* -- DO NOT MODIFY THE LINE BELOW UNLESS YOU FEEL LIKE IT --
->  * $Libraries: -lm -lmysqlclient $
->  */
-> 
-> But I was not sure what to put here.
-> I am using mysql 3.22.32 and proftpd-1.2.0pre10.
-> 
-> more info about my system:
-> 
-> Reading specs from /usr/lib/gcc-lib/i386-slackware-linux/egcs-2.91.66/specs
-> gcc version egcs-2.91.66 19990314/Linux (egcs-1.1.2 release)
-> 
-> It also is a Slackware linux 7.0 system.
-> 
-> Please respond to this message, I am kind of clueless now.   :-)
-> 
-> - Martin Sarajervi
-> 
-> 
-> 
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
-> 
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
-> 
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-> 
-
-
-From proftpd-request@tos.net Wed May 24 15:46:38 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12ucQg-0002PV-00
-	for mark@weasel.vom.tm; Wed, 24 May 2000 15:46:38 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12ucQf-0004ZS-00
-	for <hamster@vom.tm>; Wed, 24 May 2000 15:46:37 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id JAA07236;
-	Wed, 24 May 2000 09:46:23 -0500
-Resent-Date: Wed, 24 May 2000 09:46:23 -0500
-Sender: smalta@mail.fleximedia.pt
-Message-ID: <392BE715.C4F08E42@fleximedia.pt>
-Date: Wed, 24 May 2000 15:28:37 +0100
-From: Silvestre Malta <smalta@fleximedia.pt>
-Organization: =?iso-8859-1?Q?Flexim=E9dia?= - =?iso-8859-1?Q?Servi=E7os?= On Line
-X-Mailer: Mozilla 4.7 [en] (X11; I; Linux 2.2.9-27mdk i586)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd <proftpd@proftpd.net>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Subject: [ProFTPD] mysql problem
-Resent-Message-ID: <sW8oK.A.orB.8d-K5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4821
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1533
-Lines: 49
 
 hello
 
@@ -8845,61 +6611,6 @@ SQLAuthoritative                on
 SQLPlaintextPasswords           on
 SQLLogDirs                      fcdir
 
-
-
-help me please !!!!
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu May 25 00:23:37 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12ukUz-0000kK-00
-	for mark@weasel.vom.tm; Thu, 25 May 2000 00:23:37 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 12ukUx-00074t-00
-	for <hamster@vom.tm>; Thu, 25 May 2000 00:23:36 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id SAA13952;
-	Wed, 24 May 2000 18:23:23 -0500
-Resent-Date: Wed, 24 May 2000 18:23:23 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <392C62A2.B5CDEACD@popd.isinet.com>
-Date: Wed, 24 May 2000 19:15:46 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mysql problem
-References: <392BE715.C4F08E42@fleximedia.pt>
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id SAA13863
-Resent-Message-ID: <8XB54D.A.1YD.HMGL5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/4828
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 2569
-Lines: 75
 
 Silvestre Malta wrote:
 
@@ -8962,55 +6673,6 @@ Basically just add the additional columns from Mark's page to the table that is
 created with my create script (you can use alter, or drop table and re-create).
 
 
-Later,
-    Mike
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Sat Jun 10 21:27:44 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 130rr6-0005Dk-00
-	for mark@weasel.vom.tm; Sat, 10 Jun 2000 21:27:44 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 130rr6-0007w4-00
-	for <hamster@vom.tm>; Sat, 10 Jun 2000 21:27:45 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id PAA19512;
-	Sat, 10 Jun 2000 15:24:23 -0500
-Resent-Date: Sat, 10 Jun 2000 15:24:23 -0500
-Mime-Version: 1.0
-X-Sender: micheal@mail.com4u.ch
-Message-Id: <p04320402b568520ce7c7@[10.10.10.150]>
-Date: Sat, 10 Jun 2000 22:17:13 +0200
-To: proftpd@proftpd.net
-From: Michael O Shea <micheal@com4u.ch>
-Content-Type: text/plain; charset="us-ascii" ; format="flowed"
-Subject: [ProFTPD] newbieish question,
-Resent-Message-ID: <m_pdaD.A.TwE.YJqQ5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5030
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 982
-Lines: 29
 
 Hi folks,
 Anybody using proftpd and SQL / POstGres ? IS it still as the proftpd 
@@ -9022,65 +6684,6 @@ chown their home dirs ?
 
 Thanks in advance.
 -- 
-
-
-Micheal O Shea                         Email:micheal@com4u.ch
-com4u.ch                                        http://www.com4u.ch
-Breitistrasse 7B  		PGP key available upon request.
-CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-Switzerland
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Mon Jun 12 19:56:15 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 131ZNf-0004XN-00
-	for mark@weasel.vom.tm; Mon, 12 Jun 2000 19:56:15 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 131ZNa-0001Kj-00
-	for <hamster@vom.tm>; Mon, 12 Jun 2000 19:56:10 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id NAA02420;
-	Mon, 12 Jun 2000 13:53:49 -0500
-Resent-Date: Mon, 12 Jun 2000 13:53:49 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <3944F5F1.11B347F0@popd.isinet.com>
-Date: Mon, 12 Jun 2000 10:38:41 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] newbieish question,
-References: <p04320402b568520ce7c7@[10.10.10.150]>
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id NAA02032
-Resent-Message-ID: <5Mlqe.A.ig.29SR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5036
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 1932
-Lines: 52
 
     I am using MySQL, not PostGres... But how MySQL works should be similar.
 
@@ -9101,211 +6704,6 @@ And probably more permutations are possible...
 
     I use #2 above...
 
-Later,
-    Mike
-
-Michael O Shea wrote:
-
-> Hi folks,
-> Anybody using proftpd and SQL / POstGres ? IS it still as the proftpd
-> manual says,
-> "WARNING THIS SECTION IS (TECH SPEAK TIME) ROUGH AS F*CK"
->
-> Also If I use it do I have to add the users to /etc/passwd anaway to
-> chown their home dirs ?
->
-> Thanks in advance.
-> --
->
-> Micheal O Shea                         Email:micheal@com4u.ch
-> com4u.ch                                        http://www.com4u.ch
-> Breitistrasse 7B                PGP key available upon request.
-> CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-> Switzerland
->
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
->
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
->
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Jun 13 19:09:41 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 131v89-0006rX-00
-	for mark@weasel.vom.tm; Tue, 13 Jun 2000 19:09:41 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 131v88-00084u-00
-	for <hamster@vom.tm>; Tue, 13 Jun 2000 19:09:40 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id NAA18061;
-	Tue, 13 Jun 2000 13:09:22 -0500
-Resent-Date: Tue, 13 Jun 2000 13:09:22 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <39467639.D5999399@popd.isinet.com>
-Date: Tue, 13 Jun 2000 13:58:17 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] newbieish question,
-References: <p04320402b568520ce7c7@[10.10.10.150]> <3944F5F1.11B347F0@popd.isinet.com>
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id NAA17205
-Resent-Message-ID: <Wn0PlB.A.CNE.VbnR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5049
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 630
-Lines: 18
-
-    The SQL auth on MySQL has been stable for me, but I am not
-running a loaded FTP site. Just allowing co-workers to download
-packages I have already downloaded...
-
-Later,
-    Mike
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Jun 13 21:26:05 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 131xG9-0007CV-00
-	for mark@weasel.vom.tm; Tue, 13 Jun 2000 21:26:05 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 131xG8-0000IV-00
-	for <hamster@vom.tm>; Tue, 13 Jun 2000 21:26:05 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id PAA19442;
-	Tue, 13 Jun 2000 15:25:39 -0500
-Resent-Date: Tue, 13 Jun 2000 15:25:39 -0500
-Mime-Version: 1.0
-X-Sender: micheal@mail.com4u.ch
-Message-Id: <p04320416b56c46a26978@[10.10.10.150]>
-In-Reply-To: <39467639.D5999399@popd.isinet.com>
-References: <p04320402b568520ce7c7@[10.10.10.150]>
- <3944F5F1.11B347F0@popd.isinet.com> <39467639.D5999399@popd.isinet.com>
-Date: Tue, 13 Jun 2000 22:16:00 +0200
-To: proftpd@proftpd.net
-From: Michael O Shea <micheal@com4u.ch>
-Subject: Re: [ProFTPD] newbieish question,
-Content-Type: text/plain; charset="us-ascii" ; format="flowed"
-Resent-Message-ID: <rT7jYD.A.3uE.YapR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5050
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 1160
-Lines: 33
-
->     The SQL auth on MySQL has been stable for me, but I am not
->running a loaded FTP site. Just allowing co-workers to download
->packages I have already downloaded...
->
->Later,
->     Mike
-Thanks Mike.
-Well I tried to compile it on FreeBSD4 using,
-./configure --with-modules=mod_pgsql
-an get an error on Make,
-/usr/libexec/elf/ld: cannot open -lpq: No such file or directory
-*** Error code 1
-HAS anyone compiled on FreeBSD4 with sql or pgsql ?
--- 
-
-
-Micheal O Shea                         Email:micheal@com4u.ch
-com4u.ch                                        http://www.com4u.ch
-Breitistrasse 7B  		PGP key available upon request.
-CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-Switzerland
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Jun 13 21:34:51 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 131xOd-0007Em-00
-	for mark@weasel.vom.tm; Tue, 13 Jun 2000 21:34:51 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 131xOc-0000KA-00
-	for <hamster@vom.tm>; Tue, 13 Jun 2000 21:34:50 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id PAA19810;
-	Tue, 13 Jun 2000 15:34:45 -0500
-Resent-Date: Tue, 13 Jun 2000 15:34:45 -0500
-Sender: devon@starbase.tos.net
-Message-ID: <3946993F.4A627AA8@admin2.gisnetworks.com>
-Date: Tue, 13 Jun 2000 13:27:43 -0700
-From: Devon Bleak <devon@admin2.gisnetworks.com>
-Reply-To: devon@admin2.gisnetworks.com
-Organization: GISNetworks
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.16 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] newbieish question,
-References: <p04320402b568520ce7c7@[10.10.10.150]>
-	 <3944F5F1.11B347F0@popd.isinet.com> <39467639.D5999399@popd.isinet.com> <p04320416b56c46a26978@[10.10.10.150]>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <NGiG3D.A.PwE.LlpR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5051
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 1447
-Lines: 42
 
 do you have the postgresql libraries installed?  did you install them to
 somewhere that ldconfig knows where to look for them?  and have you
@@ -9313,454 +6711,6 @@ re-run ldconfig since installing them?
 
 devon
 
-
-
-Michael O Shea wrote:
-> 
-> >     The SQL auth on MySQL has been stable for me, but I am not
-> >running a loaded FTP site. Just allowing co-workers to download
-> >packages I have already downloaded...
-> >
-> >Later,
-> >     Mike
-> Thanks Mike.
-> Well I tried to compile it on FreeBSD4 using,
-> ./configure --with-modules=mod_pgsql
-> an get an error on Make,
-> /usr/libexec/elf/ld: cannot open -lpq: No such file or directory
-> *** Error code 1
-> HAS anyone compiled on FreeBSD4 with sql or pgsql ?
-> --
-> 
-> Micheal O Shea                         Email:micheal@com4u.ch
-> com4u.ch                                        http://www.com4u.ch
-> Breitistrasse 7B                PGP key available upon request.
-> CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-> Switzerland
-> 
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
-> 
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
-> 
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Jun 13 08:23:09 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 131l2T-0005ou-00
-	for mark@weasel.vom.tm; Tue, 13 Jun 2000 08:23:09 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 131l2S-00054B-00
-	for <hamster@vom.tm>; Tue, 13 Jun 2000 08:23:08 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id CAA09791;
-	Tue, 13 Jun 2000 02:21:31 -0500
-Resent-Date: Tue, 13 Jun 2000 02:21:31 -0500
-Mime-Version: 1.0
-X-Sender: micheal@mail.com4u.ch
-Message-Id: <p04320408b56b8d7ae928@[10.10.10.150]>
-In-Reply-To: <3944F5F1.11B347F0@popd.isinet.com>
-References: <p04320402b568520ce7c7@[10.10.10.150]>
- <3944F5F1.11B347F0@popd.isinet.com>
-Date: Tue, 13 Jun 2000 09:08:08 +0200
-To: proftpd@proftpd.net
-From: Michael O Shea <micheal@com4u.ch>
-Subject: Re: [ProFTPD] newbieish question,
-Content-Type: text/plain; charset="us-ascii" ; format="flowed"
-Resent-Message-ID: <BpHUtD.A.AYC.45dR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5040
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 2545
-Lines: 80
-
->
-Thanks Michael.
-  I got that much pretty figured already. MI am wondering about AUthBY 
-SQL. IS it stable. ? Is anybody using it with postgres ? IS the 
-manual referring to the SQL auth being "Rough" or to the manual on it 
-being "Rough".
-Thanks.
-
-
-
-
-
->    I am using MySQL, not PostGres... But how MySQL works should be similar.
->
->     You should have many options:
->1)    chown does not check /etc/passwd if you give it a number. 
->Simply use the id
->number and root will be able to change own the directory properly. 
->(Then if you
->logged in via telnet it looks funny, but not from ftp.)
->
->2)    Create one general user in /etc/passwd and lock the account. 
->Then use that
->uid for all users in the DB. You really need DefaultRoot set to '~' 
->for this to
->work... When a user logs in via ftp, their files are owned by the 
->general user id
->and when you logged in via telnet the files are also owned by the generic id.
->
->3)    You can have user's in both places, this is the only way to get the file
->owners to look the same on both telnet and ftp...
->
->And probably more permutations are possible...
->
->     I use #2 above...
->
->Later,
->     Mike
->
->Michael O Shea wrote:
->
->>  Hi folks,
->>  Anybody using proftpd and SQL / POstGres ? IS it still as the proftpd
->>  manual says,
->>  "WARNING THIS SECTION IS (TECH SPEAK TIME) ROUGH AS F*CK"
->>
->>  Also If I use it do I have to add the users to /etc/passwd anaway to
->>  chown their home dirs ?
->>
->>  Thanks in advance.
->>  --
->>
->>  Micheal O Shea                         Email:micheal@com4u.ch
->>  com4u.ch                                        http://www.com4u.ch
->>  Breitistrasse 7B                PGP key available upon request.
->>  CH-5506 Maegenwil                            Tel: +41 62 896 46 26
->>  Switzerland
->>
->>  --
->>  To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
->>  in the subject field of the message.
->>
->>  Please read the documentation and the FAQ before posting a 
->>question -- chances
->>  are it's already been answered.
->>
->>  http://www.proftpd.net           -- The Official ProFTPD web site.
->>  http://bugs.proftpd.net          -- Bug reporting and feature requests.
->>  http://www.proftpd.net/docs/     -- The latest ProFTPD 
->>documentation and FAQ.
-
--- 
-
-
-Micheal O Shea                         Email:micheal@com4u.ch
-com4u.ch                                        http://www.com4u.ch
-Breitistrasse 7B  		PGP key available upon request.
-CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-Switzerland
-
-
-From proftpd-request@tos.net Tue Jun 13 15:02:00 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 131rGS-0006MY-00
-	for mark@weasel.vom.tm; Tue, 13 Jun 2000 15:02:00 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 131rGR-0006uA-00
-	for <hamster@vom.tm>; Tue, 13 Jun 2000 15:01:59 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id JAA13535;
-	Tue, 13 Jun 2000 09:01:52 -0500
-Resent-Date: Tue, 13 Jun 2000 09:01:52 -0500
-Message-ID: <39463CEE.E0B12D6@compsci.lyon.edu>
-Date: Tue, 13 Jun 2000 08:53:50 -0500
-From: Tsanko Stoev <tstoev@compsci.lyon.edu>
-X-Mailer: Mozilla 4.73 [en] (WinNT; U)
-X-Accept-Language: en,bg
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] newbieish question,
-References: <p04320402b568520ce7c7@[10.10.10.150]>
-	 <3944F5F1.11B347F0@popd.isinet.com> <p04320408b56b8d7ae928@[10.10.10.150]>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <TKCah.A.0RD.L0jR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5044
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 2835
-Lines: 80
-
-SQL Auth is pretty stable. I can't say much cause I have been running it for only
-3-4 months, but it is running pretty good.
-
-Michael O Shea wrote:
-
-> >
-> Thanks Michael.
->   I got that much pretty figured already. MI am wondering about AUthBY
-> SQL. IS it stable. ? Is anybody using it with postgres ? IS the
-> manual referring to the SQL auth being "Rough" or to the manual on it
-> being "Rough".
-> Thanks.
->
-> >    I am using MySQL, not PostGres... But how MySQL works should be similar.
-> >
-> >     You should have many options:
-> >1)    chown does not check /etc/passwd if you give it a number.
-> >Simply use the id
-> >number and root will be able to change own the directory properly.
-> >(Then if you
-> >logged in via telnet it looks funny, but not from ftp.)
-> >
-> >2)    Create one general user in /etc/passwd and lock the account.
-> >Then use that
-> >uid for all users in the DB. You really need DefaultRoot set to '~'
-> >for this to
-> >work... When a user logs in via ftp, their files are owned by the
-> >general user id
-> >and when you logged in via telnet the files are also owned by the generic id.
-> >
-> >3)    You can have user's in both places, this is the only way to get the file
-> >owners to look the same on both telnet and ftp...
-> >
-> >And probably more permutations are possible...
-> >
-> >     I use #2 above...
-> >
-> >Later,
-> >     Mike
-> >
-> >Michael O Shea wrote:
-> >
-> >>  Hi folks,
-> >>  Anybody using proftpd and SQL / POstGres ? IS it still as the proftpd
-> >>  manual says,
-> >>  "WARNING THIS SECTION IS (TECH SPEAK TIME) ROUGH AS F*CK"
-> >>
-> >>  Also If I use it do I have to add the users to /etc/passwd anaway to
-> >>  chown their home dirs ?
-> >>
-> >>  Thanks in advance.
-> >>  --
-> >>
-> >>  Micheal O Shea                         Email:micheal@com4u.ch
-> >>  com4u.ch                                        http://www.com4u.ch
-> >>  Breitistrasse 7B                PGP key available upon request.
-> >>  CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-> >>  Switzerland
-> >>
-> >>  --
-> >>  To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> >>  in the subject field of the message.
-> >>
-> >>  Please read the documentation and the FAQ before posting a
-> >>question -- chances
-> >>  are it's already been answered.
-> >>
-> >>  http://www.proftpd.net           -- The Official ProFTPD web site.
-> >>  http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> >>  http://www.proftpd.net/docs/     -- The latest ProFTPD
-> >>documentation and FAQ.
->
-> --
->
-> Micheal O Shea                         Email:micheal@com4u.ch
-> com4u.ch                                        http://www.com4u.ch
-> Breitistrasse 7B                PGP key available upon request.
-> CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-> Switzerland
-
-
-From proftpd-request@tos.net Tue Jun 13 16:08:51 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 131sJ9-0006Tu-00
-	for mark@weasel.vom.tm; Tue, 13 Jun 2000 16:08:51 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 131sJ7-0007Dd-00
-	for <hamster@vom.tm>; Tue, 13 Jun 2000 16:08:50 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id KAA14638;
-	Tue, 13 Jun 2000 10:08:24 -0500
-Resent-Date: Tue, 13 Jun 2000 10:08:24 -0500
-Mime-Version: 1.0
-X-Sender: micheal@mail.com4u.ch
-Message-Id: <p04320410b56bfc31ec4c@[10.10.10.150]>
-In-Reply-To: <39463CEE.E0B12D6@compsci.lyon.edu>
-References: <p04320402b568520ce7c7@[10.10.10.150]>	
- <3944F5F1.11B347F0@popd.isinet.com>
- <p04320408b56b8d7ae928@[10.10.10.150]> <39463CEE.E0B12D6@compsci.lyon.edu>
-Date: Tue, 13 Jun 2000 16:57:05 +0200
-To: proftpd@proftpd.net
-From: Michael O Shea <micheal@com4u.ch>
-Subject: Re: [ProFTPD] newbieish question,
-Content-Type: text/plain; charset="us-ascii" ; format="flowed"
-Resent-Message-ID: <1MVZ0D.A.lhD.uvkR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5045
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 879
-Lines: 25
-
->SQL Auth is pretty stable. I can't say much cause I have been 
->running it for only
->3-4 months, but it is running pretty good.
->
-IS that with mySQL or PostGres ?
--- 
-
-
-Micheal O Shea                         Email:micheal@com4u.ch
-com4u.ch                                        http://www.com4u.ch
-Breitistrasse 7B  		PGP key available upon request.
-CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-Switzerland
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Tue Jun 13 16:26:07 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 131sZr-0006VH-00
-	for mark@weasel.vom.tm; Tue, 13 Jun 2000 16:26:07 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 131sZp-0007Im-00
-	for <hamster@vom.tm>; Tue, 13 Jun 2000 16:26:05 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id KAA15037;
-	Tue, 13 Jun 2000 10:25:57 -0500
-Resent-Date: Tue, 13 Jun 2000 10:25:57 -0500
-Message-ID: <394650B0.24A30701@compsci.lyon.edu>
-Date: Tue, 13 Jun 2000 10:18:08 -0500
-From: Tsanko Stoev <tstoev@compsci.lyon.edu>
-X-Mailer: Mozilla 4.73 [en] (WinNT; U)
-X-Accept-Language: en,bg
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] newbieish question,
-References: <p04320402b568520ce7c7@[10.10.10.150]>	
-	 <3944F5F1.11B347F0@popd.isinet.com>
-	 <p04320408b56b8d7ae928@[10.10.10.150]> <39463CEE.E0B12D6@compsci.lyon.edu> <p04320410b56bfc31ec4c@[10.10.10.150]>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <h5rMr.A.ZpD.8ClR5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5046
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: O
-Content-Length: 974
-Lines: 28
-
-it is with MySQL...
-
-Michael O Shea wrote:
-
-> >SQL Auth is pretty stable. I can't say much cause I have been
-> >running it for only
-> >3-4 months, but it is running pretty good.
-> >
-> IS that with mySQL or PostGres ?
-> --
->
-> Micheal O Shea                         Email:micheal@com4u.ch
-> com4u.ch                                        http://www.com4u.ch
-> Breitistrasse 7B                PGP key available upon request.
-> CH-5506 Maegenwil                            Tel: +41 62 896 46 26
-> Switzerland
->
-> --
-> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> in the subject field of the message.
->
-> Please read the documentation and the FAQ before posting a question -- chances
-> are it's already been answered.
->
-> http://www.proftpd.net           -- The Official ProFTPD web site.
-> http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Thu Jun 22 23:00:36 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 135F1Y-00017j-00
-	for mark@weasel.vom.tm; Thu, 22 Jun 2000 23:00:36 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 135F1W-0004wj-00
-	for <hamster@vom.tm>; Thu, 22 Jun 2000 23:00:35 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id RAA24765;
-	Thu, 22 Jun 2000 17:00:30 -0500
-Resent-Date: Thu, 22 Jun 2000 17:00:30 -0500
-Sender: sweede@mail.gallatinriver.net
-Message-ID: <395289BA.281176CB@gallatinriver.net>
-Date: Thu, 22 Jun 2000 16:48:42 -0500
-From: Bjorn Sodergren <sweede@gallatinriver.net>
-X-Mailer: Mozilla 4.73 [en] (X11; I; Linux 2.2.15-4mdk i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] Still MySQL Authentication problems
-References: <IKEKJHNPPEGDKLELMEGKKEHPCCAA.sweede@gallatinriver.net> <394F79BB.642A6A63@popd.isinet.com> <3950C2BE.6B268255@gallatinriver.net> <3950DDF1.F7978633@popd.isinet.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: <8A7m3C.A.m_F.eqoU5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5223
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 4965
-Lines: 158
 
 
 Ok, the current problems are still going on..  basicly, MySQL authentication isnt
@@ -9921,46 +6871,6 @@ Michael Grabenstein wrote:
 > > > http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
-From proftpd-request@tos.net Fri Jun 23 15:55:53 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 135Us5-000316-00
-	for mark@weasel.vom.tm; Fri, 23 Jun 2000 15:55:53 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 135Us3-0001MD-00
-	for <hamster@vom.tm>; Fri, 23 Jun 2000 15:55:52 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id JAA01836;
-	Fri, 23 Jun 2000 09:55:40 -0500
-Resent-Date: Fri, 23 Jun 2000 09:55:40 -0500
-Sender: mikeg@sanitarium.isinet.com
-Message-ID: <395377ED.3F8598E0@popd.isinet.com>
-Date: Fri, 23 Jun 2000 10:45:01 -0400
-From: Michael Grabenstein <mgrabens@popd.isinet.com>
-X-Mailer: Mozilla 4.72 [en] (X11; I; Linux 2.2.12-20 i686)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] Still MySQL Authentication problems
-References: <IKEKJHNPPEGDKLELMEGKKEHPCCAA.sweede@gallatinriver.net> <394F79BB.642A6A63@popd.isinet.com> <3950C2BE.6B268255@gallatinriver.net> <3950DDF1.F7978633@popd.isinet.com> <395289BA.281176CB@gallatinriver.net>
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-MIME-Autoconverted: from base64 to 8bit by starbase.tos.net id JAA01746
-Resent-Message-ID: <_iTa2D.A.gb.yh3U5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5229
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 5858
-Lines: 172
-
     Two things:
 1)    When you ran configure to build proftpd, did you run it with:
 configure --with-modules=mod_sqlpw:mod_mysql
@@ -9976,200 +6886,6 @@ will make it come to your shells window...
 
 Thanks,
     Mike
-
-Bjorn Sodergren wrote:
-
-> Ok, the current problems are still going on..  basicly, MySQL authentication isnt
-> doing squat.
-> everything is in place and outlined as in all the help docs ive seen.
->  mysql is working, the proftpd user has select,update access to its database, the
-> libmysqlclient.so is loaded as  a shared library
-> configured with '--with-modules=mod_sqlpw:mod_mysql --without-pam'
-> /etc/proftpd.conf has,
->
-> AuthPAMAuthoritative off
-> PersistentPasswd off
->
-> # auth using mysql host login pass db
->
-> MySQLInfo localhost  **** **** ****
-> SQLUsernameField username
-> SQLUidField uid
-> SQLGidField gid
-> SQLPasswordField password
-> SQLHomedirField homedir
-> SQLLoginCountField count
-> SQLAuthoritative on
-> SQLPlaintextPasswords off
->
-> each virtual domain hair their own IP nd their own SQLUserTable.
->
-> and i get this in /var/log/messeges..
->
-> - ProFTPD 1.2.0pre10 standalone mode STARTUP
-> Jun 22 15:32:31 ns PAM_pwdb[30377]: authentication failure; (uid=0) -> peoples for ftp
-> service
-> - PAM(peoples): Authentication failure.
-> - FTP session closed.
-> Jun 22 15:33:36 ns PAM_pwdb[30382]: authentication failure; (uid=0) -> peoples for ftp
-> service
-> - PAM(peoples): Authentication failure.
-> - FTP session closed.
-> Jun 22 15:34:31 ns PAM_pwdb[30410]: authentication failure; (uid=0) -> peoples for ftp
-> service
-> - PAM(peoples): Authentication failure.
-> - FTP session closed.
->
-> So, is it possible to totally get All traces of PAM gone of the proftpd build ??
->
-> removing it from Make.modules doesnt work, --without-pam doesnt work.
->
-> I also get this using proftpd -n -d5
->
-> - ProFTPD 1.2.0pre10 standalone mode STARTUP
-> - connected - local  : 64.65.16.17:21
-> - connected - remote : 63.72.96.166:1175
->  - received: USER peoples
->  - received: USER peoples
-> - received: PASS (hidden)
-> - received: PASS (hidden)
-> - PAM(peoples): Authentication failure.
-> - USER peoples (Login failed): Incorrect password.
-> - received: QUIT
-> - mysql: close [0] for mod_sqlpw/2.0
-> - received: QUIT
-> - FTP session closed.
->
-> Michael Grabenstein wrote:
->
-> >     What OS is this ?
-> >
-> >     If Linux, have you put the directory where libmysqlclient.so lives in your
-> > /etc/ld.so.conf file ?
-> >
-> >     Or have it in your LD_LIBRARY_PATH ?
-> >
-> >     Do you have more than one version of MySQL loaded on your box ? Is it possible
-> > that the libmysqlclient.so being used by proftpd does not match the MySQL daemon
-> > running ? (Like from a previous version, or it was configured with a different port
-> > number, etc...)
-> >
-> >     And of course... Is MySQL running ? :-)
-> >
-> > Later,
-> >     Mike
-> >
-> > sweede@gallatinriver.net wrote:
-> >
-> > > I noticed this in the logs....
-> > > - connected - remote : 63.72.96.166:1046
-> > > - mod_sqlpw/2.0: unconfigured: no backend could connect
-> > > - mod_mysql/2.0: configured: db proftpd at proftpd@localhost
-> > >  - received: USER sweede
-> > >
-> > > Bad login, user doesnt exit in the /etc/passwd
-> > >
-> > > - connected - local  : x.x.x.x:21
-> > > - connected - remote : x.x.x.x:1053
-> > > - received: USER test
-> > > - received: USER test
-> > > - received: PASS (hidden)
-> > > - received: PASS (hidden)
-> > > - USER test (Login failed): Can't find user.
-> > > - received: QUIT
-> > > - mysql: close [0] for mod_sqlpw/2.0
-> > > - received: QUIT
-> > > - FTP session closed.
-> > >
-> > > working login, user exists in /etc/passwd
-> > > - connected - local  : x.x.x.x:21
-> > > - connected - remote : x.x.x.x:1054
-> > > - received: USER sweede
-> > > - received: USER sweede
-> > > - received: PASS (hidden)
-> > > - received: PASS (hidden)
-> > > -
-> > > - Config for harborbaydesigns.com:
-> > > .......... config file itself ..........
-> > > - CURRENT-CLIENTS
-> > > - USER sweede: Login successful.
-> > > - mysql: close [0] for mod_sqlpw/2.0
-> > > - received: PWD
-> > >
-> > > the proftpd DB user pass works perfectly, the user has select and update
-> > > permissions to the proftpd database.
-> > >
-> > > One thing ive noticed is that when i connect to an ip address thats on my
-> > > machine, but not defined in the proftpd config file, this shows up.
-> > >
-> > > - mod_sqlpw/2.0: unconfigured: no backend could connect
-> > > - mod_mysql/2.0: configured: db proftpd at proftpd@localhost
-> > >
-> > > the relavent section of the config file was in my ealier post,  what am i missing
-> > > ?
-> > >
-> > > Michael Grabenstein wrote:
-> > >
-> > > >     The user id and password to the MySQL DB, can you use that to log
-> > > > into MySQL on the command line ?
-> > > >
-> > > >     If so try running proftpd with:
-> > > > proftpd -d9 -n
-> > > >
-> > > >     And try to log in from somewhere and then send the output to the
-> > > > list...
-> > > >
-> > > > Later,
-> > > >     Mike
-> > > >
-> > > > --
-> > > > To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-> > > > in the subject field of the message.
-> > > >
-> > > > Please read the documentation and the FAQ before posting a question -- chances
-> > > > are it's already been answered.
-> > > >
-> > > > http://www.proftpd.net           -- The Official ProFTPD web site.
-> > > > http://bugs.proftpd.net          -- Bug reporting and feature requests.
-> > > > http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Fri Jun 23 01:38:39 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 135HUV-0001Tb-00
-	for mark@weasel.vom.tm; Fri, 23 Jun 2000 01:38:39 +0100
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.12 #1 (Debian))
-	id 135HUT-0005f7-00
-	for <hamster@vom.tm>; Fri, 23 Jun 2000 01:38:38 +0100
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id TAA26684;
-	Thu, 22 Jun 2000 19:38:11 -0500
-Resent-Date: Thu, 22 Jun 2000 19:38:11 -0500
-User-Agent: Microsoft-Outlook-Express-Macintosh-Edition/5.02.2022
-Date: Thu, 22 Jun 2000 17:29:24 -0700
-Subject: Re: [ProFTPD] Still MySQL Authentication problems
-From: Gavin Clark <gavin@datacor.com>
-To: <proftpd@proftpd.net>
-Message-ID: <B577FD73.1F23%gavin@datacor.com>
-In-Reply-To: <395289BA.281176CB@gallatinriver.net>
-Mime-version: 1.0
-Content-type: text/plain; charset="US-ASCII"
-Content-transfer-encoding: 7bit
-Resent-Message-ID: <3u7XLD.A.UdG.O9qU5@starbase.tos.net>
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: <proftpd@proftpd.net> archive/latest/5224
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Virtual-Domain: redirected for hamster@vom.tm
-X-Filter: proftpd
-Status: RO
-Content-Length: 5728
-Lines: 199
 
 if you compiled your own version check to see that proftp is really using
 /etc/proftpd.conf as the config file. By default it wants to look for it in
@@ -10192,187 +6908,7 @@ mandir=${prefix}/man
 
 This might not be your problem but it's worth a look,
 
-Gavin
-
-
-on 6/22/00 2:48 PM, Bjorn Sodergren  wrote:
-
-> 
-> Ok, the current problems are still going on..  basicly, MySQL authentication
-> isnt
-> doing squat.
-> everything is in place and outlined as in all the help docs ive seen.
-> mysql is working, the proftpd user has select,update access to its database,
-> the
-> libmysqlclient.so is loaded as  a shared library
-> configured with '--with-modules=mod_sqlpw:mod_mysql --without-pam'
-> /etc/proftpd.conf has,
-> 
-> 
-> 
-> AuthPAMAuthoritative off
-> PersistentPasswd off
-> 
-> # auth using mysql host login pass db
-> 
-> MySQLInfo localhost  **** **** ****
-> SQLUsernameField username
-> SQLUidField uid
-> SQLGidField gid
-> SQLPasswordField password
-> SQLHomedirField homedir
-> SQLLoginCountField count
-> SQLAuthoritative on
-> SQLPlaintextPasswords off
-> 
-> each virtual domain hair their own IP nd their own SQLUserTable.
-> 
-> and i get this in /var/log/messeges..
-> 
-> - ProFTPD 1.2.0pre10 standalone mode STARTUP
-> Jun 22 15:32:31 ns PAM_pwdb[30377]: authentication failure; (uid=0) -> peoples
-> for ftp
-> service
-> - PAM(peoples): Authentication failure.
-> - FTP session closed.
-> Jun 22 15:33:36 ns PAM_pwdb[30382]: authentication failure; (uid=0) -> peoples
-> for ftp
-> service
-> - PAM(peoples): Authentication failure.
-> - FTP session closed.
-> Jun 22 15:34:31 ns PAM_pwdb[30410]: authentication failure; (uid=0) -> peoples
-> for ftp
-> service
-> - PAM(peoples): Authentication failure.
-> - FTP session closed.
-> 
-> So, is it possible to totally get All traces of PAM gone of the proftpd build
-> ??
-> 
-> removing it from Make.modules doesnt work, --without-pam doesnt work.
-> 
-> I also get this using proftpd -n -d5
-> 
-> - ProFTPD 1.2.0pre10 standalone mode STARTUP
-> - connected - local  : 64.65.16.17:21
-> - connected - remote : 63.72.96.166:1175
-> - received: USER peoples
-> - received: USER peoples
-> - received: PASS (hidden)
-> - received: PASS (hidden)
-> - PAM(peoples): Authentication failure.
-> - USER peoples (Login failed): Incorrect password.
-> - received: QUIT
-> - mysql: close [0] for mod_sqlpw/2.0
-> - received: QUIT
-> - FTP session closed.
-> 
-> 
-> Michael Grabenstein wrote:
-> 
->> What OS is this ?
->> 
->> If Linux, have you put the directory where libmysqlclient.so lives in your
->> /etc/ld.so.conf file ?
->> 
->> Or have it in your LD_LIBRARY_PATH ?
->> 
->> Do you have more than one version of MySQL loaded on your box ? Is it
->> possible
->> that the libmysqlclient.so being used by proftpd does not match the MySQL
->> daemon
->> running ? (Like from a previous version, or it was configured with a
->> different port
->> number, etc...)
->> 
->> And of course... Is MySQL running ? :-)
->> 
->> Later,
->> Mike
->> 
->> sweede@gallatinriver.net wrote:
->> 
->>> I noticed this in the logs....
->>> - connected - remote : 63.72.96.166:1046
->>> - mod_sqlpw/2.0: unconfigured: no backend could connect
->>> - mod_mysql/2.0: configured: db proftpd at proftpd@localhost
->>> - received: USER sweede
->>> 
->>> Bad login, user doesnt exit in the /etc/passwd
->>> 
->>> - connected - local  : x.x.x.x:21
->>> - connected - remote : x.x.x.x:1053
->>> - received: USER test
->>> - received: USER test
->>> - received: PASS (hidden)
->>> - received: PASS (hidden)
->>> - USER test (Login failed): Can't find user.
->>> - received: QUIT
->>> - mysql: close [0] for mod_sqlpw/2.0
->>> - received: QUIT
->>> - FTP session closed.
->>> 
->>> working login, user exists in /etc/passwd
->>> - connected - local  : x.x.x.x:21
->>> - connected - remote : x.x.x.x:1054
->>> - received: USER sweede
->>> - received: USER sweede
->>> - received: PASS (hidden)
->>> - received: PASS (hidden)
->>> -
->>> - Config for harborbaydesigns.com:
->>> .......... config file itself ..........
->>> - CURRENT-CLIENTS
->>> - USER sweede: Login successful.
->>> - mysql: close [0] for mod_sqlpw/2.0
->>> - received: PWD
->>> 
->>> the proftpd DB user pass works perfectly, the user has select and update
->>> permissions to the proftpd database.
->>> 
->>> One thing ive noticed is that when i connect to an ip address thats on my
->>> machine, but not defined in the proftpd config file, this shows up.
->>> 
->>> - mod_sqlpw/2.0: unconfigured: no backend could connect
->>> - mod_mysql/2.0: configured: db proftpd at proftpd@localhost
->>> 
->>> the relavent section of the config file was in my ealier post,  what am i
->>> missing
->>> ?
->>> 
->>> Michael Grabenstein wrote:
->>> 
->>>> The user id and password to the MySQL DB, can you use that to log
->>>> into MySQL on the command line ?
->>>> 
->>>> If so try running proftpd with:
->>>> proftpd -d9 -n
->>>> 
->>>> And try to log in from somewhere and then send the output to the
->>>> list...
->>>> 
->>>> Later,
->>>> Mike
->>>> 
->>>> --
->>>> To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
->>>> in the subject field of the message.
->>>> 
->>>> Please read the documentation and the FAQ before posting a question --
->>>> chances
->>>> are it's already been answered.
->>>> 
->>>> http://www.proftpd.net           -- The Official ProFTPD web site.
->>>> http://bugs.proftpd.net          -- Bug reporting and feature requests.
->>>> http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and
->>>> FAQ.
-> 
-
-
-
-
 </para>
-<!-- one of (calloutlist glosslist itemizedlist orderedlist segmentedlist simplelist variablelist caution important note tip warning literallayout programlisting programlistingco screen screenco screenshot synopsis cmdsynopsis funcsynopsis classsynopsis fieldsynopsis constructorsynopsis destructorsynopsis methodsynopsis formalpara para simpara address blockquote graphic graphicco mediaobject mediaobjectco informalequation informalexample informalfigure informaltable equation example figure table msgset procedure sidebar qandaset anchor bridgehead remark highlights abstract authorblurb epigraph indexterm refentry sect3 simplesect) -->
 </sect2>
 
 
@@ -10646,54 +7182,23 @@ On Wed, Jan 12, 2000 at 11:05:15AM +0100, Juli=E1n Romero wrote:
 &gt; I've a proftpd authenticating users against a ldap server.
 &gt; The users are not unix users, then I can't use the normal quotta system.
 
-Hmmmm - considering that I've not dealt with the mod_ldap stuff this may
-well be a silly question. Does each of your users have a unique UID on th=
-e
-system ? Or are you using DefaultRoot and a single UID for all users ?
+Hmmmm - considering that I've not dealt with the mod_ldap stuff this
+may well be a silly question. Does each of your users have a unique
+UID on the system ? Or are you using DefaultRoot and a single UID for
+all users ?
 
-If you've got a unique UID for each user then you *can* still use the quo=
-ta
-system as it actually uses UIDs for the work - the user name to UID map i=
-s
-performed by the quota commands. That said, the quota commands often acce=
-pt
-UIDs in the place of usernames.
+If you've got a unique UID for each user then you *can* still use the
+quota system as it actually uses UIDs for the work - the user name to
+UID map is performed by the quota commands. That said, the quota
+commands often accept UIDs in the place of usernames.
 
-It has to be said that the standard quota stuff (at least under Solaris) =
-is
-painful to use in automatic systems - its often easier to dig into the qu=
-ota
-system and code your own programs to control the quota system than use th=
-e
-system provided ones.
+It has to be said that the standard quota stuff (at least under
+Solaris) is painful to use in automatic systems - its often easier to
+dig into the quota system and code your own programs to control the
+quota system than use the system provided ones.
 </para>
 
 <para>
-
-
-    Hi everybody,
-
-    Has anybody succeeded in integrating mod_ldap in Proftpd with
-NetscapeSDK libs? (RH6.1, Proftpd1.2Pre9)
-
-    Thanks,
-    Paul
-
-Paul Tavernier wrote:
-
-&gt;     Has anybody succeeded in integrating mod_ldap in Proftpd with
-&gt; NetscapeSDK libs? (RH6.1, Proftpd1.2Pre9)
-
-yes, although on Solaris. It compiles and works fine with the free LDAP-C=
- SDK.
-P=E9ter
-</para>
-
-<para>
-
-
-Hi,
-
     Thanks to Jim, i succeeded in linking mod-ldap with LDAP-C SDK librai=
 ries
 (-lpthread -lldapssl30 is a good way)...
@@ -16079,42 +12584,6 @@ and
 &gt;
 
 
-From proftpd-request@tos.net Mon Feb 14 06:32:54 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12KF42-0006wT-00
-	for mark@weasel.vom.tm; Mon, 14 Feb 2000 06:32:54 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12KF40-0001NI-00
-	for &lt;hamster@vom.tm&gt;; Mon, 14 Feb 2000 06:32:52 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id AAA15663;
-	Mon, 14 Feb 2000 00:32:46 -0600
-Resent-Date: Mon, 14 Feb 2000 00:32:46 -0600
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mySQL accounting worked but can't put something
-References: &lt;2.2.32.20000213115526.00889464@pristine.com.tw&gt; &lt;005f01bf765c$ce428d00$051414c8@hamid&gt;
-From: Adrian Phillips &lt;a.phillips@dnmi.no&gt;
-Date: 14 Feb 2000 07:26:46 +0100
-In-Reply-To: "Seyyed Hamid Reza Hashemi Golpayegani"'s message of "Sun, 13 Feb 2000 23:11:57 +0330"
-Message-ID: &lt;wv4sbcl2op.fsf@freeze.oslo.dnmi.no&gt;
-User-Agent: Gnus/5.070099 (Pterodactyl Gnus v0.99) Emacs/20.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Sender: Adrian Phillips &lt;tandem@dnmi.no&gt;
-Resent-Message-ID: &lt;ADVpnD.A.NxD.FB6p4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/3428
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1250
-Lines: 19
 
 &gt;&gt;&gt;&gt;&gt; "Seyyed" == Seyyed Hamid Reza Hashemi Golpayegani &lt;hamid@morva.net&gt; writes:
 
@@ -16136,58 +12605,6 @@ Sincerely,
 
 Adrian Phillips
 
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Sun Feb 13 14:50:59 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12K0MV-00061d-00
-	for mark@weasel.vom.tm; Sun, 13 Feb 2000 14:50:59 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12K0MU-00054X-00
-	for &lt;hamster@vom.tm&gt;; Sun, 13 Feb 2000 14:50:58 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id IAA02444;
-	Sun, 13 Feb 2000 08:50:38 -0600
-Resent-Date: Sun, 13 Feb 2000 08:50:38 -0600
-Message-ID: &lt;000e01bf7639$391b3100$640a0a0a@athlon550&gt;
-From: "Gabriel Ambuehl" &lt;gabriel_ambuehl@buz.ch&gt;
-To: &lt;proftpd@proftpd.net&gt;
-References: &lt;2.2.32.20000213115526.00889464@pristine.com.tw&gt;
-Subject: Re: [ProFTPD] mySQL accounting worked but can't put something
-Date: Sun, 13 Feb 2000 15:44:30 -0000
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 5.00.2314.1300
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2314.1300
-Resent-Message-ID: &lt;WOn2GB.A.xj.0Lsp4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/3409
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 734
-Lines: 19
-
 &gt; Does the user with the uid assigned to the "user" in your SQLauth table
 that
 &gt; you are authenticating as have write permissions to the directory you are
@@ -16196,57 +12613,6 @@ that
 I assigned the owner of the directory to the SQLauth Users from the
 beginning, but it doesn't work...
 
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-Please read the documentation and the FAQ before posting a question -- chances
-are it's already been answered.
-
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
-
-
-From proftpd-request@tos.net Sun Feb 13 20:06:31 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
-	id 12K5Hr-0006JB-00
-	for mark@weasel.vom.tm; Sun, 13 Feb 2000 20:06:31 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
-	id 12K5Hp-0006SQ-00
-	for &lt;hamster@vom.tm&gt;; Sun, 13 Feb 2000 20:06:29 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id OAA06473;
-	Sun, 13 Feb 2000 14:06:17 -0600
-Resent-Date: Sun, 13 Feb 2000 14:06:17 -0600
-Message-ID: &lt;006001bf765c$e4089620$051414c8@hamid&gt;
-From: "Seyyed Hamid Reza Hashemi Golpayegani" &lt;hamid@morva.net&gt;
-To: &lt;proftpd@proftpd.net&gt;
-References: &lt;2.2.32.20000213115526.00889464@pristine.com.tw&gt; &lt;000e01bf7639$391b3100$640a0a0a@athlon550&gt;
-Subject: Re: [ProFTPD] mySQL accounting worked but can't put something
-Date: Sun, 13 Feb 2000 23:12:40 +0330
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 5.00.2615.200
-X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2615.200
-Resent-Message-ID: &lt;VNT5aD.A.AgB.uywp4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/3417
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1006
-Lines: 33
 
 Yeah :) mine tooo :)
 ----- Original Message -----
@@ -17762,48 +14128,6 @@ just replace --with-modules=mod_mysql by --with-module=mod_sqlpw:mod_mysql
 
 Ghislain.
 
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-
-From proftpd-request@tos.net Sun Nov 21 12:24:02 1999
-Received: from flyhmstr.vom.tm ([212.32.5.33] ident=mail)
-	by weasel.vom.tm with esmtp (Exim 3.03 #1)
-	id 11pW2E-0001Lv-00
-	for mark@weasel.vom.tm; Sun, 21 Nov 1999 12:24:02 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.03 #1 (Debian))
-	id 11pW2D-0003Ds-00
-	for &lt;hamster@vom.tm&gt;; Sun, 21 Nov 1999 12:24:02 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id GAA29128;
-	Sun, 21 Nov 1999 06:23:54 -0600
-Resent-Date: Sun, 21 Nov 1999 06:23:54 -0600
-Message-ID: &lt;3837E206.C175225F@FiSystem.fr&gt;
-Date: Sun, 21 Nov 1999 13:13:58 +0100
-From: Salomon DELAFORGE &lt;Salomon.Delaforge@fisystem.fr&gt;
-X-Mailer: Mozilla 4.61 [en] (WinNT; U)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mod_mysql and proftpd - help please
-References: &lt;199911211058.EAA28769@starbase.tos.net&gt;
-Content-Type: text/plain; charset=iso-8859-1
-Resent-Message-ID: &lt;NdGRWC.A.6GH.6K-N4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/1926
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by starbase.tos.net id GAA29128
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1409
-Lines: 61
 
 Hello,
 my problem is resolved. thanks :=3D=3D)
@@ -17856,53 +14180,6 @@ d_mysql
 &gt; To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscr=
 ibe"
 &gt; in the subject field of the message.
-
---
-Salomon DELAFORGE
-Consultant Internet, Intranet et Objets distribu=E9s
-Fi System, leader du march=E9 Intranet et Internet
-http://www.fisystem.fr/accueil.html
-mailto:Salomon.Delaforge@fisystem.fr, Tel: +33 (0)1 55 04 03 03
-ICQ:41064315
-
-
-
-From proftpd-request@tos.net Sun Nov 21 13:24:57 1999
-Received: from flyhmstr.vom.tm ([212.32.5.33] ident=mail)
-	by weasel.vom.tm with esmtp (Exim 3.03 #1)
-	id 11pWzB-0002D8-00
-	for mark@weasel.vom.tm; Sun, 21 Nov 1999 13:24:57 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.03 #1 (Debian))
-	id 11pWz5-0003Tp-00
-	for &lt;hamster@vom.tm&gt;; Sun, 21 Nov 1999 13:24:51 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id HAA29462;
-	Sun, 21 Nov 1999 07:24:44 -0600
-Resent-Date: Sun, 21 Nov 1999 07:24:44 -0600
-Date: Sun, 21 Nov 1999 14:19:11 +0100
-From: "Olivier M." &lt;proftp@orion.www-hosting.ch&gt;
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mod_mysql and proftpd - help please
-Message-ID: &lt;19991121141911.A15428@orion.www-hosting.ch&gt;
-References: &lt;199911211058.EAA28769@starbase.tos.net&gt; &lt;3837E206.C175225F@FiSystem.fr&gt;
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Mailer: Mutt 0.95.6i
-In-Reply-To: &lt;3837E206.C175225F@FiSystem.fr&gt;; from Salomon DELAFORGE on Sun, Nov 21, 1999 at 01:13:58PM +0100
-Resent-Message-ID: &lt;g_A1YC.A.FMH.gF_N4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/1927
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 721
-Lines: 25
-
 On Sun, Nov 21, 1999 at 01:13:58PM +0100, Salomon DELAFORGE wrote:
 &gt; Hello,
 &gt; my problem is resolved. thanks :==)
@@ -17921,50 +14198,6 @@ If you look at /contrib/mod_sqlpw.c you will see :
 -&gt; change your uid to a number greater than 999, or change the #define line
 and recompile proftpd
 
-HTH,
-Olivier
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-
-From proftpd-request@tos.net Sun Nov 21 13:59:50 1999
-Received: from flyhmstr.vom.tm ([212.32.5.33] ident=mail)
-	by weasel.vom.tm with esmtp (Exim 3.03 #1)
-	id 11pXWv-0002g6-00
-	for mark@weasel.vom.tm; Sun, 21 Nov 1999 13:59:49 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.03 #1 (Debian))
-	id 11pXWv-0003bx-00
-	for &lt;hamster@vom.tm&gt;; Sun, 21 Nov 1999 13:59:49 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id HAA29811;
-	Sun, 21 Nov 1999 07:59:41 -0600
-Resent-Date: Sun, 21 Nov 1999 07:59:41 -0600
-Message-ID: &lt;3837F913.D1D4FF8D@FiSystem.fr&gt;
-Date: Sun, 21 Nov 1999 14:52:19 +0100
-From: Salomon DELAFORGE &lt;Salomon.Delaforge@fisystem.fr&gt;
-X-Mailer: Mozilla 4.61 [en] (WinNT; U)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mod_mysql and proftpd - help please
-References: &lt;199911211058.EAA28769@starbase.tos.net&gt; &lt;3837E206.C175225F@FiSystem.fr&gt; &lt;19991121141911.A15428@orion.www-hosting.ch&gt;
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: &lt;Q4PYD.A.4QH.Rn_N4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/1929
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 967
-Lines: 36
 
 Hello,
 excuse me but my uid an gid are greater than 1000.
@@ -18003,42 +14236,6 @@ What is the pb?
 
 
 
-From proftpd-request@tos.net Sun Nov 21 15:36:13 1999
-Received: from flyhmstr.vom.tm ([212.32.5.33] ident=mail)
-	by weasel.vom.tm with esmtp (Exim 3.03 #1)
-	id 11pZ2D-00040K-00
-	for mark@weasel.vom.tm; Sun, 21 Nov 1999 15:36:13 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.03 #1 (Debian))
-	id 11pZ2B-00042j-00
-	for &lt;hamster@vom.tm&gt;; Sun, 21 Nov 1999 15:36:12 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id JAA30352;
-	Sun, 21 Nov 1999 09:36:01 -0600
-Resent-Date: Sun, 21 Nov 1999 09:36:01 -0600
-Date: Sun, 21 Nov 1999 16:29:42 +0100
-From: "Olivier M." &lt;proftp@orion.www-hosting.ch&gt;
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mod_mysql and proftpd - help please
-Message-ID: &lt;19991121162942.A2640@orion.www-hosting.ch&gt;
-References: &lt;199911211058.EAA28769@starbase.tos.net&gt; &lt;3837E206.C175225F@FiSystem.fr&gt; &lt;19991121141911.A15428@orion.www-hosting.ch&gt; &lt;3837F913.D1D4FF8D@FiSystem.fr&gt;
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Mailer: Mutt 0.95.6i
-In-Reply-To: &lt;3837F913.D1D4FF8D@FiSystem.fr&gt;; from Salomon DELAFORGE on Sun, Nov 21, 1999 at 02:52:19PM +0100
-Resent-Message-ID: &lt;vz3oQ.A.RZH.4_AO4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/1930
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 494
-Lines: 20
-
 On Sun, Nov 21, 1999 at 02:52:19PM +0100, Salomon DELAFORGE wrote:
 &gt; Hello,
 &gt; excuse me but my uid an gid are greater than 1000.
@@ -18052,54 +14249,6 @@ AuthPAMAuthoritative            Off
 
 in your proftpd.conf ?
 Did you restart your proftpd ?
-
-Oli
-
---
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
-in the subject field of the message.
-
-
-From proftpd-request@tos.net Sun Nov 21 15:57:17 1999
-Received: from flyhmstr.vom.tm ([212.32.5.33] ident=mail)
-	by weasel.vom.tm with esmtp (Exim 3.03 #1)
-	id 11pZMb-0004Mj-00
-	for mark@weasel.vom.tm; Sun, 21 Nov 1999 15:57:17 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.03 #1 (Debian))
-	id 11pZMa-000482-00
-	for &lt;hamster@vom.tm&gt;; Sun, 21 Nov 1999 15:57:16 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id JAA30615;
-	Sun, 21 Nov 1999 09:57:12 -0600
-Resent-Date: Sun, 21 Nov 1999 09:57:12 -0600
-Message-ID: &lt;38381463.AB5FB378@FiSystem.fr&gt;
-Date: Sun, 21 Nov 1999 16:48:52 +0100
-From: Salomon DELAFORGE &lt;Salomon.Delaforge@fisystem.fr&gt;
-X-Mailer: Mozilla 4.61 [en] (WinNT; U)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-CC: "Olivier M." &lt;proftp@orion.www-hosting.ch&gt;
-Subject: Re: [ProFTPD] mod_mysql and proftpd - help please
-References: &lt;199911211058.EAA28769@starbase.tos.net&gt; &lt;3837E206.C175225F@FiSystem.fr&gt; &lt;19991121141911.A15428@orion.www-hosting.ch&gt; &lt;3837F913.D1D4FF8D@FiSystem.fr&gt; &lt;19991121162942.A2640@orion.www-hosting.ch&gt;
-Content-Type: text/plain; charset=iso-8859-1
-Resent-Message-ID: &lt;iEOj7.A.MeH.hUBO4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/1931
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by starbase.tos.net id JAA30615
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 1107
-Lines: 46
-
-Hello
 
 i have AuthPAMAuthoritative            Off in my conf.
 I am launching proftpd with the debug level 5 and he told  me :
@@ -18135,55 +14284,6 @@ In advance Thanks
 &gt; To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscr=
 ibe"
 &gt; in the subject field of the message.
-
---
-Salomon DELAFORGE
-Consultant Internet, Intranet et Objets distribu=E9s
-Fi System, leader du march=E9 Intranet et Internet
-http://www.fisystem.fr/accueil.html
-mailto:Salomon.Delaforge@fisystem.fr, Tel: +33 (0)1 55 04 03 03
-ICQ:41064315
-
-
-
-From proftpd-request@tos.net Sun Nov 21 13:51:26 1999
-Received: from flyhmstr.vom.tm ([212.32.5.33] ident=mail)
-	by weasel.vom.tm with esmtp (Exim 3.03 #1)
-	id 11pXOo-0002ZA-00
-	for mark@weasel.vom.tm; Sun, 21 Nov 1999 13:51:26 +0000
-Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.03 #1 (Debian))
-	id 11pXOn-0003af-00
-	for &lt;hamster@vom.tm&gt;; Sun, 21 Nov 1999 13:51:26 +0000
-Received: (from listserv@localhost)
-	by starbase.tos.net (8.9.3/8.9.3) id HAA29691;
-	Sun, 21 Nov 1999 07:51:15 -0600
-Resent-Date: Sun, 21 Nov 1999 07:51:15 -0600
-Message-ID: &lt;3837F6F5.9A155904@FiSystem.fr&gt;
-Date: Sun, 21 Nov 1999 14:43:18 +0100
-From: Salomon DELAFORGE &lt;Salomon.Delaforge@fisystem.fr&gt;
-X-Mailer: Mozilla 4.61 [en] (WinNT; U)
-X-Accept-Language: en
-MIME-Version: 1.0
-To: proftpd@proftpd.net
-Subject: Re: [ProFTPD] mod_mysql and proftpd - help please
-References: &lt;199911211058.EAA28769@starbase.tos.net&gt; &lt;3837E206.C175225F@FiSystem.fr&gt; &lt;19991121141911.A15428@orion.www-hosting.ch&gt;
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Resent-Message-ID: &lt;bi1UaD.A.pPH.1e_N4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/1928
-X-Loop: proftpd@proftpd.net
-Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
-Resent-Bcc:
-X-Filter: proftpd
-Status: RO
-Content-Length: 814
-Lines: 30
-
-Excellent, that's work :===)
 
 </para>
 <para>
