@@ -3165,7 +3165,7 @@ ld.so.preload magic...
 	  to support PAM, however some configuration of the PAM
 	  subsystem may be required.  One of the most common problems
 	  encountered when configuring and using Proftpd is a missing
-	  /etc/pam.d/ftpd file, if this file isn't installed the
+	  /etc/pam.d/ftp file, if this file isn't installed the
 	  authentication requests will fail.</para>
 
 	  <para>There is a README.Pam in the top directory of the
