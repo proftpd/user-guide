@@ -15,7 +15,7 @@ ServerIdent
 <cmdsynopsis>
 <command>ServerIdent</command>
 <arg choice="opt">
-  <option>ServerIdent On|Off [identification string]</option>
+  <option>ServerIdent off|on [identification string]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

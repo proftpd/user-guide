@@ -152,7 +152,7 @@
 	  <TERM><XREF LINKEND="CH-BACKGROUND"></TERM>
 	  <LISTITEM>
 	    <PARA>A quick introduction to FTP</PARA>
-	  </LISTITEM>
+  </LISTITEM>
 	</VARLISTENTRY>
       </VARIABLELIST>
     </sect1>
@@ -9261,11 +9261,13 @@ over the connecting clients.
 </sect1>
 
 <sect1>
-<title>.ftpaccess files</title>
+<title>.ftpaccess files</title> 
+
 <para>The .ftpaccess file is used to give a measure of control to the
-administrator of the individual VirtualHost or directory structure
-within the site without having to disturb the sysadmin everytime a
-change is required.</para>
+individual administrator of each VirtualHost without having to disturb
+the sysadmin everytime a change is required.  Each .ftpaccess file can
+be considered to be a 'floating' section of the &lt;Directory&gt;
+configuration block.</para>
 
 <para>The file uses the same structure as the main daemon
 configuration, though there are a significant number of directives
