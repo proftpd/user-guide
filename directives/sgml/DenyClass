@@ -1,0 +1,104 @@
+<refentry id="DenyClass">
+<?dbhtml filename="config_ref_DenyClass.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DenyClass</primary></indexterm>
+DenyClass
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DenyClass</refname>
+<refpurpose>Class based deny rules</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DenyClass</command>
+<arg choice="opt">
+  <option>[&quot;AND&quot;|&quot;OR&quot;|&quot;regex&quot;] class-expression</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Limit&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.10rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+DenyClass specifies a class-expression that is specifically denied access
+within the context of the &lt;Limit&gt; block it is applied to. class-expression
+has a similar syntax as that used in AllowGroup, in that it should contain a
+comma delimited list of classes or &quot;not&quot; classes (by prefixing a
+class name name with the `!' character) that are to be denied access to the
+block.
+</para>
+
+<para>
+By default, the expression is parsed as a boolean &quot;OR&quot; list, meaning
+that ANY elements of the expression must evaluate to logically true in order
+to the explicit deny to apply.  In order to treat the expression as a boolean
+&quot;AND&quot; list, meaning that ALL of the elements must evaluate to
+logically true, use the optional &quot;AND&quot; keyword.  Similarly, to treat
+the expression as a regular expression, use the &quot;regex&quot; keyword.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="AllowUser">AllowUser</link>
+<link linkend="DenyUser">DenyUser</link>
+<link linkend="AllowGroup">AllowGroup</link>
+<link linkend="DenyGroup">DenyGroup</link>
+<link linkend="DenyGroup">AllowClass</link>
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<programlisting>
+  # A regular expression AllowClass directive
+  AllowClass regex ^known
+
+  # An AND-evaluated ClassUser directive
+  DenyClass AND bad,scanner
+</programlisting>
+</para>
+</refsect1>
+
+</refentry>
