@@ -70,9 +70,9 @@ authentication to be done using the login username & password instead.
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="AnonymousGroup">AnonymousGroup</link>
+<link linkend="AuthAliasOnly">AuthAliasOnly</link>
+<link linkend="AnonRequirePassword">AnonRequirePassword</link>
 </para>
 </refsect1>
 

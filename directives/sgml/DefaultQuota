@@ -15,7 +15,7 @@ DefaultQuota
 </refmeta>
 <refnamediv>
 <refname>DefaultQuota</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Sets the default quota</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -66,9 +66,7 @@ value is used if the .quota file does not exist.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="Quotas">Quotas</link>
 </para>
 </refsect1>
 

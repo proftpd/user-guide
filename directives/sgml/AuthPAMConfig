@@ -15,7 +15,7 @@ AuthPAMConfig
 </refmeta>
 <refnamediv>
 <refname>AuthPAMConfig</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Select PAM service name</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -63,10 +63,8 @@ This directive allows you to specify the PAM service name used in
 authentication. PAM allows you to specify a service name to use when
 authenticating. This allows you to configure different PAM service names
 to be used for different virtual hosts. The directive was renamed from
-PAMConfig post 1.2.0 pre10 Example: # Virtual host foobar authenticates
-differently than the rest. AuthPAMConfig foobar This assumes you have
-a PAM service named foobar configured in your /etc/pam.conf file or
-/etc/pam.d directory.</para>
+PAMConfig post 1.2.0 pre10.
+</para>
 </refsect1>
 
 <refsect1>
@@ -81,10 +79,14 @@ a PAM service named foobar configured in your /etc/pam.conf file or
 <refsect1>
 <title>Examples</title>
 <para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
+<programlisting>
+# Virtual host foobar authenticates differently than the rest
+
+AuthPAMConfig foobar
+
+# This assumes, that you have a PAM service named foobar
+# configured in your /etc/pam.conf file or /etc/pam.d directory. 
+</programlisting>
 </para>
 </refsect1>
 

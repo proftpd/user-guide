@@ -15,7 +15,7 @@ DenyAll
 </refmeta>
 <refnamediv>
 <refname>DenyAll</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Deny all clients</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -72,9 +72,7 @@ mutually exclusive.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="AllowAll">AllowAll</link>
 </para>
 </refsect1>
 

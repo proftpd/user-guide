@@ -15,7 +15,7 @@ HiddenStor
 </refmeta>
 <refnamediv>
 <refname>HiddenStor</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Enables more safe file uploads</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -76,9 +76,8 @@ enabled, with the server returning a 501 error code to the client.
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="AllowStoreRestart">AllowStoreRestart</link>
+<link linkend="DeleteAbortedStores">DeleteAbortedStores</link>
 </para>
 </refsect1>
 

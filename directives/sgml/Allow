@@ -88,9 +88,9 @@ period (i.e. .proftpd.net for the entire proftpd.net domain).
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="Allow">Allow</link>
+<link linkend="Order">Order</link>
+<link linkend="Limit">Limit</link>
 </para>
 </refsect1>
 

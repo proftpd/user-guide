@@ -15,7 +15,7 @@ DeleteAbortedStores
 </refmeta>
 <refnamediv>
 <refname>DeleteAbortedStores</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Enable automatic deletion of partially uploaded files</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -67,9 +67,7 @@ the ABOR command rather than a connection failure.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="HiddenStor">HiddenStor</link>
 </para>
 </refsect1>
 

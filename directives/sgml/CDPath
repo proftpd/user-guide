@@ -15,7 +15,7 @@ CDPath
 </refmeta>
 <refnamediv>
 <refname>CDPath</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Sets "search paths" for the cd command</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

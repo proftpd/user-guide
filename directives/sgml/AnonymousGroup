@@ -15,7 +15,7 @@ AnonymousGroup
 </refmeta>
 <refnamediv>
 <refname>AnonymousGroup</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Treat group members as anonymous users</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -77,9 +77,10 @@ to the entire world.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="AuthAliasOnly">AuthAliasOnly</link>
+<link linkend="AuthUsingAlias">AuthUsingAlias</link>
+<link linkend="AnonRequirePassword">AnonRequirePassword</link>
+<link linkend="DefaultRoot">DefaultRoot</link>
 </para>
 </refsect1>
 

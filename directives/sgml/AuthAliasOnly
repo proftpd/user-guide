@@ -15,7 +15,7 @@ AuthAliasOnly
 </refmeta>
 <refnamediv>
 <refname>AuthAliasOnly</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Allow only aliased login names</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -71,9 +71,10 @@ sends an appropriate message to syslog.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="AnonymousGroup">AnonymousGroup</link>
+<link linkend="AuthUsingAlias">AuthUsingAlias</link>
+<link linkend="AnonRequirePassword">AnonRequirePassword</link>
+<link linkend="UserAlias">UserAlias</link>
 </para>
 </refsect1>
 

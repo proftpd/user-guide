@@ -15,7 +15,7 @@ DenyGroup
 </refmeta>
 <refnamediv>
 <refname>DenyGroup</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Group based deny rules</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -73,10 +73,9 @@ in order for the explicit deny to apply.</para>
 <refsect1>
 <title>See also</title>
 <para>
-See Also: AllowGroup, AllowUser, DenyUser
-<!--
-<link linkend=""></link>
--->
+<link linkend="DenyUser">DenyUser</link>,
+<link linkend="AllowUser">AllowUser</link>
+<link linkend="AllowGroup">AllowGroup</link>
 </para>
 </refsect1>
 

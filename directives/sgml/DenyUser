@@ -15,7 +15,7 @@ DenyUser
 </refmeta>
 <refnamediv>
 <refname>DenyUser</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>User based deny rules</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -70,10 +70,9 @@ evaluate to logically true in order for the explicit deny to apply.</para>
 <refsect1>
 <title>See also</title>
 <para>
-See Also: AllowUser, DenyGroup, AllowGroup
-<!--
-<link linkend=""></link>
--->
+<link linkend="DenyGroup">DenyGroup</link>,
+<link linkend="AllowUser">AllowUser</link>
+<link linkend="AllowGroup">AllowGroup</link>
 </para>
 </refsect1>
 

@@ -15,7 +15,7 @@ AllowUser
 </refmeta>
 <refnamediv>
 <refname>AllowUser</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>User based allow rules</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -73,10 +73,9 @@ allow to apply.</para>
 <refsect1>
 <title>See also</title>
 <para>
-DenyUser, DenyGroup, AllowGroup
-<!--
-<link linkend=""></link>
--->
+<link linkend="DenyUser">DenyUser</link>
+<link linkend="DenyGroup">DenyGroup</link>
+<link linkend="AllowGroup">AllowGroup</link>
 </para>
 </refsect1>
 

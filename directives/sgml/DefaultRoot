@@ -15,7 +15,7 @@ DefaultRoot
 </refmeta>
 <refnamediv>
 <refname>DefaultRoot</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Sets default chroot directory</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

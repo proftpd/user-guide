@@ -15,7 +15,7 @@ AuthUserFile
 </refmeta>
 <refnamediv>
 <refname>AuthUserFile</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Specify alternate passwd file</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -79,9 +79,7 @@ the duration of client connections.
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="AuthGroupFile">AuthGroupFile</link>
 </para>
 </refsect1>
 

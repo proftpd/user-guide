@@ -15,7 +15,7 @@ DefaultChdir
 </refmeta>
 <refnamediv>
 <refname>DefaultChdir</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set starting directory for FTP sessions</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -69,9 +69,7 @@ the user will not be able to log in.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="DefaultRoot">DefaultRoot</link>
 </para>
 </refsect1>
 

@@ -69,9 +69,7 @@ higher level denial directives.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="DenyAll">DenyAll</link>
 </para>
 </refsect1>
 
