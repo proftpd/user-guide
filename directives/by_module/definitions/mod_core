@@ -1,0 +1,32 @@
+<refentry id="mod-core">
+<?dbhtml filename="config_ref_mod_core.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_core</primary></indexterm>
+mod_core
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_core</refname>
+<refpurpose>Core module</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_core</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+FIXME
+FIXME
+FIXME
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>

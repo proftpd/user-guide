@@ -1,0 +1,31 @@
+<refentry id="mod-sql">
+<?dbhtml filename="config_ref_mod_sql.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_sql</primary></indexterm>
+mod_sqlpw
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_sql</refname>
+<refpurpose>SQL support module</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_sqlpw</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+This module provides the necessary support for SQL based authentication, logging and other features as required.
+It replaces the SQL modules which were shipped with 1.2.0rc2 and earlier.
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>

@@ -1,0 +1,32 @@
+<refentry id="mod-pgsql">
+<?dbhtml filename="config_ref_mod_pgsql.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_pgsql</primary></indexterm>
+mod_pgsql
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_pgsql</refname>
+<refpurpose>Postgres SQL support</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_pgsql</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+FIXME
+FIXME
+FIXME
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
