@@ -34,6 +34,10 @@
 			<arg choice="opt">
 				<option>"search-filter-template"</option>
 			</arg>
+
+			<arg choice="opt">
+				<option>"default-quota"</option>
+			</arg>
 		</cmdsynopsis>
 
 	<variablelist>
@@ -55,9 +59,7 @@
 
 		<varlistentry>
 			<term><synopsis>Module</synopsis></term>
-			<listitem><para>
-mod_ldap
-			</para></listitem>
+			<listitem><para>mod_ldap</para></listitem>
 		</varlistentry>
 
 		<varlistentry>
@@ -79,6 +81,11 @@ mod_ldap
 		being authenticated. By default, the search filter template
 		"(&amp;(uid=%v)(objectclass=posixAccount))" is used. Search filter
 		templates are only supported in mod_ldap v2.7 and later.</para>
+
+		<para>If specified, the <option>default-quota<option> argument
+		specifies the quota limits to use if a user does not have a ftpQuota
+		attribute. This argument is formatted the same way as the ftpQuota
+		LDAP attribute.</para>
 	</refsect1>
 
 	<refsect1>
