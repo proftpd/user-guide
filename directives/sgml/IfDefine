@@ -13,14 +13,14 @@ IfDefine
 </refmeta>
 <refnamediv>
 <refname>IfDefine</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>To control the use of sections of the configuration</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>IfDefine</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>[!]define-label</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ IfDefine
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+none
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+any
 </para> </listitem>
 </varlistentry>
 
@@ -56,13 +56,40 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+The &lt;IfDefine test&gt;...&lt;/IfDefine&gt; section is used to mark
+directives that are conditional. The directives within an IfDefine
+section are only processed if the test is true. If the test is false,
+everything between the start and end markers is ignored.
+</para>
+
+<para>
+The test in the &lt;IfDefine&gt; section directive can be one of two
+forms: 'parameter-name' or '!parameter-name'
+</para>
+
+<para>
+In the former case, the directives between the start and end markers are
+only processed if the parameter named parameter-name is defined. The
+second format reverses the test, and only processes the directives if
+parameter-name is not defined. 
+</para>
+
+<para>
+The parameter-name argument is a define as given on the command line
+via -Dparameter-name, at the time the server was started.
+</para>
+
+<para> 
+&lt;IfDefine&gt; sections are nest-able, which can be used to implement
+simple multiple-parameter tests.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
+<link linkend="Define">Define</link>,
+<link linkend="IfModule">IfModule</link>
 <!--
 <link linkend=""></link>
 -->
@@ -73,12 +100,15 @@ FIX FIX FIX
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
-</literallayout>
+$ proftpd -DDoSomething
 
-<para>
-FIXFIX
-</para>
+--[ proftpd.conf ]--
+&lt;IfDefine DoSomething&gt;
+# do something here
+--[ end ]--
+</IfDefine>
+
+</literallayout>
 
 </refsect1>
 </refentry>

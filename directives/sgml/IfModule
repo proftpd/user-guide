@@ -63,6 +63,7 @@ FIX FIX FIX
 <refsect1>
 <title>See also</title>
 <para>
+<link linkend="Define">Define</link>, <link linkend="IfDefine">IfDefine</link>
 <!--
 <link linkend=""></link>
 -->

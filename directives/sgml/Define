@@ -64,7 +64,8 @@ the IfDefine directive
 <refsect1>
 <title>See also</title>
 <para>
-<link linkend="IfDefine">IfDefine</link>
+<link linkend="IfDefine">IfDefine</link>, 
+<link linkend="IfModule">IfModule</link>
 <!--
 <link linkend=""></link>
 -->
