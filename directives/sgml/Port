@@ -51,16 +51,17 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-The Port directive configures the tcp port which proftpd will listen on while 
-running in standalone mode. It has no effect when 
-used upon a server running in inetd mode (see ServerType). 
-The directive can be used in conjunction with &lt;VirtualHost&gt; in order to run a virtual server on 
-the same IP address as the master server, but listening on a different port.
+The Port directive configures the TCP port which proftpd will listen on while 
+running in standalone mode. It has no effect when used upon a server running in
+inetd mode (see ServerType).  The directive can be used in conjunction with
+&lt;VirtualHost&gt; in order to run a virtual server on the same IP address
+as the master server, but listening on a different port.
+</para>
 
-<para>The Port directive is REQUIRED when operating in standalone mode
-and ignored in ident mode.</para>
-
-	  
+<para>
+For any server, either &lt;VirtualHost&gt; or server config, setting
+<code>Port 0</code> effectively turns off that server.
+</para>
 
 </refsect1>
 
