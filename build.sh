@@ -63,9 +63,9 @@ function build
 function install
 {
 	cd $BASE/linked
-	rsync -av * ~/Proftpd/www.proftpd.org/localsite//Userguide/linked
+	rsync -av * ~/Proftpd/www.proftpd.org-new/localsite//Userguide/linked
 	cd $BASE/other
-	rsync -av * ~/Proftpd/www.proftpd.org/localsite//Userguide/other  
+	rsync -av * ~/Proftpd/www.proftpd.org-new/localsite//Userguide/other  
 }
 
 function installbeta {

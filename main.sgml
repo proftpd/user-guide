@@ -1046,7 +1046,7 @@ ServerIdent  on ""
       <sect1>
 	<title>How can I control what commands the server accepts?</title>
 
-        <para>The <Limit> context allows for fine-grained control over
+        <para>The &lt;Limit&gt; context allows for fine-grained control over
         which FTP commands will be accepted by the server.</para>
 
 	<para>Use a sane Allow/DenyFilter, these directives use

@@ -22,7 +22,7 @@ SocketOptions
 <cmdsynopsis>
 <command>SocketOptions</command>
 <arg choice="opt">
-  <option>[maxseg <size>] [rcvbuf <size>] [sndbuf <size>]</option>
+  <option>[maxseg &lt;size&gt;] [rcvbuf &lt;size&gt;] [sndbuf &lt;size&gt;]</option>
 </arg>
 </cmdsynopsis>
 
@@ -65,7 +65,7 @@ interface's MTU, it is ignored and has no effect.
 <para>
 If the send/receive window size is increased, it is helpful for performance
 to increase the internal buffer size. See the
-<code>--enable-buffer-size</code> argument to <code>./configure</code>.
+--enable-buffer-size argument to ./configure.
 </para>
 </refsect1>
 

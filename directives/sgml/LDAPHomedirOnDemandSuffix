@@ -81,8 +81,8 @@ mod_ldap
 		<para>mod_ldap >= 2.8.11 supports additional mode information;
 		you can add ":octal-mode" to a directory argument to have it created
 		with that mode. For example,
-		<code>LDAPHomedirOnDemandSuffix foo:700</code> will create the
-		suffix directory <code>foo</code> with the mode 700.</para>
+		LDAPHomedirOnDemandSuffix foo:700 will create the
+		suffix directory foo with the mode 700.</para>
 	</refsect1>
 
 	<refsect1>
