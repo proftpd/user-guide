@@ -25,7 +25,7 @@ UseGlobbing
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-on
+UseGlobbing on
 </para> </listitem>
 </varlistentry>
 
