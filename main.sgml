@@ -1677,7 +1677,7 @@ context, and then the same directive is used in the main or
 &lt;VirtualHost&gt; contexts with different parameters, those
 parameters take precedence over the &lt;Global&gt; parameters. This
 allows you to configure things for everyone equally, then tweak
-specific ervers individually, on a per-server basis.
+specific servers individually, on a per-server basis.
 
 </para>
 </listitem>
@@ -1853,7 +1853,7 @@ find anything. I looked in the different configurations, and it wasn't
 much help. I was hoping someone could help me with this problem, if not
 through umask then some other method.
 
-Everytime I create a directory through FTP, it is automatically chmodded
+Every time I create a directory through FTP, it is automatically chmodded
 to 022. Now, I found in proftpd.conf it said:
 
 Umark 022
@@ -2000,7 +2000,7 @@ uploading programs ?           -job
 <para>Yes, the problem in having 644 (666 minus the 022 Umask
 according to what you say), is that all uploaded files (including cgi
 scripts) aren't executable...  Is there a way to have them all in 755
-mode again? Or mabe with a &lt;Directory ...&gt; only for
+mode again? Or maybe with a &lt;Directory ...&gt; only for
 ~/web/cgi-bin/ ?  Thanks for any help, I'm desperate to have those
 cgis +x right after uplo= ad :)
 </para>
@@ -2328,7 +2328,7 @@ User    ftp
 Group    nogroup
 #DefaultRoot   ~
 UseReverseDNS        off
-ScoreboardPath   /var/run/proftpd
+ScoreboardFile   /var/run/proftpd
 TransferLog   /var/log/proftpd/xferlog.legacy
 LogFormat       default "%h %l %u %t \"%r\" %s %b"
 LogFormat auth    "%v [%P] %h %t \"%r\" %s"
@@ -2391,7 +2391,7 @@ User    ftp
 Group    nogroup
 #DefaultRoot   ~
 UseReverseDNS        off
-ScoreboardPath   /var/run/proftpd
+ScoreboardFile   /var/run/proftpd
 TransferLog   /var/log/proftpd/xferlog.legacy
 LogFormat       default "%h %l %u %t \"%r\" %s %b"
 LogFormat auth    "%v [%P] %h %t \"%r\" %s"
@@ -5310,7 +5310,7 @@ TimeoutLogin			120
 TimeoutIdle			600
 TimeoutNoTransfer		900
 TimeoutStalled			3600
-ScoreboardPath			/var/run/proftpd
+ScoreboardFile			/var/run/proftpd
 LogFormat         		default "%h %l %u %t \"%r\" %s %b"
 LogFormat			auth    "%v [%P] %h %t \"%r\" %s"
 LogFormat			write   "%h %l %u %t \"%r\" %s %b"
@@ -6966,7 +6966,7 @@ TimeoutLogin            120
 TimeoutIdle             600
 TimeoutNoTransfer       900
 TimeoutStalled          3600
-ScoreboardPath          /var/run/proftpd
+ScoreboardFile          /var/run/proftpd
 LogFormat               default "%h %l %u %t\"%r\" %s %b"
 LogFormat               auth "%v[%P] %h %t \"%r\" %s"
 LogFormat               write "%h %l %u %t \"%r\" %s %b"
@@ -7004,7 +7004,7 @@ TimeoutLogin            120
 TimeoutIdle             600
 TimeoutNoTransfer       900
 TimeoutStalled          3600
-ScoreboardPath          /var/run/proftpd
+ScoreboardFile          /var/run/proftpd
 LogFormat               default "%h %l %u %t\"%r\" %s %b"
 LogFormat               auth "%v[%P] %h %t \"%r\" %s"
 LogFormat               write "%h %l %u %t \"%r\" %s %b"
@@ -11210,7 +11210,7 @@ UseReverseDNS        off
 #
 # Where do we put the pid files?
 #
-ScoreboardPath			/var/run/proftpd
+ScoreboardFile			/var/run/proftpd
 #
 # Logging options
 #

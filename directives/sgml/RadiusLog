@@ -66,7 +66,7 @@ path must not be a symbolic link.
 
 <para>
 If file is "none", no logging will be done at all; this setting can be
-used to override a RadiusLog setting inherited from a <Global> context.
+used to override a RadiusLog setting inherited from a &lt;Global&gt; context.
 </para>
 </refsect1>
 
