@@ -1,0 +1,121 @@
+#!/bin/bash
+#
+# Script to manage the building of the userguide
+#
+BASE="$HOME/Proftpd/userguide/"
+INSTALL_ROOT="$HOME/Repository/"
+WEB="$INSTALL_ROOT/hamster.wibble.org/proftpd/"
+FTP="$INSTALL_ROOT/ftp.linux.co.uk/proftpd/"
+DSL="/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl"
+#
+function clean
+{
+#
+# Clean up
+#
+cd $BASE
+rm -rf linked
+rm -rf other
+mkdir -p ./linked/
+mkdir -p ./other/
+}
+#
+function build
+{
+	clean
+	echo -n "Building "
+	if [ ! -f directive_list.sgml ]
+	then
+		echo "The directive list is missing, aborting"
+		exit
+	fi
+	#
+	# Building linked html
+	# 
+	echo -n "linked "
+	cd $BASE/linked/
+	jade -t sgml -E 1200 -d $DSL $BASE/main.sgml
+	#
+	# Building single html 
+	#
+	echo -n "html "
+	cd $BASE/other/
+	jade -t sgml -E 1200 -V nochunks -d $DSL \
+		$BASE/main.sgml > userguide_full.html 
+	#	
+	# Building PS & PDF
+	#
+	echo -n "pdf "
+	htmldoc -t pdf userguide_full.html > userguide.pdf
+	echo -n "ps "
+	htmldoc -t ps userguide_full.html > userguide.ps
+	echo "."
+}
+
+function install
+{
+	# Build the tarballs first
+	echo "Cleaning"
+	rm -rf $WEB/userguide/
+	rm -rf $FTP/userguide/
+	# source files
+	echo "Tarballs"
+	cd $BASE
+	tar -czf userguide_source.tgz *sgml
+	# linked
+	echo "Copying linked files"
+	cd $BASE/linked/
+	tar -czf userguide_html_linked.tgz *html
+	#
+	mkdir -p $WEB/userguide/linked/
+	mkdir -p $FTP/userguide/linked/
+	cp *html $WEB/userguide/linked/
+	cp *html $FTP/userguide/linked/
+	cp userguide_html_linked.tgz $WEB/userguide/
+	cp userguide_html_linked.tgz $FTP/userguide/
+	# full
+	echo "Copying single files"
+	cd $BASE/other/
+	cp userguide_full.html $WEB/userguide/
+	cp userguide.pdf $WEB/userguide/
+	cp userguide.ps $WEB/userguide/
+	cp userguide_full.html $FTP/userguide/
+	cp userguide.pdf $FTP/userguide/
+	cp userguide.ps $FTP/userguide/
+	#
+	# copy the source
+	#
+	echo "Copying source files"
+	cd $BASE
+	mkdir $WEB/userguide/src/
+	mkdir $FTP/userguide/src/
+	cp *sgml $WEB/userguide/src/
+	cp *sgml $FTP/userguide/src/
+}
+
+#
+#
+#
+case "$1" in
+	build)
+  		echo "Building userguide"
+  		build
+		;;
+	install)
+		echo "Installing pages"
+		install
+		;;
+	clean)
+		echo "Nuking built"
+		clean
+      ;;
+	all)
+		build
+		install
+      ;;
+	*)
+		echo "Usage: build.sh (build|clean|install|all)"
+    	exit 1
+		;;
+esac
+#
