@@ -15,7 +15,7 @@ DirFakeUser
 </refmeta>
 <refnamediv>
 <refname>DirFakeUser</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Hide real file/directory owner</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -59,15 +59,25 @@ mod_ls
 <refsect1>
 <title>Description</title>
 <para>
-See DirFakeGroup</para>
+DirFakeUser can be used to hide the true user owners of files (including
+directories, fifos, etc.) in a directory listing. If simply turned On,
+DirFakeUser will display all files as being owned by user 'ftp'. Optionally,
+the username argument can be used to specify a specific user other than
+'ftp'. "~" can be used as the argument in order to display the current
+user's username.
+</para>
+<para>
+Both DirFakeGroup and DirFakeUser are completely cosmetic; the groupname or
+username specified don't need to exist on the system, and neither directive
+affects permissions, real ownership or access control in any way.
+</para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="DirFakeGroup">DirFakeGroup</link>
+<link linkend="DirFakeMode">DirFakeMode</link>
 </para>
 </refsect1>
 

@@ -15,7 +15,7 @@ DirFakeGroup
 </refmeta>
 <refnamediv>
 <refname>DirFakeGroup</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Hide real file/directory group</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -57,29 +57,27 @@ mod_ls
 </refsynopsisdiv>
 
 <refsect1>
-	<title>Description</title>
-
-	<para>DirFakeGroup and its companion directive, DirFakeUser, can be used
-	to hide the true group and user owners of files in a directory listing. 
-	If simply turned On, DirFakeGroup will display all files as being owned
-	by group 'ftp'. Optionally, the groupname argument can be used to
-	specify a specific group other than 'ftp' (an alternate username in the
-	case of DirFakeUser). "~" can be used as the argument in order to
-	display the primary group name of the current user (the current user's
-	username in the case of DirFakeUser).</para>
-
-	<para>Both DirFakeGroup and DirFakeUser are completely cosmetic; the
-	groupname or username specified need not exists on the system, and
-	neither directive affects permissions, real ownership or access control
-	in any way.</para>
+<title>Description</title>
+<para>
+DirFakeGroup can be used to hide the true group of files (including
+directories, fifos, etc.) in a directory listing. If simply turned On,
+DirFakeGroup will display all files as being owned by group 'ftp'.
+Optionally, the groupname argument can be used to specify a specific group
+other than 'ftp'. "~" can be used as the argument in order to display the
+primary group name of the current user.
+</para>
+<para>
+Both DirFakeGroup and DirFakeUser are completely cosmetic; the groupname or
+username specified don't need to exist on the system, and neither directive
+affects permissions, real ownership or access control in any way.
+</para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="DirFakeUser">DirFakeUser</link>
+<link linkend="DirFakeMode">DirFakeMode</link>
 </para>
 </refsect1>
 

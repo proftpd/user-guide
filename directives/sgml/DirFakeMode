@@ -15,7 +15,7 @@ DirFakeMode
 </refmeta>
 <refnamediv>
 <refname>DirFakeMode</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Hide real file/directory permissions</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -63,32 +63,32 @@ The DirFakeMode directive configures a mode (or permissions) which will be
 displayed for ALL files and directories in directory listings. For each subset 
 of permissions (user, group, other), the "execute" permission for directories 
 is added in listings if the "read" permission is specified by this directive. 
-For example:
-DirFakeMode 0640
-Will result in:
--rw-r----- ... arbitrary.file
-drwxr-x--- ... arbitrary.directory 
-As with DirFakeUser, and DirFakeGroup, 
-the "fake" permissions shown in directory listings are cosmetic only, they do 
-not affect real permissions or access control in any way.</para>
+
+As with DirFakeUser, and DirFakeGroup, the "fake" permissions shown in
+directory listings are cosmetic only, they do not affect real permissions or
+access control in any way.
+</para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="DirFakeUser">DirFakeUser</link>
+<link linkend="DirFakeGroup">DirFakeGroup</link>
 </para>
 </refsect1>
 
 <refsect1>
 <title>Examples</title>
 <para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
+<programlisting>
+  DirFakeMode 0640
+
+Will result in:
+
+  -rw-r----- ... arbitrary.file
+  drwxr-x--- ... arbitrary.directory
+</programlisting>
 </para>
 </refsect1>
 

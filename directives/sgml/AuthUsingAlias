@@ -15,7 +15,7 @@ AuthUsingAlias
 </refmeta>
 <refnamediv>
 <refname>AuthUsingAlias</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Authenticate via Alias-name instead of mapped username</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -58,12 +58,13 @@ mod_core
 
 <refsect1>
 <title>Description</title>
+
 <para>
-Normally, when the AnonRequirePassword directive is used, the
-authentication is done using the password entry of the daemon
-process. However under certain circumstances it may be required for the
-authentication to be done using the login username & password instead.
-</para>
+AuthUsingAlias disables the resolving of mapped usernames for
+authentication purposes. For example, if you have mapped the username
+anonymous to the "real" user ftp, the password gets checked against the
+user "anonymous". When AuthUsingAlias is disabled, the checked username
+would be "ftp".</para>
 
 </refsect1>
 
