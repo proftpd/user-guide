@@ -16,7 +16,7 @@
 
 	<refnamediv>
 		<refname>LDAPDoQuotaLookups</refname>
-		<refpurpose>Enable LDAP authentication</refpurpose>
+		<refpurpose>Enable LDAP quota limit support</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
@@ -72,11 +72,11 @@ mod_ldap
 	<refsect1>
 		<title>Description</title>
 
-		<para>This configuration directive activates LDAP quota lookups.
+		<para>This configuration directive activates LDAP quota lookups. 
 		The second argument to this directive is the LDAP prefix to use for
-		authentication.  The third argument is a template to be used for the
-		search filter; %v will be replaced with the username that is being
-		authenticated. By default, the search filter template
+		quota limit search.  The third argument is a template to be used for
+		the search filter; %v will be replaced with the username that is
+		being authenticated. By default, the search filter template
 		"(&amp;(uid=%v)(objectclass=posixAccount))" is used. Search filter
 		templates are only supported in mod_ldap v2.7 and later.</para>
 	</refsect1>
