@@ -1,10 +1,12 @@
 <refentry id="SQLGroupnameField">
 <?dbhtml filename="config_ref_SQLGroupnameField.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLGroupnameField</primary></indexterm>

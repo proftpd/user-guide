@@ -1,10 +1,12 @@
 <refentry id="AnonRatio">
 <?dbhtml filename="config_ref_AnonRatio.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_ratio
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AnonRatio</primary></indexterm>

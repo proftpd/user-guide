@@ -1,10 +1,12 @@
 <refentry id="VirtualHost">
 <?dbhtml filename="config_ref_VirtualHost.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>VirtualHost</primary></indexterm>

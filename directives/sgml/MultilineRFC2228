@@ -1,10 +1,12 @@
 <refentry id="MultilineRFC2228">
 <?dbhtml filename="config_ref_MultilineRFC2228.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>MultilineRFC2228</primary></indexterm>

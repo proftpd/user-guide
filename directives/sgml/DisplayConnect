@@ -1,10 +1,12 @@
 <refentry id="DisplayConnect">
 <?dbhtml filename="config_ref_DisplayConnect.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_code
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DisplayConnect</primary></indexterm>

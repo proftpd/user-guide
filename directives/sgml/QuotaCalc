@@ -1,10 +1,12 @@
 <refentry id="QuotaCalc">
 <?dbhtml filename="config_ref_QuotaCalc.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_quota
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>QuotaCalc</primary></indexterm>

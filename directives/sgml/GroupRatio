@@ -1,10 +1,12 @@
 <refentry id="GroupRatio">
 <?dbhtml filename="config_ref_GroupRatio.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_ratio
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>GroupRatio</primary></indexterm>

@@ -1,10 +1,12 @@
 <refentry id="SQLProcessPwEnt">
 <?dbhtml filename="config_ref_SQLProcessPwEnt.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLProcessPwEnt</primary></indexterm>

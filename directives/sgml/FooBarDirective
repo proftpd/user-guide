@@ -1,10 +1,12 @@
 <refentry id="FooBarDirective">
 <?dbhtml filename="config_ref_FooBarDirective.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sample
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>FooBarDirective</primary></indexterm>

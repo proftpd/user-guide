@@ -24,22 +24,16 @@ mkdir -p working
 ##
 for i in `/bin/ls $SRC/* | sort -f`
 do
-	echo -n "."
+ 	echo -n "."
 	if [ -f ${i} ]
 	then
 ###
-#
-# watch out! the regex requires `mod_' to be the first characters on a 
-# line.  this means that when parsing the directive source files to 
-# determine the module to which a directive refers, the module name
-# as entered in the source file MUST be at the very beginning of a line.
-# This places a formatting restriction on the sgml source files that 
-# must be remembered by authors.
-#
-###
-		module=`grep -s -A 3 "Module" ${i} | grep "^mod_"`
+                module=`grep -s -A 2 "<keyword>" ${i} | grep "mod" |\
+                        awk 'match($0, pattern) \
+                             { print substr($0, RSTART, RLENGTH)}' \
+                              pattern="mod_[a-z]*"`
 		file=`echo ${i} | sed "s/\/.*\///"` 
-		echo "${file}:$module" >> module_by_directive.lst
+                echo "${file}:$module" >> module_by_directive.lst
 	fi
 done
 echo "..done"

@@ -1,10 +1,12 @@
 <refentry id="WtmpLog">
 <?dbhtml filename="config_ref_WtmpLog.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>WtmpLog</primary></indexterm>

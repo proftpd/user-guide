@@ -1,10 +1,12 @@
 <refentry id="UserDirRoot">
 <?dbhtml filename="config_ref_UserDirRoot.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_auth
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>UserDirRoot</primary></indexterm>

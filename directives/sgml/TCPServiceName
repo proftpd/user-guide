@@ -1,10 +1,12 @@
 <refentry id="TCPServiceName">
 <?dbhtml filename="config_ref_TCPServiceName.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_wrap
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TCPServiceName</primary></indexterm>

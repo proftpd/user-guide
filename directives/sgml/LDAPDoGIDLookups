@@ -1,10 +1,12 @@
 <refentry id="LDAPDoGIDLookups">
 	<?dbhtml filename="config_ref_LDAPDoGIDLookups.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_ldap
     </keyword>
   </keywordset>
+</refentryinfo>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPDoGIDLookups</primary></indexterm>

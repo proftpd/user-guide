@@ -1,10 +1,12 @@
 <refentry id="SQLAuthTypes">
 <?dbhtml filename="config_ref_SQLAuthTypes.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLAuthTypes</primary></indexterm>

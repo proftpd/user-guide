@@ -1,10 +1,12 @@
 <refentry id="AllowRetrieveRestart">
 <?dbhtml filename="config_ref_AllowRetrieveRestart.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowRetrieveRestart</primary></indexterm>

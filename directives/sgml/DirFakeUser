@@ -1,10 +1,12 @@
 <refentry id="DirFakeUser">
 <?dbhtml filename="config_ref_DirFakeUser.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_ls
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DirFakeUser</primary></indexterm>

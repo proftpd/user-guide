@@ -1,10 +1,12 @@
 <refentry id="DirFakeGroup">
 <?dbhtml filename="config_ref_DirFakeGroup.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_ls
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DirFakeGroup</primary></indexterm>

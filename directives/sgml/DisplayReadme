@@ -1,10 +1,12 @@
 <refentry id="DisplayReadme">
 <?dbhtml filename="config_ref_DisplayReadme.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_readme
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DisplayReadme</primary></indexterm>

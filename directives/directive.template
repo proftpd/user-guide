@@ -1,5 +1,10 @@
 <refentry id="%%DIRECTIVE%%">
 <?dbhtml filename="config_ref_%%DIRECTIVE%%.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>mod_%%MODULE%%</keyword>
+  </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>%%DIRECTIVE%%</primary></indexterm>

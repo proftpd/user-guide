@@ -1,10 +1,12 @@
 <refentry id="LeechRatioMsg">
 <?dbhtml filename="config_ref_LeechRatioMsg.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_ratio
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>LeechRatioMsg</primary></indexterm>

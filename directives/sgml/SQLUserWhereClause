@@ -1,10 +1,12 @@
 <refentry id="SQLUserWhereClause">
 <?dbhtml filename="config_ref_SQLUserWhereClause.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLUserWhereClause</primary></indexterm>

@@ -1,10 +1,12 @@
 <refentry id="LsDefaultOptions">
 <?dbhtml filename="config_ref_LsDefaultOptions.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_ls
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>LsDefaultOptions</primary></indexterm>

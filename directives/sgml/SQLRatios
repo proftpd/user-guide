@@ -1,10 +1,12 @@
 <refentry id="SQLRatios">
 <?dbhtml filename="config_ref_SQLRatios.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLRatios</primary></indexterm>

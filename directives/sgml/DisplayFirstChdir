@@ -1,10 +1,12 @@
 <refentry id="DisplayFirstChdir">
 <?dbhtml filename="config_ref_DisplayFirstChdir.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_code
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DisplayFirstChdir</primary></indexterm>

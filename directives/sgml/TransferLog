@@ -1,10 +1,12 @@
 <refentry id="TransferLog">
 <?dbhtml filename="config_ref_TransferLog.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TransferLog</primary></indexterm>

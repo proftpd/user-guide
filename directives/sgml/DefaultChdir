@@ -1,10 +1,12 @@
 <refentry id="DefaultChdir">
 <?dbhtml filename="config_ref_DefaultChdir.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_auth
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DefaultChdir</primary></indexterm>

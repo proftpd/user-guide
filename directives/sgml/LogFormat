@@ -1,10 +1,12 @@
 <refentry id="LogFormat">
 <?dbhtml filename="config_ref_LogFormat.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_log
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>LogFormat</primary></indexterm>

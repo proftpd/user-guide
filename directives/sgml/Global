@@ -1,10 +1,12 @@
 <refentry id="Global">
 <?dbhtml filename="config_ref_Global.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Global</primary></indexterm>

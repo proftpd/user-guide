@@ -1,10 +1,12 @@
 <refentry id="SQLLog">
 <?dbhtml filename="config_ref_SQLLog.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLLog</primary></indexterm>

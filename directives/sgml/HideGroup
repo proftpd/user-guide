@@ -1,10 +1,12 @@
 <refentry id="HideGroup">
 <?dbhtml filename="config_ref_HideGroup.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>HideGroup</primary></indexterm>

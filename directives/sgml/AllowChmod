@@ -1,10 +1,12 @@
 <refentry id="AllowChmod">
 <?dbhtml filename="config_ref_AllowChmod.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_site
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowChmod</primary></indexterm>

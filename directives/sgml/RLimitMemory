@@ -1,10 +1,12 @@
 <refentry id="RLimitMemory">
 <?dbhtml filename="config_ref_RLimitMemory.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>RLimitMemory</primary></indexterm>

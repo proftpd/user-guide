@@ -1,10 +1,12 @@
 <refentry id="SQLDoGroupAuth">
 <?dbhtml filename="config_ref_SQLDoGroupAuth.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLDoGroupAuth</primary></indexterm>

@@ -1,10 +1,12 @@
 <refentry id="HostRatio">
 <?dbhtml filename="config_ref_HostRatio.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_ratio
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>HostRatio</primary></indexterm>

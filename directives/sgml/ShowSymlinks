@@ -1,10 +1,12 @@
 <refentry id="ShowSymlinks">
 <?dbhtml filename="config_ref_ShowSymlinks.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>ShowSymlinks</primary></indexterm>

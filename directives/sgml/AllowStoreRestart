@@ -1,10 +1,12 @@
 <refentry id="AllowStoreRestart">
 <?dbhtml filename="config_ref_AllowStoreRestart.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowStoreRestart</primary></indexterm>

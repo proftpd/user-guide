@@ -1,10 +1,12 @@
 <refentry id="AuthGroupFile">
 <?dbhtml filename="config_ref_AuthGroupFile.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_unixpw
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AuthGroupFile</primary></indexterm>

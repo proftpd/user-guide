@@ -1,10 +1,12 @@
 <refentry id="UseReverseDNS">
 <?dbhtml filename="config_ref_UseReverseDNS.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>UseReverseDNS</primary></indexterm>

@@ -1,10 +1,12 @@
 <refentry id="SQLConnectInfo">
 <?dbhtml filename="config_ref_SQLConnectInfo.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLConnectInfo</primary></indexterm>

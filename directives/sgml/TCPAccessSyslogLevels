@@ -1,10 +1,12 @@
 <refentry id="TCPAccessSyslogLevels">
 <?dbhtml filename="config_ref_TCPAccessSyslogLevels.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_wrap
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TCPAccessSyslogLevels</primary></indexterm>

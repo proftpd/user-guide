@@ -1,10 +1,12 @@
 <refentry id="GroupOwner">
 <?dbhtml filename="config_ref_GroupOwner.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>GroupOwner</primary></indexterm>

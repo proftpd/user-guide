@@ -1,10 +1,12 @@
 <refentry id="Allow">
 <?dbhtml filename="config_ref_Allow.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Allow</primary></indexterm>

@@ -1,10 +1,12 @@
 <refentry id="ScoreboardPath">
 <?dbhtml filename="config_ref_ScoreboardPath.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>ScoreboardPath</primary></indexterm>

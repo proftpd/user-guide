@@ -1,10 +1,12 @@
 <refentry id="SQLAuthoritative">
 <?dbhtml filename="config_ref_SQLAuthoritative.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_sql
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLAuthoritative</primary></indexterm>

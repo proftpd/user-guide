@@ -1,10 +1,12 @@
 <refentry id="SystemLog">
 <?dbhtml filename="config_ref_SystemLog.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_log
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SystemLog</primary></indexterm>

@@ -1,10 +1,12 @@
 <refentry id="ServerAdmin">
 <?dbhtml filename="config_ref_ServerAdmin.html">
+<refentryinfo>
   <keywordset>
     <keyword>
       mod_core
     </keyword>
   </keywordset>
+</refentryinfo>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>ServerAdmin</primary></indexterm>
