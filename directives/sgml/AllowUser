@@ -65,9 +65,9 @@ block it is applied to. user-expression has a similar
 syntax as that used in AllowGroup, in that it should 
 contain a comma delimited list of users or &quot;not&quot; users (by prefixing 
 a user name with the `!' character) that are to be allowed access to the block. 
-The expression is parsed as a boolean &quot;and&quot; list, meaning that ALL 
-elements of the expression must evaluate to logically true in order to the explicit 
-allow to apply.</para>
+The expression is parsed as a boolean &quot;OR&quot; list, meaning that ANY 
+elements of the expression must evaluate to logically true in order to the
+explicit allow to apply.</para>
 </refsect1>
 
 <refsect1>

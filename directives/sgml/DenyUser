@@ -63,7 +63,7 @@ DenyUser specifies a user-expression that is specifically denied within
 the context of the &lt;Limit&gt; block it is applied to.  user-expression
 is a comma delimited list of users or &quot;not&quot; users (by prefixing
 a user name with the `!' character). The expression is parsed as a boolean
-&quot;and&quot; list, meaning that all elements of the expression must
+&quot;OR&quot; list, meaning that any elements of the expression must
 evaluate to logically true in order for the explicit deny to apply.</para>
 </refsect1>
 
