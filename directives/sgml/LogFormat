@@ -73,7 +73,8 @@ Filename stored or retrieved, absolute path (not chrooted)
 Filename stored or retrieved, as the client sees it
 %{FOOBAR}e
 &nbsp;
-Contents of environment variable FOOBAR
+Contents of environment variable FOOBAR.  Note that the server does not set
+any environment variables itself.
 %h
 &nbsp;
 Remote host name
