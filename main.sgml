@@ -1857,22 +1857,7 @@ things and I am still a Linux/Unix newbie.</para>
 
 <para>execute should NOT be set as the default on files (on directories it
 is), so you can't do it.  use chmod to get them executable if they need
-to be executable.
-
-devon
-
-&gt; Twister wrote:
-&gt; 
-&gt; hi all,
-&gt; 
-&gt; i have a trouble with the Umask.
-&gt; i cant set the execute right.
-&gt; When i put Zero as Umask i have only RW
-&gt; 
-&gt; Any idea how to set the execute right ?
-&gt; thx in advance</para>
-
-
+to be executable.</para>
 
 
 
@@ -1940,59 +1925,53 @@ uploading programs ?           -job
 </para>
 
 
-<para>Yes, the problem in having 644 (666 minus the 022 Umask according to what
-you say), is that all uploaded files (including cgi scripts) aren't
-executable...
-Is there a way to have them all in 755 mode again? Or mabe with a
-&lt;Directory ...&gt; only for ~/web/cgi-bin/ ?
-Thanks for any help, I'm desperate to have those cgis +x right after uplo=
-ad :)
+<para>Yes, the problem in having 644 (666 minus the 022 Umask
+according to what you say), is that all uploaded files (including cgi
+scripts) aren't executable...  Is there a way to have them all in 755
+mode again? Or mabe with a &lt;Directory ...&gt; only for
+~/web/cgi-bin/ ?  Thanks for any help, I'm desperate to have those
+cgis +x right after uplo= ad :)
 </para>
 
-
-
-
-
-<para>I just looked in the source, but not long enough to find a spot where
-the default permissions could be set to 777. Perhaps in fs.c:std_creat -
-which would probably mess up the umask directive. The proper thing would
-be something like a new directive FileMode, with same context as Umask,
-so it could be used in .ftpaccess files.
-At my current programming speed it would take me 3 years if i would not
-get distracted.
-You could shellscript it in 6 minutes of course, from the log.
+<para>I just looked in the source, but not long enough to find a spot
+where the default permissions could be set to 777. Perhaps in
+fs.c:std_creat - which would probably mess up the umask directive. The
+proper thing would be something like a new directive FileMode, with
+same context as Umask, so it could be used in .ftpaccess files.  At my
+current programming speed it would take me 3 years if i would not get
+distracted.  You could shellscript it in 6 minutes of course, from the
+log.
 </para>
 
 
 <para>I had a big problem with the second parameter of the "Umask" directive.
 (Better said I couldn't get it worked.) I think there is a bug in the
 dir_check(_full) function in the file dirtree.c. 
+</para>
 
+<para>
 The functions check only the existing directories when searching for the
 right umask while when MKD (or XMKD) command is issued, the directory
 (usually :-) doesn't exist. After adding the test whether actual command
 is (X)MKD is umask set up properly.
-
-The patch is here:
 </para>
 
-
-
-<para>I have been checking the ProFTPD archives, and am currently using =
-ProFTPD 1.2.0pre10 to provide FTP functionality to the web server I =
-administer.  My problem is that the permissions on my server are screwed =
-up (mask 0755 for all files and directories).  I have been able to set =
-the directory permissions correctly using the Umask directive, but not =
-the file directives (which need to be the directory equivalent of 0755, =
-if that makes sense).  This is actually two questions - one, is there =
-still a problem with the Umask directive, and two, how do you calculate =
-octal permissions?  I understand that you need to generate the octal =
-code from a list (which is how I came up with 0755) and subtract it from =
-777 to get the correct umask for directories and 666 for files, but =
-doing 666-755 results in a negative, non-octal number - how would I =
-convert the directory octal mask that I already have to the file octal =
-mask that I need?  Thanks in advance for any help you can give on either =
-of these questions.</para>
+<para>I have been checking the ProFTPD archives, and am currently
+using ProFTPD 1.2.0pre10 to provide FTP functionality to the web
+server I administer.  My problem is that the permissions on my server
+are screwed = up (mask 0755 for all files and directories).  I have
+been able to set the directory permissions correctly using the Umask
+directive, but not the file directives (which need to be the directory
+equivalent of 0755, if that makes sense).  This is actually two
+questions - one, is there still a problem with the Umask directive,
+and two, how do you calculate octal permissions?  I understand that
+you need to generate the octal code from a list (which is how I came
+up with 0755) and subtract it from 777 to get the correct umask for
+directories and 666 for files, but doing 666-755 results in a
+negative, non-octal number - how would I convert the directory octal
+mask that I already have to the file octal mask that I need?  Thanks
+in advance for any help you can give on either = of these
+questions.</para>
 
 
 
@@ -2017,7 +1996,8 @@ way I originally wanted them to be, and since users in the group
 public (A) have no real shell, (B) are denied use of the SITE CHMOD
 command, and (C) can't even talk to the machine on ports other than
 20, 21, and 80, they'll stay that way.  Woo.
-
+</para>
+<para>
 However, I am getting one strange problem.  I've got this in my 
 config:
 
@@ -2034,10 +2014,12 @@ config:
     AllowAll
   &lt;/Limit&gt;
 &lt;/Directory&gt;
-
+</para>
+<para>
 That long line I split a couple times isn't actually like that in my
 config.. it's all one line.
-
+</para>
+<para>
 Strangely enough, this results in users who are not members of group
 public to be denied access to NLST while in their home directories.
 They can NLST anywhere else on the filesystem, but once they get
@@ -2063,9 +2045,11 @@ besides public should have access to the full set of ftp commands.
 However it will only be the case for entries which would have the execute
 bit set on them by default - directories in otherwords. Files will have the
 mode of 664 with the above umask.
-
+</para>
+<para>
 That's true (having forgot to account for that in my other comments :)
-
+</para>
+<para>
 The directories need x set to allow 'searching'.
 You cannot execute a directory ;)
 
