@@ -1,0 +1,78 @@
+<refentry id="RootRevoke">
+<?dbhtml filename="config_ref_RootRevoke.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_auth
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>RootRevoke</primary></indexterm>
+RootRevoke
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>RootRevoke</refname>
+<refpurpose>Drop root privileges completely</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>RootRevoke</command>
+<arg choice="opt">
+  <option>RootRevoke on|off</option>
+</arg>
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+RootRevoke off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_auth
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.9rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The RootRevoke directive causes all root privileges to be dropped once a user
+is authenticated.  This will also cause active transfers to be disabled, if
+the server is listening on a port less than 1025.  Note that this only affects
+active transfers; passive transfers will not be blocked.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+</para>
+</refsect1>
+
+</refentry>
