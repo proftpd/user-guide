@@ -71,9 +71,9 @@ client is chroot jailed into their home directory.
 <para>
 When the specified chroot directory is a symlink this will be resolved
 to it's parent first before setting up the chroot.  This can have
-unwanted side effects.  For example if an user has write-access to the
+unwanted side effects.  For example if a user has write access to the
 symlink he could modify it so that it points to '/'.  Thus the chroot
-would be the root directory of the server, resulting in no or insufficient
+would be the root directory of the server, resulting in insufficient or no
 restrictions.
 </para>
 
