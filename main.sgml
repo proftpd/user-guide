@@ -5867,7 +5867,8 @@ Very big thanks in advance, Schinken
 	  and I think this includes things like this 'pre-exec' (like
 	  Samba can do) also.</para>
 	</sect2>
-	
+
+<!-- 	
 <sect2>
 <title>mod_quota</title>
 <para>mod_quota is maintained in parallel to the main code
@@ -5894,12 +5895,9 @@ exempting only during quota calc rather than also shutting off quotas when that
 user logs in).
 </para><para>
 
-
-
 This is my fault.  I put in documentation on GroupQuota but I haven't
 finished the code that supports it.  Do not use it yet, it is not implemented
 (only documented).
-
 
 I updated mod_quota.c to use open instead of fopen so that it could
 explicitly set the permissions on the file.  It was brought to my
@@ -5909,6 +5907,7 @@ file.
 
 </para>
 </sect2>
+-->
 </sect1>
 
 <sect1>
