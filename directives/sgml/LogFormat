@@ -98,6 +98,9 @@ Filename stored or retrieved, as the client sees it
 %h
 &nbsp;
 Remote client DNS name
+%J
+&nbsp;
+Command arguments received from client, e.g. file.txt
 %l
 &nbsp;
 Remote username (from ident), or UNKNOWN if ident lookup failed
@@ -106,7 +109,7 @@ Remote username (from ident), or UNKNOWN if ident lookup failed
 Local server IP address
 %m
 &nbsp;
-Command (method) name received from client, e.g., RETR
+Command (method) name received from client, e.g. RETR
 %p
 &nbsp;
 Local server port number
