@@ -1,0 +1,91 @@
+<refentry id="LDAPHomedirOnDemand">
+  <?dbhtml filename="config_ref_LDAPForceHomedirOnDemand.html">
+  <refentryinfo>
+    <keywordset>
+      <keyword>
+        mod_ldap
+      </keyword>
+    </keywordset>
+  </refentryinfo>
+
+  <refmeta>
+    <refentrytitle>
+      <indexterm><primary>LDAPForceHomedirOnDemand</primary></indexterm>
+      LDAPForceHomedirOnDemand
+    </refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>LDAPForceHomedirOnDemand</refname>
+    <refpurpose>
+      Force all LDAP-authenticated users to use the default HomeDironDemand
+      prefix/suffix.
+    </refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>LDAPForceHomedirOnDemand</command>
+      <arg choice="opt">
+        <option>on</option>
+        <option>off</option>
+      </arg>
+
+      <arg choice="opt">
+        <option>directory-mode</option>
+      </arg>
+    </cmdsynopsis>
+
+  <variablelist>
+    <title></title>
+
+    <varlistentry>
+      <term><synopsis>Default</synopsis></term>
+      <listitem><para>
+        LDAPForceHomedirOnDemand off
+      </para></listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><synopsis>Context</synopsis></term>
+      <listitem><para>
+        server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+      </para></listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><synopsis>Module</synopsis></term>
+      <listitem><para>mod_ldap</para></listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><synopsis>Compatibility</synopsis></term>
+      <listitem><para>
+        mod_ldap v2.8.11 and later
+      </para></listitem>
+    </varlistentry>
+  </variablelist>
+</refsynopsisdiv>
+
+  <refsect1>
+    <title>Description</title>
+
+    <para>Even when a
+    <link linkend="LDAPHomeDironDemandPrefix">LDAPHomeDironDemandPrefix</link>
+    is configured, mod_ldap will allow individual users to have
+    homeDirectory attributes that will override the default. With
+    LDAPForceHomeDironDemand enabled, all LDAP-authenticated users are given
+    the default prefix and/or suffix; homedirs may not be overridden by LDAP
+    homeDirectory attributes.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para></para>
+  </refsect1>
+</refentry>
