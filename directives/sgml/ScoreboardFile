@@ -32,7 +32,7 @@ ScoreboardFile
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-ScoreboardFile /var/run/proftpd/proftpd.scoreboard
+ScoreboardFile /usr/local/var/proftpd.scoreboard
 </para> </listitem>
 </varlistentry>
 
