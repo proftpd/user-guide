@@ -1,0 +1,84 @@
+<refentry id="RLimitMemory">
+<?dbhtml filename="config_ref_RLimitMemory.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>RLimitMemory</primary></indexterm>
+RLimitMemory
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>RLimitMemory</refname>
+<refpurpose>Configure the maximum memory in bytes used by a process</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>RLimitMemory</command>
+<arg choice="opt">
+  <option>RLimitMemory soft-limit[units]|"max" [hard-limit[units]|"max"]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.1rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+RLimitMemory takes 1 or 2 parameters. The first parameter sets the soft resource
+limit for all proftpd processes. The optional second parameter sets the
+maximum resource limit. Either parameter can be a number, or <i>max</i> to
+indicate to the server that the limit should be set to the maximum allowed
+by the operating system configuration.
+</para>
+
+<para>
+Memory resource limits are expressed in bytes per process.  An optional
+case-insensitive units specifier may follow the number of bytes given:
+G (Gigabytes), M (Megabytes), K (Kilobytes), or B (bytes).  If the units
+specifier is used, the given number of bytes is multiplied by the appropriate
+factor.
+</para>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<para>
+See Also: RLimitCPU, RLimitMaxProcesses, RLimitOpenFiles
+</para>
+</refsect1>
+</refentry>
+
