@@ -38,7 +38,7 @@ Off
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;
 </para> </listitem>
 </varlistentry>
 
