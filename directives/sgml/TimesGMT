@@ -31,7 +31,7 @@ TimesGMT
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
 </para> </listitem>
 </varlistentry>
 
