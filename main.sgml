@@ -230,9 +230,9 @@ the core distribution and more are likely to follow.</para>
       <sect1>
 	<title>Website & documenation</title>
 	
-	<para>The official websites for the project are
-	http://www.proftpd.org/ and http://www.proftpd.net/, both
-	should be a mirror of the other.</para>
+	<para>The official website for the project is
+	http://www.proftpd.org/, both should be a mirror of the
+	other.</para>
 
 	<para>The documentation is being brought back into shape at
 	the moment, the configuration on the website is reasonable but
@@ -300,20 +300,20 @@ Maintainer: Johnie Ingram &lt;johnie@debian.org&gt;</para>
 	<sect2>
 	  <title>Announce</title>
 	  <para>
-proftpd-announce@proftpd.net</para>
+proftpd-announce@proftpd.org</para>
 
 <para>This is a very low traffic list where only ProFTPD announcements/changes
 will be announced.</para>
 
 	  <para>Subscribe by sending a message to
-	  proftpd-announce-request@proftpd.net with "subscribe" in the
+	  proftpd-announce-request@proftpd.org with "subscribe" in the
 	  subject.</para>
 	</sect2>
 	
 	<sect2>
 	  <title>Users</title>
 
-	  <para>proftpd@proftpd.net</para>
+	  <para>proftpd@proftpd.org</para>
 
 	  <para>This is intended to the the user support channel for
 	  the software, in most likelihood this is going to be a high
@@ -322,21 +322,21 @@ will be announced.</para>
 	  question.</para>
 
 	  <para>Subscribe by sending a message to
-	  proftpd-request@proftpd.net with "subscribe" in the
+	  proftpd-request@proftpd.org with "subscribe" in the
 	  subject.</para>
 	</sect2>
 
 	<sect2>
 	  <title>Development</title>
 
-	  <para>proftpd-devel@proftpd.net</para>
+	  <para>proftpd-devel@proftpd.org</para>
 
 	  <para>This list is intended for discussion of
 	  development-related issues of ProFTPD, and feature design.
 	  It is NOT intended to be a 'user help' group.</para>
 
 	  <para>Subscribe by sending a message to
-	  proftpd-devel-request@proftpd.net with 'subscribe' in the
+	  proftpd-devel-request@proftpd.org with 'subscribe' in the
 	  subject.</para>
 	</sect2>
       </sect1>
@@ -1119,7 +1119,7 @@ ServerIdent  Off
       <sect1>
 	<title>Timezone issues</title>
 	
-	<para>http://proftpd.net/docs/configuration.html#TimesGMT says
+	<para>http://proftpd.org/docs/configuration.html#TimesGMT says
 	the default for this config option is 'on' in versions
 	1.2.0pre9 and beyond, and that the command exists in those
 	same versions.  That said, my install (from src) of 1.2.0pre10
@@ -1145,8 +1145,8 @@ ServerIdent  Off
 	TimesGMT directive).  However, you also may need to apply the
 	suggested fix for Bug#76, if you wish to compile the current
 	CVS sources on most non-Linux systems:
-	http://bugs.proftpd.net/show_bug.cgi?id=76
-	http://bugs.proftpd.net/showattachment.cgi?attach_id=27 So, it
+	http://bugs.proftpd.org/show_bug.cgi?id=76
+	http://bugs.proftpd.org/showattachment.cgi?attach_id=27 So, it
 	looks like it was added after pre10, and the documentation is
 	flat out wrong about the time of its introduction.</para>
 
@@ -1401,6 +1401,129 @@ ServerName              "Linux.co.uk FTP Archive"
 
       </sect1>
     </chapter>
+
+<chapter>
+<title>Bugs and security</title>
+<sect1>
+<title>Bug hunting</title>
+
+<para>Users of ProFTPD will often encounters problems. It happens with
+all software, not just ProFTPD. How, then, does the user track down
+the cause of the problem, and fix it? This is the art of
+debugging. When users post these problems are the mailing lists, it is
+extremely helpful to include the following bits of information to help
+find the answer. Even better is when the user follows these steps and
+determines the solution for themselves.</para>
+
+<sect2><title>Know the version</title>
+
+<para>Various problems afflict various versions of the code, so when
+tracking down problems, it is good to know the version being used:
+<emphasis>proftpd -vv</emphasis></para>
+
+<para>It is possible that the problem you are encountering is due to
+some bug that may already be fixed in a more current version, fixed in
+the CVS repository, or has a bug report with an attached
+patch. Searching http://bugs.proftpd.org will often yield useful
+information, depending on the keywords used in the search.</para>
+
+</sect2>
+
+<sect2>
+<title>Know the modules</title>
+
+<para>System administrators who compile and install the server from
+the souce code distribution will probably already know this, but
+administrators who install using RPMs or other package formats may not
+know the specifics of the contained pre-built binary. To list the
+modules compiled into the server: <emphasis>proftpd -l</emphasis></para>
+
+<para>Knowing the modules helps to pinpoint the source of error
+messages (e.g. mod_tls and certificate files).</para> 
+
+</sect2>
+
+<sect2>
+<title>Perform syntax checks</title>
+<para>When making changes to the configuration file, it is often helpful to make sure that your changes are valid. The easiest way to do this is to do an informative syntax check:
+
+  <emphasis>proftpd -td5</emphasis></para>
+
+<para>The -t option directs the server to parse the configuration file
+but stop before actually starting its operations as a server. The -d5
+will cause the server to display debugging messages during this
+testing of the configuration file. Another useful command is:
+<emphasis>proftpd -c /path/to/new/config/file -td5</emphasis>
+which lets you test the syntax of some new configuration file before
+it is put into production.</para> 
+
+</sect2>
+<sect2>
+<title>Common problems</title>
+<para>One common question is: "I changed the configuration file, but the new
+configuration is not being seen!" The solution depends on your
+configured ServerType. Almost certainly it will be standalone, as
+inetd-mode servers pick up configuration changes almost instantly (the
+server is started from the ground up for each connection). For
+configuration changes to be seen by a standalone server, you need to
+either stop, then start the server (the hard way), or to send the HUP
+signal the the daemon process. </para>
+
+<para>Another common question involves use of ProFTPD's &lt;Limit&gt; directive to
+restrict certain FTP commands. These limits always function in
+addition to the normal filesystem permissions, not instead of them. If
+having problems writing, deleting, or updating files, check your
+directory and file permissions first. </para>
+</sect2>
+
+<sect2>
+<title>Locate log files</title>
+
+<para>A common response on the mailing lists to a posted question is: "What
+do your server logs say?" Locating the server's log files can be
+troublesome, depending on your configuration. If the SystemLog
+configuration directive is in effect, you know exactly where the
+server's log file is. If not, then by default the server uses syslog
+for logging. The location of syslog'd log files is set in your
+system's /etc/syslog.conf file. You may need to read your system's man
+pages for syslog.conf or syslogd to understand the format of that
+file. Note that the server will log using a syslog facility of daemon
+(and level debug when debugging) for most of its messages; during
+authentication, messages are logged using the authpriv facility. </para>
+</sect2>
+
+<sect2>
+<title>Collect debug information</title>
+<para>The code has built-in debug information reporting capabilities - the
+trick is in enabling that reporting, and tracking down where it is
+sent. The easiest way to get the debugging information is to start the
+server from the command line using: 
+<emphasis>proftpd -nd5</emphasis></para>
+
+<para>This will display lots of information on the connected
+terminal's screen, both as the server starts up and during the
+servicing of any clients. If clients are having trouble logging in or
+authenticating, the debug messages reported by the server when a
+client connects are much more useful than knowing the messages
+displayed by the client, as the client does not know why it cannot log
+in. If asked to send debugging information to the mailing list, you
+can send the relevant snippets (if you know what the relevant debug
+messages are), or you can capture the debug output to a file: 
+
+  <emphasis>proftpd -nd5 2&gt;&amp;1 &gt;&amp; /path/to/debug/file</emphasis>
+
+and send that file, compressed, along with your post.</para>
+
+<para>The above method works if you have ServerType standalone in your configuration file. If you run the server in inetd mode instead, and are unable or unwilling to make the changes necessary to run the server in standalone mode for the sake of debugging, then use of the SystemLog configuration directive is necessary for capturing the debug information. Add this directive to your configuration file, and add -d5 to your /etc/inetd.conf's ftp line, or to the server_args tag in your xinetd configuration file for the server. Be sure to restart inetd/xinetd so that your configuration changes will take effect.</para>
+
+<para>Note that use of the SystemLog directive is not necessarily confined to inetd mode servers. If you are interested in letting your standalone server run unattended and want to have that debugging information in the log file, use SystemLog and add -d5 (or whatever your preferred debug level is) to the server startup script.</para>
+
+<para>Once you have the debug output and various other information, and are still in need of help, search the FAQ, Userguide, and mailing list archives for material related to the problem. If you're unable to find anything helpful in these sources, post your question to the appropriate mailing list. Be sure to include the version used, your proftpd.conf, and possibly any debug information.</para>
+</sect2>
+</para>
+
+</sect1>
+</chapter>
 
   </part>
 
@@ -2213,7 +2336,7 @@ chmods every x minutes, or a script reading the logfile and looking
 for cgi-bins being uploaded, I have not done this, but this sounds
 like what you want. Though it is very thinly documented... The
 AllowFilter/DenyFilter:
-http://www.proftpd.net/docs/proftpdfaq-7.html#ss7.3
+http://www.proftpd.org/docs/proftpdfaq-7.html#ss7.3
 
 </para>
 
@@ -2409,7 +2532,7 @@ LogFormat write   "%h %l %u %t \"%r\" %s %b"
 &gt; All Hosts should have the same IP (212.172.160.148).
 &gt; My system: SuSE-Linux 6.3, ProFTP 1.2.0pre10. Yes, I've read the FAQ
 
-Including http://www.proftpd.net/docs/proftpdfaq-5.html#ss5.6 ?
+Including http://www.proftpd.org/docs/proftpdfaq-5.html#ss5.6 ?
 
 I have tried to configure a Virtual Host, but I always get to the =
 Directory which I configured in the &lt;global&gt;-area.
@@ -2469,7 +2592,7 @@ Thomas, tom@goisern.net
 
 Von: Falk Kuehnel [mailto:mailing-falk@salia.de]
 Gesendet am: Freitag, 24. M=E4rz 2000 13:15
-An: proftpd@proftpd.net
+An: proftpd@proftpd.org
 Betreff: [ProFTPD] Virtual FTP-Server
 
 Hi There!
@@ -7028,8 +7151,8 @@ tried.  I ended up adding a denyfilter "%" instead.
 
 ----Original Message Follows----
 From: "michael liu" &lt;mliu@rmsys.net&gt;
-Reply-To: proftpd@proftpd.net
-To: "Proftpd@Proftpd. Net" &lt;proftpd@proftpd.net&gt;
+Reply-To: proftpd@proftpd.org
+To: "Proftpd@Proftpd. Net" &lt;proftpd@proftpd.org&gt;
 Subject: [ProFTPD] allowFilter
 Date: Fri, 7 Apr 2000 17:40:29 -0500
 
@@ -7064,7 +7187,7 @@ Any ideas, After I marked AllowFilter out, everything is fine.
 
 Anyone know a good string for AllowFilter?
 
-I tried the one in the docs on www.proftpd.net but then every command is 
+I tried the one in the docs on www.proftpd.org but then every command is 
 invalid.
 
 i'm using 1.2.0pre8 on redhat 6.1.  i have sucessfully used the
@@ -7166,7 +7289,7 @@ normally down to firewalls and pasv/acttive connections
 </para><para>
 1. No installation instructions.
 OK, never mind, it must be peace of cake on RH6.1 with RPM's. Let's find
-them. ftp://ftp.proftpd.net/pub/proftpd/RPMS/
+them. ftp://ftp.proftpd.org/pub/proftpd/RPMS/
 </para><para>
 2. There are 2 directories on above address: i386 and i686.
 OK, i386 must be the one for my poor Pentium 133, the other one must be for
@@ -7352,7 +7475,7 @@ AuthUserFile &lt;File path&gt;
 Note: the auth file has to have the same format as /etc/passwd.
 
 More info:
-http://www.proftpd.net/docs/configuration.html#AuthUserFile
+http://www.proftpd.org/docs/configuration.html#AuthUserFile
 
 
 You will probably also want to use:
@@ -7360,7 +7483,7 @@ AuthGroupFile &lt;File Path&gt;
 
     Much the same, format is the same as the /etc/group file.
 More Info:
-http://www.proftpd.net/docs/configuration.html#AuthGroupFile
+http://www.proftpd.org/docs/configuration.html#AuthGroupFile
 
     In the basic configuration file, you may want to comment out the
 anonymous entry...
@@ -7368,7 +7491,7 @@ anonymous entry...
     That is the easiest way to do it... You can also use Ldap, MySQL,
 but neither are for people in a rush. :-) Information on the
 alternatives can be found in:
-http://www.proftpd.net/docs/proftpdfaq-8.html
+http://www.proftpd.org/docs/proftpdfaq-8.html
 
 
 At 12:00 06/04/2000 -0400, Michael Grabenstein wrote:
@@ -7384,7 +7507,7 @@ At 12:00 06/04/2000 -0400, Michael Grabenstein wrote:
 &gt;Note: the auth file has to have the same format as /etc/passwd.
 &gt;
 &gt;More info:
-&gt;http://www.proftpd.net/docs/configuration.html#AuthUserFile
+&gt;http://www.proftpd.org/docs/configuration.html#AuthUserFile
 
 First of all I want to thank you for your reply, but my question is what is
 the meaning of "the same format ?"
@@ -7820,8 +7943,8 @@ configure --with-modules=mod_pam if you want to have PAM-Support, or
 </para>
 
 <para>tstoev@compsci.lyon.edu on 09.02.2000 06:42:18
-Bitte antworten an proftpd@proftpd.net @ Internet
-An:     proftpd@proftpd.net @ Internet
+Bitte antworten an proftpd@proftpd.org @ Internet
+An:     proftpd@proftpd.org @ Internet
 Kopie:
 Thema:  [ProFTPD] AuthPAMAuthoritative
 
@@ -8285,7 +8408,7 @@ that it provides, I have to comment it out or remove it completely.
 
 
 
-<para>Yes, you can. Go to httpd://www.proftpd.net   
+<para>Yes, you can. Go to httpd://www.proftpd.org   
 
 Read the Documentation. Using an alternate password is documented very well.
 
@@ -8308,8 +8431,8 @@ reasons as to why that is happening? Thanks in advance! -Andrew
 
 <para>I tried that already but it still does not work.
 &gt;From: Matt Critcher &lt;MCritch@lifeplususa.com&gt;
-&gt;Reply-To: proftpd@proftpd.net
-&gt;To: "'proftpd@proftpd.net'" &lt;proftpd@proftpd.net&gt;
+&gt;Reply-To: proftpd@proftpd.org
+&gt;To: "'proftpd@proftpd.org'" &lt;proftpd@proftpd.org&gt;
 &gt;Subject: RE: [ProFTPD] Login Problems
 &gt;Date: Wed, 15 Mar 2000 08:33:14 -0600
 &gt;
@@ -8496,7 +8619,7 @@ launched the ProFTPD server.
 -----Original Message-----
 From: Norio Kashiwagi [mailto:kasiwagi@kakoi.co.jp]
 Sent: Monday, February 28, 2000 10:19 AM
-To: proftpd@proftpd.net
+To: proftpd@proftpd.org
 Subject: Re: [ProFTPD] Can't do "ls" command
 
 
@@ -8541,15 +8664,15 @@ Group                           nogroup
 <para>
 
 --
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
+To unsubscribe, send mail to proftpd-request@proftpd.org with "unsubscribe"
 in the subject field of the message.
 
 Please read the documentation and the FAQ before posting a question -- chances
 are it's already been answered.
 
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
+http://www.proftpd.org           -- The Official ProFTPD web site.
+http://bugs.proftpd.org          -- Bug reporting and feature requests.
+http://www.proftpd.org/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
 From proftpd-request@tos.net Mon Feb 28 15:02:33 2000
@@ -8567,7 +8690,7 @@ Received: (from listserv@localhost)
 Resent-Date: Mon, 28 Feb 2000 09:02:18 -0600
 Date: Mon, 28 Feb 2000 14:53:41 +0000
 From: Mark Lowes &lt;hamster@vom.tm&gt;
-To: proftpd@proftpd.net
+To: proftpd@proftpd.org
 Subject: Re: [ProFTPD] Can't do "ls" command
 Message-ID: &lt;20000228145341.A29107@weasel.vom.tm&gt;
 References: &lt;002101bf81f9$3f83b820$843365c1@kakoi.co.jp&gt;
@@ -8576,12 +8699,12 @@ Content-Type: text/plain; charset=us-ascii
 User-Agent: Mutt/1.0.1i
 In-Reply-To: &lt;002101bf81f9$3f83b820$843365c1@kakoi.co.jp&gt;; from kasiwagi@kakoi.co.jp on Mon, Feb 28, 2000 at 11:36:44PM +0900
 Resent-Message-ID: &lt;7cBfHD.A.yAC.Owou4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/3697
-X-Loop: proftpd@proftpd.net
+Resent-From: proftpd@proftpd.org
+Reply-To: proftpd@proftpd.org
+X-Mailing-List: &lt;proftpd@proftpd.org&gt; archive/latest/3697
+X-Loop: proftpd@proftpd.org
 Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
+Resent-Sender: proftpd-request@proftpd.org
 Resent-Bcc:
 X-Filter: proftpd
 Status: RO
@@ -8606,15 +8729,15 @@ Do not meddle in the affairs of hamsters. Just don't. It's not worth it.
  - Ailbhe on #afp
 
 --
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
+To unsubscribe, send mail to proftpd-request@proftpd.org with "unsubscribe"
 in the subject field of the message.
 
 Please read the documentation and the FAQ before posting a question -- chances
 are it's already been answered.
 
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
+http://www.proftpd.org           -- The Official ProFTPD web site.
+http://bugs.proftpd.org          -- Bug reporting and feature requests.
+http://www.proftpd.org/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
 From proftpd-request@tos.net Mon Feb 28 15:25:03 2000
@@ -8632,7 +8755,7 @@ Received: (from listserv@localhost)
 Resent-Date: Mon, 28 Feb 2000 09:24:40 -0600
 Message-ID: &lt;004801bf81ff$1c09a160$843365c1@kakoi.co.jp&gt;
 From: "Norio Kashiwagi" &lt;kasiwagi@kakoi.co.jp&gt;
-To: &lt;proftpd@proftpd.net&gt;
+To: &lt;proftpd@proftpd.org&gt;
 References: &lt;002101bf81f9$3f83b820$843365c1@kakoi.co.jp&gt; &lt;20000228145341.A29107@weasel.vom.tm&gt;
 Subject: Re: [ProFTPD] Can't do "ls" command
 Date: Tue, 29 Feb 2000 00:18:41 +0900
@@ -8645,12 +8768,12 @@ X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 5.00.2314.1300
 X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2314.1300
 Resent-Message-ID: &lt;NLL9UC.A.fJC.ZEpu4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/3698
-X-Loop: proftpd@proftpd.net
+Resent-From: proftpd@proftpd.org
+Reply-To: proftpd@proftpd.org
+X-Mailing-List: &lt;proftpd@proftpd.org&gt; archive/latest/3698
+X-Loop: proftpd@proftpd.org
 Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
+Resent-Sender: proftpd-request@proftpd.org
 Resent-Bcc:
 X-Filter: proftpd
 Status: RO
@@ -8804,15 +8927,15 @@ Dr.-Ing. Andreas Wehler         Fax.: (+49)  211 - 52740 - 280
                                 http://www.ccs-web.com
 
 --
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
+To unsubscribe, send mail to proftpd-request@proftpd.org with "unsubscribe"
 in the subject field of the message.
 
 Please read the documentation and the FAQ before posting a question -- chances
 are it's already been answered.
 
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
+http://www.proftpd.org           -- The Official ProFTPD web site.
+http://bugs.proftpd.org          -- Bug reporting and feature requests.
+http://www.proftpd.org/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
 From proftpd-request@tos.net Sat Feb 12 00:07:39 2000
@@ -8829,7 +8952,7 @@ Received: (from listserv@localhost)
 	Fri, 11 Feb 2000 14:51:54 -0600
 Resent-Date: Fri, 11 Feb 2000 14:51:54 -0600
 From: "Lan Tran" &lt;lan@recol.com&gt;
-To: &lt;proftpd@proftpd.net&gt;
+To: &lt;proftpd@proftpd.org&gt;
 Date: Fri, 11 Feb 2000 15:44:38 -0500
 Message-ID: &lt;NDBBLOICLKHIHOKDAEGKAEGFCBAA.lan@recol.com&gt;
 MIME-Version: 1.0
@@ -8844,12 +8967,12 @@ Importance: Normal
 X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2314.1300
 Subject: [ProFTPD] Can't do "ls"
 Resent-Message-ID: &lt;JDSsr.A.bMC.dRHp4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/3385
-X-Loop: proftpd@proftpd.net
+Resent-From: proftpd@proftpd.org
+Reply-To: proftpd@proftpd.org
+X-Mailing-List: &lt;proftpd@proftpd.org&gt; archive/latest/3385
+X-Loop: proftpd@proftpd.org
 Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
+Resent-Sender: proftpd-request@proftpd.org
 Resent-Bcc:
 X-Filter: proftpd
 Status: RO
@@ -8892,15 +9015,15 @@ Any ideas?
 Thanks.
 
 --
-To unsubscribe, send mail to proftpd-request@proftpd.net with "unsubscribe"
+To unsubscribe, send mail to proftpd-request@proftpd.org with "unsubscribe"
 in the subject field of the message.
 
 Please read the documentation and the FAQ before posting a question -- chances
 are it's already been answered.
 
-http://www.proftpd.net           -- The Official ProFTPD web site.
-http://bugs.proftpd.net          -- Bug reporting and feature requests.
-http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and FAQ.
+http://www.proftpd.org           -- The Official ProFTPD web site.
+http://bugs.proftpd.org          -- Bug reporting and feature requests.
+http://www.proftpd.org/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
 From proftpd-request@tos.net Mon Feb 14 01:34:15 2000
@@ -8919,7 +9042,7 @@ Resent-Date: Sun, 13 Feb 2000 19:33:12 -0600
 From: L.M.D.Cranswick@dl.ac.uk (L. Cranswick)
 Message-Id: &lt;200002140125.BAA07792@xrdsv1&gt;
 Subject: Re: [ProFTPD] Can't do "ls"
-To: proftpd@proftpd.net
+To: proftpd@proftpd.org
 Date: Mon, 14 Feb 2000 01:25:21 +0000 (GMT)
 In-Reply-To: &lt;NDBBLOICLKHIHOKDAEGKAEGFCBAA.lan@recol.com&gt; from "Lan Tran" at Feb 11, 2000 03:44:38 PM
 X-Mailer: ELM [version 2.5 PL2]
@@ -8927,12 +9050,12 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Resent-Message-ID: &lt;v-puK.A.-xC.Tm1p4@starbase.tos.net&gt;
-Resent-From: proftpd@proftpd.net
-Reply-To: proftpd@proftpd.net
-X-Mailing-List: &lt;proftpd@proftpd.net&gt; archive/latest/3425
-X-Loop: proftpd@proftpd.net
+Resent-From: proftpd@proftpd.org
+Reply-To: proftpd@proftpd.org
+X-Mailing-List: &lt;proftpd@proftpd.org&gt; archive/latest/3425
+X-Loop: proftpd@proftpd.org
 Precedence: list
-Resent-Sender: proftpd-request@proftpd.net
+Resent-Sender: proftpd-request@proftpd.org
 Resent-Bcc:
 X-Filter: proftpd
 Status: RO
@@ -9010,7 +9133,7 @@ Nope, doesn't work.  I'm behind a firewall.  Tried setting to passive mode:
 -----Original Message-----
 From: Vincent Paglione [mailto:mogom@jtan.com]
 Sent: Friday, February 11, 2000 3:58 PM
-To: proftpd@proftpd.net
+To: proftpd@proftpd.org
 Subject: Re: [ProFTPD] Can't do "ls"
 
 
@@ -9230,7 +9353,7 @@ The mentioned vulnerability has been discovered by:
 
 </para>
 <para>
-http://bugs.proftpd.net/show_bug.cgi?id=108
+http://bugs.proftpd.org/show_bug.cgi?id=108
 
 *** shadow/108	Thu Apr  6 12:01:58 2000
 --- shadow/108.tmp.7160	Thu Apr  6 13:58:46 2000
@@ -9257,7 +9380,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=108
 </para>
 <para>
 
-http://bugs.proftpd.net/show_bug.cgi?id=109
+http://bugs.proftpd.org/show_bug.cgi?id=109
 
 *** shadow/109	Thu Apr  6 12:06:53 2000
 --- shadow/109.tmp.7078	Thu Apr  6 12:06:53 2000
@@ -9274,7 +9397,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=109
 + Severity: normal
 + Priority: P2
 + Component: mod_sqlpw
-+ AssignedTo: proftpd-devel@proftpd.net                            
++ AssignedTo: proftpd-devel@proftpd.org                            
 + ReportedBy: mgrabenstein@mac.com               
 + URL: 
 + Summary: mod_sqlpw (mysql): Make.rules needs libaries and includes specified.
@@ -9293,13 +9416,13 @@ http://bugs.proftpd.net/show_bug.cgi?id=109
 + Would be best if configure would do this...
 </para>
 <para>
-http://bugs.proftpd.net/show_bug.cgi?id=108
+http://bugs.proftpd.org/show_bug.cgi?id=108
 
 *** shadow/108	Thu Apr  6 11:57:28 2000
 --- shadow/108.tmp.7054	Thu Apr  6 12:01:34 2000
 ***************
 *** 11,19 ****
-  AssignedTo: proftpd-devel@proftpd.net                            
+  AssignedTo: proftpd-devel@proftpd.org                            
   ReportedBy: mgrabenstein@mac.com               
   URL: 
 ! Summary: reference to flags.c needs to be removed to compile mod_sqlpw (mysql)
@@ -9309,7 +9432,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=108
   Or is it missing from the pre10 distribution ? mod_sqlpw seems work fine with ou
   it. :-)
 --- 11,25 ----
-  AssignedTo: proftpd-devel@proftpd.net                            
+  AssignedTo: proftpd-devel@proftpd.org                            
   ReportedBy: mgrabenstein@mac.com               
   URL: 
 ! Summary: mmod_sqlpw (mysql) in Make.modules, remove flag.* and add .o to modmysql
@@ -9327,13 +9450,13 @@ http://bugs.proftpd.net/show_bug.cgi?id=108
 </para>
 <para>
 
-http://bugs.proftpd.net/show_bug.cgi?id=108
+http://bugs.proftpd.org/show_bug.cgi?id=108
 
 *** shadow/108	Thu Apr  6 12:01:34 2000
 --- shadow/108.tmp.7065	Thu Apr  6 12:01:58 2000
 ***************
 *** 11,17 ****
-  AssignedTo: proftpd-devel@proftpd.net                            
+  AssignedTo: proftpd-devel@proftpd.org                            
   ReportedBy: mgrabenstein@mac.com               
   URL: 
 ! Summary: mmod_sqlpw (mysql) in Make.modules, remove flag.* and add .o to modmysql
@@ -9341,7 +9464,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=108
   To get mod_sqlpw to compile. You must first edit the Make.modules file and
   remove the references to flags.c.
 --- 11,17 ----
-  AssignedTo: proftpd-devel@proftpd.net                            
+  AssignedTo: proftpd-devel@proftpd.org                            
   ReportedBy: mgrabenstein@mac.com               
   URL: 
 ! Summary: mod_sqlpw (mysql) in Make.modules, remove flag.* and add .o to modmysql
@@ -9350,7 +9473,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=108
   remove the references to flags.c.
 </para>
 <para>
-http://bugs.proftpd.net/show_bug.cgi?id=107
+http://bugs.proftpd.org/show_bug.cgi?id=107
 
 *** shadow/107	Thu Apr  6 11:54:53 2000
 --- shadow/107.tmp.7006	Thu Apr  6 11:54:53 2000
@@ -9367,7 +9490,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=107
 + Severity: major
 + Priority: P2
 + Component: mod_sqlpw
-+ AssignedTo: proftpd-devel@proftpd.net                            
++ AssignedTo: proftpd-devel@proftpd.org                            
 + ReportedBy: mgrabenstein@mac.com               
 + URL: 
 + Summary: Atempts to log in after the first failure always fail with mod_sqlpw (mysql)
@@ -9385,13 +9508,13 @@ http://bugs.proftpd.net/show_bug.cgi?id=107
 
 <para>
 
-http://bugs.proftpd.net/show_bug.cgi?id=105
+http://bugs.proftpd.org/show_bug.cgi?id=105
 
 *** shadow/105	Thu Apr  6 11:33:59 2000
 --- shadow/105.tmp.6990	Thu Apr  6 11:50:29 2000
 ***************
 *** 11,17 ****
-  AssignedTo: proftpd-devel@proftpd.net                            
+  AssignedTo: proftpd-devel@proftpd.org                            
   ReportedBy: mgrabenstein@mac.com               
   URL: 
 ! Summary: DefaultRoot does not work as advertised with mod_sqlpw
@@ -9399,7 +9522,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=105
   
   DefaultRoot does not work as advertised. It will now
 --- 11,17 ----
-  AssignedTo: proftpd-devel@proftpd.net                            
+  AssignedTo: proftpd-devel@proftpd.org                            
   ReportedBy: mgrabenstein@mac.com               
   URL: 
 ! Summary: DefaultRoot does not work as advertised with mod_sqlpw (mysql)
@@ -9410,7 +9533,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=105
 
 <para>
 
-http://bugs.proftpd.net/show_bug.cgi?id=105
+http://bugs.proftpd.org/show_bug.cgi?id=105
 
 *** shadow/105	Thu Apr  6 11:33:37 2000
 --- shadow/105.tmp.6930	Thu Apr  6 11:33:37 2000
@@ -9427,7 +9550,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=105
 + Severity: major
 + Priority: P2
 + Component: mod_sqlpw
-+ AssignedTo: proftpd-devel@proftpd.net                            
++ AssignedTo: proftpd-devel@proftpd.org                            
 + ReportedBy: mgrabenstein@mac.com               
 + URL: 
 + Summary: DefaultRoot does not work as advertised with mod_sqlpw
@@ -9442,7 +9565,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=105
 
 <para>
 
-http://bugs.proftpd.net/show_bug.cgi?id=108
+http://bugs.proftpd.org/show_bug.cgi?id=108
 
 *** shadow/108	Thu Apr  6 11:57:28 2000
 --- shadow/108.tmp.7017	Thu Apr  6 11:57:28 2000
@@ -9459,7 +9582,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=108
 + Severity: normal
 + Priority: P2
 + Component: mod_sqlpw
-+ AssignedTo: proftpd-devel@proftpd.net                            
++ AssignedTo: proftpd-devel@proftpd.org                            
 + ReportedBy: mgrabenstein@mac.com               
 + URL: 
 + Summary: reference to flags.c needs to be removed to compile mod_sqlpw (mysql)
@@ -9472,7 +9595,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=108
 
 <para>
 
-http://bugs.proftpd.net/show_bug.cgi?id=106
+http://bugs.proftpd.org/show_bug.cgi?id=106
 
 *** shadow/106	Thu Apr  6 11:50:13 2000
 --- shadow/106.tmp.6979	Thu Apr  6 11:50:13 2000
@@ -9489,7 +9612,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=106
 + Severity: normal
 + Priority: P2
 + Component: mod_sqlpw
-+ AssignedTo: proftpd-devel@proftpd.net                            
++ AssignedTo: proftpd-devel@proftpd.org                            
 + ReportedBy: mgrabenstein@mac.com               
 + URL: 
 + Summary: inetd not working with mod_sqlpw (mysql)
@@ -9502,7 +9625,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=106
 
 <para>
 
-http://bugs.proftpd.net/show_bug.cgi?id=105
+http://bugs.proftpd.org/show_bug.cgi?id=105
 
 *** shadow/105	Thu Apr  6 11:33:37 2000
 --- shadow/105.tmp.6941	Thu Apr  6 11:33:59 2000
@@ -9520,7 +9643,7 @@ http://bugs.proftpd.net/show_bug.cgi?id=105
 
 <para>
 
-http://bugs.proftpd.net/show_bug.cgi?id=52
+http://bugs.proftpd.org/show_bug.cgi?id=52
 
 *** shadow/52	Tue Feb 15 14:26:57 2000
 --- shadow/52.tmp.6948	Thu Apr  6 11:34:00 2000
@@ -9612,7 +9735,7 @@ that should help.
 -Andy
 ----- Original Message -----
 From: "Mitch Vincent" &lt;mitch@venux.net&gt;
-To: &lt;proftpd@proftpd.net&gt;
+To: &lt;proftpd@proftpd.org&gt;
 Sent: Saturday, March 11, 2000 2:00 PM
 Subject: [ProFTPD] Compile error with pre 10
 
@@ -9630,24 +9753,6 @@ Subject: [ProFTPD] Compile error with pre 10
 &gt; error... Also, I couldn't find any documentation on the table layouts and
 &gt; such require for mod_sqlpw and mod_mysql to work, could anyone point me to
 &gt; it?
-&gt;
-&gt; Thanks!!
-&gt;
-&gt; -Mitch
-&gt;
-&gt; --
-&gt; To unsubscribe, send mail to proftpd-request@proftpd.net with
-"unsubscribe"
-&gt; in the subject field of the message.
-&gt;
-&gt; Please read the documentation and the FAQ before posting a question --
-chances
-&gt; are it's already been answered.
-&gt;
-&gt; http://www.proftpd.net           -- The Official ProFTPD web site.
-&gt; http://bugs.proftpd.net          -- Bug reporting and feature requests.
-&gt; http://www.proftpd.net/docs/     -- The latest ProFTPD documentation and
-FAQ.
 &gt;
 
 
