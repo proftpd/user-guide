@@ -1,0 +1,80 @@
+<refentry id="SQLKeyField">
+<?dbhtml filename="config_ref_SQLKeyField.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLKeyField</primary></indexterm>
+SQLKeyField
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLKeyField</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLKeyField</command>
+<arg choice="opt">
+  <option>fieldname</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sqlpw
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+
+SQLKeyField &lt;column-name&gt; (ROOT, GLOBAL) designates a table field
+that's used to distinguish what logins belong to what virtual host.
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+SQLKeyField vhostfield
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>
