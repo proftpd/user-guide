@@ -79,6 +79,12 @@ Anonymous username (password given), or UNKNOWN if non-anonymous
 %b
 &nbsp;
 Bytes sent for request
+%d
+Directory name (not full path) for CDUP, CWD, MKD, RMD, XCWD, XCUP, XMKD, XRMD
+&nbsp;
+%D
+Directory name (full path) for CDUP, CWD, MKD, RMD, XCWD, XCUP, XMKD, XRMD
+&nbsp;
 %{FOOBAR}e
 &nbsp;
 Contents of environment variable FOOBAR.  Note that the server does not set
@@ -125,6 +131,9 @@ Time taken to transmit/receive file, in seconds
 %u
 &nbsp;
 Local authenticated userid
+%U
+&nbsp;
+USER name originally sent by the client
 %v
 &nbsp;
 ServerName of server handling session
