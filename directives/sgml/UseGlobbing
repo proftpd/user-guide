@@ -1,0 +1,67 @@
+<refentry id="UseGlobbing">
+<?dbhtml filename="config_ref_UseGlobbing.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>UseGlobbing</primary></indexterm>
+UseGlobbing
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>UseGlobbing</refname>
+<refpurpose>Toggles use of glob() functionality</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>UseGlobbing</command>
+<arg choice="opt">
+  <option>on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+on
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ls
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.5rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The UseGlobbing directive controls use of glob() functionality, which is
+needed for supporting wildcard characters such as *.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+</refentry>
