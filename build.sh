@@ -101,7 +101,12 @@ function install
 	cp *html $INSTALL_ROOT/www.proftpd.org/docs/userguide/linked
 	cd $BASE/other/
 	cp userguide_full.html userguide.pdf userguide.ps $INSTALL_ROOT/www.proftpd.org/docs/userguide
-}
+
+
+	## Rsyncing a copy to korenwolf
+	rsync -av $HOME/Proftpd/www.pdd/userguide/  $HOME/websites/www.korenwolf.net/proftpd/Userguide/
+	
+	}
 
 #
 #

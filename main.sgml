@@ -14732,7 +14732,7 @@ are standards documents produced by the Internet Engineering Task
 Force (<ACRONYM>IETF</ACRONYM>).</PARA>
 <VARIABLELIST>
 <VARLISTENTRY>
-<TERM><ULINK URL="http://www.cis.ohio-state.edu/htbin/rfc/rfc959.html"><ACRONYM>RFC</ACRONYM> 959</ULINK></TERM>
+<TERM><ULINK URL="http://www.rfc-editor.org/rfc/rfc959.txt"><ACRONYM>RFC</ACRONYM> 959</ULINK></TERM>
 
 <LISTITEM>
 
@@ -14744,7 +14744,7 @@ Force (<ACRONYM>IETF</ACRONYM>).</PARA>
 
 <VARLISTENTRY>
 
-<TERM><ULINK URL="http://www.cis.ohio-state.edu/htbin/rfc/rfc1736.html"><ACRONYM>RFC</ACRONYM> 2228</ULINK></TERM>
+<TERM><ULINK URL="http://www.rfc-editor.org/rfc/rfc1736.txt"><ACRONYM>RFC</ACRONYM> 2228</ULINK></TERM>
 
 <LISTITEM>
 
