@@ -13,14 +13,14 @@ TLSVerifyClient
 </refmeta>
 <refnamediv>
 <refname>TLSVerifyClient</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure how to candle certificates presented by clients<refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSVerifyClient</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>on off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSVerifyClient
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+off
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,26 +56,31 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSVerifyClient directive configures how mod_tls handles certificates
+presented by clients. If off, the module will accept the certificate and
+establish an SSL/TLS session, but will not verify the certificate. If on, the
+module will verify a client's certificate and, furthermore, will fail all SSL
+handshake attempts unless the client presents a certificate when the server
+requests one. Note that the server can be configured to not request a client
+certificate via the TLSOptions directive's "NoCertRequest" parameter.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="TLSOptions"></link>
 </para>
 </refsect1>
 
 <refsect1>
 <title>Examples</title>
 
+<!--
 <literallayout>
-(docs incomplete)
-</literallayout>
 
+</literallayout>
+-->
 </refsect1>
 </refentry>
 

@@ -13,14 +13,14 @@ TLSRequired
 </refmeta>
 <refnamediv>
 <refname>TLSRequired</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Require SSL/TLS on the control and/or data channel</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSRequired</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>on off ctrl data</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSRequired
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+off
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,7 +56,15 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSRequired directive is used to define a basic security policy, one that
+dictates whether the control channel, or data channel, or both, of an FTP session
+must occur over SSL/TLS.
+</para>
+
+<para>
+The on parameter enables SSL/TLS requirements on both control and data channels;
+off disables the requirements on both channels. Use ctrl and data to require
+SSL/TLS on either channel individually. 
 </para>
 </refsect1>
 
@@ -73,7 +81,12 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+  # Require SSL/TLS on the control channel, so that passwords are not sent
+  # in the clear.
+  TLSRequired ctrl
+
+  # Require SSL/TLS on both channels.
+  TLSRequired on
 </literallayout>
 
 </refsect1>

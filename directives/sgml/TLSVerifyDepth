@@ -13,14 +13,14 @@ TLSVerifyDepth
 </refmeta>
 <refnamediv>
 <refname>TLSVerifyDepth</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define how deeply mod_tls should verify a client certificate</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSVerifyDepth</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>depth</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSVerifyDepth
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+9
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,16 +56,21 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSVerifyDepth directive sets how deeply mod_tls should verify before
+deciding that the client does not have a valid certificate. The depth actually
+is the maximum number of intermediate certificate issuers, i.e. the number of CA
+certificates which are allowed to be followed while verifying the client
+certificate. A depth of 0 means that only self-signed client certificates are
+accepted, a depth of 1 means the client certificate can be self-signed or has to
+be signed by a CA which is directly known to the server (i.e. the CA's
+certificate is under TLSCACertificatePath), etc.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="TLSVerifyClient"></link>
 </para>
 </refsect1>
 
@@ -73,7 +78,7 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+  TLSVerifyDepth 10
 </literallayout>
 
 </refsect1>

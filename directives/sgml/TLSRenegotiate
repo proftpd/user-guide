@@ -13,14 +13,14 @@ TLSRenegotiate
 </refmeta>
 <refnamediv>
 <refname>TLSRenegotiate</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure SSL renegotiations</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSRenegotiate</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>["ctrl" secs] ["data" Kbytes] ["timeout" secs]|["required" on|off]|"none"</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSRenegotiate
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,7 +56,36 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSRenegotiate directive is used to configure when SSL renegotiations are to
+occur. Renegotiations, and thus this directive, are only supported by mod_tls if
+the version of OpenSSL installed is 0.9.7 or greater.
+</para>
+
+<para>
+If supported, renegotiations will occur on control channels that have been
+established for four hours by default, and on data channels that have transferred
+over one gigabyte of data by default. When renegotiations are requested, the
+client is given a timeout of 30 seconds, by default, to perform the renegotiation.
+To change the default control channel renegotiation timeout, use ctrl followed by
+a number, greater than zero, in seconds. Use data followed by a number, greater
+than zero, of kilobytes to change the default data channel renegotiation
+threshhold. The timeout parameter, followed by a positive number of seconds, is
+used to change the length of time given to a client to complete a requested
+renegotiation, after which the SSL session will be shutdown. By default, mod_tls
+will require that the client comply with the requested renegotiation within the
+TLSRenegotiate timeout. If, however, the client is unwilling or unable to do so,
+and the daemon needs to support these clients, set required to off. Doing so will
+cause renegotiations to be requested, but not required.
+</para>
+
+<para>
+By default, mod_tls will perform renegotiations if supported, on the control
+channel after 4 hours, and on the data channel after one gigabyte of transferred
+data. The default timeout for a renegotiation is 30 seconds.
+</para>
+
+<para>
+Use none to disable all renegotiation requirements. 
 </para>
 </refsect1>
 
@@ -73,7 +102,23 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+    # Change renegotiations to occur on control channels after 1 hour
+    TLSRenegotiate ctrl 3600
+
+    # Change renegotiations to occur on data channels after 500 MB
+    TLSRenegotiate data 512000
+
+    # Change renegotiations so that they are not required, only requested
+    TLSRenegotiate required off
+
+    # Change only the timeout for renegotiations to be 5 minutes
+    TLSRenegotiate timeout 300
+
+    # Change all of the above renegotiation threshholds using one directive
+    TLSRenegotiate ctrl 3600 data 512000 required off timeout 300
+
+    # To disable renegotiations entirely
+    TLSRenegotiate none
 </literallayout>
 
 </refsect1>

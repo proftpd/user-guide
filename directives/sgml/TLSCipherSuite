@@ -13,14 +13,14 @@ TLSCipherSuite
 </refmeta>
 <refnamediv>
 <refname>TLSCipherSuite</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define a cipher list</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSCipherSuite</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>cipher-list</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSCipherSuite
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+ALL:!ADH
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,7 +56,77 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+How to put together a cipher list parameter:
+<para><literallayout>
+  Key Exchange Algorithms:
+    "kRSA"      RSA key exchange
+    "kDHr"      Diffie-Hellman key exchange (key from RSA cert)
+    "kDHd"      Diffie-Hellman key exchange (key from DSA cert)
+    "kEDH'      Ephemeral Diffie-Hellman key exchange (temporary key)
+</literallayout></para>
+
+<para><literallayout>
+  Authentication Algorithm:
+    "aNULL"     No authentication
+    "aRSA"      RSA authentication
+    "aDSS"      DSS authentication
+    "aDH"       Diffie-Hellman authentication
+</literallayout></para>
+
+<para><literallayout>
+  Cipher Encoding Algorithm:
+    "eNULL"     No encodiing
+    "DES"       DES encoding
+    "3DES"      Triple DES encoding
+    "RC4"       RC4 encoding
+    "RC2"       RC2 encoding
+    "IDEA"      IDEA encoding
+</literallayout></para>
+
+<para><literallayout>
+  MAC Digest Algorithm:
+    "MD5"       MD5 hash function
+    "SHA1"      SHA1 hash function
+    "SHA"       SHA hash function (should not be used)
+</literallayout></para>
+
+<para><literallayout>
+  Aliases:
+    "ALL"       all ciphers
+    "SSLv2"     all SSL version 2.0 ciphers (should not be used)
+    "SSLv3"     all SSL version 3.0 ciphers
+    "EXP"       all export ciphers (40-bit)
+    "EXPORT56"  all export ciphers (56-bit)
+    "LOW"       all low strength ciphers (no export)
+    "MEDIUM"    all ciphers with 128-bit encryption
+    "HIGH"      all ciphers using greater than 128-bit encryption
+    "RSA"       all ciphers using RSA key exchange
+    "DH"        all ciphers using Diffie-Hellman key exchange
+    "EDH"       all ciphers using Ephemeral Diffie-Hellman key exchange
+    "ADH"       all ciphers using Anonymous Diffie-Hellman key exchange
+    "DSS"       all ciphers using DSS authentication
+    "NULL"      all ciphers using no encryption
+</literallayout></para>
+
+<para><literallayout>
+Each item in the list may include a prefix modifier:
+
+    "+"         move cipher(s) to the current location in the list
+    "-"         remove cipher(s) from the list (may be added again by a
+                subsequent list entry)
+    "!"         kill cipher from the list (it may not be added again by a
+                subsequent list entry)
+
+If no modifier is specified the entry is added to the list at the current position. "+" may also be used to combine tags to specify entries such as "RSA+RC4" describes all ciphers that use both RSA and RC4. 
+</literallayout></para>
+
+<literallayout>
+The OpenSSL command
+
+  openssl ciphers -v &lt;list of ciphers&gt;
+
+may be used to list all of the ciphers and the order described by a specific <list of ciphers>.
+</literallayout>
 </para>
 </refsect1>
 
@@ -73,7 +143,13 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+For example, all available ciphers not including ADH key exchange:
+
+  ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP
+
+All algorithms including ADH and export but excluding patented algorithms:
+
+  HIGH:MEDIUM:LOW:EXPORT56:EXP:ADH:!kRSA:!aRSA:!RC4:!RC2:!IDEA
 </literallayout>
 
 </refsect1>

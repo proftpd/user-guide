@@ -13,14 +13,14 @@ TLSProtocol
 </refmeta>
 <refnamediv>
 <refname>TLSProtocol</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define the SSL/TLS protocol version mod_tls should use</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSProtocol</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>[ SSLv23 SSLv3 TLSv1 ]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSProtocol
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+SSLv23
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,7 +56,24 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSProtocol directive is used to configure the SSL/TLS protocol versions
+that mod_tls should use when establishing SSL/TLS sessions. Clients can then
+only connect using the configured protocol.
+</para>
+
+<para>
+Since the protocol version used by mod_tls is set only once, when the daemon
+starts, the TLSProtocol directive is only allowed in the "server config" context.
+</para>
+
+<para>
+The allowed protocols are:
+<para>SSLv23 Compatibility mode, used to allow both SSLv3 and TLSv1</para>
+<para>SSLv3 Allow only SSLv3</para>
+<para>TLSv1 Allow only TLSv1</para>
+
+<para>
+All use of SSLv2 is disabled. SSLv2 should not be used. 
 </para>
 </refsect1>
 
@@ -72,9 +89,11 @@ mod_tls
 <refsect1>
 <title>Examples</title>
 
+<!--
 <literallayout>
-(docs incomplete)
+
 </literallayout>
+-->
 
 </refsect1>
 </refentry>

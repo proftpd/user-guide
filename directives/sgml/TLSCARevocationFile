@@ -13,14 +13,14 @@ TLSCARevocationFile
 </refmeta>
 <refnamediv>
 <refname>TLSCARevocationFile</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define a file with your CA revocation certifcates</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSCARevocationFile</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>CA revocation filename</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSCARevocationFile
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+Define a file holding your Certificate Revocation Lists
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,16 +56,19 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSCARevocationFile directive configures one file that can contain the
+Certificate Revocation Lists (CRL) of Certification Authorities (CA) for your
+clients. These CRLs are used during the verification of client certificates, if
+presented. Such a file is merely the concatenation of the various PEM-encoded
+CRL files, in order of preference. This directive can be used in addition to,
+or as an alternative for, TLSCARevocationPath.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="TLSCARevocationPath">TLSCARevocationPath</link>
 </para>
 </refsect1>
 
@@ -73,7 +76,7 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+	TLSCARevocationFile /etc/ftpd/ca-crl-bundle.pem
 </literallayout>
 
 </refsect1>

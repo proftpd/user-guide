@@ -13,14 +13,14 @@ TLSRandomSeed
 </refmeta>
 <refnamediv>
 <refname>TLSRandomSeed</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define a file for PRNG seeding</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSRandomSeed</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>Absolute path to the file</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSRandomSeed
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+openssl-dir /.rnd
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,7 +56,14 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSRandomSeed directive configures the file that mod_tls will use for
+seeding the PRNG. seed must be an absolute path.
+</para>
+
+<para>
+When the daemon shuts down, any random data left will be written out to the
+random seed file, so that that data may be used for seeding when the daemon is
+started again. 
 </para>
 </refsect1>
 
@@ -73,7 +80,7 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+TLSRandomSeed /etc/ftpd/server.rnd
 </literallayout>
 
 </refsect1>

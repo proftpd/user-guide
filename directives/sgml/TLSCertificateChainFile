@@ -13,14 +13,14 @@ TLSCertificateChainFile
 </refmeta>
 <refnamediv>
 <refname>TLSCertificateChainFile</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define an all in one certification file</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSCertificateChainFile</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>TLSCertificateChainFile filename</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSCertificateChainFile
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,16 +56,40 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSCertificateChainFile directive sets the optional all-in-one file where
+you can assemble the certificates of Certification Authorities (CA) which form
+the certificate chain of the server certificate. This starts with the issuing CA
+certificate of the server certificate and can range up to the root CA
+certificate. Such a file is simply the concatenation of the various PEM-encoded
+CA Certificate files in certificate chain order. This server certificate chain is
+sent to the client, in addition to the server's certificate.
+</para>
+
+<para>
+If TLSCertificateChainFile is not used, and TLSCACertificatePath is used, the
+certificate chain is built from the certificates in that path.
+TLSCertificateChainFile should be used as an alternative to TLSCACertificatePath
+for explicitly constructing the server certificate chain. It is especially useful
+to avoid conflicts with CA certificates when using client authentication. For
+although placing a CA certificate of the server certificate chain into the
+TLSCACertificatePath has the same effect for the certificate chain construction,
+it has the side-effect that client certificates issued by this same CA certificate
+are also accepted on client authentication. This is usually not what one expects.
+</para>
+
+<para>
+Be careful: providing the certificate chain works only if you are using a single
+(either RSA or DSA) based server certificate. If you are using a coupled RSA+DSA
+certificate pair, this will work only if actually both certificates use the same
+certificate chain. Otherwise, clients will become confused. 
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="TLSCACertificateFile">TLSCACertificateFile</link>
+<link linkend="TLSCACertificatePath">TLSCACertificatePath</link>
 </para>
 </refsect1>
 
@@ -73,7 +97,7 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+	TLSCertificateChainFile /etc/ftpd/client-ca-list.pem
 </literallayout>
 
 </refsect1>

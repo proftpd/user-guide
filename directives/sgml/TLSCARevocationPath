@@ -13,14 +13,14 @@ TLSCARevocationPath
 </refmeta>
 <refnamediv>
 <refname>TLSCARevocationPath</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define a path to your CA revocation certificates</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSCARevocationPath</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>Path to a directory with CA revocation certificates</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSCARevocationPath
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,16 +56,25 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSCARevocationPath directive sets the directory for the
+Certificate Revocation Lists (CRL) of Certification Authorities (CAs) for your
+clients. These are used during the verification of client certificates, if
+presented. This directive may be used in addition to, or as alternative for,
+TLSCARevocationFile.
+</para>
+
+<para>
+The files in the configured directory have to be PEM-encoded, and are accessed
+through hash filenames. This means one cannot simply place the CRLs there: one
+also has to create symbolic links named hash-value.N. The c_rehash utility that
+comes with OpenSSL can be used to create the necessary symlinks. 
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="TLSCARevocationFile">TLSCARevocationFile</link>
 </para>
 </refsect1>
 
@@ -73,7 +82,7 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+	TLSCARevocationPath /etc/ftpd/crl/
 </literallayout>
 
 </refsect1>

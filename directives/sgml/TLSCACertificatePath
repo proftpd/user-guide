@@ -13,14 +13,14 @@ TLSCACertificatePath
 </refmeta>
 <refnamediv>
 <refname>TLSCACertificatePath</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define a path to the CAs used to verify your client certificates</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSCACertificatePath</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>Path to your CA certificates</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TLSCACertificatePath
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,16 +56,38 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSCACertificatePath directive sets the directory for the certificates of
+Certification Authorities (CAs) for your clients. These are used to verify the
+client certificates presented. This directive may be used in addition to, or as
+alternative for, TLSCACertificateFile.
+</para>
+
+<para>
+The files in the configured directory have to be PEM-encoded, and are accessed
+through hash filenames. This means one cannot simply place the CA certificates
+there: one also has to create symbolic links named hash-value.N. The c_rehash
+utility that comes with OpenSSL can be used to create the necessary symlinks.
+</para>
+
+<para>
+If neither TLSCACertificateFile nor TLSCACertificatePath are specified, the
+following message will appear in the TLSLog:
+</para>
+<para>
+<literallayout>
+   using default OpenSSL verification locations (see $SSL_CERT_DIR)
+<literallayout>
+</para>
+<para>
+This means that the SSL_CERT_DIR environment variable, if set, will be used to
+determine the location of a CA certificate directory, to be used when verifying clients.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="TLSCACertificateFile">TLSCACertificateFile</link>
 </para>
 </refsect1>
 
@@ -73,7 +95,7 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+	TLSCACertificatePath /etc/ftpd/ca/
 </literallayout>
 
 </refsect1>

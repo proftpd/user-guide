@@ -13,14 +13,15 @@ TLSOptions
 </refmeta>
 <refnamediv>
 <refname>TLSOptions</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure optional behaviour of mod_tls</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TLSOptions</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>[ AllowDotLogin ] [ Allow PerUser ] [ ExportCertData ] [ NoCertRequest ] [ StdEnvVars ]
+	  [ dNSNameRequired ] [ iPAddressRquired ]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +31,13 @@ TLSOptions
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +49,7 @@ mod_tls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,8 +57,254 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The TLSOptions directive is used to configure various optional behavior of
+mod_tls. The currently implemented options are:
 </para>
+
+<itemizedlist mark='opencircle'>
+<listitem override='bullet'>
+<para>
+AllowDotLogin
+</para>
+<para>
+By default, mod_tls still requires that a user supply a password for
+authentication, even if a valid client certificate is presented. If this option
+is enabled, mod_tls will check in the user's home directory for a .tlslogin file,
+which should contain one or more PEM-encoded certificates. If the certificate
+presented by the client, if any, matches a certificate in this .tlslogin file,
+the user will be considered authenticated. The server will still prompt for a
+password, and if the user's .tlslogin does not exist, or does not contain the
+client's certificate, then the server will fallback to using the password for
+authentication.
+</para>
+
+<listitem override='bullet'>
+<para>
+AllowPerUser
+</para>
+<para>
+This option affects how mod_tls evaluates any TLSRequired directives. Usually
+mod_tls  will reject any FTP commands, when TLSRequired on or TLSRequired ctrl
+is in effect, if the client has not successfully negotiated a SSL/TLS handshake.
+The FTPS specification requires that the SSL/TLS handshake occur, via the AUTH
+FTP command, before the USER and PASS commands. This means that mod_tls does not
+know the identity of the connecting client when enforcing TLSRequired. If this
+AllowPerUser  is used, mod_tls will wait until after the PASS  command has been
+processed to enforce any TLSRequired  settings.
+</para>
+<para>
+Important: if AllowPerUser is used, even if TLSRequired on or TLSRequired ctrl
+are in effect, it will be possible for the connecting client to send usernames
+and passsword unprotected before mod_tls  rejects the connection. This results
+in a slightly weaker security policy enforcement; please consider carefully if
+this tradeoff is acceptable for your site.
+</para>
+
+<listitem override='bullet'>
+<para>
+ExportCertData
+</para>
+<para>
+Sets the following environment variables, if applicable. Note that doing so
+increases the memory size of the process quite a bit:
+<table frame='all'><title>Enviroment variables</title>
+<tgroup cols='2'>
+<tbody>
+	<row>
+		<entry>TLS_SERVER_CERT</entry>
+		<entry>Server certificate, PEM-encoded</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_CERT</entry>
+		<entry>CLient certificate, PEM-encoded</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_CERT_CHAINn</entry>
+		<entry>PEM-encoded certificates in client certificate chain</entry>
+	</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+
+<listitem override='bullet'>
+<para>
+NoCertRequest
+</para>
+<para>
+Some FTP clients are known to be buggy when handling a server's certificate
+request. This option causes the server not to include such a request during
+an SSL handshake.
+</para>
+
+<listitem override='bullet'>
+<para>
+StdEnvVars
+</para>
+<para>
+Sets the following environment variables, if applicable. These environment
+variables are then avaiable for use, such as in LogFormats. Note that doing
+so increases the memory size of the process quite a bit:
+increases the memory size of the process quite a bit:
+<table frame='all'><title>Enviroment variables</title>
+<tgroup cols='2'>
+<tbody>
+	<row>
+		<entry>FTPS</entry>
+		<entry>Present if FTP over SSL/TLS is being used</entry>
+	</row>
+	<row>
+		<entry>TLS_PROTOCOL</entry>
+		<entry>SSL protocol version (e.g. SSLv3, TLSv1)</entry>
+	</row>
+	<row>
+		<entry>TLS_SESSION_ID</entry>
+		<entry>Hex-encoded SSL session ID</entry>
+	</row>
+	<row>
+		<entry>TLS_CIPHER</entry>
+		<entry>Cipher specification name</entry>
+	</row>
+	<row>
+		<entry>TLS_CIPHER_EXPORT</entry>
+		<entry>Present if cipher is an export cipher</entry>
+	</row>
+	<row>
+		<entry>TLS_CIPHER_KEYSIZE_POSSIBLE</entry>
+		<entry>Number of cipher bits possible</entry>
+	</row>
+	<row>
+		<entry>TLS_CIPHER_KEYSIZE_USED</entry>
+		<entry>Number of cipher bits used</entry>
+	</row>
+	<row>
+		<entry>TLS_LIBRARY_VERSION</entry>
+		<entry>OpenSSL version</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_M_VERSION</entry>
+		<entry>Client certificate version</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_M_SERIAL</entry>
+		<entry>Client certificate serial number</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_S_DN</entry>
+		<entry>Subject DN of client certificate</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_S_DN_x509</entry>
+		<entry>Component of client certificate's Subject DN, where x509 is a component of a X509 DN: C,CN,D,I,G,L,O,OU,S,ST,T,UID,Email</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_I_DN</entry>
+		<entry>Issuer DN of client certificate</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_I_DN_x509</entry>
+		<entry>Component of client certificate's Issuer DN, where x509 is a component of a X509 DN: C,CN,D,I,G,L,O,OU,S,ST,T,UID,Email</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_V_START</entry>
+		<entry>Start time of client certificate validity</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_V_END</entry>
+		<entry>End time of client certificate validity</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_A_SIG</entry>
+		<entry>Client certificate's signature algorithm</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_A_KEY</entry>
+		<entry>Client certificate's public key algorithm</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_CERT</entry>
+		<entry>Client certificate, PEM-encoded</entry>
+	</row>
+	<row>
+		<entry>TLS_CLIENT_CERT_CHAINn</entry>
+		<entry>PEM-encoded certificates in client certificate chain</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_M_VERSION</entry>
+		<entry>Server certificate version</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_M_SERIAL</entry>
+		<entry>Server certificate serial number</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_S_DN</entry>
+		<entry>Subject DN of server certificate</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_S_DN_x509</entry>
+		<entry>Component of server certificate's Subject DN, where x509 is a component of a X509 DN: C,CN,D,I,G,L,O,OU,S,ST,T,UID,Email</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_I_DN</entry>
+		<entry>Issuer DN of server certificate</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_I_DN_x509</entry>
+		<entry>Component of server certificate's Issuer DN, where x509 is a component of a X509 DN: C,CN,D,I,G,L,O,OU,S,ST,T,UID,Email</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_V_START</entry>
+		<entry>Start time of server certificate validity</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_V_END</entry>
+		<entry>End time of server certificate validity</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_A_SIG</entry>
+		<entry>Server certificate's signature algorithm</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_A_KEY</entry>
+		<entry>Server certificate's public key algorithm</entry>
+	</row>
+	<row>
+		<entry>TLS_SERVER_CERT</entry>
+		<entry>Server certificate, PEM-encoded</entry>
+	</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+
+<listitem override='bullet'>
+<para>
+dNSNameRequired
+</para>
+<para>
+This option will cause mod_tls to perform checks on a client's certificate once
+the SSL handshake has been completed: the client's certificate will be searched
+for the subjectAltName X509v3 extension, and, in that extension, the dNSName
+value will be looked up. Unless a dNSName value is present, and the value matches
+the DNS name to which the client's IP address resolves, the SSL session is
+closed. This check is only performed during SSL handshakes on the control
+channel. Note that if UseReverseDNS is off, this option is automatically disabled.
+</para>
+
+<listitem override='bullet'>
+<para>
+iPAddressRequired
+</para>
+<para>
+This option will cause mod_tls to perform checks on a client's certificate once
+the SSL handshake has been completed: the client's certificate will be searched
+for the subjectAltName X509v3 extension, and, in that extension, the iPAddress
+value will be looked up. Unless an iPAddress value is present, and the value
+matches the IP address of the client, the SSL session is closed. This check is
+only performed during SSL handshakes on the control channel.
+</para>
+</itemizedlist>
 </refsect1>
 
 <refsect1>
@@ -73,7 +320,7 @@ mod_tls
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
+TLSOptions iPAddressRequired StdEnvVars
 </literallayout>
 
 </refsect1>
