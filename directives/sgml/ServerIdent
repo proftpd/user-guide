@@ -32,7 +32,7 @@ ServerIdent
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-ServerIdent ProFTPD [version] Server (server name) [hostname]
+ServerIdent on "ProFTPD [version] Server (server name) [hostname]"
 </para> </listitem>
 </varlistentry>
 
