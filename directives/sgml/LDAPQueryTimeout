@@ -19,7 +19,6 @@
 				<option>timeout-seconds</option>
 			</arg>
 		</cmdsynopsis>
-	</refsynopsisdiv>
 
 	<variablelist>
 		<title></title>

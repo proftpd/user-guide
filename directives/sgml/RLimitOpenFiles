@@ -21,7 +21,7 @@ RLimitOpenFiles
 <arg choice="opt" rep="repeat">file</arg>
 -->
 </cmdsynopsis>
-</refsynopsisdiv>
+
 
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
@@ -67,16 +67,12 @@ File resource limits are expressed in number of files per process.
 <refsect1>
 <title>See also</title>
 <para>
+RLimitCPU, RLimitMaxProcesses, RLimitMemory
 <!--
 <link linkend=""></link>
 -->
 </para>
 </refsect1>
 
-<refsect1>
-<para>
-See Also: RLimitCPU, RLimitMaxProcesses, RLimitMemory
-</para>
-</refsect1>
 </refentry>
 

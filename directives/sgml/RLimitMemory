@@ -21,7 +21,7 @@ RLimitMemory
 <arg choice="opt" rep="repeat">file</arg>
 -->
 </cmdsynopsis>
-</refsynopsisdiv>
+
 
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
@@ -71,16 +71,12 @@ factor.
 <refsect1>
 <title>See also</title>
 <para>
+RLimitCPU, RLimitMaxProcesses, RLimitOpenFiles
 <!--
 <link linkend=""></link>
 -->
 </para>
 </refsect1>
 
-<refsect1>
-<para>
-See Also: RLimitCPU, RLimitMaxProcesses, RLimitOpenFiles
-</para>
-</refsect1>
 </refentry>
 

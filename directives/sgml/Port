@@ -60,7 +60,7 @@ as the master server, but listening on a different port.
 
 <para>
 For any server, either &lt;VirtualHost&gt; or server config, setting
-<code>Port 0</code> effectively turns off that server.
+Port 0 effectively turns off that server.
 </para>
 
 </refsect1>

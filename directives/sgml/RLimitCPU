@@ -21,7 +21,9 @@ RLimitCPU
 <arg choice="opt" rep="repeat">file</arg>
 -->
 </cmdsynopsis>
+<!--
 </refsynopsisdiv>
+-->
 
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>

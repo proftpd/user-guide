@@ -91,6 +91,16 @@ function install
 	mkdir $FTP/userguide/src/
 	cp *sgml $WEB/userguide/src/
 	cp *sgml $FTP/userguide/src/
+	##
+	## install in www.proftpd.org root
+	##
+	## Make sure the directory exists
+	mkdir -p $INSTALL_ROOT/www.proftpd.org/docs/userguide/linked
+	## copy linked version
+	cd $BASE/linked
+	cp *html $INSTALL_ROOT/www.proftpd.org/docs/userguide/linked
+	cd $BASE/other/
+	cp userguide_full.html userguide.pdf userguide.ps $INSTALL_ROOT/www.proftpd.org/docs/userguide
 }
 
 #
