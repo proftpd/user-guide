@@ -12,10 +12,20 @@ MySQLInfo
 </refnamediv>
 
 <refsynopsisdiv>
+
 <cmdsynopsis>
 <command>MySQLInfo</command>
 <arg choice="opt">
-  <option>hostname sqluser sqlpass dbname</option>
+  <option>hostname</option>
+</arg>
+<arg choice="opt">
+  <option>sqluser</option>
+</arg>
+<arg choice="opt">
+  <option>sqlpass</option>
+</arg>
+<arg choice="opt">
+  <option>dbname</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -37,13 +47,13 @@ server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_mysql
+mod_sql ( prior to 1.2.0, mod_mysql )
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-at least 1.2.0 and later
+1.2.0rc2 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -51,11 +61,14 @@ at least 1.2.0 and later
 <refsect1>
 <title>Description</title>
 
+<para>This directive is deprecated as of 1.2.0.  Please use
+SQLConnectInfo instead.</para>
+
 <para>Configures the MySQL database driver (the database may be
 remote).  A connection isn't made until use of a SQL feature requires
 it, after which it may be held open for the lifetime of the FTP
 session depending on the directives in use.  Use `""' to specify a
-null password.
+null password.</para>
 
 </refsect1>
 

@@ -25,31 +25,35 @@ PostgresPort
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-None known
+5432
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;VirtualHost&gt;
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_pgsql
+mod_sql (prior to 1.2.0, mod_pgsql)
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-at least 1.2.0 and later
+1.2.0rc2 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
 
 <refsect1>
 <title>Description</title>
+
+<para>This directive is deprecated, please use SQLConnectInfo
+instead</para> 
+
 <para>
 Specifies which TCP/IP port to use for connecting.  Default is 5432,
 or UNIX socket for localhost.

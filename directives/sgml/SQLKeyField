@@ -8,7 +8,7 @@ SQLKeyField
 </refmeta>
 <refnamediv>
 <refname>SQLKeyField</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>FIXME FIXME (DEPRECATED)</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -37,23 +37,26 @@ server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_sqlpw
+mod_sql (Prior 1.2.0, mod_sqlpw)
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.0 and later
+1.2.0rc2 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
 
 <refsect1>
 <title>Description</title>
-<para>
 
-SQLKeyField &lt;column-name&gt; (ROOT, GLOBAL) designates a table field
-that's used to distinguish what logins belong to what virtual host.
+<para>This directive is deprecated, please use SQLWhereClause
+instead.</para> 
+
+<para>SQLKeyField &lt;column-name&gt; (ROOT, GLOBAL) designates a
+table field that's used to distinguish what logins belong to what
+virtual host.</para>
 
 </refsect1>
 
