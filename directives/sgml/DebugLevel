@@ -1,0 +1,67 @@
+<refentry id="DebugLevel">
+<?dbhtml filename="config_ref_DebugLevel.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DebugLevel</primary></indexterm>
+DebugLevel
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DebugLevel</refname>
+<refpurpose>Set the debugging output level</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DebugLevel</command>
+<arg choice="opt">
+  <option>DebugLevel level</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.8rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The DebugLevel directive configures the debugging level the server will use
+when logging.  The level parameter must be between 0 and 9.  This configuration
+directive will take precedence over any command-line debugging options used.
+</para>
+</refsect1>
+</refentry>

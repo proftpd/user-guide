@@ -1,0 +1,89 @@
+<refentry id="AuthOrder">
+<?dbhtml filename="config_ref_AuthOrder.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AuthOrder</primary></indexterm>
+AuthOrder
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AuthOrder</refname>
+<refpurpose>Configure auth module checking order</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AuthOrder</command>
+<arg choice="opt">
+  <option>AuthOrder module1 ...</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.8rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The AuthOrder directive rebuilds the tables of modules' authentication
+functions, reordering the tables such that only the listed modules'
+authentication functions are used, in the order in which the modules are
+listed.
+</para>
+
+<para>
+At least one module name must be given; there is no maximum number of modules
+that can be listed.  The listed module names must the full name of the source
+file, e.g. "mod_auth_unix.c".
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+  # If the user's information is not in LDAP, they're not a user to use
+  # this server.
+  AuthOrder mod_ldap.c
+</para>
+
+<para>
+  # Use SQL tables first, then LDAP, for authentication
+  AuthOrder mod_sql.c mod_ldap.c
+</para>
+</refsect1>
+
+</refentry>
