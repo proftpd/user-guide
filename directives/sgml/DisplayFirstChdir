@@ -75,41 +75,43 @@ following &quot;magic cookies&quot; (only in 0.99.0pl10 and later), which are
 replaced with their respective strings before being displayed to the user.
 </para>
 <programlisting>
-%T	Current Time
-
-%F	Available space on file system
-
 %C	Current working directory
 
-%R	Remote host name
+%E	Server admin's e-mail address
+
+%F	Available space on file system, in bytes
+
+%f      Available space on file system, with units
+
+%i      The number of files uploaded (input) in this session
 
 %L	Local host name
-
-%u	Username reported by ident protocol
-
-%U	Username originally used in login
 
 %M	Max number of connections
 
 %N	Current number of connections
 
-%E	Server admin's e-mail address
-
-<!-- This doesn't work?  It appears in mod_core.c 
-%V	Name of virtual host (if any)
-
---> 
-%i      The number of files uploaded (input) in this session
-
 %o      The number of files downloaded (output) in this session
 
+%R	Remote host name
+
+%T	Current Time
+
 %t      The number of files transfered (uploaded and downloaded) in this session
+
+%U	Username originally used in login
+
+%u	Username reported by ident protocol
 
 %x	The name of the user's class
 
 %y	Current number of connections from the user's class
 
 %z	Max number of connections from the user's class
+
+<!-- This doesn't work?  It appears in mod_core.c 
+%V	Name of virtual host (if any)
+--> 
 </programlisting>
 <para>
 NOTE: not all of these may have a rational value, depending on the context in
