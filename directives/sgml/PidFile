@@ -1,0 +1,84 @@
+<refentry id="PidFile">
+<?dbhtml filename="config_ref_PidFile.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>PidFile</primary></indexterm>
+PidFile
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>PidFile</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>PidFile</command>
+<arg choice="opt">
+  <option>PidFile filename</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0rc2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The PidFile directive sets the file to which the server records
+the process id of the daemon. The filename should be relative to the
+system root, ie /var/run/proftpd/pidfile. The PidFile is only used
+in standalone mode.
+It is often useful to be able to send the server a signal, so
+that it closes and then reopens its ErrorLog and TransferLog, and
+re-reads its configuration files. This is done by sending a SIGHUP
+(kill -1) signal to the process id of the master daemon listed in
+the PidFile.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

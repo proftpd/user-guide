@@ -1,0 +1,83 @@
+<refentry id="UserAlias">
+<?dbhtml filename="config_ref_UserAlias.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>UserAlias</primary></indexterm>
+UserAlias
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>UserAlias</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>UserAlias</command>
+<arg choice="opt">
+  <option>UserAlias login-user userid</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_auth
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The UserAlias directive creates a mapping from a login name transmitted by 
+a client (login-user) to a real system userid (userid). 
+If the user logs in as the alias, authentication is performed as though they 
+were actually logging in as the real user. This directive is often used inside 
+an &lt;Anonymous&gt; block in order 
+to allow multiple login names to activate an anonymous login. Note: If 
+the login-user parameter is the same 
+as a real system userid, the real userid will no longer be recognized by proftpd.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

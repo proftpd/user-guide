@@ -1,0 +1,78 @@
+<refentry id="AllowChmod">
+<?dbhtml filename="config_ref_AllowChmod.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AllowChmod</primary></indexterm>
+AllowChmod
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AllowChmod</refname>
+<refpurpose>Enable the CHMOD command</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AllowChmod</command>
+<arg choice="opt">
+  <option>AllowChmod bool</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+true
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_site
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+AllowChmod allows control over whether the &quot;SITE CHMOD&quot;
+command is allowed to clients.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+AllowChmod false
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

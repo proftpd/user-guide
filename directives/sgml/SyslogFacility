@@ -1,0 +1,88 @@
+<refentry id="SyslogFacility">
+<?dbhtml filename="config_ref_SyslogFacility.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SyslogFacility</primary></indexterm>
+SyslogFacility
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SyslogFacility</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SyslogFacility</command>
+<arg choice="opt">
+  <option>SyslogFacility facility-level</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Proftpd logs its activity via the Unix syslog mechanism, which allows for 
+several different general classifications of logging messages, known as "facilities." 
+Normally, all authentication related messages are logged with the AUTHPRIV 
+(or AUTH) facility [intended to be secure, and never seen by unwanted eyes], 
+while normal operational messages are logged with the DAEMON facility. The 
+SyslogFacility directive allows ALL logging messages to be directed to a different 
+facility than the default. When this directive is used, ALL logging is done 
+with the specified facility, both authentication (secure) and otherwise.
+The facility-level argument must be one of the 
+following: AUTH (or AUTHPRIV), CRON, 
+DAEMON, KERN, LPR, MAIL, NEWS, USER, UUCP, LOCAL0, LOCAL1, LOCAL2, LOCAL3, 
+LOCAL4, LOCAL5, LOCAL6 or LOCAL7.
+See Also: SystemLog
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

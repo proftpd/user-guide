@@ -1,0 +1,82 @@
+<refentry id="RateReadHardBPS">
+<?dbhtml filename="config_ref_RateReadHardBPS.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>RateReadHardBPS</primary></indexterm>
+RateReadHardBPS
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>RateReadHardBPS</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>RateReadHardBPS</command>
+<arg choice="opt">
+  <option>RateReadHardBPS on/off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_xfer
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+RateReadHardBPS forces the bandwidth to the given RateReadBPS 
+value after the RateReadFreeBytes amount 
+of file was transfered. This means that if the user have huge bandwidth and 
+downloaded the "free" amount fast, HardBPS will stop the transfer until the 
+average goes down to the given limit. If the amount of FreeBytes is high and 
+the ReadBPS is low then the user may wait for extended periods of time until 
+the transfer continues. :-)
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

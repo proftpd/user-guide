@@ -1,0 +1,32 @@
+<refentry id="mod-sample">
+<?dbhtml filename="config_ref_mod_sample.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_sample</primary></indexterm>
+mod_sample
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_sample</refname>
+<refpurpose>FIX ME FIX ME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_sample</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+FIXME
+FIXME
+FIXME
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>

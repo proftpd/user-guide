@@ -1,0 +1,80 @@
+<refentry id="RequireValidShell">
+<?dbhtml filename="config_ref_RequireValidShell.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>RequireValidShell</primary></indexterm>
+RequireValidShell
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>RequireValidShell</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>RequireValidShell</command>
+<arg choice="opt">
+  <option>RequireValidShell on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+RequireValidShell on
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The RequireValidShell directive configures the server, virtual host or anonymous 
+login to allow or deny logins which do not have a shell binary listed in /etc/shells. 
+By default, proftpd disallows logins if the user's default shell is not listed 
+in /etc/shells. If /etc/shells cannot be found, all default shells are assumed 
+to be valid.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

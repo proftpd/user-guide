@@ -1,0 +1,96 @@
+<refentry id="User">
+<?dbhtml filename="config_ref_User.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>User</primary></indexterm>
+User
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>User</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>User</command>
+<arg choice="opt">
+  <option>User userid</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The User directive configures which user the proftpd daemon will normally 
+run as. By default, proftpd runs as root which is considered undesirable 
+in all but the most trustful network configurations. The User directive used 
+in conjunction with the Group directive 
+instructs the daemon to switch to the specified user and group as quickly 
+as possible after startup. On some unix variants, the daemon will occasionally 
+switch back to root in order to accomplish a task which requires super-user 
+access. Once the task is completed, root privileges are relinquished and the 
+server continues to run as the specified user and group. When applied to a 
+&lt;VirtualServer&gt; block, proftpd 
+will run as the specified user/group on connections destined for the virtual 
+server's address or port. If either User or Group 
+is applied to an &lt;Anonymous&gt; 
+block, proftpd will establish an anonymous login when a user attempts to login 
+with the specified userid, as well as permanently switching to the corresponding 
+uid/gid (matching the User/Group parameters found in the anonymous block) 
+after login.
+Note: When an authorized unix user is authenticated and logs in, all former 
+privileges are released, the daemon switches permanently to the logged in 
+user's uid/gid, and is never again capable of switching back to root or any 
+other user/group.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,80 @@
+<refentry id="TimeoutNoTransfer">
+<?dbhtml filename="config_ref_TimeoutNoTransfer.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TimeoutNoTransfer</primary></indexterm>
+TimeoutNoTransfer
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TimeoutNoTransfer</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TimeoutNoTransfer</command>
+<arg choice="opt">
+  <option>TimeoutNoTransfer seconds</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+TimeoutNoTransfer 300
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The TimeoutNoTransfer directive configures the maximum number of seconds 
+a client is allowed to spend connected, after authentication, without issuing 
+a command which results in creating an active or passive data connection (i.e. 
+sending/receiving a file, or receiving a directory listing).
+See Also: TimeoutIdle, TimeoutLogin
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

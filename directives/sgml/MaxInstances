@@ -1,0 +1,86 @@
+<refentry id="MaxInstances">
+<?dbhtml filename="config_ref_MaxInstances.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MaxInstances</primary></indexterm>
+MaxInstances
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MaxInstances</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MaxInstances</command>
+<arg choice="opt">
+  <option>MaxInstances number</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+MaxInstances none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6pl1
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The MaxInstances directive configures the maximum number of child processes 
+that may be spawned by a parent proftpd process in standalone 
+mode. The directive has no effect when used on a server running in inetd 
+mode.
+Because each child proftpd process represents a single client connection, 
+this directive also controls the maximum number of simultaneous connections 
+allowed. Additional connections beyond the configured limit are syslog'd and 
+silently disconnected. The MaxInstances directive can be used to prevent undesirable 
+denial-of-service attacks (repeatedly connecting to the ftp port, causing 
+proftpd to fork-bomb). By default, no limit is placed on the number of child 
+processes that may run at one time.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

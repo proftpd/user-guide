@@ -1,0 +1,111 @@
+<refentry id="ExtendedLog">
+<?dbhtml filename="config_ref_ExtendedLog.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>ExtendedLog</primary></indexterm>
+ExtendedLog
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ExtendedLog</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>ExtendedLog</command>
+<arg choice="opt">
+  <option>filename [[command-classes] format-nickname]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt; &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_log
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6pl1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The ExtendedLog directive allows customizable logfiles to be generated, either 
+globally or per VirtualHost. The filename 
+argument must contain an absolute pathname to a logfile which will be appended 
+to when proftpd starts. Multiple logfiles (potentially with different command 
+classes and formats) can be created.
+Optionally, the command-classes argument can be used 
+to control which types of commands are logged. If not command classes are specified, 
+proftpd logs all commands by default (passwords are hidden). 
+command-classes is a comma delimited (no whitespace!) 
+list of which commands to log. The following are valid classes:
+NONE
+No commands
+AUTH
+Authentication commands (USER, PASS)
+INFO
+Informational commands (PWD, SYST, etc)
+DIRS
+Directory commands (LIST, CWD, MKD, etc)
+READ
+File reading (RETR)
+WRITE
+File/directory writing or creation
+MISC
+Miscellaneous commands (SITE, etc)
+ALL
+All commands (default)
+If a format-nickname argument is supplied, ExtendedLog 
+will use the predefined logformat (created by LogFormat). 
+Otherwise, the default format of &quot;%h %l %u %t \&quot;%r\&quot; %s %b&quot; 
+is used.
+For example, to log all read and write operations to /var/log/ftp.log (using 
+the default format), you could:
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+LogFormat, TransferLog
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+ExtendedLog /var/log/ftp.log read,write
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

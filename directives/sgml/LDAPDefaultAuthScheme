@@ -1,0 +1,79 @@
+<refentry id="LDAPDefaultAuthScheme">
+<?dbhtml filename="config_ref_LDAPDefaultAuthScheme.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>LDAPDefaultAuthScheme</primary></indexterm>
+LDAPDefaultAuthScheme
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>LDAPDefaultAuthScheme</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>LDAPDefaultAuthScheme</command>
+<arg choice="opt">
+  <option>LDAPDefaultAuthScheme crypt|clear</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+LDAPDefaultAuthScheme "crypt"
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ldap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+mod_ldap v2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Specifies the authentication scheme used for passwords with no {prefix}
+in the LDAP database. For example, if you are using something like
+userPassword: mypass in your LDAP database, you would want to set
+LDAPDefaultAuthScheme to clear.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

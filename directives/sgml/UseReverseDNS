@@ -1,0 +1,84 @@
+<refentry id="UseReverseDNS">
+<?dbhtml filename="config_ref_UseReverseDNS.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>UseReverseDNS</primary></indexterm>
+UseReverseDNS
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>UseReverseDNS</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>UseReverseDNS</command>
+<arg choice="opt">
+  <option>UseReverseDNS on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+UseReverseDNS on
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Normally, incoming active mode data connections and outgoing passive mode 
+data connections have a reverse DNS lookup performed on the remote host's 
+IP address. In a chroot environment (such as &lt;Anonymous&gt; 
+or DefaultRoot), the /etc/hosts file cannot be 
+checked and the only possible resolution is via DNS. If for some reason, DNS 
+is not available or improperly configured this can result in proftpd blocking 
+(&quot;stalling&quot;) until the libc resolver code times out. Disabling this 
+directive prevents proftpd from attempting to reverse-lookup data connection 
+IP addresses. 
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

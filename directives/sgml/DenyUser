@@ -1,0 +1,82 @@
+<refentry id="DenyUser">
+<?dbhtml filename="config_ref_DenyUser.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DenyUser</primary></indexterm>
+DenyUser
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DenyUser</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DenyUser</command>
+<arg choice="opt">
+  <option>DenyUser user-expression</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Limit&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+DenyUser specifies a user-expression that is specifically denied within
+the context of the &lt;Limit&gt; block it is applied to.  user-expression
+is a comma delimited list of users or &quot;not&quot; users (by prefixing
+a user name with the `!' character). The expression is parsed as a boolean
+&quot;and&quot; list, meaning that all elements of the expression must
+evaluate to logically true in order for the explicit deny to apply.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+See Also: AllowUser, DenyGroup, AllowGroup
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

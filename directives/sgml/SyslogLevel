@@ -1,0 +1,102 @@
+<refentry id="SyslogLevel">
+<?dbhtml filename="config_ref_SyslogLevel.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SyslogLevel</primary></indexterm>
+SyslogLevel
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SyslogLevel</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SyslogLevel</command>
+<arg choice="opt">
+  <option>SyslogLevel emerg|alert|crit|error|warn|notice|info|debug</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0rc2 later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+SyslogLevel adjusts the verbosity of the messages recorded in the
+error logs.  The following levels are available, in order
+of decreasing significance:
+Level
+Description
+emerg
+Emergencies - system is unusable.
+alert
+Action must be taken immediately.
+crit
+Critical Conditions.
+error
+Error conditions.
+warn
+Warning conditions.
+notice
+Normal but significant condition.
+info
+Informational.
+debug
+Debug-level messages
+When a particular level is specified, messages from all other
+levels of higher significance will be reported as well.
+E.g., when SyslogLevel info is specified, then
+messages with log levels of notice and
+warn will also be posted.
+Using a level of at least crit is recommended.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

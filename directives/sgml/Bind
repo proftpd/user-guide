@@ -1,0 +1,83 @@
+<refentry id="Bind">
+<?dbhtml filename="config_ref_Bind.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>Bind</primary></indexterm>
+Bind
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>Bind</refname>
+<refpurpose>Bind the server or Virtualhost to a specific IP address</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>Bind</command>
+<arg choice="opt">
+  <option>IP address</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The Bind directive allows additional IP addresses to be bound to a main
+or VirtualHost configuration. Multiple Bind directives can be used to
+bind multiple addresses. The address argument should be either a fully
+qualified domain name or a numeric dotted-quad IP address. Incoming
+connections destined to an additional address added by Bind are serviced
+by the context containing the directive. Additionally, if SocketBindTight
+is set to on, a specific listen connection is created for each additional
+address.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

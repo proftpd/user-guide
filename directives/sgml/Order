@@ -1,0 +1,90 @@
+<refentry id="Order">
+<?dbhtml filename="config_ref_Order.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>Order</primary></indexterm>
+Order
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>Order</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>Order</command>
+<arg choice="opt">
+  <option>Order allow,deny|deny,allow</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+Order allow,deny
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Limit&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0pl6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The Order directive configures the order in which Allow and Deny directives are checked inside of a &lt;Limit&gt; block. Because Allow directives are permissive, and Deny directives restrictive, the order in which they are examined can significantly alter the way security functions.  If the default setting of allow,deny is used, &quot;allowed&quot; access permissions are checked first. If an Allow directive explicitly allows access to the &lt;Limit&gt; context, access is granted and any Deny directives are never checked. If Allow did not explicitly permit access, Deny directives are checked. If any Deny directive applies, access is explicitly denied. Otherwise, access is granted.  When deny,allow is used, &quot;deny&quot; access 
+restrictions are checked first. If any restriction applies, access is denied 
+immediately. If nothing is denied, Allow permissions 
+are checked. If an Allow explicitly permits access, access 
+to the entire context is permitted; otherwise access is implicitly denied.
+For clarification, the following illustrates the steps used when checking 
+Allow/Deny access:
+Order allow,deny
+Check Allow directives. If one or more apply, exit with result: ALLOW
+Check Deny directives. If one or more apply, exit with result: DENY
+Exit with default implicit ALLOW
+Order deny,allow
+Check Deny directives. If one or more apply, exit with result: DENY
+Check Allow directives. If one or more apply, exit with result: ALLOW
+Exit with default implicit: DENY
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

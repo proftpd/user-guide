@@ -1,0 +1,78 @@
+<refentry id="AuthPAM">
+<?dbhtml filename="config_ref_AuthPAM.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AuthPAM</primary></indexterm>
+AuthPAM
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AuthPAM</refname>
+<refpurpose>Enable/Disable PAM authentication</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AuthPAM</command>
+<arg choice="opt">
+  <option>AuthPAM on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+on
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config,&lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_pam
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+This directive determines whether PAM is used as an authentication 
+method by ProFTPD.  Enabled by default to fit in with the design 
+policy of using PAM as the primary authentication mechanism.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,85 @@
+<refentry id="DenyGroup">
+<?dbhtml filename="config_ref_DenyGroup.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DenyGroup</primary></indexterm>
+DenyGroup
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DenyGroup</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DenyGroup</command>
+<arg choice="opt">
+  <option>DenyGroup group-expression</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Limit&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+DenyGroup specifies a group-expression that is specifically 
+denied within the context of the 
+&lt;Limit&gt; block it is applied to. group-expression 
+has the same format as that used in DefaultRoot, 
+in that it should contain a comma separated list of groups or &quot;not&quot; 
+groups (by prefixing a group name with the `!' character) that are to be denied 
+access to the block. The expression is parsed as a boolean &quot;and&quot; list, 
+meaning that ALL elements of the expression must evaluate to logically true 
+in order for the explicit deny to apply.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+See Also: AllowGroup, AllowUser, DenyUser
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

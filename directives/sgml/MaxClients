@@ -1,0 +1,92 @@
+<refentry id="MaxClients">
+<?dbhtml filename="config_ref_MaxClients.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MaxClients</primary></indexterm>
+MaxClients
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MaxClients</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MaxClients</command>
+<arg choice="opt">
+  <option>MaxClients number|none [message]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+MaxClients none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Anonymous&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The MaxClients directive configures the maximum number of authenticated clients 
+which may be logged into a server or anonymous account. Once this limit is 
+reached, additional clients attempting to authenticate will be disconnected.
+The special value none may be supplied which removes 
+all maximum connection limits from the applicable configuration context. Additionally, 
+an optional message argument may be used which will 
+be displayed to a client attempting to exceed the maximum value; immediately 
+before disconnection. The message argument is parsed 
+for the magic string &quot;%m&quot;, which is replaced with 
+the configured maximum value. If message is not 
+supplied, a system-wide default message is used.
+Example:
+MaxClients 5 &quot;Sorry, the maximum number of allowed users are already 
+connected (%m)&quot;
+Results in:
+530 Sorry, the maximum number of allowed users are already connected 
+(5)
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

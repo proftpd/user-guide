@@ -1,0 +1,84 @@
+<refentry id="DenyFilter">
+<?dbhtml filename="config_ref_DenyFilter.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DenyFilter</primary></indexterm>
+DenyFilter
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DenyFilter</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DenyFilter</command>
+<arg choice="opt">
+  <option>DenyFilter regular-expression</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Similar to AllowFilter, DenyFilter specifies a regular 
+expression which must not match any command. If the regex does 
+match, a "Forbidden command" error is returned to the client. This can be especially 
+useful for forbidding certain command combinations from ever reaching ProFTPD.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+AllowFilter
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+# We don't want to allow any commands with % being sent to the server
+DenyFilter &quot;%&quot;
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

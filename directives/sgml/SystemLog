@@ -1,0 +1,82 @@
+<refentry id="SystemLog">
+<?dbhtml filename="config_ref_SystemLog.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SystemLog</primary></indexterm>
+SystemLog
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SystemLog</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SystemLog</command>
+<arg choice="opt">
+  <option>SystemLog filename|NONE</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_log
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6pl1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The SystemLog directive disables proftpd's use of the syslog mechanism and 
+instead redirects all logging output to the specified filename. 
+The filename argument should contain an absolute 
+path. Use of this directive overrides any facility set by the SyslogFacility 
+directive.
+Additionally, the special keyword NONE can be used 
+which disables all syslog style logging for the entire configuration.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,79 @@
+<refentry id="RateReadFreeBytes">
+<?dbhtml filename="config_ref_RateReadFreeBytes.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>RateReadFreeBytes</primary></indexterm>
+RateReadFreeBytes
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>RateReadFreeBytes</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>RateReadFreeBytes</command>
+<arg choice="opt">
+  <option>RateReadFreeBytes number of bytes</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+0
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_xfer
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+RateReadFreeBytes is the amount of bytes to be transferred without any bandwidth 
+limits, so with that option you can give full bandwidth for small files 
+while limiting big ones. (See RateReadHardBPS 
+on further info about what happens after the free amount was transferred.) 
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

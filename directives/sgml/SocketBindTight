@@ -1,0 +1,113 @@
+<refentry id="SocketBindTight">
+<?dbhtml filename="config_ref_SocketBindTight.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SocketBindTight</primary></indexterm>
+SocketBindTight
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SocketBindTight</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SocketBindTight</command>
+<arg choice="opt">
+  <option>SocketBindTight on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+SocketBindTight off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0pl6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The SocketBindTight directive controls how proftpd creates and binds its 
+initial tcp listen sockets in standalone mode (see 
+ServerType). The directive has no effect upon servers 
+running in inetd mode, because listen sockets are 
+not needed or created. When SocketBindTight is set to off 
+(the default), a single listening socket is created for each port that the 
+server must listen on, regardless of the number of IP addresses being used 
+by &lt;VirtualHost&gt; configurations. This has 
+the benefit of typically requiring a relatively small number of file descriptors 
+for the master daemon process, even if a large number of virtual servers are 
+configured. If SocketBindTight is set to on, a listen 
+socket is created and bound to a specific IP address for the master server 
+and all configured virtual servers. This allows for situations where an administrator 
+may wish to have a particular port be used by both proftpd (on one IP address) 
+and another daemon (on a different IP address). The drawback is that considerably 
+more file descriptors will be required if a large number of virtual servers 
+must be supported.
+Example: Two servers have been configured (one master and one virtual), with 
+the IP addresses 10.0.0.1 and 10.0.0.2, respectively. The 10.0.0.1 server 
+runs on port 21, while 10.0.0.2 runs on port 2001.
+SocketBindTight off #default
+# proftpd creates two sockets, both bound to ALL available addresses.
+# one socket listens on port 21, the other on 2001. Because each socket is
+# bound to all available addresses, no other daemon or user process will be
+# allowed to bind to ports 21 or 2001.
+...
+SocketBindTight on
+# proftpd creates two sockets again, however one is bound to 10.0.0.1, port 
+21
+# and the other to 10.0.0.2, port 2001. Because these sockets are &quot;tightly&quot;
+# bound to IP addresses, port 21 can be reused on any address OTHER than
+# 10.0.0.1, and visa-versa with 10.0.0.2, port 2001.
+One side-effect of setting SocketBindTight to on 
+is that connections to non-bound addresses will result in a &quot;connection 
+refused&quot; message rather than the typical &quot;500 Sorry, no server available 
+to handle request on xxx.xxx.xxx.xxx.&quot;, due to the fact that no listen 
+socket has been bound to the particular address/port pair. This may or may 
+not be aesthetically desirable, depending on your circumstances.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

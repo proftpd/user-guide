@@ -1,0 +1,83 @@
+<refentry id="DeferWelcome">
+<?dbhtml filename="config_ref_DeferWelcome.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DeferWelcome</primary></indexterm>
+DeferWelcome
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DeferWelcome</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DeferWelcome</command>
+<arg choice="opt">
+  <option>DeferWelcome on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+DeferWelcome off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The DeferWelcome directive configures a master or 
+virtual server to delay transmitting the 
+ServerName and address to new connections, 
+until a client has successfully authenticated. If enabled, the initial welcome 
+message will be exceedingly generic and will not give away any type of information 
+about the host that the daemon is actively running on. This can be used by security-conscious 
+administrators to limit the amount of &quot;probing&quot; possible from non-trusted 
+networks/hosts.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,83 @@
+<refentry id="DenyAll">
+<?dbhtml filename="config_ref_DenyAll.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DenyAll</primary></indexterm>
+DenyAll
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DenyAll</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DenyAll</command>
+<arg choice="opt">
+  <option>DenyAll</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The DenyAll directive is analogous to a combination of &quot;order
+deny,allow &lt;cr&gt; deny from all&quot;, with the exception that it
+has a higher precendance when parsed. It is provided as a convenient
+method of completely denying access to a directory, anonymous ftp or
+limit block. Because of its precedence, it should not be intermixed with
+normal  Order/Deny directives. The DenyAll directive can be overridden
+at a lower level directory by using AllowAll. DenyAll and AllowAll are
+mutually exclusive.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

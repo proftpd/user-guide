@@ -1,0 +1,82 @@
+<refentry id="ServerIdent">
+<?dbhtml filename="config_ref_ServerIdent.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>ServerIdent</primary></indexterm>
+ServerIdent
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ServerIdent</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>ServerIdent</command>
+<arg choice="opt">
+  <option>ServerIdent On|Off [identification string]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+ServerIdent ProFTPD [version] Server (server name) [hostname]
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The ServerIdent directive sets the default message displayed when a new client 
+connects. Setting this to off displays "[hostname] 
+FTP server ready." If set to on, the directive 
+can take an optional string argument, which will be displayed instead of the 
+default text. Sites desiring to give out minimal information will probably 
+want a setting like ServerIdent "FTP Server ready.", which won't 
+even reveal the hostname. 
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,128 @@
+<refentry id="DefaultRoot">
+<?dbhtml filename="config_ref_DefaultRoot.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DefaultRoot</primary></indexterm>
+DefaultRoot
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DefaultRoot</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DefaultRoot</command>
+<arg choice="opt">
+  <option>DefaultRoot directory [group-expression]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+DefaultRoot /
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_auth
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0pl7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The DefaultRoot directive controls the default root directory assigned
+to a user upon login. If DefaultRoot is set to a directory other than
+&quot;/&quot;, a chroot operation is performed immediately after a client
+authenticates. This can be used to effectively isolate the client from
+a portion of the host system filespace. The specified root directory
+must begin with a / or can be the magic character '~'; meaning that the
+client is chroot jailed into their home directory.
+</para>
+
+<para>
+If the DefaultRoot directive specifies a directory which disallows
+access to the logged-in user's home directory, the user's current
+working directory after login is set to the DefaultRoot instead of their
+normal home directory. DefaultRoot cannot be used in &lt;Anonymous&gt;
+configuration blocks, as the &lt;Anonymous&gt; directive explicitly
+contains a root directory used for Anonymous logins.  The special
+character '~' is replaced with the authenticating user's home directory
+immediately after login. Note that the default root may be a subdirectory
+of the home directory, such as &quot;~/anon-ftp&quot;.
+</para>
+
+<para>
+The optional group-expression argument can be used to restrict the
+DefaultRoot directive to a unix group, groups or subset of groups. The
+expression takes the format: [!]group-name1[,[!]group-name2[,...]]. The
+expression is parsed in a logical boolean AND fashion, such that each
+member of the expression must evaluate to logically TRUE in order for
+the DefaultRoot directive to apply. The special character '!' is used
+to negate group membership.
+</para>
+
+<para>
+Care should be taken when using DefaultRoot. Chroot &quot;jails&quot;
+should not be used as methods for implementing general system security
+as there are potentially ways that a user can &quot;escape&quot; the jail.
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+Example of a DefaultRoot configuration:
+ServerName &quot;A test ProFTPD Server&quot;
+ServerType inetd
+User ftp
+Group ftp
+#
+# This causes proftpd to perform a chroot into the authenticating user's directory 
+immediately after login.
+# Once this happens, the user is unable to &quot;see&quot; higher level directories.
+# Because a group-expression is included, only users who are a member of
+# the group 'users' and NOT a member of 'staff' will have their default
+# root directory set to '~'.
+DefaultRoot ~ users,!staff
+... 
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

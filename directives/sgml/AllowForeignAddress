@@ -1,0 +1,89 @@
+<refentry id="AllowForeignAddress">
+<?dbhtml filename="config_ref_AllowForeignAddress.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AllowForeignAddress</primary></indexterm>
+AllowForeignAddress
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AllowForeignAddress</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AllowForeignAddress</command>
+<arg choice="opt">
+  <option>AllowForeignAddress on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+AllowForeignAddress off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Normally, proftpd disallows clients from using the ftp PORT command with
+anything other than their own address (the source address of the ftp
+control connection), as well as preventing the use of PORT to specify
+a low-numbered (&lt; 1024) port. In either case, the client is sent an
+&quot;Invalid port&quot; error and a message is syslog'd indicating either
+&quot;address mismatch&quot; or &quot;bounce attack&quot;. By enabling
+this directive, proftpd will allow clients to transmit foreign data
+connection addresses that do not match the client's address. This allows
+such tricks as permitting a client to transfer a file between two FTP
+servers without involving itself in the actual data connection. Generally
+it's considered a bad idea, security-wise, to permit this sort of thing.
+AllowForeignAddress only affects data connection addresses; not tcp
+ports. There is no way (and no valid reason) to allow a client to use
+a low-numbered port in its PORT command.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

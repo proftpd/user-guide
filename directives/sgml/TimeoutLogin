@@ -1,0 +1,80 @@
+<refentry id="TimeoutLogin">
+<?dbhtml filename="config_ref_TimeoutLogin.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TimeoutLogin</primary></indexterm>
+TimeoutLogin
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TimeoutLogin</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TimeoutLogin</command>
+<arg choice="opt">
+  <option>TimeoutLogin seconds</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+TimeoutLogin 300
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The TimeoutLogin directive configures the maximum number of seconds a client 
+is allowed to spend authenticating. The login timer is not reset when a client 
+transmits data, and is only removed once a client has transmitted an acceptable 
+USER/PASS command combination.
+See Also: TimeoutIdle, TimeoutNoTransfer
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

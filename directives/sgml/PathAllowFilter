@@ -1,0 +1,86 @@
+<refentry id="PathAllowFilter">
+<?dbhtml filename="config_ref_PathAllowFilter.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>PathAllowFilter</primary></indexterm>
+PathAllowFilter
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>PathAllowFilter</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>PathAllowFilter</command>
+<arg choice="opt">
+  <option>PathAllowFilter regular-expression</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+PathAllowFilter allows the configuration of a regular expression that must 
+be matched for all newly uploaded (stored) files. The regular expression is 
+applied against the entire pathname specified by the client, so care must 
+be taken when creating a proper regex. Paths that fail the regex match result 
+in a "Forbidden filename" error being returned to the client.
+If the regular-expression argument contains whitespace, 
+it must be enclosed in quotes.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+# Only allow filenames containing alphanumeric characters
+PathAllowFilter &quot;.*/[a-zA-Z0-9]+$&quot;
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

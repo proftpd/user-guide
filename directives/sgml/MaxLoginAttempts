@@ -1,0 +1,79 @@
+<refentry id="MaxLoginAttempts">
+<?dbhtml filename="config_ref_MaxLoginAttempts.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MaxLoginAttempts</primary></indexterm>
+MaxLoginAttempts
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MaxLoginAttempts</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MaxLoginAttempts</command>
+<arg choice="opt">
+  <option>MaxLoginAttempts number</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+MaxLoginAttempts 3
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The MaxLoginAttempts directive configures the maximum number of times a client 
+may attempt to authenticate to the server during a given connection. After 
+the number of attempts exceeds this value, the user is disconnected and an 
+appropriate message is logged via the syslog mechanism.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,138 @@
+<refentry id="LogFormat">
+<?dbhtml filename="config_ref_LogFormat.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>LogFormat</primary></indexterm>
+LogFormat
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>LogFormat</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>LogFormat</command>
+<arg choice="opt">
+  <option>LogFormat nickname &quot;format-string&quot;</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+LogFormat default &quot;%h %l %u %t \&quot;%r\&quot; %s %b&quot;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_log
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6pl1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The LogFormat directive can be used to create a custom logging format for use 
+with the ExtendedLog directive. Once created, the 
+format can be referenced by the specified nickname.
+The format-string argument can consist of any combination 
+of letters, numbers and symbols. The special character % is 
+used to start a meta-sequence (see below). To insert a literal % character, 
+use %%. The following meta sequences are available and are replaced as indicated 
+when logging.
+%A
+&nbsp;
+Anonymous username (password given), or UNKNOWN if non-anonymous
+%b
+&nbsp;
+Bytes sent for request
+%f
+&nbsp;
+Filename stored or retrieved, absolute path (not chrooted)
+%F
+&nbsp;
+Filename stored or retrieved, as the client sees it
+%{FOOBAR}e
+&nbsp;
+Contents of environment variable FOOBAR
+%h
+&nbsp;
+Remote host name
+%a
+&nbsp;
+Remote IP address
+%l
+&nbsp;
+Remote username (from ident), or UNKNOWN if ident lookup failed
+%m
+&nbsp;
+Command (method) name received from client, e.g., RETR
+%p
+&nbsp;
+Local server port number
+%v
+&nbsp;
+Local server name
+%P
+&nbsp;
+Local server process id (pid)
+%r
+&nbsp;
+Full command line received from client
+%t
+&nbsp;
+Current local time
+%{format}t
+&nbsp;
+Current local time formatted (strftime(3) format)
+%T
+&nbsp;
+Time taken to transmit/receive file, in seconds 
+%s
+&nbsp;
+Numeric FTP response code (status)
+%u
+&nbsp;
+Local authenticated userid
+See Also: ExtendedLog, TransferLog
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,80 @@
+<refentry id="UserOwner">
+<?dbhtml filename="config_ref_UserOwner.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>UserOwner</primary></indexterm>
+UserOwner
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>UserOwner</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>UserOwner</command>
+<arg choice="opt">
+  <option>UserOwner username</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Anonymous&gt;, &lt;Directory&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2pre11 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The UserOwner directive configures which user all newly created directories 
+and files will be owned by, within the context that UserOwner is applied to. 
+The user ID of username cannot be 0 (root).
+Where it is used, the GroupOwner directive is not
+restricted to groups that the current user is a member of.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

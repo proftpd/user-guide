@@ -1,0 +1,84 @@
+<refentry id="DisplayLogin">
+<?dbhtml filename="config_ref_DisplayLogin.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DisplayLogin</primary></indexterm>
+DisplayLogin
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DisplayLogin</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DisplayLogin</command>
+<arg choice="opt">
+  <option>DisplayLogin filename</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The DisplayLogin directive configures an ASCII text filename which will be 
+displayed to the user when they initially login. The filename can be either 
+relative or absolute. In the case of a relative filename, the file is searched 
+for in the initial directory a user is placed in immediately after login (home 
+directory for unix user logins, anonymous-root directory for anonymous logins). Note: that for jailed
+logins, the file must reside inside the chroot()ed file system space. If 
+the file cannot be found or accessed, no error occurs and nothing is logged 
+or displayed to the client.
+DisplayLogin supports the same &quot;magic cookies&quot; as DisplayFirstChdir.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

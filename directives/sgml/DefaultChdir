@@ -1,0 +1,80 @@
+<refentry id="DefaultChdir">
+<?dbhtml filename="config_ref_DefaultChdir.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DefaultChdir</primary></indexterm>
+DefaultChdir
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DefaultChdir</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DefaultChdir</command>
+<arg choice="opt">
+  <option>DefaultChdir directory [group-expression]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+~
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_auth
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Determines the directory a user is placed in after logging in.
+By default, the user is put in their home directory.  The specified
+directory can be relative to the user's home directory.
+NOTE: if the specified directory is not available
+the user will not be able to log in.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

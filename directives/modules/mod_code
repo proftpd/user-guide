@@ -1,0 +1,32 @@
+<refentry id="mod-code">
+<?dbhtml filename="config_ref_mod_code.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_code</primary></indexterm>
+mod_code
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_code</refname>
+<refpurpose>FIX ME FIX ME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_code</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+FIXME
+FIXME
+FIXME
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>

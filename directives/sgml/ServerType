@@ -1,0 +1,84 @@
+<refentry id="ServerType">
+<?dbhtml filename="config_ref_ServerType.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>ServerType</primary></indexterm>
+ServerType
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ServerType</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>ServerType</command>
+<arg choice="opt">
+  <option>ServerType type-identifier</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+ServerType standalone
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The ServerType directive configures the server daemon's operating mode. The 
+type-identifier can be one of two values:
+inetd
+The daemon will expect to be run from the inetd &quot;super server.&quot; 
+New connections are passed from inetd to proftpd and serviced immediately.
+standalone
+The daemon starts and begins listening to the configured port for incoming connections. New connections 
+result in spawned child processes dedicated to servicing all requests from 
+the newly connected client.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

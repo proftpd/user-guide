@@ -1,0 +1,86 @@
+<refentry id="IgnoreHidden">
+<?dbhtml filename="config_ref_IgnoreHidden.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>IgnoreHidden</primary></indexterm>
+IgnoreHidden
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>IgnoreHidden</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>IgnoreHidden</command>
+<arg choice="opt">
+  <option>IgnoreHidden on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+IgnoreHidden off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Limit&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Normally, files hidden via HideNoAccess, HideUser or HideGroup
+can be operated on by all FTP commands (assuming Unix file
+permissions allow access), even though they do not appear in directory
+listings. Additionally, even when normal file system permissions disallow
+access, proftpd returns a &quot;Permission denied&quot; error to the
+client, indicating that the requested object does exist, even if it
+cannot be acted upon. IgnoreHidden configures a &lt;Limit&gt; block to
+completely ignore any hidden directory entries for the set of limited FTP
+commands. This has the effect of returning an error similar to &quot;No
+such file or directory&quot; when the client attempts to use the limited
+command upon a hidden directory or file.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

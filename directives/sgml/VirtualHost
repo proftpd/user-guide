@@ -1,0 +1,107 @@
+<refentry id="VirtualHost">
+<?dbhtml filename="config_ref_VirtualHost.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>VirtualHost</primary></indexterm>
+VirtualHost
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>VirtualHost</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>VirtualHost</command>
+<arg choice="opt">
+  <option>&lt;VirtualHost address&gt;</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The VirtualHost configuration block is used to create an independent set 
+of configuration directives that apply to a particular hostname or IP address. 
+It is often used in conjunction with system level IP aliasing or dummy network 
+interfaces in order to establish one or more &quot;virtual&quot; servers which 
+all run on the same physical machine. The block is terminated with a &lt;/VirtualHost&gt; 
+directive. By utilizing the 
+Port directive inside a VirtualHost block, it is 
+possible to create a virtual server which uses the same address as the master 
+server, but listens on a separate tcp port (incompatible with ServerType inetd).
+When proftpd starts, virtual server connections are handled in one of two 
+ways, depending on the 
+ServerType setting:
+inetd
+The daemon examines the destination address and port of the incoming connection 
+handed off from inetd. If the connection matches one of the configured virtual 
+hosts, the connection is serviced based on the appropriate configuration. 
+If no virtual host matches, and the main server does not match, the client 
+is informed that no server is available to service their requests and disconnected.
+standalone
+After parsing the configuration file, the daemon begins listening for connections 
+on all configured ports, spawning child processes as necessary to handle 
+connections for either the main server or any virtual servers.
+Because of the method that the daemon uses to listen for connections when 
+in standalone mode, it is possible to support an 
+exceedingly large number of virtual servers, potentially exceeding the number 
+of per-process file descriptors. This is due to the fact that a single file 
+descriptor is used to listen to each configured port, regardless of the number 
+of addresses being monitored. Note that it may be necessary to increase 
+the
+tcpBackLog value on heavily loaded 
+servers in order to avoid kernel rejected client connections (&quot;Connection 
+refused&quot;).
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,82 @@
+<refentry id="HideUser">
+<?dbhtml filename="config_ref_HideUser.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>HideUser</primary></indexterm>
+HideUser
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>HideUser</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>HideUser</command>
+<arg choice="opt">
+  <option>HideUser userid</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Directory&gt;, &lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The HideUser directive configures a &lt;Directory&gt; or &lt;Anonymous&gt;
+block to hide all directory entries owned by the specified user, unless
+the owning user is the currently logged-in, authenticated user. Normally,
+hidden directories and files cannot be seen via LIST or NLST commands but
+can be operated on via other FTP commands (CWD, DELE, RETR, etc). This
+behavior can be modified via the IgnoreHidden directive. 
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+HideGroup, HideNoAccess, IgnoreHidden
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,82 @@
+<refentry id="AuthAliasOnly">
+<?dbhtml filename="config_ref_AuthAliasOnly.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AuthAliasOnly</primary></indexterm>
+AuthAliasOnly
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AuthAliasOnly</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AuthAliasOnly</command>
+<arg choice="opt">
+  <option>AuthAliasOnly on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+AuthAliasOnly off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.3 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+AuthAliasOnly restricts authentication to &quot;aliased&quot; logins only;
+i.e. those usernames provided by clients which are &quot;mapped&quot;
+to a real userid by the UserAlias directive. Turning AuthAliasOnly `on'
+in a particular context will cause proftpd to completely ignore all
+non-aliased logins for the entire context. If no contexts are available
+without AuthAliasOnly set to `on', proftpd rejects the client login and
+sends an appropriate message to syslog.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,84 @@
+<refentry id="MaxClientsPerHost">
+<?dbhtml filename="config_ref_MaxClientsPerHost.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MaxClientsPerHost</primary></indexterm>
+MaxClientsPerHost
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MaxClientsPerHost</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MaxClientsPerHost</command>
+<arg choice="opt">
+  <option>MaxClientsPerHost number|none [message]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+MaxClientsPerHost none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Anonymous&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The MaxClientsPerHost directive configures the maximum number of clients 
+allowed to connect per host. The optional argument message 
+may be used which will be displayed to a client attempting to exceed the maximum 
+value. If message is not supplied, a system-wide 
+default message is used. 
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+MaxClientsPerHost 1 &quot;Sorry, you may not connect more than one time.&quot;
+Results in: 530 Sorry, you may not connect more than one time.
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

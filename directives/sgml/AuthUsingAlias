@@ -1,0 +1,108 @@
+<refentry id="AuthUsingAlias">
+<?dbhtml filename="config_ref_AuthUsingAlias.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AuthUsingAlias</primary></indexterm>
+AuthUsingAlias
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AuthUsingAlias</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AuthUsingAlias</command>
+<arg choice="opt">
+  <option>AuthUsingAlias on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+AuthUsingAlias off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre9 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Normally, when the AnonRequirePassword directive is used, the
+authentication is done using the password entry of the daemon
+process. However under certain circumstances it may be required for the
+authentication to be done using the login username & password instead.
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+An example of an Anonymous configuration using
+AuthUsingAlias
+# Basic Read-Only Anonymous Configuration.
+&lt;Anonymous /home/ftp&gt;
+UserAlias             anonymous  nobody
+UserAlias             ftp        nobody
+AuthAliasOnly         on
+&lt;Limit WRITE&gt;
+DenyAll
+&lt;/Limit&gt;
+&lt;/Anonymous&gt;
+# Give Full Read-Write Anonymous Access to certain users
+&lt;Anonymous /home/ftp&gt;
+AnonRequirePassword   on
+AuthAliasOnly         on
+AuthUsingAlias        on
+# The list of authorized users.
+# user/pass lookup is for each user, not password entry
+# of server uid ('nobody' in this example).
+UserAlias             fred       nobody
+UserAlias             joe        nobody
+&lt;Limit ALL&gt;
+AllowAll
+&lt;/Limit&gt;
+&lt;/Anonymous&gt;
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

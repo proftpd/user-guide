@@ -1,0 +1,82 @@
+<refentry id="TransferLog">
+<?dbhtml filename="config_ref_TransferLog.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TransferLog</primary></indexterm>
+TransferLog
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TransferLog</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TransferLog</command>
+<arg choice="opt">
+  <option>TransferLog filename|NONE</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+TransferLog /var/log/xferlog
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Anonymous&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.4 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The TransferLog directive configures the full path to the &quot;wu-ftpd style&quot; 
+file transfer log. Separate log files can be created for each Anonymous 
+and/or VirtualHost.
+Additionally, the special keyword NONE can be used, 
+which disables wu-ftpd style transfer logging for the context in which the 
+directive is used (only applicable to version 1.1.7 and later).
+See Also: ExtendedLog, LogFormat
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

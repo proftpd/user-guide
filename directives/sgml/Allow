@@ -1,0 +1,104 @@
+<refentry id="Allow">
+<?dbhtml filename="config_ref_Allow.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>Allow</primary></indexterm>
+Allow
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>Allow</refname>
+<refpurpose>Access control directive</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>Allow</command>
+<arg choice="opt">
+  <option>Allow [&quot;from&quot;] &quot;all&quot;|&quot;none&quot;|host|network[,host|network[,...]]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+Allow from all
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Limit&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0pl6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The Allow directive is used inside a &lt;Limit&gt; context to explicitly
+specify which hosts and/or networks have access to the commands or
+operations being limited. Allow is typically used in conjunction
+with Order and Deny in order to create sophisticated (or perhaps
+not-so-sophisticated) access control rules. Allow takes an optional
+first argument; the keyword from. Using from is purely cosmetic. The
+remaining arguments are expected to be a list of hosts and networks which
+will be explicitly granted access. The magic keyword all can be used to
+indicate that all hosts will explicitly be granted access (analogous to
+the AllowAll directive, except with a lower priority). Additionally, the
+magic keyword none can be used to indicate that no hosts or networks
+will be explicitly granted access (although this does not prevent
+them from implicitly being granted access). If all or none is used,
+no other hosts or networks can be supplied.  Host and network addresses
+can be specified by name or numeric address. For security reasons, it is
+recommended that all address information be supplied numerically. Relying
+solely on named addresses causes security to depend a great deal upon
+DNS servers which may themselves be vulnerable to attack or spoofing.
+Numeric addresses which specify an entire network should end in a
+trailing period (i.e. 10.0.0. for the entire 10.0.0 subnet). Named
+address which specify an entire network should begin with a trailing
+period (i.e. .proftpd.net for the entire proftpd.net domain).
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+&lt;Limit LOGIN&gt;
+Order Allow,Deny
+Allow from 128.44.26.,128.44.26.,myhost.mydomain.edu,.trusted-domain.org
+Deny from all
+&lt;/Limit&gt;
+</programlisting>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</refsect1>
+
+</refentry>

@@ -1,0 +1,126 @@
+<refentry id="Anonymous">
+<?dbhtml filename="config_ref_Anonymous.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>Anonymous</primary></indexterm>
+Anonymous
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>Anonymous</refname>
+<refpurpose>Define an anonymous server</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>Anonymous</command>
+<arg choice="opt">
+  <option>&lt;Anonymous root-directory&gt;</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config,&lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The Anonymous configuration block is used to create an anonymous FTP
+login, and is terminated by a matching &lt;/Anonymous&gt; directive. The
+root-directory parameters specifies which directory the daemon will
+first chdir to, and then chroot, immediately after login. Once the chroot
+operation successfully completes, higher level directories are no longer
+accessible to the running child daemon (and thus the logged in user). By
+default, proftpd assumes an anonymous login if the remote client attempts
+to login as the currently running user; unless the current user is root,
+in which case anonymous logins are not allowed regardless of the presence
+of an &lt;Anonymous&gt; block. To force anonymous logins to be bound to
+a user other than the current user, see the User and Group directives. In
+addition, if a User or Group directive is present in an &lt;Anonymous&gt;
+block, the daemon permanently switches to the specified uid/gid before
+chroot()ing.  Normally, anonymous logins are not required to authenticate
+with a password, but are expected to enter a valid e-mail address in place
+of a normal password (which is logged). If this behavior is undesirable
+for a given &lt;Anonymous&gt; configuration block, it can be overridden
+via the AnonRequirePassword directive.
+</para>
+
+<para>
+Note: Chroot()ed anonymous directories do not need to have supplemental
+system files in them, nor do they need to have any sort of specific
+directory structure. This is because proftpd is designed to acquire as
+much system information as possible before the chroot, and to leave open
+those files which are needed for normal operation and reside outside
+the new root directory.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+Example of a typical anonymous FTP configuration:
+&lt;Anonymous /home/ftp&gt;
+User ftp # After anonymous login, daemon runs as user ftp.
+Group ftp # After anonymous login, daemon runs as group ftp.
+UserAlias anonymous ftp # Client login as 'anonymous' is aliased to 'ftp'.
+# Deny write operations to all directories, underneath root-dir
+# Default is to allow, so we don't need a &lt;Limit&gt; for read operations.
+&lt;Directory *&gt;
+&lt;Limit WRITE&gt;
+DenyAll
+&lt;/Limit&gt;
+&lt;/Directory&gt;
+&lt;Directory incoming&gt;
+&lt;Limit READ WRITE&gt;
+DenyAll
+&lt;/Limit&gt;
+&lt;Limit STOR&gt;
+AllowAll
+&lt;/Limit&gt;
+&lt;/Directory&gt;
+&lt;/Anonymous&gt;
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

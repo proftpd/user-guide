@@ -1,0 +1,77 @@
+<refentry id="DefaultTransferMode">
+<?dbhtml filename="config_ref_DefaultTransferMode.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DefaultTransferMode</primary></indexterm>
+DefaultTransferMode
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DefaultTransferMode</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DefaultTransferMode</command>
+<arg choice="opt">
+  <option>DefaultTransferMode ascii|binary</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+DefaultTransferMode ascii
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre9 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+DefaultTransferMode sets the default transfer mode of the server.  By default, 
+carriage-return/linefeed translation will be performed (ASCII mode).
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

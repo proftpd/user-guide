@@ -1,0 +1,80 @@
+<refentry id="AllowAll">
+<?dbhtml filename="config_ref_AllowAll.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AllowAll</primary></indexterm>
+AllowAll
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AllowAll</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AllowAll</command>
+<arg choice="opt">
+  <option>AllowAll</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+Default is to implicitly AllowAll, but not explicitly
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The AllowAll directive explicitly allows access to a &lt;Directory&gt;,
+&lt;Anonymous&gt; or &lt;Limit&gt; block. Although proftpd's default
+behavior is to allow access to a particular object, the default is
+an implicit allow. AllowAll creates an explicit allow, overriding any
+higher level denial directives.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

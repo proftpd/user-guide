@@ -1,0 +1,77 @@
+<refentry id="AllowOverwrite">
+<?dbhtml filename="config_ref_AllowOverwrite.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AllowOverwrite</primary></indexterm>
+AllowOverwrite
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AllowOverwrite</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AllowOverwrite</command>
+<arg choice="opt">
+  <option>AllowOverwrite on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+AllowOverwrite off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, &lt;Global&gt;, .ftpaccess
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The AllowOverwrite directive permits newly transfered files to overwrite
+existing files. By default, ftp clients cannot overwrite existing files.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

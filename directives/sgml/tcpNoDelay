@@ -1,0 +1,81 @@
+<refentry id="tcpNoDelay">
+<?dbhtml filename="config_ref_tcpNoDelay.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>tcpNoDelay</primary></indexterm>
+tcpNoDelay
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>tcpNoDelay</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>tcpNoDelay</command>
+<arg choice="opt">
+  <option>tcpNoDelay on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+tcpNoDelay on
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre3a and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The tcpNoDelay directive controls the use of the TCP_NODELAY socket option 
+(which disables the Nagle algorithm). ProFTPd uses TCP_NODELAY by default, 
+which usually is a benefit but this can occasionally lead to problems with 
+some clients, so tcpNoDelay is provided as a way to disable this option. You 
+will not normally need to use this directive but if you have clients reporting 
+unusually slow connections, try setting this to off. 
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

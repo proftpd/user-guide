@@ -1,0 +1,87 @@
+<refentry id="DirFakeMode">
+<?dbhtml filename="config_ref_DirFakeMode.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DirFakeMode</primary></indexterm>
+DirFakeMode
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DirFakeMode</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DirFakeMode</command>
+<arg choice="opt">
+  <option>DirFakeMode octal-mode</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ls
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The DirFakeMode directive configures a mode (or permissions) which will be 
+displayed for ALL files and directories in directory listings. For each subset 
+of permissions (user, group, other), the "execute" permission for directories 
+is added in listings if the "read" permission is specified by this directive. 
+For example:
+DirFakeMode 0640
+Will result in:
+-rw-r----- ... arbitrary.file
+drwxr-x--- ... arbitrary.directory 
+As with DirFakeUser, and DirFakeGroup, 
+the "fake" permissions shown in directory listings are cosmetic only, they do 
+not affect real permissions or access control in any way.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

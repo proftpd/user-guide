@@ -1,0 +1,79 @@
+<refentry id="QuotaType">
+<?dbhtml filename="config_ref_QuotaType.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>QuotaType</primary></indexterm>
+QuotaType
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>QuotaType</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>QuotaType</command>
+<arg choice="opt">
+  <option>QuotaType soft|hard</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+soft
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server, &lt;VirtualHost&gt;, &lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_quota
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+at least 1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The QuotaType directive defines what happens to files which break 
+the quota limits as they are uploaded.  Setting the type to hard
+ensures that the file which violates the quota is deleted.
+uploaded.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

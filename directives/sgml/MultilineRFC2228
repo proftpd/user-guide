@@ -1,0 +1,91 @@
+<refentry id="MultilineRFC2228">
+<?dbhtml filename="config_ref_MultilineRFC2228.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MultilineRFC2228</primary></indexterm>
+MultilineRFC2228
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MultilineRFC2228</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MultilineRFC2228</command>
+<arg choice="opt">
+  <option>MultilineRFC2228 on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+MultilineRFC2228 off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre3 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+By default, proftpd sends multiline responses as per RFC 959, i.e.: 
+200-First line
+More lines...
+200 Last line
+RFC 2228 specifies that "6xy" 
+response codes will be sent as follows: 
+600-First line
+600-More lines...
+600 Last line
+Note that 2228 ONLY specifies this for response codes starting with 
+'6'. Enabling this directive causes ALL responses to be sent in this 
+format, which may be more compatible with certain web browsers and clients. 
+Also note that this is NOT the same as wu-ftpd's multiline responses, 
+which do not comply with any RFC. Using this method of multilines is more likely 
+to be compatible with all clients, although it isn't strictly RFC, and is thus 
+not enabled by default. 
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

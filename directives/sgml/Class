@@ -1,0 +1,89 @@
+<refentry id="Class">
+<?dbhtml filename="config_ref_Class.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>Class</primary></indexterm>
+Class
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>Class</refname>
+<refpurpose>Definition statements for class based tracking</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>Class</command>
+<arg choice="opt">
+  <option>Class "name" limit|regex|ip value</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre9 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Controls class based access. Class base access allows each connecting IP to 
+be classified into a separate class. Each class has its own maximum number
+of connections. limit sets the maximum number of connections
+for that class name, regex sets a hostname regex (POSIX) for
+inclusion in the class and ip sets an IP/netmask based inclusion.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+Classes on
+Class local limit 100
+Class default limit 10
+Class local regex .*foo.com
+Class local ip 172.16.1.0/24
+</literallayout>
+
+<para>
+This creates two classes, local and default, with local being everything in 
+*.foo.com and 172.16.1.* combined.
+</para>
+
+</refsect1>
+</refentry>
+

@@ -1,0 +1,91 @@
+<refentry id="DisplayReadme">
+<?dbhtml filename="config_ref_DisplayReadme.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DisplayReadme</primary></indexterm>
+DisplayReadme
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DisplayReadme</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DisplayReadme</command>
+<arg choice="opt">
+  <option>DisplayReadme filename or pattern</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_readme
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre8 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Module: mod_readme
+The DisplayReadme directive notifies the user of the last change date of the 
+specified file or pattern. Only a single DisplayReadme directive is allowed per configuration 
+scope. 
+DisplayReadme README
+Will result in:
+Please read the file README it was last modified on Sun Oct 17 10:36:14 
+1999 - 0 days ago 
+Being displayed to the user on a cwd. 
+DisplayReadmePattern README*
+Will result in:
+Please read the file README
+it was last modified on Tue Jan 25 04:47:48 2000 - 0 days ago
+Please read the file README.first
+it was last modified on Tue Jan 25 04:48:04 2000 - 0 days ago
+Being displayed to the user on a cwd. 
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

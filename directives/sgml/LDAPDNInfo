@@ -1,0 +1,78 @@
+<refentry id="LDAPDNInfo">
+<?dbhtml filename="config_ref_LDAPDNInfo.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>LDAPDNInfo</primary></indexterm>
+LDAPDNInfo
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>LDAPDNInfo</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>LDAPDNInfo</command>
+<arg choice="opt">
+  <option>LDAPDNInfo "ldap-dn" "dn-password"</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+LDAPDNInfo "" "" (anonymous bind)
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ldap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+mod_ldap v2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+This directive specifies the LDAP DN and password to use when binding
+to the LDAP server. If this configuration directive is not specified,
+anonymous binds are used.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

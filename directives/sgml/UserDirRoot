@@ -1,0 +1,80 @@
+<refentry id="UserDirRoot">
+<?dbhtml filename="config_ref_UserDirRoot.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>UserDirRoot</primary></indexterm>
+UserDirRoot
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>UserDirRoot</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>UserDirRoot</command>
+<arg choice="opt">
+  <option>UserDirRoot on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_auth
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+When set to true, the chroot base directory becomes a subdirectory of the 
+anonymous ftp directory, based on the username of the current user.  For 
+example, assuming user "foo" is aliased to "ftp", logging in as "foo" causes
+proftpd to run as real user ftp, but to chroot into ~ftp/foo
+instead of just ~ftp.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

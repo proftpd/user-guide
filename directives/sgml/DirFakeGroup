@@ -1,0 +1,83 @@
+<refentry id="DirFakeGroup">
+<?dbhtml filename="config_ref_DirFakeGroup.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DirFakeGroup</primary></indexterm>
+DirFakeGroup
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DirFakeGroup</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DirFakeGroup</command>
+<arg choice="opt">
+  <option>DirFakeGroup On|Off [groupname]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+DirFakeGroup Off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ls
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.5
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+DirFakeGroup and its companion directive, DirFakeUser, can be used to hide the true group and user 
+owners of files in a directory listing. If simply turned On, DirFakeGroup will 
+display all files as being owned by group 'ftp'. Optionally, the groupname 
+argument can be used to specify a specific group other than 'ftp'. Both 
+DirFakeGroup and 
+DirFakeUser are completely cosmetic; 
+the groupname or username specified need not exists on the system, and neither 
+directive affects permissions, real ownership or access control in any way.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,85 @@
+<refentry id="AllowUser">
+<?dbhtml filename="config_ref_AllowUser.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AllowUser</primary></indexterm>
+AllowUser
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AllowUser</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AllowUser</command>
+<arg choice="opt">
+  <option>AllowUser user-expression</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Limit&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+AllowUser specifies a user-expression that is specifically 
+permitted access within the context of the &lt;Limit&gt; 
+block it is applied to. user-expression has a similar 
+syntax as that used in AllowGroup, in that it should 
+contain a comma delimited list of users or &quot;not&quot; users (by prefixing 
+a user name with the `!' character) that are to be allowed access to the block. 
+The expression is parsed as a boolean &quot;and&quot; list, meaning that ALL 
+elements of the expression must evaluate to logically true in order to the explicit 
+allow to apply.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+DenyUser, DenyGroup, AllowGroup
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

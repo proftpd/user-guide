@@ -1,0 +1,83 @@
+<refentry id="CDPath">
+<?dbhtml filename="config_ref_CDPath.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>CDPath</primary></indexterm>
+CDPath
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>CDPath</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>CDPath</command>
+<arg choice="opt">
+  <option>CDPath directory</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Adds an entry to a search path that is used when changing directories. For 
+example: 
+CDPath    /home/public
+CDPath    /var/devel
+This allows a user to cd into any directory directly under /home/public or /var/devel, 
+provided they have the appropriate rights. So, if /home/public/proftpd exists, 
+cd proftpd will bring the user to that directory, regardless of where 
+they currently are in the directory tree.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

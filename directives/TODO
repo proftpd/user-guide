@@ -1,0 +1,12 @@
+Module: wrap
+  HostsAllowSyslogLevel
+  HostsDenySyslogLevel
+  UseHostsAllowFile
+  UseHostsDenyFile
+
+Module: core
+  MaxHostsPerUser
+
+o Directives can only be used once within a given context, add to faq/userguide
+
+

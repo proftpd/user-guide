@@ -1,0 +1,78 @@
+<refentry id="DeleteAbortedStores">
+<?dbhtml filename="config_ref_DeleteAbortedStores.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DeleteAbortedStores</primary></indexterm>
+DeleteAbortedStores
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DeleteAbortedStores</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DeleteAbortedStores</command>
+<arg choice="opt">
+  <option>DeleteAbortedStores on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server, &lt;VirtualHost&gt;, &lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Global&gt;, .ftpaccess
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0rc2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The DeleteAbortedStores directive controls whether ProFTPD
+deletes partially uploaded files if the transfer is stopped via
+the ABOR command rather than a connection failure.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

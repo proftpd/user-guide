@@ -1,0 +1,97 @@
+<refentry id="PersistentPasswd">
+<?dbhtml filename="config_ref_PersistentPasswd.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>PersistentPasswd</primary></indexterm>
+PersistentPasswd
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>PersistentPasswd</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>PersistentPasswd</command>
+<arg choice="opt">
+  <option>PersistentPasswd on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+Platform dependent
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_unixpw
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.5 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The PersistentPasswd directive controls how proftpd handles authentication, 
+user/group lookups, and user/group to name mapping. If set to On, proftpd 
+will attempt to open the system-wide /etc/passwd, /etc/group (and /etc/shadow, 
+potentially) files itself, holding them open even during a chroot()ed login 
+(note that /etc/shadow is never held open, for security reasons). On some 
+platforms, you must turn this option on, as the libc functions are incapable 
+of accessing these databases from inside of a chroot(). At configure-time, 
+the configuration script will attempt to detect whether or not you need this 
+support, and make it the default. However, such &quot;guessing&quot; may fail, 
+and you will have to manually enable or disable the feature. If you cannot 
+see user or group names when performing a directory listing inside an anonymous 
+chrooted login, this indicates you must enable the directive. Use of the AuthUserFile 
+or 
+AuthGroupFile directives will force partial support 
+for persistent user or group database files; regardless of PersistentPasswd's 
+setting.
+</para>
+
+<para>
+Note: NIS or NIS+ users will most likely want to disable this feature, 
+regardless of proftpd's detected configuration defaults. Failure to disable 
+this will make your NIS/NIS+ maps not work!
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

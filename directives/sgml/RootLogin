@@ -1,0 +1,82 @@
+<refentry id="RootLogin">
+<?dbhtml filename="config_ref_RootLogin.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>RootLogin</primary></indexterm>
+RootLogin
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>RootLogin</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>RootLogin</command>
+<arg choice="opt">
+  <option>RootLogin on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+RootLogin off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_auth
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.5 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Normally, proftpd disallows root logins under any circumstance. If a client 
+attempts to login as root, using the correct password, a special security 
+message is sent to syslog. When the RootLogin directive is turned On, the 
+root user may authenticate just as any other user could (assuming no other 
+access control measures deny access); however the root login security message 
+is still sysloged. Obviously, extreme 
+care should be taken when using this directive.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

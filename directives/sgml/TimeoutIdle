@@ -1,0 +1,85 @@
+<refentry id="TimeoutIdle">
+<?dbhtml filename="config_ref_TimeoutIdle.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TimeoutIdle</primary></indexterm>
+TimeoutIdle
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TimeoutIdle</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TimeoutIdle</command>
+<arg choice="opt">
+  <option>TimeoutIdle seconds</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+TimeoutIdle 600
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The TimeoutIdle directive configures the maximum number of seconds that proftpd 
+will allow clients to stay connected without receiving any data on either 
+the control or data connection. If data is received on either connection, 
+the idle timer is reset. Setting TimeoutIdle to 0 disables the idle timer 
+completely (clients can stay connected for ever, without sending data). This 
+is generally a bad idea as a &quot;hung&quot; tcp connection which is never 
+properly disconnected (the remote network may have become disconnected from 
+the Internet, etc) will cause a child server to never exit (at least not for 
+a considerable period of time) until manually killed
+See Also: TimeoutLogin, TimeoutNoTransfer
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

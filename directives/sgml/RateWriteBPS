@@ -1,0 +1,80 @@
+<refentry id="RateWriteBPS">
+<?dbhtml filename="config_ref_RateWriteBPS.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>RateWriteBPS</primary></indexterm>
+RateWriteBPS
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>RateWriteBPS</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>RateWriteBPS</command>
+<arg choice="opt">
+  <option>RateWriteBPS byte_per_sec-number</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+0
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_xfer
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+RateWriteBPS sets the allowed byte per second upload bandwidth
+in the given config context. Zero means no bandwidth limit. (See
+RateWriteFreeBytes about limiting bandwidth only after some amount
+of uploaded bytes.) The usual place for this directive is in
+&lt;VirtualHost&gt; or &lt;Directory&gt; sections.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

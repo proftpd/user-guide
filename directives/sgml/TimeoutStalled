@@ -1,0 +1,80 @@
+<refentry id="TimeoutStalled">
+<?dbhtml filename="config_ref_TimeoutStalled.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TimeoutStalled</primary></indexterm>
+TimeoutStalled
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TimeoutStalled</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TimeoutStalled</command>
+<arg choice="opt">
+  <option>TimeoutStalled seconds</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+TimeoutStalled 3600
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The TimeoutStalled directive sets the maximum number of seconds a data connection 
+between the proftpd server and an FTP client can exist but have no actual 
+data transferred (i.e. &quot;stalled&quot;). If the seconds 
+argument is set to 0, data transfers are allowed to stall 
+indefinitely (the default).
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

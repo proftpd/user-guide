@@ -1,0 +1,88 @@
+<refentry id="AuthGroupFile">
+<?dbhtml filename="config_ref_AuthGroupFile.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AuthGroupFile</primary></indexterm>
+AuthGroupFile
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AuthGroupFile</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AuthGroupFile</command>
+<arg choice="opt">
+  <option>AuthGroupFile path</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_unixpw
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.0.3/1.1.1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+AuthGroupFile specifies an alternate groups file, having the same
+format as the system /etc/group file, and if specified is used
+during authentication and group lookups for directory/access control
+operations. The path argument should be the full path to the specified
+file. AuthGroupFile can be configured on a per-VirtualHost basis, so
+that virtual FTP servers can each have their own authentication database
+(most often used in conjunction with AuthUserFile).
+</para>
+
+<para>
+Note that this file need not reside inside a chroot()ed directory
+structure for Anonymous or DefaultRoot logins, as it is held open for
+the duration of client connections.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

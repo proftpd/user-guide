@@ -1,0 +1,84 @@
+<refentry id="PathDenyFilter">
+<?dbhtml filename="config_ref_PathDenyFilter.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>PathDenyFilter</primary></indexterm>
+PathDenyFilter
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>PathDenyFilter</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>PathDenyFilter</command>
+<arg choice="opt">
+  <option>PathDenyFilter regular-expression</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.7 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Similar to PathAllowFilter, PathDenyFilter 
+specifies a regular expression which must not match any uploaded 
+pathnames. If the regex does match, a "Forbidden filename" error is returned 
+to the client. This can be especially useful for forbidding .ftpaccess or 
+.htaccess files.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+# We don't want .ftpaccess or .htaccess files to be uploaded
+PathDenyFilter &quot;(\.ftpaccess)|(\.htaccess)$&quot;
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

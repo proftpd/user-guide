@@ -1,0 +1,82 @@
+<refentry id="AllowStoreRestart">
+<?dbhtml filename="config_ref_AllowStoreRestart.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AllowStoreRestart</primary></indexterm>
+AllowStoreRestart
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AllowStoreRestart</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AllowStoreRestart</command>
+<arg choice="opt">
+  <option>AllowStoreRestart on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+AllowStoreRestart off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, &lt;Global&gt;, .ftpaccess
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The AllowStoreRestart directive permits or denies clients from
+&quot;restarting&quot; interrupted store file transfers (those sent
+from client to server). By default restarting (via the REST command) is
+not permitted when sending files to the server. Care should be taken to
+disallow anonymous ftp &quot;incoming&quot; transfers to be restarted,
+as this will allow clients to corrupt or increase the size of previously
+stored files (even if not their own).
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

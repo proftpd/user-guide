@@ -1,0 +1,81 @@
+<refentry id="Deny">
+<?dbhtml filename="config_ref_Deny.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>Deny</primary></indexterm>
+Deny
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>Deny</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>Deny</command>
+<arg choice="opt">
+  <option>Deny [&quot;from&quot;] &quot;all&quot;|&quot;none&quot;|host|network[,host|network[,...]]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Limit&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0pl6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The Deny directive is used to create a list of hosts and/or networks which 
+will explicitly be denied access to a given &lt;Limit&gt; context block. The magic keywords all 
+and none can be used to indicate that all hosts are 
+denied access, or that no hosts are explicitly denied (respectively). For more 
+information on the syntax and usage of Deny see: Allow 
+and Order.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,134 @@
+<refentry id="DisplayFirstChdir">
+<?dbhtml filename="config_ref_DisplayFirstChdir.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DisplayFirstChdir</primary></indexterm>
+DisplayFirstChdir
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DisplayFirstChdir</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DisplayFirstChdir</command>
+<arg choice="opt">
+  <option>DisplayFirstChdir filename</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_code
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later, magic cookies only in 0.99.0pl10
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+and later
+The DisplayFirstChdir directive configures an ASCII text filename which will 
+be displayed to the user the first time they change into a directory (via CWD) 
+per a given session. The file will also be displayed if proftpd detects that 
+its last modification time has changed since the previous CWD into a given 
+directory. If the filename is relative, it is looked for in the new directory 
+that the user has changed into. Note that for anonymous ftp logins (see &lt;Anonymous&gt;), the file must 
+reside inside the chroot()ed file system space. If the file cannot be found 
+or accessed, no error occurs and nothing is logged or displayed to the client.
+DisplayFirstChdir, DisplayConnect, DisplayLogin, 
+DisplayQuit, support the following &quot;magic cookies&quot; 
+(only in 0.99.0pl10 and later), which are replaced with their 
+respective strings before being displayed to the user.
+%T
+&nbsp;
+Current Time
+%F
+&nbsp;
+Available space on file system
+%C
+&nbsp;
+Current working directory
+%R
+&nbsp;
+Remote host name
+%L
+&nbsp;
+Local host name
+%u
+&nbsp;
+Username reported by ident protocol
+%U
+&nbsp;
+Username originally used in login
+%M
+&nbsp;
+Max number of connections
+%N
+&nbsp;
+Current number of connections
+%E
+&nbsp;
+Server admin's e-mail address
+<!-- This doesn't work?  It appears in mod_core.c 
+%V
+&nbsp;
+Name of virtual host (if any)
+--> 
+%x
+&nbsp;
+The name of the user's class
+%y
+&nbsp;
+Current number of connections from the user's class
+%z
+&nbsp;
+Max number of connections from the user's class
+NOTE: not all of these may have a rational value, depending 
+on the context in which they're used (e.g., %u if ident lookups are off).
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

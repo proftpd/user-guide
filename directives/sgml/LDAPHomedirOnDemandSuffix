@@ -1,0 +1,82 @@
+<refentry id="LDAPHomedirOnDemandSuffix">
+<?dbhtml filename="config_ref_LDAPHomedirOnDemandSuffix.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>LDAPHomedirOnDemandSuffix</primary></indexterm>
+LDAPHomedirOnDemandSuffix
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>LDAPHomedirOnDemandSuffix</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>LDAPHomedirOnDemandSuffix</command>
+<arg choice="opt">
+  <option>additional-directory</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+LDAPHomedirOnDemandSuffix ""
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ldap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+mod_ldap v2.6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+to be created within a user's home directory when it is created on
+demand. For example, if a user's home directory is "/home/user", setting
+this configuration directive to "public_html"
+will also create "/home/user/public_html" on demand. To use this feature,
+you must also activate 
+LDAPHomedirOnDemand in
+your configuration.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

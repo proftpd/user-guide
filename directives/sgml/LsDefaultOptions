@@ -1,0 +1,82 @@
+<refentry id="LsDefaultOptions">
+<?dbhtml filename="config_ref_LsDefaultOptions.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>LsDefaultOptions</primary></indexterm>
+LsDefaultOptions
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>LsDefaultOptions</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>LsDefaultOptions</command>
+<arg choice="opt">
+  <option>LsDefaultOptions "options string"</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ls
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.1.6 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Normally, FTP commands involving directory listings (NLST, LIST and STAT) 
+use the arguments (options) passed by the client to determine what files are 
+displayed and the format they are displayed in. Using the LsDefaultOptions 
+directive can alter the default behavior of such listings, but implying that 
+a certain option (or options) is always present. For example, to force all 
+directory listings to always display ".dotfiles", one might:
+LsDefaultOptions "-a"
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

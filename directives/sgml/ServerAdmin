@@ -1,0 +1,78 @@
+<refentry id="ServerAdmin">
+<?dbhtml filename="config_ref_ServerAdmin.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>ServerAdmin</primary></indexterm>
+ServerAdmin
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ServerAdmin</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>ServerAdmin</command>
+<arg choice="opt">
+  <option>ServerAdmin &quot;admin-email-address&quot;</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+ServerAdmin root@[ServerName]
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0pl10 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The ServerAdmin directive sets the email address of the administrator for 
+the server or virtualhost. This address is displayed in magic cookie replacements 
+(see DisplayLogin and DisplayFirstChdir).
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

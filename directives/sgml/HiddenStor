@@ -1,0 +1,82 @@
+<refentry id="HiddenStor">
+<?dbhtml filename="config_ref_HiddenStor.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>HiddenStor</primary></indexterm>
+HiddenStor
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>HiddenStor</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>HiddenStor</command>
+<arg choice="opt">
+  <option>HiddenStor on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+HiddenStor off
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&lt;Directory&gt;, &lt;Anonymous&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre5 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The HiddenStor directive enables two-step file uploads: files are uploaded 
+as &quot;.in.filename.&quot; and once the upload is complete, 
+renamed to just &quot;filename&quot;. This provides a 
+degree of atomicity and helps prevent 1) incomplete uploads and 2) files being 
+used while they're still in the progress of being uploaded. Note: 
+if the temporary file name is already in use (e.g., a server crash during upload), 
+it will prevent the file from being uploaded.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

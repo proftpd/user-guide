@@ -1,0 +1,84 @@
+<refentry id="DisplayQuit">
+<?dbhtml filename="config_ref_DisplayQuit.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DisplayQuit</primary></indexterm>
+DisplayQuit
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DisplayQuit</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DisplayQuit</command>
+<arg choice="opt">
+  <option>DisplayQuit filename</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre8 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+DisplayQuit configures an ASCII text filename which will be displayed to the 
+user when they quit. The filename can be either relative or absolute. In the 
+case of a relative filename, the file is searched for in current directory a 
+user is in when they logout -- for this reason, a absolute filename is usually 
+preferable.
+NOTE: for jailed logins, the file must reside inside the 
+chroot()ed file system space. If the file cannot be found or accessed, no error 
+occurs and nothing is logged or displayed to the client.
+DisplayQuit supports the &quot;magic cookies&quot; listed under DisplayFirstChdir.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

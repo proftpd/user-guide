@@ -1,0 +1,87 @@
+<refentry id="ShowSymlinks">
+<?dbhtml filename="config_ref_ShowSymlinks.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>ShowSymlinks</primary></indexterm>
+ShowSymlinks
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ShowSymlinks</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>ShowSymlinks</command>
+<arg choice="opt">
+  <option>ShowSymlinks on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+(versions 1.1.5 and beyond) ShowSymlinks On
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Compatibility: 0.99.0pl6 and later
+Symbolic links (if supported on the host OS and filesystem) can be either 
+shown in directory listings (including the target of the link) or can be &quot;hidden&quot; 
+(proftpd dereferences symlinks and reports the target's permissions and ownership). 
+The default behavior is to show all symbolic links when normal users are logged 
+in, and hide them for anonymous sessions. If a symbolic link cannot be dereferenced 
+for any reason (permissions, target does not exist, etc) and ShowSymlinks 
+is off, proftpd displays the link as a directory entry of type 'l' (link) 
+with the ownership and permissions of the actual link.
+Under ProFTPD versions 1.1.5 and higher, the default behavior in regard to 
+ShowSymlinks has been changed so that symbolic links are always displayed 
+as such (in all cases), unless ShowSymlinks off is explicitly set.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

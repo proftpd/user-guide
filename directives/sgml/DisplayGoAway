@@ -1,0 +1,80 @@
+<refentry id="DisplayGoAway">
+<?dbhtml filename="config_ref_DisplayGoAway.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>DisplayGoAway</primary></indexterm>
+DisplayGoAway
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>DisplayGoAway</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>DisplayGoAway</command>
+<arg choice="opt">
+  <option>DisplayGoAway filename</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0pre8 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The DisplayGoAway directive specifies an ASCII text filename which will be 
+displayed to the user if the class they're a member of has too many users logged
+in and their login request has been denied.
+DisplayGoAway supports the same &quot;magic cookies&quot; as DisplayFirstChdir.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+DisplayFirstChdir
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

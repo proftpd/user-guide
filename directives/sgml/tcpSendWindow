@@ -1,0 +1,79 @@
+<refentry id="tcpSendWindow">
+<?dbhtml filename="config_ref_tcpSendWindow.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>tcpSendWindow</primary></indexterm>
+tcpSendWindow
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>tcpSendWindow</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>tcpSendWindow</command>
+<arg choice="opt">
+  <option>tcpSendWindow window-size</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+tcpSendWindow 8192
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+0.99.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The tcpSendWindow directive configures the size (in octets) of all data connections' 
+tcp send windows. It is only used when sending a file from the server to a 
+client on the data connection. For a detailed description of receive/send 
+window sizes see tcpReceiveWindow.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>

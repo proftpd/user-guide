@@ -1,0 +1,32 @@
+<refentry id="mod-quota">
+<?dbhtml filename="config_ref_mod_quota.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_quota</primary></indexterm>
+mod_quota
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_quota</refname>
+<refpurpose>FIX ME FIX ME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_quota</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+FIXME
+FIXME
+FIXME
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
