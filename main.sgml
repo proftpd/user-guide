@@ -6951,7 +6951,7 @@ that requires root privileges will be disabled.</para>
 # Block alteration of .ftpaccess
 # Prevent uploading of mp3 files.
 #
-PathDenyFilter "(^\.ftpaccess$)|(^\.mp3$)|(.+[     ]+.+)"
+PathDenyFilter "(^\.ftpaccess$)|(\.mp3$)"
 	    </programlisting>
 	  </example>
 	</sect2>
