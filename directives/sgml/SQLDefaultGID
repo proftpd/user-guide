@@ -1,0 +1,59 @@
+<refentry id="SQLDefaultGID">
+<?dbhtml filename="config_ref_SQLDefaultGID.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLDefaultGID</primary></indexterm>
+SQLDefaultGID
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLDefaultGID</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLDefaultGID</command>
+<arg choice="opt">
+  <option>defaultgid</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+65533
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Sets the default GID for users.  Must be greater than SQLMinID.
+</para>
+</refsect1>
+
+</refentry>
+

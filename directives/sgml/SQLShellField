@@ -1,0 +1,61 @@
+<refentry id="SQLShellField">
+<?dbhtml filename="config_ref_SQLShellField.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLShellField</primary></indexterm>
+SQLShellField
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLShellField</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLShellField</command>
+<arg choice="opt">
+  <option>fieldname</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+shell
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Specifies the field in the user table that holds the user's shell.  If
+this field doesn't exist or the result of the query is NULL, the shell
+is reported as "".
+</para>
+</refsect1>
+
+</refentry>
+

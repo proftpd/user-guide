@@ -1,0 +1,70 @@
+<refentry id="SQLDoGroupAuth">
+<?dbhtml filename="config_ref_SQLDoGroupAuth.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLDoGroupAuth</primary></indexterm>
+SQLDoGroupAuth
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLDoGroupAuth</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLDoGroupAuth</command>
+<arg choice="opt">
+  <option>on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+on
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+This directive causes mod_sql to pretend it has no group information.
+It necessarily breaks ALL CONFIG FILES up to 1.2.0rc2, since mod_sql
+now assumes that group information is available UNLESS this directive
+is set to OFF.
+
+This DOESN'T override SQLAuthoritative -- if SQLAuthoritative is set
+to 'On' but SQLDoGroupAuth is set to 'Off', all group-related queries
+will fail without giving other modules the opportunity to handle them.
+
+Prior to 1.2.0, there was no way to provide group information from the
+database.  This caused a few bugs, and reduced the functionality of
+this module.
+</para>
+</refsect1>
+
+</refentry>
+

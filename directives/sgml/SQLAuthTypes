@@ -1,0 +1,106 @@
+<refentry id="SQLAuthTypes">
+<?dbhtml filename="config_ref_SQLAuthTypes.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLAuthTypes</primary></indexterm>
+SQLAuthTypes
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLAuthTypes</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLAuthTypes</command>
+<arg choice="opt">
+  <option>[OpenSSL]</option>
+</arg>
+<arg choice="opt">
+  <option>[Crypt]</option>
+</arg>
+<arg choice="opt">
+  <option>[Backend]</option>
+</arg>
+<arg choice="opt">
+  <option>[Plaintext]</option>
+</arg>
+<arg choice="opt">
+  <option>[Empty]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+This directive deprecates 'SQLEmptyPasswords',
+'SQLScrambledPasswords', 'SQLSSLHashedPasswords',
+'SQLPlaintextPasswords', and 'SQLEncryptedPasswords'.
+
+Specifies the allowed authentication types and their check order.  YOU
+MUST SPECIFY AT LEAST ONE AUTHENTICATION METHOD.  
+
+For example:
+
+SQLAuthTypes Crypt Empty
+
+means check whether the password in the database matches in UNIX
+crypt() format; if that fails, check to see if the password in the
+database is empty (matching ANY given password); if that fails,
+mod_sql refuses to authenticate the user.
+
+Current Types
+
+Plaintext: allows passwords in the database to be in plaintext
+
+OpenSSL:   allows passwords in the database to be of the form
+	   '{digestname}hashedvalue'.  This check is only available if
+	   you define 'HAVE_OPENSSL' when you compile proftd and you
+	   link with the OpenSSL 'crypto' library. 
+
+Crypt:     allows passwords in the database to be in UNIX crypt() form
+
+Backend:   a database-specific backend check function.  Not all
+	   backends support this.  Specifically, the MySQL backend
+	   uses this type to authenticate MySQL 'PASSWORD()' encrypted
+	   passwords.  The Postgres backend does nothing.
+
+Empty:     allows empty passwords in the database, which match against
+	   ANYTHING the user types in.  The database field must be a
+	   truly empty string -- that is, NULL values are never
+	   accepted.  BE VERY CAREFUL WITH THIS AUTHTYPE.
+</para>
+</refsect1>
+
+</refentry>
+

@@ -1,0 +1,62 @@
+<refentry id="SQLMinID">
+<?dbhtml filename="config_ref_SQLMinID.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLMinID</primary></indexterm>
+SQLMinID
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLMinID</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLMinID</command>
+<arg choice="opt">
+  <option>minimumid</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+999
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+SQLMinID is checked whenever retrieving a user's GID or UID.  If the
+retrieved values for GID or UID are less than the value of SQLMinID,
+they are reported as the values of, respectively, 'SQLDefaultGID' and
+'SQLDefaultUID'.
+</para>
+</refsect1>
+
+</refentry>
+

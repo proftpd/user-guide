@@ -1,0 +1,109 @@
+<refentry id="SQLConnectInfo">
+<?dbhtml filename="config_ref_SQLConnectInfo.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLConnectInfo</primary></indexterm>
+SQLConnectInfo
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLConnectInfo</refname>
+<refpurpose>FIXME FIXME</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLConnectInfo</command>
+<arg choice="opt">
+  <option>connection-info</option>
+</arg>
+<arg choice="opt">
+  <option>[username]</option>
+</arg>
+<arg choice="opt">
+  <option>[password]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+This directive deprecates 'MySQLInfo', 'PostgresInfo', and
+'PostgresPort'.
+
+Specifies connection information.  Connection-info specifies the
+database, host, port, and other backend-specific information.
+username and password specify the username and password to connect as,
+respectively.  Both default to NULL, which the backend will treat in
+some backend-specific manner. If you specify a password, you MUST
+specify a username.
+
+Any given backend has the opportunity (but not the responsibility) to
+check for syntax errors in the connection-info field at proftpd
+startup, but you shouldn't expect semantic errors (i.e., can't connect
+to the database) to be caught until mod_sql attempts to connect for a
+given host. 
+
+The MySQL and Postgres backends connection-info is expected to be of
+the form: 
+
+database[@hostname][:port]
+
+hostname will default to a backend-specific hostname (which happens to
+be 'localhost' for both the MySQL and Postgres backends), and port
+will default to a backend-specific default port (3306 for the MySQL
+backend, 5432 for the Postgres backend).
+
+Examples:
+
+SQLConnectInfo  ftpusers@foo.com
+
+means "Try connecting to the database 'ftpuser' via the default port
+at 'foo.com'.  Use a NULL username and a NULL password."
+
+SQLConnectInfo  ftpusers:3000 admin
+
+means "Try connecting to the database 'ftpuser' via port 3000 at
+'localhost'.  Use the username 'admin' and a NULL password."
+
+SQLConnectInfo  ftpusers@foo.com:3000 admin mypassword
+
+means "Try connecting to the database 'ftpuser' via port 3000 at
+'foo.com'.  Use the username 'admin' and the password 'mypassword'"
+
+Backends may require different information in the connection-info
+field; check your backend module for specifics.
+</para>
+</refsect1>
+
+</refentry>
+
