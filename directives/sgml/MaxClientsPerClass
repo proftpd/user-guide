@@ -1,0 +1,96 @@
+<refentry id="MaxClientsPerClass">
+<?dbhtml filename="config_ref_MaxClientsPerClass.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_auth
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MaxClientsPerClass</primary></indexterm>
+MaxClientsPerClass
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MaxClientsPerClass</refname>
+<refpurpose>Limit the number of connections per class</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MaxClientsPerClass</command>
+<arg choice="opt">
+  <option>MaxClientsPerClass name number|"none" [message]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_auth
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.10rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The MaxClientsPerClass directive configures the maximum number of clients
+that may be connected at any given time from the same Class.  The
+optional argument message may be used which will be displayed to a client
+attempting to exceed the maximum value. If message is not supplied, a default
+message of "Sorry, the maximum number of clients (%m) from your class are
+already connected."</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="MaxClients">MaxClients</link>,
+<link linkend="MaxClientsPerHost">MaxClientsPerHost</link>
+<link linkend="MaxClientsPerUser">MaxClientsPerUser</link>
+<link linkend="MaxHostsPerUser">MaxHostsPerUser</link>
+<!--
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+MaxClientsPerClass foo 1 &quot;Only one such client at a time.&quot;
+Results in: 530 Only one such client at a time.
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>
