@@ -13,14 +13,14 @@ RadiusRealm
 </refmeta>
 <refnamediv>
 <refname>RadiusRealm</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Setup the authentication realm</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>RadiusRealm</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>realm</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ RadiusRealm
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+none
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,7 @@ mod_radius
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+The RadiusRealm directive configures a realm string that will be added to the username in the constructed RADIUS packets.
 </para>
 </refsect1>
 
@@ -73,7 +73,7 @@ FIX FIX FIX
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
+  RadiusRealm .castaglia.org
 </literallayout>
 
 <para>

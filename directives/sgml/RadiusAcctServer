@@ -13,14 +13,14 @@ RadiusAcctServer
 </refmeta>
 <refnamediv>
 <refname>RadiusAcctServer</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Setup RADIUS accounting details</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>RadiusAcctServer</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>server[:port] shared-secret [timeout]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ RadiusAcctServer
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+none
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -56,19 +56,26 @@ mod_radius
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+The RadiusAcctServer is used to specify a RADIUS server to be used for accounting. The server parameter may be either an IP address or a DNS hostname. If not specified, the port used will be the IANA-registered 1813. The optional timeout parameter is used to tell mod_radius how long to wait for a response from the server; it defaults to 30 seconds.
+</para>
+
+<para>
+Multiple RadiusAcctServers may be configured; each will be tried, in order of appearance in the configuration file, until that server times out or mod_radius receives a response.
+</para>
+
+<para>
+If no RadiusAcctServers are configured, mod_radius will not use RADIUS for accounting.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="RadiusAuthServer">RadiusAuthServer</link>
 </para>
 </refsect1>
 
+<!--
 <refsect1>
 <title>Examples</title>
 
@@ -81,5 +88,6 @@ FIXFIX
 </para>
 
 </refsect1>
+-->
 </refentry>
 

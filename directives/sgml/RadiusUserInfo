@@ -13,14 +13,14 @@ RadiusUserInfo
 </refmeta>
 <refnamediv>
 <refname>RadiusUserInfo</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Configure login information via RADIUS</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>RadiusUserInfo</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>uid gid home shell [suppl-group-names suppl-group-ids]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ RadiusUserInfo
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+none
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,31 @@ mod_radius
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+The RadiusUserInfo directive is used to configure login information used for every user authenticated via RADIUS. The optional suppl-group-names and suppl-group-ids parameters are used to specify supplemental group membership for each user; the number of names and IDs must match if these parameters are used.
+</para>
+
+<para>
+In order to support RADIUS servers that may use custom attributes in their Access-Accept response packets to supply user information back to the RADIUS client (mod_radius in this case), this directive allows the following syntax for some of its parameters:
+<para>
+
+<literallayout>
+  $(attribute-id:default-value)
+</literallayout>
+
+<para>
+where the enclosing $() signals that the parameter is to be supplied by
+the RADIUS server, attribute-id is the custom attribute ID for which to
+search in the response packet, and default-value is the value to use in
+case the requested attribute is not present in the response packet. This
+syntax is not supported for the suppl-group-names or suppl-group-ids
+parameters.
+</para>
+
+<para>
+If RadiusUserInfo is not used, mod_radius will perform pure "yes/no"
+authentication only, in the style of PAM. The information that would
+have been configured via this directive will be pulled from other sources
+(e.g. /etc/passwd, AuthUserFiles, MySQL tables, etc).
 </para>
 </refsect1>
 
@@ -69,6 +93,7 @@ FIX FIX FIX
 </para>
 </refsect1>
 
+<!--
 <refsect1>
 <title>Examples</title>
 
@@ -81,5 +106,6 @@ FIXFIX
 </para>
 
 </refsect1>
+-->
 </refentry>
 

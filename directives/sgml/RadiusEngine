@@ -13,14 +13,14 @@ RadiusEngine
 </refmeta>
 <refnamediv>
 <refname>RadiusEngine</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Enable RADIUS support</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>RadiusEngine</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ RadiusEngine
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+off
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,7 @@ mod_radius
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+The RadiusEngine directive enables or disables the module's runtime RADIUS engine. If it is set to off this module does no RADIUS authentication or accounting at all. Use this directive to disable the module instead of commenting out all mod_radius directives. 
 </para>
 </refsect1>
 
@@ -69,6 +69,7 @@ FIX FIX FIX
 </para>
 </refsect1>
 
+<!--
 <refsect1>
 <title>Examples</title>
 
@@ -81,5 +82,6 @@ FIXFIX
 </para>
 
 </refsect1>
+-->
 </refentry>
 
