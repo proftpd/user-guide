@@ -61,7 +61,7 @@
     <varlistentry><term><synopsis>Context</synopsis></term>
       <listitem> 
         <para>
-          server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+          server config, &lt;Global&gt;, &lt;VirtualHost&gt;
         </para> 
       </listitem>
     </varlistentry>
