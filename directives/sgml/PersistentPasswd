@@ -70,9 +70,11 @@ setting.
 </para>
 
 <para>
-Note: NIS or NIS+ users will most likely want to disable this feature, 
-regardless of proftpd's detected configuration defaults. Failure to disable 
-this will make your NIS/NIS+ maps not work!
+Note: NIS or NIS+ users will most likely want to disable this feature,
+regardless of proftpd's detected configuration defaults. Failure to disable
+this will make your NIS/NIS+ maps not work! On certain systems, you may also
+need to compile ProFTPD with the --enable-autoshadow option in order to
+authenticate both users from NIS maps and local users.
 </refsect1>
 
 <refsect1>
