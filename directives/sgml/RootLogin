@@ -8,7 +8,7 @@ RootLogin
 </refmeta>
 <refnamediv>
 <refname>RootLogin</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Permit root user logins</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -58,6 +58,11 @@ root user may authenticate just as any other user could (assuming no other
 access control measures deny access); however the root login security message 
 is still sysloged. Obviously, extreme 
 care should be taken when using this directive.
+</para>
+
+<para>The use of RootLogin in the Anonymous context is only valid when the User / Group defined in the Anonymous block is set to 'root'
+</para>
+
 </refsect1>
 
 <refsect1>
