@@ -13,14 +13,14 @@ AllowOverride
 </refmeta>
 <refnamediv>
 <refname>AllowOverride</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Toggles handling of .ftpaccess files</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>AllowOverride</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>on|off ["user"|"group"|"class" expression]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ AllowOverride
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+on
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,18 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+Normally, the server will look for and parse any files in the encountered
+directories called ".ftpaccess".  The files provide a functionality
+similar to Apache's .htaccess files -- mini-configuration files.  This
+directive controls when those .ftpaccess files will be parsed.
+</para>
+
+<para>
+The optional parameters are used to restrict the use of .ftpaccess files only
+to specific users.  If the "user" restriction is given, then expression is a
+user-expression specifying to which users the rule applies.  Similarly for the
+"group" restriction.  For the "class" restriction, the expression is simply
+the name of connection class for whom the rule will apply.
 </para>
 </refsect1>
 
@@ -67,19 +78,6 @@ FIX FIX FIX
 <link linkend=""></link>
 -->
 </para>
-</refsect1>
-
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-FIXFIXFIX
-</literallayout>
-
-<para>
-FIXFIX
-</para>
-
 </refsect1>
 </refentry>
 
