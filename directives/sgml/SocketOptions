@@ -1,0 +1,66 @@
+<refentry id="SocketOptions">
+<?dbhtml filename="config_ref_SocketOptions.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SocketOptions</primary></indexterm>
+SocketOptions
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SocketOptions</refname>
+<refpurpose>Tune socket-level options</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SocketOptions</command>
+<arg choice="opt">
+  <option>[maxseg <size>] [rcvbuf <size>] [sndbuf <size>]</option>
+</arg>
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+&quot;server config&quot;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.9rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The rcvbuf and sndbuf parameters are used for setting the TCP send/receive
+window sizes.  The maxseg parameter is used for setting a MSS (Maximum Segment
+Size) via setsockopt(2)'s TCP_MAXSEG option.  If the MSS is larger than the
+interface's MTU, it is ignored and has no effect.
+</para>
+</refsect1>
+
+</refentry>
