@@ -61,7 +61,7 @@ mod_core
 <para>
 The ScoreboardFile directive sets the path to the file where the daemon will
 store its run-time "scoreboard" session information.  This file is necessary
-for MaxClients to work properly, as well as other utilities (such as ftpwho and ftpcount).</para> 
+for MaxClients to work properly, as well as other utilities (such as ftpwho and ftpcount).
 </para>
 
 <para>
