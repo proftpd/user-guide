@@ -52,10 +52,10 @@ mod_log
 <refsect1>
 <title>Description</title>
 <para>
-By default, the server will the path of any configured SystemLog and
-any configured ExtendedLogs to see if they are symbolic links.  If the
-paths are symbolic links, the server will refuse to log to that link
-unless explicitly configured to do via this directive
+By default, the server will the path of any configured SystemLog, any configured
+TransferLogs, and any configured ExtendedLogs to see if they are symbolic
+links.  If the paths are symbolic links, the server will refuse to log to that
+link unless explicitly configured to do so via this directive.
 </para>
 
 <refsect2>
