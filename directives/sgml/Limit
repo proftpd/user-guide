@@ -60,9 +60,7 @@ block. Any number of command parameters can be specified,
 against which the contents of the &lt;Limit&gt; block will be applied. command 
 can be any valid FTP command, but is generally one of the following:
 CWD (Change Working Directory)
-Sent by client when changing directories. Note that limits placed on this 
-command also apply to the CDUP 
-command (Change Directory UP).
+Sent by client when changing directories.
 MKD (MaKe Directory)
 Sent by client to create a new directory.
 RNFR (ReName FRom), RNTO (ReName TO)
