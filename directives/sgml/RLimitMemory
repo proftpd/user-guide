@@ -22,7 +22,7 @@ RLimitMemory
 <cmdsynopsis>
 <command>RLimitMemory</command>
 <arg choice="opt">
-  <option>RLimitMemory soft-limit[units]|"max" [hard-limit[units]|"max"]</option>
+  <option>RLimitMemory ["daemon"|"session"|"none"] soft-limit[units]|"max" [hard-limit[units]|"max"]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -60,11 +60,17 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-RLimitMemory takes 1 or 2 parameters. The first parameter sets the soft resource
-limit for all proftpd processes. The optional second parameter sets the
-maximum resource limit. Either parameter can be a number, or max to
-indicate to the server that the limit should be set to the maximum allowed
-by the operating system configuration.
+RLimitMemory takes from one to three parameters. The first parameter may be one
+of "daemon" (applies the limit only to the daemon process), "session" (applies
+the limit only to child processes handling each FTP session), or "none"
+(disables any possibly inherited limits).  Note that if "daemon" is used, the
+directive may then only occur in the "server config" context.  If none of
+these keywords are used, the limit is assumed to apply to both daemon and
+session processes.  After any potential keyword, the resource limit must be
+set.  The next parameter is also optional, and sets the maximum resource
+limit. Either limit parameter can be a number, or "max" to indicate to the
+server that the limit should be set to the maximum allowed by the operating
+system.
 </para>
 
 <para>
@@ -77,9 +83,9 @@ factor.
 </refsect1>
 
 <refsect1>
-<title>See also</title>
+<title>See Also</title>
 <para>
-RLimitCPU, RLimitMaxProcesses, RLimitOpenFiles
+RLimitCPU, RLimitOpenFiles
 <!--
 <link linkend=""></link>
 -->
