@@ -814,7 +814,7 @@ CDB based Authentication
 	<para>In general there is not much more to securing a ftp
 	server than there is to any other public access server.
 	However the twin socket design and thus the requirement to
-	never quite give up root privaliges completely leaves a window
+	never quite give up root privileges completely leaves a window
 	ajar for the competant cracker to climb through.  Or
 	occasionally a thumping great sign and open door for a script
 	kiddie with some time to spare.</para>
@@ -923,7 +923,7 @@ CDB based Authentication
 
 	<para>As with all server processes the primary method of
 	cracking remains the buffer overflow.  Due to the nature of
-	the protocol and the requirement for root level privaleges
+	the protocol and the requirement for root level privileges
 	this leaves ftp daemons open to attack.  Buffer overflows are
 	the result of weak programming where boundary condition checks
 	have been skipped or "unsafe" system calls have been used.
@@ -1022,7 +1022,7 @@ CDB based Authentication
 
 	<para>The chroot() system call will not work under a non-root
 	  ftp server process, the call has to be made with full root
-	  privalages and access rights.  Without them it simply
+	  privilages and access rights.  Without them it simply
 	  doesn't work.  There doesn't appear to be any checking in
 	  the code of the uid/gid before calling chroot so using
 	  DefaultRoot in such a setup will cause the server to
@@ -13339,7 +13339,7 @@ and on the breaking of chroot jails has been written by Simon Burr
 <title>Non-root server issues</title>
 
 <para>The chroot() system call will not work under a non-root ftp server
-process, the call requires root privaliges.  Without them it simply
+process, the call requires root privileges.  Without them it simply
 doesn't work, there doesn't appear to be any checking in the code of
 the uid/gid before calling chroot so using DefaultRoot in such a setup 
 will cause the server to fail.</para>
