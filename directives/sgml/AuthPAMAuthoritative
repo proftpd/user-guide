@@ -3,7 +3,7 @@
 <refentryinfo>
   <keywordset>
     <keyword>
-      mod_unixpw
+      mod_auth_pam
     </keyword>
   </keywordset>
 </refentryinfo>
