@@ -8,7 +8,7 @@ Umask
 </refmeta>
 <refnamediv>
 <refname>Umask</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the default Umask</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

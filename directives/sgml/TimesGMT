@@ -8,7 +8,7 @@ TimesGMT
 </refmeta>
 <refnamediv>
 <refname>TimesGMT</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Toggle time display between GMT and local</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

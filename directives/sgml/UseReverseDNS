@@ -8,7 +8,7 @@ UseReverseDNS
 </refmeta>
 <refnamediv>
 <refname>UseReverseDNS</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Toggle rDNS lookups</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

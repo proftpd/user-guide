@@ -8,7 +8,7 @@ ServerType
 </refmeta>
 <refnamediv>
 <refname>ServerType</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the mode proftpd runs in</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
