@@ -69,13 +69,13 @@ against which the contents of the &lt;Limit&gt; block will be applied. command
 can be any valid FTP command, but is generally one of the following:
 CWD (Change Working Directory)
 Sent by client when changing directories.
-MKD (MaKe Directory)
+MKD / XMKD (MaKe Directory)
 Sent by client to create a new directory.
 RNFR (ReName FRom), RNTO (ReName TO)
 Sent as a pair by client to rename a directory entry.
 DELE (DELEte)
 Sent by client to delete a file.
-RMD (ReMove Directory)
+RMD / XRMD (ReMove Directory)
 Sent by client to remove a directory.
 RETR (RETRieve)
 Transfer a file from the server to the client.

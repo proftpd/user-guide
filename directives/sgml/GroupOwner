@@ -65,7 +65,7 @@ The group ID of groupname cannot be 0.
 Note that GroupOwner cannot be used to override the host OS/file system user/group 
 paradigm. If the current user is not a member of the specified group, new files 
 and directories will not be able to be chown()ed to the GroupOwner group. If 
-this happens, file STOR (send file from client to server) and MKD (mkdir) operations 
+this happens, file STOR (send file from client to server) and MKD/XMKD (mkdir) operations 
 will succeed normally, however the new directory entries will be owned by the 
 current user's default group (a warning message is also logged) instead of by 
 the desired group.  If you also use UserOwner
