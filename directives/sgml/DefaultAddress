@@ -13,7 +13,7 @@ DefaultAddress
 </refmeta>
 <refnamediv>
 <refname>DefaultAddress</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Set the address for the server to listen on</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -30,13 +30,13 @@ DefaultAddress
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+none
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,11 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+This directive sets the the address the server will bind to, no other
+IPs are bound to when this directive is in effect.  This has the side
+effect of making all &lt;VirtualHost&gt; blocks redundant.  All
+configuration must be within the server context when this directive is
+in effect.
 </para>
 </refsect1>
 
@@ -73,7 +77,10 @@ FIX FIX FIX
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
+ServerName "Default FTP Server"
+Port 21
+# We only want to listen on one of the IPs on this box
+DefaultAddress 192.168.10.30
 </literallayout>
 
 <para>
