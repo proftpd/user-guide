@@ -1,0 +1,108 @@
+<refentry id="TransferRate">
+<?dbhtml filename="config_ref_TransferRate.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_xfer
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TransferRate</primary></indexterm>
+TransferRate
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TransferRate</refname>
+<refpurpose>Configure upload, download transfer rates</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TransferRate</command>
+<arg choice="opt">
+  <option>TransferRate cmds kilobytes-per-sec[:free-bytes] ["user"|"group"|"class" expression]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, .ftpaccess
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_xfer
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.8rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The TransferRate directive is used to set transfer rates limits on the transfer
+of data.  This directive allows for transfer rates to be set in a wide variety
+of contexts, on a per-command basis, and for certain subsets of users.
+</para>
+
+<para>
+The cmds parameter may be an comma-separated list of any of the following
+commands: APPE, RETR, STOR, and STOU.
+</para>
+
+<para>
+The kilobytes-per-sec parameter is the actual transfer rate to be applied.
+</para>
+
+<para>
+The free-bytes parameter, if configured, allows that many bytes to be
+transferred before the rate controls are applied. This allows for clients
+transferring small files to be unthrottled, but for larger files, such as
+MP3s and ISO images, to be throttled.
+</para>
+
+<para>
+The optional parameters are used to restrict the application of the rate
+controls only to specific users.  If the "user" restriction is given, then
+expression is a user-expression specifying to which users the rate applies. 
+Similarly for the "group" restriction.  For the "class" restriction, the
+expression is simply the name of connection class for whom the rate will apply.
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+  # Limit downloads for everyone except the special group of users
+  TransferRate RETR 1.5 group !special-users
+</para>
+
+<para>
+  # Limit uploads (and appends!) to the prolific users in the 
+  # lotsofuploadfiles.net domain.  This presumes that a Class has been defined
+  # for that domain, and that that Class has been named "uploaders".  Let them
+  # upload small files without throttling, though.
+  TransferRate APPE,STOR 8.0:1024 class uploaders
+</para>
+</refsect1>
+
+</refentry>

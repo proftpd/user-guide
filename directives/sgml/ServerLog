@@ -1,0 +1,69 @@
+<refentry id="ServerLog">
+<?dbhtml filename="config_ref_ServerLog.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_log
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>ServerLog</primary></indexterm>
+ServerLog
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ServerLog</refname>
+<refpurpose>Configure logs on a per-server basis</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>ServerLog</command>
+<arg choice="opt">
+  <option>ServerLog path</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_log
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.8rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The ServerLog directive disables the daemon's use of the syslog mechanism and
+instead redirects all logging output for the server to the specified filename.
+The filename argument must contain an absolute path. Use of this directive
+overrides any facility set by the SyslogFacility directive, as well as
+overriding any configured SystemLog.
+</para>
+</refsect1>
+</refentry>
