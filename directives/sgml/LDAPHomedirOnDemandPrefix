@@ -1,0 +1,87 @@
+<refentry id="LDAPHomedirOnDemandPrefix">
+	<?dbhtml filename="config_ref_LDAPHomedirOnDemandPrefix.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPHomedirOnDemandPrefix</primary></indexterm>
+			LDAPHomedirOnDemandPrefix
+		</refentrytitle>
+	</refmeta>
+
+	<refnamediv>
+		<refname>LDAPHomedirOnDemandPrefix</refname>
+		<refpurpose>
+			Enable the creation of user home directories on demand
+		</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>LDAPHomedirOnDemandPrefix</command>
+			<arg choice="opt">
+				<option>leading-path</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+
+	<variablelist>
+		<title></title>
+
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPHomedirOnDemandPrefix off
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.8 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+	<refsect1>
+		<title>Description</title>
+
+		<para>LDAPHomedirOnDemandPrefix enables a prefix to be specified for
+		on-demand home directory creation. This is most useful if mod_ldap
+		is being used to authenticate against an LDAP directory that does
+		not return a homeDirectory attribute, either because it cannot
+		(Microsoft Active Directory, for example) or because you do not wish
+		to extend your existing directory schema.</para>
+
+		<para>For example, setting this directive to "/home" and logging in
+		as the user "joe" would result in his home directory being created
+		as "/home/joe". The directory will be created with the mode
+		specified in <link
+		linkend="LDAPHomedirOnDemand">LDAPHomedirOnDemand</link>.  To use
+		this directive, <link
+		linkend="LDAPHomedirOnDemand">LDAPHomedirOnDemand</link> must be
+		enabled.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
+</refentry>

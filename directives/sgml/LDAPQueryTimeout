@@ -56,7 +56,7 @@
 	<refsect1>
 		<title>Description</title>
 
-		<para> Sets the timeout used for LDAP directory queries. The default
+		<para>Sets the timeout used for LDAP directory queries. The default
 		is the default timeout used by your LDAP API.</para>
 	</refsect1>
 
@@ -70,4 +70,3 @@
 		<para></para>
 	</refsect1>
 </refentry>
-	
