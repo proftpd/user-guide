@@ -1520,7 +1520,6 @@ and send that file, compressed, along with your post.</para>
 
 <para>Once you have the debug output and various other information, and are still in need of help, search the FAQ, Userguide, and mailing list archives for material related to the problem. If you're unable to find anything helpful in these sources, post your question to the appropriate mailing list. Be sure to include the version used, your proftpd.conf, and possibly any debug information.</para>
 </sect2>
-</para>
 
 </sect1>
 </chapter>
@@ -11872,5 +11871,3 @@ flying hasmter.
 
 </book>
 
-</title>
- 
