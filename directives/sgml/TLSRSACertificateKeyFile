@@ -13,7 +13,7 @@ TLSRSACertificateKeyFile
 </refmeta>
 <refnamediv>
 <refname>TLSRSACertificateKeyFile</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>(docs incomplete)</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -30,7 +30,7 @@ TLSRSACertificateKeyFile
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+(docs incomplete)
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,7 @@ mod_tls
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+(docs incomplete)
 </para>
 </refsect1>
 
@@ -73,12 +73,8 @@ FIX FIX FIX
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
+(docs incomplete)
 </literallayout>
-
-<para>
-FIXFIX
-</para>
 
 </refsect1>
 </refentry>

@@ -79,17 +79,5 @@ used to override a RadiusLog setting inherited from a &lt;Global&gt; context.
 </para>
 </refsect1>
 
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-FIXFIXFIX
-</literallayout>
-
-<para>
-FIXFIX
-</para>
-
-</refsect1>
 </refentry>
 

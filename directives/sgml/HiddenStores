@@ -13,7 +13,7 @@ HiddenStores
 </refmeta>
 <refnamediv>
 <refname>HiddenStores</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>(docs incomplete)</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -30,7 +30,7 @@ HiddenStores
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+(docs incomplete)
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,7 @@ mod_xfer
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+(docs incomplete)
 </para>
 </refsect1>
 
@@ -67,19 +67,6 @@ FIX FIX FIX
 <link linkend=""></link>
 -->
 </para>
-</refsect1>
-
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-FIXFIXFIX
-</literallayout>
-
-<para>
-FIXFIX
-</para>
-
 </refsect1>
 </refentry>
 

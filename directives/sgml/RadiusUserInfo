@@ -93,19 +93,5 @@ have been configured via this directive will be pulled from other sources
 </para>
 </refsect1>
 
-<!--
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-FIXFIXFIX
-</literallayout>
-
-<para>
-FIXFIX
-</para>
-
-</refsect1>
--->
 </refentry>
 

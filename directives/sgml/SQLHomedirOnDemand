@@ -15,7 +15,7 @@ SQLHomedirOnDemand
 </refmeta>
 <refnamediv>
 <refname>SQLHomedirOnDemand</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Have mod_sql create home directories as needed</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

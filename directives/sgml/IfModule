@@ -104,10 +104,6 @@ MaxLoad                 10 "Access denied, server load too high"
 &lt;/IfModule&gt;
 </literallayout>
 
-<para>
-FIXFIX
-</para>
-
 </refsect1>
 </refentry>
 

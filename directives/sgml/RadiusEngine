@@ -69,19 +69,5 @@ The RadiusEngine directive enables or disables the module's runtime RADIUS engin
 </para>
 </refsect1>
 
-<!--
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-FIXFIXFIX
-</literallayout>
-
-<para>
-FIXFIX
-</para>
-
-</refsect1>
--->
 </refentry>
 
