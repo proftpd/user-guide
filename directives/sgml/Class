@@ -53,7 +53,7 @@ mod_core
 <para>
 Controls class based access. Class base access allows each connecting IP to 
 be classified into a separate class. Each class has its own maximum number
-of connections. limit sets the maximum number of connections
+of connections. limit sets the maximum number of connections (default is 100)
 for that class name, regex sets a hostname regex (POSIX) for
 inclusion in the class and ip sets an IP/netmask based inclusion.
 </para>
