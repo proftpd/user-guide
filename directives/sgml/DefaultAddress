@@ -20,7 +20,7 @@ DefaultAddress
 <cmdsynopsis>
 <command>DefaultAddress</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>dns-name|ip-address</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
