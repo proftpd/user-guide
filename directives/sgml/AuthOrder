@@ -56,32 +56,36 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-The AuthOrder directive rebuilds the tables of modules' authentication
-functions, reordering the tables such that only the listed modules'
-authentication functions are used, in the order in which the modules are
-listed.
+The AuthOrder directive configures the names of auth modules, and the
+order in which they will be checked when authenticating a user.
 </para>
 
 <para>
 At least one module name must be given; there is no maximum number of modules
 that can be listed.  The listed module names must the full name of the source
-file, e.g. "mod_auth_unix.c".  Do not use "mod_auth.c", as that module is
-the authentication front end module, and is necessary.
+file, e.g. "mod_auth_unix.c".  To see a full list of module names, use
+"proftpd -l".  Do not use "mod_auth.c", as that module is the authentication
+front end module, and is necessary.
 </para>
 </refsect1>
 
 <refsect1>
 <title>Examples</title>
-<para>
+<programlisting>
+  # Use only AuthUserFiles when authenticating, and not the system's /etc/passwd
+  AuthOrder mod_auth_file.c
+</programlisting>
+
+<programlisting>
   # If the user's information is not in LDAP, they're not a user to use
   # this server.
   AuthOrder mod_ldap.c
-</para>
+</programlisting>
 
-<para>
+<programlisting>
   # Use SQL tables first, then LDAP, for authentication
   AuthOrder mod_sql.c mod_ldap.c
-</para>
+</programlisting>
 </refsect1>
 
 </refentry>
