@@ -1,32 +1,35 @@
 <refentry id="mod-ldap">
-<?dbhtml filename="config_ref_mod_ldap.html">
-<refmeta>
-<refentrytitle>
-<indexterm><primary>mod_ldap</primary></indexterm>
-mod_ldap
-</refentrytitle>
-</refmeta>
-<refnamediv>
-<refname>mod_ldap</refname>
-<refpurpose>LDAP authentication support</refpurpose>
-</refnamediv>
+	<?dbhtml filename="config_ref_mod_ldap.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>mod_ldap</primary></indexterm>
+			mod_ldap
+		</refentrytitle>
+	</refmeta>
+
+	<refnamediv>
+		<refname>mod_ldap</refname>
+		<refpurpose>LDAP authentication support</refpurpose>
+	</refnamediv>
 
 <refsynopsisdiv>
-<cmdsynopsis>
-<command>mod_ldap</command>
-</cmdsynopsis>
+	<cmdsynopsis>
+		<command>mod_ldap</command>
+	</cmdsynopsis>
 </refsynopsisdiv>
 
 <refsect1>
-<title>Description</title>
-<para>
-FIXME
-FIXME
-FIXME
-</para>
-
+	<title>Description</title>
+	<para>
+		mod_ldap provides LDAP authentication support for ProFTPD. It
+		supports many features useful in "toaster" environments such as
+		default UID/GID and autocreation/autogeneration of home directories.
+	</para>
 </refsect1>
 
 <refsect1>
-<title>See also</title>
-<para>
+	<title>See also</title>
+	<para></para>
+</refsect1>
+
+</refentry>
