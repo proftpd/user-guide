@@ -78,15 +78,18 @@ In addition, the following command-groups are accepted.
 They have a lower precedence than real commands, meaning that a real command 
 limit will always be applied instead of the command-group.
 READ
-All FTP commands which deal with file reading (directory listing not included). 
-i.e. RETR, STAT, etc.
+All FTP commands which deal with file reading (directory listing not included): 
+  RETR, SITE, SIZE, STAT
 WRITE
-All FTP commands which deal with file or directory write/creation/deletion 
-(MKD and RMD included).
+All FTP commands which deal with file or directory write/creation/deletion:
+  APPE, DELE, MKD, RMD, RNTO, STOR, XMKD, XRMD
 DIRS
-All FTP commands which deal with directory listing. i.e LIST and NLST.
+All FTP commands which deal with directory listing:
+  CDUP, CWD, LIST, MDTM, NLST, PWD, RNFR, XCUP, XCWD, XPWD
 ALL
-ALL FTP commands (identical to READ WRITE DIRS).
+ALL FTP commands (identical to READ WRITE DIRS).  Note this group has the
+lowest precedence of all; it will not override a limit imposed by another
+command-group (e.g. DIRS).
 Finally, a special command is allowed which can be used to control login access:
 LOGIN
 Connection or login to the server. Applying a &lt;Limit&gt; to this pseudo-command 
@@ -98,7 +101,22 @@ meaningless).
 &lt;Limit&gt; command restrictions should not be confused with file/directory 
 access permission. While limits can be used to restrict a command on a certain 
 directory, they cannot be used to override the file permissions inherent to 
-the base operating/file system.</para>
+the base operating/file system.
+The following FTP commands cannot be restricted via &lt;Limit&gt;:
+  ABOR
+  HELP
+  MODE (not implemented, always S)
+  NOOP
+  PASS (use &lt;Limit LOGIN&gt;)
+  PASV
+  PORT
+  QUIT
+  REST (use AllowRetrieveRestart, AllowStoreRestart)
+  STRU (not implemented, always F)
+  SYST
+  TYPE
+  USER (use &lt;Limit LOGIN&gt;)
+</para>
 </refsect1>
 
 <refsect1>
