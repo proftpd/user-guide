@@ -35,6 +35,7 @@ function build
 	echo -n "linked "
 	cd $BASE/linked/
 	jade -t sgml -E 1200 -d $DSL $BASE/main.sgml
+	exit
 	#
 	# Building single html 
 	#
@@ -108,6 +109,13 @@ function install
 	
 	}
 
+function installbeta {
+	cd $HOME/Proftpd/Userguide/
+	rsync --delete -av linked/ ~/websites/korenwolf/proftpd/beta/linked
+	rsync --delete -av other/ ~/websites/korenwolf/proftpd/beta/other
+} 
+	
+
 #
 #
 #
@@ -119,6 +127,11 @@ case "$1" in
 	install)
 		echo "Installing pages"
 		install
+		;;
+
+	beta)
+		build
+		installbeta
 		;;
 	clean)
 		echo "Nuking built"

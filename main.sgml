@@ -4760,6 +4760,325 @@ interested, please contact him directly via email.</para>
 </sect1>
 </chapter>
 
+<chapter id="config-usingauthuserfile">
+<?dbhtml filename="config-usingauthuserfile.html">
+<title>Using AuthUserFiles</title>
+<authorblurb>
+<para>Originally by TJ Saunders</para>
+</authorblurb>
+
+<para>The FTP protocol is old, stemming from the days of Telnet,
+before security came to be the relevant issue it is today. One of the
+protocol's biggest flaws, in today's security-conscious world, is the
+transmission of passwords "in the clear", unencrypted, easily visible
+to network sniffers. There are several ways of attempting to deal with
+this flaw.</para> 
+
+<para>ProFTPD allows for the definition of "virtual" users: users who do not
+have accounts on the host machine, whose account information is
+defined in other sources. The passwords for these users are then
+specific only to FTP access, and thus do not expose shell access (ssh,
+hopefully) to unauthorized users. These alternative account
+information sources include SQL tables (via mod_sql), LDAP servers
+(via mod_ldap), CDB files (via mod_auth_cdb), and other system files
+(via the AuthUserFile and AuthGroupFile configuration directives). The
+proftpd server can be configured to use multiple account information
+sources simultaneously as well, allowing for flexible support of a
+range of environments. </para>
+
+<para>This document focuses on the use of the AuthUserFile and AuthGroupFile
+directives. Several questions often arise about the use of these
+directives. In general, the answers to those questions apply to other
+authentication/account sources, too. </para>
+
+<sect1>
+<title>Formats</title>
+<para>Any configured AuthUserFile is used instead of /etc/passwd, not in
+addition to it; similarly for AuthGroupFile and /etc/group. The format
+of an AuthUserFile is the same as /etc/passwd (man passwd(5)), and the
+format of an AuthGroupFile is the same as /etc/group (man
+group(5)). There is an ftpasswd script available that can be used to
+create and update these files. </para>
+
+<para>It is important to note here that not all flavors of Unix use these
+formats; one notable exception is FreeBSD. With FreeBSD, user account
+information is stored in binary database files as opposed to ASCII
+files. The C library on this platform also lacks the functions
+necessary for making the AuthUserFile and AuthGroupFile directives
+work properly. In this case, proftpd uses an internal implementation
+of the missing functions to read AuthUserFiles and
+AuthGroupFiles. This internal implementation requires that
+AuthUserFiles have the traditional passwd(5) format: </para>
+
+<programlisting>
+username:password:uid:gid:gecos:homedir:shell
+</programlisting>
+
+<para>and that AuthGroupFiles have this format:</para>
+
+<programlisting>
+groupname:grouppasswd:gid:member1,member2,...memberN
+</programlisting>
+
+<para>The ftpasswd script mentioned creates files in these required
+formats.</para> 
+</sect1>
+
+<sect1>
+<title>Choice of IDs</title>
+
+<para>The choice of IDs for your users is important; the operating
+system does not deal with user processes in terms of their user names,
+it knows only of the numeric identity of a process. In general, it is
+best if each user has a unique positive user ID (negative IDs are an
+ugly hack, and proftpd will complain if they are used).</para>
+
+<para>However, in some mass-hosting environments such as ISPs, the
+number of users is greater than the number of IDs available. In these
+cases, you can give each user the same ID; additional steps should
+then be taken to make sure that each user is isolated from affecting
+other users' files. These additional steps are to make sure each user
+has a unique home directory, and then to restrict each user to their
+respective home directories by having</para> 
+
+<programlisting>
+DefaultRoot ~
+</programlisting>
+
+<para>in your proftpd.conf.</para>
+
+<para>There is also currently an issue with using the same usernames
+in different authentication schemes (e.g. having the same username in
+both /etc/passwd and a mod_sql SQL table); read this thread for more
+information:</para> 
+
+<para>http://www.proftpd.org/proftpd-l-archive/full/msg16600.html</para>
+
+</sect1>
+
+<sect1>
+<title>Shadow passwords</title>
+
+<para>There really is no need for an AuthShadowFile directive. The
+purpose of a shadow file is separate sensitive information
+(e.g. passwords) from other account information (username/UID/GID,
+etc). Programs like /bin/ls often reference the passwd file in order
+to display user/group names rather than numbers; these programs do not
+really need that sensitive information. Rather than relying on
+programs like /bin/ls to ignore the sensitive information, libraries
+were developed to split the information into /etc/passwd, /etc/shadow
+(and similarly for /etc/group, but very few administrators use group
+passwords anymore). Some operating systems, most notably FreeBSD,
+though, chose a different form of information separation. Since
+FreeBSD maintains account information in binary database files, the
+shadow libraries mentioned above are not used. Instead, FreeBSD
+returns the sensitive information to the calling program only if it
+has sufficient (i.e. superuser) privileges. </para>
+
+<para>When proftpd uses an AuthUserFile, it is looking for all of the
+account information, including the password. And since AuthUserFiles
+are specific to proftpd, there is no need to split any passwords out
+of an AuthUserFile into an AuthShadowFile. As the documentation
+states, an AuthUserFile need not reside inside a chroot() filesystem,
+which means that users can be effectively isolated from having access
+to that AuthUserFile. At that point, the only consideration is making
+sure that the permissions on the AuthUserFile are sufficient for the
+server to have access, but no other users.</para>
+</sect1>
+
+<sect1>
+<title>Permissions</title>
+
+<para>As the AuthUserFile and AuthGroupFile files are meant to be
+drop-in replacements for their system cousins, there are a few
+caveats. /etc/passwd and /etc/group are normally world-readable on
+modern Unix systems. This allows programs like /bin/ls to map system
+ID numbers to more legible names; sensitive information in the
+/etc/passwd and /etc/group is normally stored elsewhere, in restricted
+shadow files. The proftpd server thus assumes that it will not need
+special privileges to read an AuthUserFile or an AuthGroupFile. The
+process will access any AuthUserFiles and AuthGroupFiles with the
+credentials of the user and group configured via the User and Group
+directives. The files may contain sensitive information, so they
+should not have as open of permissions as /etc/passwd and
+/etc/group. The most paranoid setting will have user-read-only
+permissions for those files, and have the files be owned by the user
+configured for the relevant server via the User directive. Hopefully
+the server administrator has created a new account on the system just
+for the ftpd daemon.</para> 
+</sect1>
+
+<sect1>
+<title>ID-to-name mapping</title>
+
+<para>A consequence of which to be aware when using an AuthUserFile is
+the difference between that AuthUserFile's mapping of system IDs to
+names, and the mapping in /etc/passwd. This may catch some system
+administrators unawares when they go to check the ownership of files
+uploaded by some user whose account is defined in an AuthUserFile, and
+find those files being reported as being owned by different users
+and/or groups by /bin/ls. Keep in mind that /bin/ls is using
+/etc/passwd, not the AuthUserFile. This issue crops up with any
+alternative account information source, not just AuthUserFiles.</para>
+
+<para>If you are using the same UID/GID for your users, e.g. in a mass
+hosting environment, one trick you might like to do is make all of the
+files, as listed by the server, appear to be owned by the logged in
+user. This is done using the DirFakeUser and DirFakeGroup directives,
+like this:</para> 
+
+<programlisting>
+# make listed files appear to be owned by the logged-in user
+  DirFakeUser on ~
+  DirFakeGroup on ~
+</programlisting>
+
+<para>These directives are purely cosmetic, and in no way change the
+real ownership of files. This may cause some confusion on the client
+side in some cases, if the user sees a file that is reported to be
+owned by them, and the permissions on the file show user access is
+allowed, and yet the client is unable to access the file. HideNoAccess
+can help in situations like this.</para> 
+</sect1>
+
+</chapter>
+
+<chapter id="config-nat">
+<?dbhtml filename="config-nat.html">
+<title>Configuration for NAT</title>
+<authorblurb>
+<para>Contributed by  Tobias Ekbom</para>
+<!-- tobias@vallcom.com -->
+</authorblurb>
+			
+<sect1>
+<title>Basic NAT info</title>
+
+<para>A NAT is a system that acts like a proxy, but on "packet level".
+When a computer on your local network connects to a computer on the
+Internet, the NAT replaces the "from" information of packets with it's
+own address, making your local network invisible to the
+Internet.</para>
+
+<para>For server systems, NAT can improve security and enable multiple
+servers to be accessed as a single IP.</para>
+
+<para>This is done by allowing certain ports forwarded "inwards" to
+the local network. However, the part of the FTP protocol known as
+"Passive" mode is not by default compatible with NAT solutions.  But
+NAT functionality is possible with ProFTPD from versions 1.2rc2, and
+this document shows you how.</para>
+
+<para>For details on NAT configuration, read the Linux IP-masq HOWTO
+(http://www.linuxdoc.org/HOWTO/IP-Masquerade-HOWTO.html) or search for
+information concerning your OS of choice.</para>
+</sect1>
+
+<sect1>
+<title>Configuring ProFTPD behind a NAT</title>
+
+<para>First configure your ProFTPD install so that it works right from
+inside the NAT. There are example configuration files included with
+the source.</para>
+
+<para>Then add the directive "MasqueradeAddress" in your
+etc/proftpd.conf file to define the public name or IP address of the
+NAT:</para>
+
+<programlisting>
+MasqueradeAddress	ftp.mydomain.com
+	-or-
+MasqueradeAddress	123.45.67.89
+</programlisting>
+
+<para>Now your ProFTPD will hide it's local address and instead use the
+public address of your NAT.</para>
+
+<para>However, one BIG problem exists.</para>
+
+<para>The passive FTP connections will use ports from 1024 and up,
+which means that you must forward all ports 1024-65535 from the NAT to
+the FTP server!  And you have to allow lots of (possibly) dangerous
+ports in your firewalling rules!</para>
+
+<para>Have no fear, simply use the PassivePorts directive in your
+etc/proftpd.conf to control what ports ProFTPD uses:</para>
+
+<programlisting>
+PassivePorts 60000 65535	# These ports should be safe...
+</programlisting>
+
+<para>Now start the FTP daemon and you should see something
+like</para>
+
+<screen>
+123.45.67.89 - Masquerading as '123.45.67.89' (123.45.67.89)
+</screen>
+</sect1>
+
+<sect1>
+<title>Configuring a Linux NAT</title>
+
+<para>This example is for Linux kernel version 2.2.x with ipchains and
+ipmasqadm.  The examples below assume that your FTP server has local
+address 192.168.1.2.</para>
+
+<para>First we need to enable NAT for our FTP server. As root user:</para>
+
+<screen>
+  echo "1">/proc/sys/net/ipv4/ip_forward
+  ipchains -P forward DENY
+  ipchains -I forward -s 192.168.1.2 -j MASQ
+</screen>
+
+<para>Now we load the autofw kernel module and forward ports 20 and 21
+to the FTP server:</para>
+
+<screen>
+  insmod ip_masq_autofw
+  ipmasqadm autofw -A -r tcp 20 21 -h 192.168.1.2
+</screen>
+
+<para>Then we forward ports for Passive FTP. In our etc/proftpd.conf
+file we restriced passive ports to 60000-65535, so that's what we'll
+use here:</para>
+
+<screen>
+  ipmasqadm autofw -A -r tcp 60000 65535 -h 192.168.1.2
+</screen>
+
+<para>Now you can try to login to your FTP server from a computer on
+the Internet!</para>
+</sect1>
+
+<sect1>
+<title>NAT Security</title>
+
+<para>Setting up a ProFTPD install that allows PASV mode connections
+requires that a range of ports is forwarded from the NAT to the local
+network.  This could be a security hazard, but since you can specify
+what port range to use, you are still able to setup relatively tight
+firewalling rules.</para>
+
+<para>To be sure that you have no other processes listening on the
+ports you have specified for Passive FTP, use a port scanner such as
+nmap:</para>
+
+<screen>
+  nmap -sT -I -p 60000-65535 localhost
+</screen>
+
+<para>If the result says something like</para>
+
+<screen>
+  All 5536 scanned ports on localhost (127.0.0.1) are: closed
+</screen>
+
+<para>then you should be safe.</para>
+</sect1>
+
+</chapter>
+
 </part>
 
   <part id="part-advancedconfig">
@@ -6430,7 +6749,7 @@ will cause the server to fail.</para>
     </chapter>
 
 <chapter id="advconfig-chroot">
-<?dbhtml filename="advconfig-chroot">
+<?dbhtml filename="advconfig-chroot.html">
 <title>Symlinks and chroot()</title>
 <authorblurb>
 <para>
@@ -6550,6 +6869,92 @@ reboot, the /etc/fstab (or /etc/vfstab) file may need to have these
 mounts added. Consult your local fstab(5) (or vfstab(4) for Solaris)
 man pages for more information.</para>
 </sect1>
+</chapter>
+
+<chapter id="advconfig-nonroot">
+<?dbhtml filename="advconfig-nonroot.html">
+<title>Running ProFTPD As A Nonroot User</title>
+<authorblurb>
+<para>
+Chapter by TJ Saunders
+</para>
+</authorblurb>
+
+<para>Occasionally, one might want to run ProFTPD on a system where
+root privs are not available to you as a user. It is still possible to
+setup a functioning FTP server without root privileges. There are a
+few catches and special considerations for this, however.</para>
+
+<para>Here are the configuration directives that you will need to use in
+order to run the server without root privileges:</para>
+
+<variablelist>
+
+<varlistentry>
+<term>Port</term>
+<listitem>
+<para>This needs to be a number greater than 1023. Lower number ports
+require root privileges in order for the process to bind to that
+address. This will also mean that clients wishing to contact your
+server will need to know the port on which it is listening. Most FTP
+clients connect to the standard FTP port (21).</para> 
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>AuthUserFile, AuthGroupFile</term>
+<listitem>
+
+<para>In order to authenticate users, by default the server looks in
+/etc/passwd for account information, and in /etc/shadow for the
+password. Comparing stored passwords requires root privileges, which
+this nonroot-running daemon will not have. You can get around this
+requirement by supplying your own passwd (and possibly group) files
+via the AuthUserFile and AuthGroupFile directives. Make sure the
+permissions on your custom files allow for the daemon to read them
+(but hopefully not other users).</para>
+
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>AuthPAM</term>
+<listitem>
+<para>PAM authentication requires root privileges. This directive will need to be set off.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>WtmpLog</term>
+<listitem>
+<para>
+Logging to wtmp files requires root privileges. While it is not strictly necessary for this directive to be set to off, failure to do so will result in server log messages like:
+</para>
+
+<screen>
+host.domain.net (localhost[127.0.0.1]) - wtmpx /var/adm/wtmpx: Permission denied
+</screen>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>User, Group</term>
+<listitem>
+<para>The ability to switch the identity of the server process to
+those configured by the User and Group directives requires, of course,
+root privileges. It is best to configure User to be your username, and
+Group to be the name of your primary group (which is usually the first
+group listed by the groups command).</para> 
+</listitem>
+</varlistentry>
+
+
+</variablelist>
+
+<para>Note that other configuration directives will be affected by the
+lack of root privileges: DefaultRoot will not work, nor will
+&lt;Anonymous&gt; sections, nor UserOwner. Basically any operation
+that requires root privileges will be disabled.</para>
 </chapter>
 
 
