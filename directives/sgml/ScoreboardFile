@@ -1,5 +1,5 @@
-<refentry id="ScoreboardPath">
-<?dbhtml filename="config_ref_ScoreboardPath.html">
+<refentry id="ScoreboardFile">
+<?dbhtml filename="config_ref_ScoreboardFile.html">
 <refentryinfo>
   <keywordset>
     <keyword>
@@ -9,18 +9,18 @@
 </refentryinfo>
 <refmeta>
 <refentrytitle>
-<indexterm><primary>ScoreboardPath</primary></indexterm>
-ScoreboardPath
+<indexterm><primary>ScoreboardFile</primary></indexterm>
+ScoreboardFile
 </refentrytitle>
 </refmeta>
 <refnamediv>
-<refname>ScoreboardPath</refname>
+<refname>ScoreboardFile</refname>
 <refpurpose>Sets the path to the scoreboard file</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>ScoreboardPath</command>
+<command>ScoreboardFile</command>
 <arg choice="opt">
   <option>path</option>
 </arg>
@@ -32,7 +32,7 @@ ScoreboardPath
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-ScoreboardPath /var/run
+ScoreboardFile /var/run/proftpd.scoreboard
 </para> </listitem>
 </varlistentry>
 
@@ -50,7 +50,7 @@ mod_core
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.1.6 and later
+1.2.7rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -59,9 +59,9 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-The ScoreboardPath directive sets the directory where proftpd run-time scoreboard 
-files (proftpd-*) are kept. These file(s) are necessary for MaxClients 
-to work properly, as well as other utilities (such as ftpwho and ftpcount).</para> 
+The ScoreboardFile directive sets the path to the file where the daemon will
+store its run-time "scoreboard" session information.  This file is necessary
+for MaxClients to work properly, as well as other utilities (such as ftpwho and ftpcount).</para> 
 </refsect1>
 
 <refsect1>
