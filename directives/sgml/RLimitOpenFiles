@@ -1,0 +1,82 @@
+<refentry id="RLimitOpenFiles">
+<?dbhtml filename="config_ref_RLimitOpenFiles.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>RLimitOpenFiles</primary></indexterm>
+RLimitOpenFiles
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>RLimitOpenFiles</refname>
+<refpurpose>Configure the maximum number of open files used by a process</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>RLimitOpenFiles</command>
+<arg choice="opt">
+  <option>RLimitOpenFiles soft-limit|"max" [hard-limit|"max"]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.1rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+RLimitOpenFiles takes 1 or 2 parameters. The first parameter sets the soft
+resource limit for all proftpd processes. The optional second parameter sets
+the maximum resource limit. Either parameter can be a number, or max to
+indicate to the server that the limit should be set to the maximum allowed
+by the operating system configuration.
+</para>
+
+<para>
+File resource limits are expressed in number of files per process.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<para>
+See Also: RLimitCPU, RLimitMaxProcesses, RLimitMemory
+</para>
+</refsect1>
+</refentry>
+
