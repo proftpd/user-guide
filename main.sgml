@@ -1009,12 +1009,12 @@ CDB based Authentication
 	trusted ports and destinations.</para>
 
 	<para>FTP, as has been mentioned in an earlier chapter has two
-	main methods of operation, passive and active.  Active mode
+	main methods of operation, passive and active.  Passive mode
 	support is difficult in the extreme to support within a
 	firewall, it requires the tracking of port 21 connections in
 	and outbound and opening up complete tcp holes for that
 	connection on the fly and tearing down once the control socket
-	is closed.  Passive support is brainlessly simple by
+	is closed.  Active support is brainlessly simple by
 	comparision, opening ports 20 and 21 is sufficient, nothing
 	more complex is required.</para>
 
