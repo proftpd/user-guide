@@ -65,7 +65,7 @@ umasks, consult your operating system documentation/man pages.</para>
 on, this is a security driven design decision.  The permissions of the
 uploaded file can be changed by issuing a SITE CHMOD command can be
 used to change the mode of the uploaded file.  Syntax of the command is:
-SITE COMMAND &lt;mode&gt; &lt;file&gt;.</para>
+SITE CHMOD &lt;mode&gt; &lt;file&gt;.</para>
 </refsect1>
 
 <refsect1>
