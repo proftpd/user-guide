@@ -1,79 +1,75 @@
 <refentry id="LDAPServer">
-<?dbhtml filename="config_ref_LDAPServer.html">
-<refmeta>
-<refentrytitle>
-<indexterm><primary>LDAPServer</primary></indexterm>
-LDAPServer
-</refentrytitle>
-</refmeta>
-<refnamediv>
-<refname>LDAPServer</refname>
-<refpurpose>FIXME FIXME</refpurpose>
-</refnamediv>
+	<?dbhtml filename="config_ref_LDAPServer.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPServer</primary></indexterm>
+			LDAPServer
+		</refentrytitle>
+	</refmeta>
 
-<refsynopsisdiv>
-<cmdsynopsis>
-<command>LDAPServer</command>
-<arg choice="opt">
-  <option></option>
-</arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
-</cmdsynopsis>
+	<refnamediv>
+		<refname>LDAPServer</refname>
+		<refpurpose>FIXME FIXME</refpurpose>
+	</refnamediv>
 
-<variablelist><title></title>
-<varlistentry><term><synopsis>Default</synopsis></term>
-<listitem> <para>
-LDAPServer "localhost"
-</para> </listitem>
-</varlistentry>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>LDAPServer</command>
+			<arg choice="opt">
+				<option></option>
+			</arg>
+		</cmdsynopsis>
+	<refsynopsisdiv>
 
-<varlistentry><term><synopsis>Context</synopsis></term>
-<listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Global&gt;
-</para> </listitem>
-</varlistentry>
+	<variablelist>
+		<title></title>
 
-<varlistentry><term><synopsis>Module</synopsis></term>
-<listitem> <para>
-mod_ldap
-</para> </listitem>
-</varlistentry>
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPServer "localhost"
+			</para></listitem>
+		</varlistentry>
 
-<varlistentry><term><synopsis>Compatibility</synopsis></term>
-<listitem> <para>
-mod_ldap v1.0 and later
-</para> </listitem>
-</varlistentry>
-</variablelist>
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>Description</title>
-<para>
-LDAPServer allows you to to specify the hostname(s) and port(s) of the
-LDAP server(s) to use for LDAP authentication. If no LDAPServer
-configuration directive is present, the default LDAP servers specified
-by your LDAP API will be used.
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v1.0 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
 
-<refsect1>
-<title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
+	<refsect1>
+		<title>Description</title>
 
+		<para>LDAPServer allows you to to specify the hostname(s) and
+		port(s) of the LDAP server(s) to use for LDAP authentication. If no
+		LDAPServer configuration directive is present, the default LDAP
+		servers specified by your LDAP API will be used.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
 </refentry>
+	

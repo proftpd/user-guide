@@ -1,82 +1,78 @@
 <refentry id="LDAPDoAuth">
-<?dbhtml filename="config_ref_LDAPDoAuth.html">
-<refmeta>
-<refentrytitle>
-<indexterm><primary>LDAPDoAuth</primary></indexterm>
-LDAPDoAuth
-</refentrytitle>
-</refmeta>
-<refnamediv>
-<refname>LDAPDoAuth</refname>
-<refpurpose>FIXME FIXME</refpurpose>
-</refnamediv>
+	<?dbhtml filename="config_ref_LDAPDoAuth.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPDoAuth</primary></indexterm>
+			LDAPDoAuth
+		</refentrytitle>
+	</refmeta>
 
-<refsynopsisdiv>
-<cmdsynopsis>
-<command>LDAPDoAuth</command>
-<arg choice="opt">
-  <option>LDAPDoAuth on|off "auth-base-prefix" "search-filter-template"</option>
-</arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
-</cmdsynopsis>
+	<refnamediv>
+		<refname>LDAPDoAuth</refname>
+		<refpurpose>FIXME FIXME</refpurpose>
+	</refnamediv>
 
-<variablelist><title></title>
-<varlistentry><term><synopsis>Default</synopsis></term>
-<listitem> <para>
-LDAPDoAuth off
-</para> </listitem>
-</varlistentry>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>LDAPDoAuth</command>
+			<arg choice="opt">
+				<option>LDAPDoAuth on|off "auth-base-prefix" "search-filter-template"</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
 
-<varlistentry><term><synopsis>Context</synopsis></term>
-<listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Global&gt;
-</para> </listitem>
-</varlistentry>
+	<variablelist>
+		<title></title>
 
-<varlistentry><term><synopsis>Module</synopsis></term>
-<listitem> <para>
-mod_ldap
-</para> </listitem>
-</varlistentry>
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPDoAuth off
+			</para></listitem>
+		</varlistentry>
 
-<varlistentry><term><synopsis>Compatibility</synopsis></term>
-<listitem> <para>
-mod_ldap v2.0 and later
-</para> </listitem>
-</varlistentry>
-</variablelist>
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>Description</title>
-<para>
-This configuration directive activates LDAP authentication. The second
-argument to this directive is the LDAP prefix to use for authentication.
-The third argument is a template to be used for the search filter; %u
-will be replaced with the username that is being authenticated. By
-default, the search filter template "(&amp;(uid=%u)(objectclass=posixAccount))"
-is used. Search filter templates are only supported in mod_ldap v2.7 and
-later.
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.0 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
 
-<refsect1>
-<title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
+	<refsect1>
+		<title>Description</title>
 
+		<para>This configuration directive activates LDAP authentication.
+		The second argument to this directive is the LDAP prefix to use for
+		authentication.  The third argument is a template to be used for the
+		search filter; %u will be replaced with the username that is being
+		authenticated. By default, the search filter template
+		"(&amp;(uid=%u)(objectclass=posixAccount))" is used. Search filter
+		templates are only supported in mod_ldap v2.7 and later.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
 </refentry>
+	

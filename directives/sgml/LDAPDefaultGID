@@ -1,81 +1,78 @@
 <refentry id="LDAPDefaultGID">
-<?dbhtml filename="config_ref_LDAPDefaultGID.html">
-<refmeta>
-<refentrytitle>
-<indexterm><primary>LDAPDefaultGID</primary></indexterm>
-LDAPDefaultGID
-</refentrytitle>
-</refmeta>
-<refnamediv>
-<refname>LDAPDefaultGID</refname>
-<refpurpose>FIXME FIXME</refpurpose>
-</refnamediv>
+	<?dbhtml filename="config_ref_LDAPDefaultGID.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPDefaultGID</primary></indexterm>
+			LDAPDefaultGID
+		</refentrytitle>
+	</refmeta>
 
-<refsynopsisdiv>
-<cmdsynopsis>
-<command>LDAPDefaultGID</command>
-<arg choice="opt">
-  <option>LDAPDefaultGID default-gid</option>
-</arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
-</cmdsynopsis>
+	<refnamediv>
+		<refname>LDAPDefaultGID</refname>
+		<refpurpose>FIXME FIXME</refpurpose>
+	</refnamediv>
 
-<variablelist><title></title>
-<varlistentry><term><synopsis>Default</synopsis></term>
-<listitem> <para>
-None
-</para> </listitem>
-</varlistentry>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>LDAPDefaultGID</command>
+			<arg choice="opt">
+				<option>LDAPDefaultGID default-gid</option>
+			</arg>
+		</cmdsynopsis>
+	</refsysopsisdiv>
 
-<varlistentry><term><synopsis>Context</synopsis></term>
-<listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Global&gt;
-</para> </listitem>
-</varlistentry>
+	<variablelist>
+		<title></title>
 
-<varlistentry><term><synopsis>Module</synopsis></term>
-<listitem> <para>
-mod_ldap
-</para> </listitem>
-</varlistentry>
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				None
+			</para></listitem>
+		</varlistentry>
 
-<varlistentry><term><synopsis>Compatibility</synopsis></term>
-<listitem> <para>
-mod_ldap v2.0 and later
-</para> </listitem>
-</varlistentry>
-</variablelist>
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>Description</title>
-<para>
-This directive is useful primarily in virtual-user environments common
-in large-scale ISPs and hosting organizations. If a user does not have
-a LDAP gidNumber attribute, the LDAPDefaultGID is used. This allows one
-to have a large number of users in an LDAP database without gidNumber
-attributes; setting this configuration directive will automatically
-assign those users a single GID.
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.0 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
 
-<refsect1>
-<title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
+	<refsect1>
+		<title>Description</title>
+
+		<para>This directive is useful primarily in virtual-user
+		environments common in large-scale ISPs and hosting organizations.
+		If a user does not have a LDAP gidNumber attribute, the
+		LDAPDefaultGID is used. This allows one to have a large number of
+		users in an LDAP database without gidNumber attributes; setting this
+		configuration directive will automatically assign those users a
+		single GID.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
 
 </refentry>

@@ -33,7 +33,7 @@
 
 		<varlistentry><term><synopsis>Context</synopsis></term>
 			<listitem><para>
-			server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
 			</para></listitem>
 		</varlistentry>
 

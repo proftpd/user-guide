@@ -1,82 +1,80 @@
 <refentry id="LDAPDoGIDLookups">
-<?dbhtml filename="config_ref_LDAPDoGIDLookups.html">
-<refmeta>
-<refentrytitle>
-<indexterm><primary>LDAPDoGIDLookups</primary></indexterm>
-LDAPDoGIDLookups
-</refentrytitle>
-</refmeta>
-<refnamediv>
-<refname>LDAPDoGIDLookups</refname>
-<refpurpose>FIXME FIXME</refpurpose>
-</refnamediv>
+	<?dbhtml filename="config_ref_LDAPDoGIDLookups.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPDoGIDLookups</primary></indexterm>
+			LDAPDoGIDLookups
+		</refentrytitle>
+	</refmeta>
 
-<refsynopsisdiv>
-<cmdsynopsis>
-<command>LDAPDoGIDLookups</command>
-<arg choice="opt">
-  <option>LDAPDoGIDLookups on|off "uid-base-prefix" "search-filter-template"</option>
-</arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
-</cmdsynopsis>
+	<refnamediv>
+		<refname>LDAPDoGIDLookups</refname>
+		<refpurpose>FIXME FIXME</refpurpose>
+	</refnamediv>
 
-<variablelist><title></title>
-<varlistentry><term><synopsis>Default</synopsis></term>
-<listitem> <para>
-LDAPDoGIDLookups off
-</para> </listitem>
-</varlistentry>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>LDAPDoGIDLookups</command>
+			<arg choice="opt">
+				<option>LDAPDoGIDLookups on|off "uid-base-prefix" "search-filter-template"</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
 
-<varlistentry><term><synopsis>Context</synopsis></term>
-<listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Global&gt;
-</para> </listitem>
-</varlistentry>
+	<variablelist>
+		<title></title>
 
-<varlistentry><term><synopsis>Module</synopsis></term>
-<listitem> <para>
-mod_ldap
-</para> </listitem>
-</varlistentry>
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPDoGIDLookups off
+			</para></listitem>
+		</varlistentry>
 
-<varlistentry><term><synopsis>Compatibility</synopsis></term>
-<listitem> <para>
-mod_ldap v2.0 and later
-</para> </listitem>
-</varlistentry>
-</variablelist>
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>Description</title>
-<para>
-This configuration directive activates LDAP GID-to-name lookups in
-directory listings. The second argument to this directive is the LDAP
-prefix to use for GID-to-name lookups. The third argument is a template
-to be used for the search filter; %u will be replaced with the GID that
-is being looked up. By default, the search filter template
-"(&amp;(gidNumber=%u)(objectclass=posixGroup))" is used. Search filter
-templates are only supported in mod_ldap v2.7 and later.
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.0 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
 
-<refsect1>
-<title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
+	<refsect1>
+		<title>Description</title>
 
+		<para>This configuration directive activates LDAP GID-to-name
+		lookups in directory listings. The second argument to this directive
+		is the LDAP prefix to use for GID-to-name lookups. The third
+		argument is a template to be used for the search filter; %u will be
+		replaced with the GID that is being looked up. By default, the
+		search filter template
+		"(&amp;(gidNumber=%u)(objectclass=posixGroup))" is used. Search
+		filter templates are only supported in mod_ldap v2.7 and
+		later.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
 </refentry>
+	

@@ -1,86 +1,83 @@
 <refentry id="LDAPNegativeCache">
-<?dbhtml filename="config_ref_LDAPNegativeCache.html">
-<refmeta>
-<refentrytitle>
-<indexterm><primary>LDAPNegativeCache</primary></indexterm>
-LDAPNegativeCache
-</refentrytitle>
-</refmeta>
-<refnamediv>
-<refname>LDAPNegativeCache</refname>
-<refpurpose>FIXME FIXME</refpurpose>
-</refnamediv>
+	<?dbhtml filename="config_ref_LDAPNegativeCache.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPNegativeCache</primary></indexterm>
+			LDAPNegativeCache
+		</refentrytitle>
+	</refmeta>
 
-<refsynopsisdiv>
-<cmdsynopsis>
-<command>LDAPNegativeCache</command>
-<arg choice="opt">
-  <option>LDAPNegativeCache on|off</option>
-</arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
-</cmdsynopsis>
+	<refnamediv>
+		<refname>LDAPNegativeCache</refname>
+		<refpurpose>FIXME FIXME</refpurpose>
+	</refnamediv>
 
-<variablelist><title></title>
-<varlistentry><term><synopsis>Default</synopsis></term>
-<listitem> <para>
-LDAPNegativeCache off
-</para> </listitem>
-</varlistentry>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>LDAPNegativeCache</command>
+			<arg choice="opt">
+				<option>LDAPNegativeCache on|off</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
 
-<varlistentry><term><synopsis>Context</synopsis></term>
-<listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Global&gt;
-</para> </listitem>
-</varlistentry>
+	<variablelist>
+		<title></title>
 
-<varlistentry><term><synopsis>Module</synopsis></term>
-<listitem> <para>
-mod_ldap
-</para> </listitem>
-</varlistentry>
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPNegativeCache off
+			</para></listitem>
+		</varlistentry>
 
-<varlistentry><term><synopsis>Compatibility</synopsis></term>
-<listitem> <para>
-mod_ldap v1.1 and later
-</para> </listitem>
-</varlistentry>
-</variablelist>
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>Description</title>
-<para>
-LDAPNegativeCache specifies whether or not to cache negative responses
-from the LDAP server when using LDAP for UID/GID lookups. This option is
-useful if you also use/are in transition from another authentication
-system; if there are many users in your old authentication system that
-aren't in the LDAP database, there can be a significant delay when a
-directory listing is performed as the UIDs not in the LDAP database are
-repeatedly looked up in an attempt to present usernames instead of UIDs
-in directory listings. With LDAPNegativeCache set to on, negative ("not
-found") responses from the LDAP server will be cached and speed will
-improve on directory listings that contain many users not present in the
-LDAP database.
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v1.1 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
 
-<refsect1>
-<title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
+	<refsect1>
+		<title>Description</title>
 
+		<para>LDAPNegativeCache specifies whether or not to cache negative
+		responses from the LDAP server when using LDAP for UID/GID lookups.
+		This option is useful if you also use/are in transition from another
+		authentication system; if there are many users in your old
+		authentication system that aren't in the LDAP database, there can be
+		a significant delay when a directory listing is performed as the
+		UIDs not in the LDAP database are repeatedly looked up in an attempt
+		to present usernames instead of UIDs in directory listings. With
+		LDAPNegativeCache set to on, negative ("not found") responses from
+		the LDAP server will be cached and speed will improve on directory
+		listings that contain many users not present in the LDAP
+		database.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
 </refentry>
+	

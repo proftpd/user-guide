@@ -1,84 +1,80 @@
 <refentry id="LDAPHomedirOnDemand">
-<?dbhtml filename="config_ref_LDAPHomedirOnDemand.html">
-<refmeta>
-<refentrytitle>
-<indexterm><primary>LDAPHomedirOnDemand</primary></indexterm>
-LDAPHomedirOnDemand
-</refentrytitle>
-</refmeta>
-<refnamediv>
-<refname>LDAPHomedirOnDemand</refname>
-<refpurpose>FIXME FIXME</refpurpose>
-</refnamediv>
+	<?dbhtml filename="config_ref_LDAPHomedirOnDemand.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPHomedirOnDemand</primary></indexterm>
+			LDAPHomedirOnDemand
+		</refentrytitle>
+	</refmeta>
 
-<refsynopsisdiv>
-<cmdsynopsis>
-<command>LDAPHomedirOnDemand</command>
-<arg choice="opt">
-  <option>LDAPHomedirOnDemand on|off directory-mode</option>
-</arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
-</cmdsynopsis>
+	<refnamediv>
+		<refname>LDAPHomedirOnDemand</refname>
+		<refpurpose>FIXME FIXME</refpurpose>
+	</refnamediv>
 
-<variablelist><title></title>
-<varlistentry><term><synopsis>Default</synopsis></term>
-<listitem> <para>
-LDAPHomedirOnDemand off
-</para> </listitem>
-</varlistentry>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>LDAPHomedirOnDemand</command>
+			<arg choice="opt">
+				<option>LDAPHomedirOnDemand on|off directory-mode</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
 
-<varlistentry><term><synopsis>Context</synopsis></term>
-<listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Global&gt;
-</para> </listitem>
-</varlistentry>
+	<variablelist>
+		<title></title>
 
-<varlistentry><term><synopsis>Module</synopsis></term>
-<listitem> <para>
-mod_ldap
-</para> </listitem>
-</varlistentry>
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPHomedirOnDemand off
+			</para></listitem>
+		</varlistentry>
 
-<varlistentry><term><synopsis>Compatibility</synopsis></term>
-<listitem> <para>
-mod_ldap v2.0 and later
-</para> </listitem>
-</varlistentry>
-</variablelist>
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>Description</title>
-<para>
-LDAPHomedirOnDemand activates on-demand home directory creation. If a
-user logs in and does not yet have a home directory, a home directory
-is created automatically. The home directory will be owned by the same
-user and group that ProFTPD is running as (see the User
-and Group configuration directives). The second
-argument allows you to specify the mode (default permissions) to use when
-creating home directories on demand. If no directory mode is specified,
-the default of 0755 is used. Directory mode setting is only supported in
-mod_ldap v2.7 or later.
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.0 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
 
-<refsect1>
-<title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
+	<refsect1>
+		<title>Description</title>
 
+		<para>LDAPHomedirOnDemand activates on-demand home directory creation.
+		If a user logs in and does not yet have a home directory, a home
+		directory is created automatically. The home directory will be owned by
+		the same user and group that ProFTPD is running as (see the User and
+		Group configuration directives). The second argument allows you to
+		specify the mode (default permissions) to use when creating home
+		directories on demand. If no directory mode is specified, the default of
+		0755 is used. Directory mode setting is only supported in mod_ldap v2.7
+		or later.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
 </refentry>
+	

@@ -1,85 +1,81 @@
 <refentry id="LDAPAuthBinds">
-<?dbhtml filename="config_ref_LDAPAuthBinds.html">
-<refmeta>
-<refentrytitle>
-<indexterm><primary>LDAPAuthBinds</primary></indexterm>
-LDAPAuthBinds
-</refentrytitle>
-</refmeta>
-<refnamediv>
-<refname>LDAPAuthBinds</refname>
-<refpurpose>FIXME FIXME</refpurpose>
-</refnamediv>
+	<?dbhtml filename="config_ref_LDAPAuthBinds.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPAuthBinds</primary></indexterm>
+			LDAPAuthBinds
+		</refentrytitle>
+	</refmeta>
 
-<refsynopsisdiv>
-<cmdsynopsis>
-<command>Syntax: LDAPAuthBinds</command>
-<arg choice="opt">
-  <option></option>
-</arg>
-<!--
-<arg choice="opt" rep="repeat"> on/off file</arg>
--->
-</cmdsynopsis>
+	<refnamediv>
+		<refname>LDAPAuthBinds</refname>
+		<refpurpose>FIXME FIXME</refpurpose>
+	</refnamediv>
 
-<variablelist><title></title>
-<varlistentry><term><synopsis>Default</synopsis></term>
-<listitem> <para>
-LDAPAuthBinds off
-</para> </listitem>
-</varlistentry>
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>Syntax: LDAPAuthBinds</command>
+			<arg choice="opt">
+				<option>on</option>
+				<option>off</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
 
-<varlistentry><term><synopsis>Context</synopsis></term>
-<listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Global&gt;
-</para> </listitem>
-</varlistentry>
+	<variablelist>
+		<title></title>
 
-<varlistentry><term><synopsis>Module</synopsis></term>
-<listitem> <para>
-mod_ldap
-</para> </listitem>
-</varlistentry>
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPAuthBinds off
+			</para></listitem>
+		</varlistentry>
 
-<varlistentry><term><synopsis>Compatibility</synopsis></term>
-<listitem> <para>
-mod_ldap v2.5 and later
-</para> </listitem>
-</varlistentry>
-</variablelist>
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>Description</title>
-<para>
-LDAP DN will be used to bind to the LDAP server to obtain user
-information, including the userPassword attribute. If
-LDAPAuthBinds is set to on, the DN specified
-by LDAPDNInfo will be used to fetch all user information
-except the userPassword attribute. Then, mod_ldap will bind to the LDAP
-server as the user who is logging in via FTP with the user-supplied
-password. If this bind succeeds, the user is considered authenticated
-and is allowed to log in. This method of LDAP authentication has the
-added benefit of supporting any password encryption scheme that your
-LDAP server supports.
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
 
-<refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
-</refsect1>
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.5 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
 
-<refsect1>
-<title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
+	<refsect1>
+		<title>Description</title>
 
+		<para>LDAP DN will be used to bind to the LDAP server to obtain user
+		information, including the userPassword attribute. If LDAPAuthBinds
+		is set to on, the DN specified by LDAPDNInfo will be used to fetch
+		all user information except the userPassword attribute. Then,
+		mod_ldap will bind to the LDAP server as the user who is logging in
+		via FTP with the user-supplied password. If this bind succeeds, the
+		user is considered authenticated and is allowed to log in. This
+		method of LDAP authentication has the added benefit of supporting
+		any password encryption scheme that your LDAP server
+		supports.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
 </refentry>
