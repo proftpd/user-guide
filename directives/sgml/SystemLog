@@ -54,18 +54,17 @@ mod_log
 The SystemLog directive disables proftpd's use of the syslog mechanism and 
 instead redirects all logging output to the specified filename. 
 The filename argument should contain an absolute 
-path. Use of this directive overrides any facility set by the SyslogFacility 
-directive.
-Additionally, the special keyword NONE can be used 
+path, and should not be to a file in a nonexistent directory, in a
+world-writeable directory, or be a symbolic link (unless AllowLogSymlinks
+is set to on). Use of this directive overrides any facility set by the
+SyslogFacility directive.  Additionally, the special keyword NONE can be used 
 which disables all syslog style logging for the entire configuration.
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="AllowLogSymlinks">AllowLogSymlinks</link>
 </para>
 </refsect1>
 

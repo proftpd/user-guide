@@ -54,13 +54,14 @@ mod_log
 The ExtendedLog directive allows customizable logfiles to be generated, either 
 globally or per VirtualHost. The filename 
 argument must contain an absolute pathname to a logfile which will be appended 
-to when proftpd starts. Multiple logfiles (potentially with different command 
-classes and formats) can be created.
-Optionally, the command-classes argument can be used 
-to control which types of commands are logged. If not command classes are specified, 
-proftpd logs all commands by default (passwords are hidden). 
-command-classes is a comma delimited (no whitespace!) 
-list of which commands to log. The following are valid classes:
+to when proftpd starts; the pathname should not be to a file in a nonexistent
+directory, to a world-writeable directory, or be a symbolic link (unless
+AllowLogSymlinks is set to on).  Multiple logfiles (potentially with different
+command classes and formats) can be created.  Optionally, the command-classes
+argument can be used to control which types of commands are logged. If not
+command classes are specified, proftpd logs all commands by default (passwords
+are hidden).  command-classes is a comma delimited (no whitespace!) list of
+which commands to log. The following are valid classes:
 NONE
 No commands
 AUTH
@@ -88,7 +89,7 @@ the default format), you could:
 <refsect1>
 <title>See also</title>
 <para>
-LogFormat, TransferLog
+AllowLogSymlinks, LogFormat, TransferLog
 <!--
 <link linkend=""></link>
 -->
