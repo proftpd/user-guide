@@ -1,0 +1,77 @@
+<refentry id="TCPAccessSyslogLevels">
+<?dbhtml filename="config_ref_TCPAccessSyslogLevels.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TCPAccessSyslogLevels</primary></indexterm>
+TCPAccessSyslogLevels
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TCPAccessSyslogLevels</refname>
+<refpurpose>Sets the logging levels for mod_wrap</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TCPAccessSyslogLevels</command>
+<arg choice="opt">
+  <option>&lt;match&gt; &lt;remote-server&gt;</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+TCPAccessSyslogLevels info warn
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_wrap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+
+<para>
+ProFTPD can log when a connection is allowed, or denied, as the result
+of rules in the files specified in TCPAccessFiles, to the Unix syslog
+mechanism. A discussion on the syslog levels which can be used is given
+in the SyslogLevel directive.
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="SyslogLevel">SyslogLevel</link>
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+TCPAccessSyslogLevels debug warn
+</para>
+</refsect1>
+
+</refentry>

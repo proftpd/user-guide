@@ -1,0 +1,87 @@
+<refentry id="TCPUserAccessFiles">
+<?dbhtml filename="config_ref_TCPUserAccessFiles.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TCPUserAccessFiles</primary></indexterm>
+TCPUserAccessFiles
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TCPUserAccessFiles</refname>
+<refpurpose>Sets the access files to use</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TCPUserAccessFiles</command>
+<arg choice="opt">
+  <option>user-expression allow-filename deny-filename</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_wrap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+
+<para>
+TCPUserAccessFiles allows for access control files, the same types of
+files required by TCPAccessFiles, to be applied to select users. The given
+user-expression is a logical AND expression. Listing multiple users in
+a user-expression does not make much sense; however, this type of AND
+evaluation allows for expressions such as "everyone except this user"
+with the use of the ! negation prefix.
+</para>
+
+<para>
+The rules for the filename paths are the same as for TCPAccessFiles settings.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="TCPAccessFiles">TCPAccessFiles</link>,
+<link linkend="TCPGroupAccessFiles">TCPGroupAccessFiles</link>
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+# user admin might be allowed to connect from anywhere
+TCPUserAccessFiles admin /etc/ftpd-anywhere.allow /etc/ftpd-anywhere.deny
+
+# while every other user has to connect from LAN addresses
+TCPUserAccessFiles !admin /etc/ftpd-lan.allow /etc/ftpd-lan.deny
+</para>
+</refsect1>
+
+</refentry>

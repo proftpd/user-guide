@@ -1,0 +1,86 @@
+<refentry id="TCPGroupAccessFiles">
+<?dbhtml filename="config_ref_TCPGroupAccessFiles.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TCPGroupAccessFiles</primary></indexterm>
+TCPGroupAccessFiles
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TCPGroupAccessFiles</refname>
+<refpurpose>Sets the access files to use</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TCPGroupAccessFiles</command>
+<arg choice="opt">
+  <option>group-expression allow-filename deny-filename</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_wrap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+
+<para>
+TCPGroupAccessFiles allows for access control files, the same types of
+files required by TCPAccessFiles, to be applied to select groups. The
+given group-expression is a logical  AND expression, which means that
+the connecting user must be a member of all the groups listed for this
+directive to apply. Group names may be negated with a ! prefix.
+</para>
+
+<para>
+The rules for the filename paths are the same as for TCPAccessFiles settings.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="TCPAccessFiles">TCPAccessFiles</link>,
+<link linkend="TCPUserAccessFiles">TCPUserAccessFiles</link>
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+# every member of group wheel must connect from restricted locations
+TCPGroupAccessFiles wheel /etc/ftpd-strict.allow /etc/ftpd-strict.deny
+
+# everyone else gets the standard access rules
+TCPGroupAccessFiles !wheel /etc/hosts.allow /etc/hosts.deny
+</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,106 @@
+<refentry id="TCPAccessFiles">
+<?dbhtml filename="config_ref_TCPAccessFiles.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TCPAccessFiles</primary></indexterm>
+TCPAccessFiles
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TCPAccessFiles</refname>
+<refpurpose>Sets the access files to use</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TCPAccessFiles</command>
+<arg choice="opt">
+  <option>allow-filename deny-filename</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_wrap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+
+<para>
+TCPAccessFiles specifies two files, an allow and a deny file, each
+of which contain the IP addresses, networks or name-based masks to be
+allowed or denied connections to the server. The files have the same
+format as the standard tcpwrappers hosts.allow/deny files.
+</para>
+
+<para>Both file names are required. Also, the paths to both files must
+be the full path, with two exceptions: if the path starts with ~/, the
+check of that path will be delayed until a user requests a connection,
+at which time the path will be resolved to that user's home directory;
+or if the path starts with ~user/, where user is some system user. In
+this latter case, mod_wrap will attempt to resolve and verify the given
+user's home directory on start-up.
+</para>
+
+<para>The service name for which mod_wrap will look in the indicated
+access files is proftpd by default; this can be configured via the
+TCPServiceName directive.  There is a built-in precedence to the
+TCPAccessFiles, TCPGroupAccessFiles, and TCPUserAccessFiles directives,
+if all are used. mod_wrap will look for applicable TCPUserAccessFiles
+for the connecting user first. If no applicable TCPUserAccessFiles is
+found, mod_wrap will search for TCPGroupAccessFiles which pertain to
+the connecting user.  If not found, mod_wrap will then look for the
+server-wide TCPAccessFiles directive. This allows for access control to
+be set on a per-server basis, and allow for per-user or per-group access
+control to be handled without interfering with the server access rules.
+</para>
+
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="TCPGroupAccessFiles">TCPGroupAccessFiles</link>,
+<link linkend="TCPServiceName">TCPServiceName</link>,
+<link linkend="TCP">TCPUserAccessFiles</link>
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+# server-wide access files
+TCPAccessFiles /etc/ftpd.allow /etc/ftpd.deny
+
+# per-user access files, which are to be found in the user's home directory
+TCPAccessFiles ~/my.allow ~/my.deny
+</para>
+</refsect1>
+
+</refentry>

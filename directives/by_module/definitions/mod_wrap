@@ -1,0 +1,45 @@
+<refentry id="mod-wrap">
+<?dbhtml filename="config_ref_mod_wrap.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_wrap</primary></indexterm>
+mod_wrap
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_wrap</refname>
+<refpurpose>Interface to libwrap</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_wrap</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+
+<para> It enables the daemon to use the common tcpwrappers access control
+library while in standalone mode, and in a very configurable manner.
+It is not compiled by default. 
+</para>
+
+<para>If not installed on your system, the TCP wrappers library,
+required by this module, can be found here, on Wietse Venema's
+site. Once installed, it highly recommended that the hosts_access(3)
+and hosts_access(5) man pages be read and understood.
+</para>
+
+<para>Many programs will automatically add entries in the common
+allow/deny files, and use of this module will allow a ProFTPD daemon
+running in standalone mode to adapt as these entries are added. The
+portsentry program does this, for example: when illegal access is
+attempted, it will add hosts to the /etc/hosts.deny file.
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
