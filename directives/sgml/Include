@@ -31,7 +31,7 @@ None
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-Any
+server config, &lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -51,7 +51,8 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-This directive allows you to include another configuration file within your current configuration file.
+This directive allows you to include another configuration file within your current configuration file.  The given file argument must be the full path to
+the file to be included.
 </refsect1>
 
 <refsect1>
