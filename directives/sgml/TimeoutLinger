@@ -1,0 +1,96 @@
+<refentry id="TimeoutLinger">
+<?dbhtml filename="config_ref_TimeoutLinger.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TimeoutLinger</primary></indexterm>
+TimeoutLinger
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TimeoutIdle</refname>
+<refpurpose>Sets the timeout used for lingering closes</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TimeoutLinger</command>
+<arg choice="opt">
+  <option>TimeoutIdle seconds</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+TimeoutLinger 180
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.10rc2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The TimeoutLinger directive configures the maximum number of seconds that
+proftpd will wait (or "linger") when closing a data connection.  Once
+the data connection is closed, proftpd will send a message on the control
+connection indicating the closure.  This delay is necessary for properly
+handling some FTP clients.
+</para>
+
+<para>
+If the client aborts a transfer and there is a long delay, this lingering
+close is the most likely culprit.  So if you encounter this delay,
+set TimeoutLinger to a low number to remove the delay.
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>
