@@ -99,6 +99,12 @@ replaced with their respective strings before being displayed to the user.
 %V	Name of virtual host (if any)
 
 --> 
+%i      The number of files uploaded (input) in this session
+
+%o      The number of files downloaded (output) in this session
+
+%t      The number of files transfered (uploaded and downloaded) in this session
+
 %x	The name of the user's class
 
 %y	Current number of connections from the user's class
