@@ -8,14 +8,15 @@ HideNoAccess
 </refmeta>
 <refnamediv>
 <refname>HideNoAccess</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Block the listing of directory entries to which the user
+has no access permissions</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>HideNoAccess</command>
 <arg choice="opt">
-  <option>HideNoAccess</option>
+  <option>HideNoAccess on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -50,17 +51,18 @@ mod_core
 
 <refsect1>
 <title>Description</title>
-<para>
-The HideNoAccess directive configures a &lt;Directory&gt; or &lt;Anonymous&gt; block to hide all directory 
-entries in a directory listing (via the LIST or NLST FTP commands)
-to which the current logged-in, authenticated user has no access
-to. Normal Unix-style permissions always apply, so that although a
-user may not be able to see a directory entry that has HideNoAccess
-applied, they will receive a normal &quot;Permission denied&quot;
-error message when attempting to blindly manipulate the file system
-object. The directory or file can be made completely invisible to
-all FTP commands by applying IgnoreHidden in conjunction with
-HideNoAccess. 
+
+<para>The HideNoAccess directive configures a &lt;Directory&gt; or
+&lt;Anonymous&gt; block to hide all directory entries in a directory
+listing (via the LIST or NLST FTP commands) to which the current
+logged-in, authenticated user has no access to. Normal Unix-style
+permissions always apply, so that although a user may not be able to
+see a directory entry that has HideNoAccess applied, they will receive
+a normal &quot;Permission denied&quot; error message when attempting
+to blindly manipulate the file system object. The directory or file
+can be made completely invisible to all FTP commands by applying
+IgnoreHidden in conjunction with HideNoAccess.
+
 </refsect1>
 
 <refsect1>

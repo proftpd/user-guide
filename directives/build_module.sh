@@ -28,6 +28,7 @@ cut -d : -f 2 module_by_directive.lst | sort | uniq > module.lst
 # Start building pages...
 #
 echo -n "Working on "
+mkdir by_module
 for mod in `cat module.lst`
 do
 	target="by_module/${mod}.sgml"
@@ -60,7 +61,7 @@ for mod in `cat ${ROOT}/module.lst`
 do
 	cat ${mod}.sgml >> ${ROOT}/by_module_source.sgml
 done
-cp ${ROOT}/by_module_source.sgml $HOME/Proftpd/userguide/
+cp ${ROOT}/by_module_source.sgml $HOME/Proftpd/www.pdd/userguide/
 #
 #
 #
