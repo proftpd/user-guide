@@ -1,0 +1,113 @@
+<refentry id="ListOptions">
+<?dbhtml filename="config_ref_ListOptions.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_ls
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>ListOptions</primary></indexterm>
+ListOptions
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>ListOptions</refname>
+<refpurpose>Configure options used when listing directories</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>ListOptions</command>
+<arg choice="opt">
+  <option>LsDefaultOptions "options string" ["strict"]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;, &lt;Directory&gt;, .ftpaccess
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ls
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.8rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+Normally, FTP commands involving directory listings (NLST, LIST and STAT) 
+use the arguments (options) passed by the client to determine what files are 
+displayed and the format they are displayed in.  The ListOptions directive
+can alter the behaviour of such listings by making it such that a certain
+option (or options) is always in effect, or is always disabled.
+</para>
+
+<para>
+In addition to the normal dash-prefixed options that the builtin ls takes,
+the directive allows for plus-prefixed options.  The plus-prefixed options
+allow for their dash-prefixed equivalents, potentially given by a user, to
+be disabled, while still allowing other options to function normally.
+</para>
+
+<para>
+In the optional "strict" keyword is used, then the configured options will
+override any options given by the user (i.e. the user's options will be
+ignored).
+</para>
+</refsect1>
+
+<!-- 1.2.6rc1 -n flag added -->
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+  # Force directory listings to always show dotfiles
+  ListOptions "-a"
+</para>
+
+<para>
+  # To prevent anyone from doing recursive listings, but still allowing
+  # other user options, use +R to disable any -R option given by users
+  ListOptions "+R"
+</para>
+
+<para>
+  # To allow only the basic listing, no options, always
+  ListOptions "" strict
+</para>
+</refsect1>
+
+</refentry>
