@@ -87,9 +87,9 @@ replaced with their respective strings before being displayed to the user.
 
 %L	Local host name
 
-%M	Max number of connections
+%M	Max number of authenticated clients
 
-%N	Current number of connections
+%N	Current number of authenticated clients
 
 %o      The number of files downloaded (output) in this session
 
