@@ -22,7 +22,7 @@ CreateHome
 <cmdsynopsis>
 <command>CreateHome</command>
 <arg choice="opt">
-  <option>off|on [<mode>] [skel <path>] [dirmode <mode>]</option>
+  <option>off|on [&lt;mode&gt;] [skel &lt;path&gt;] [dirmode &lt;mode&gt;]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

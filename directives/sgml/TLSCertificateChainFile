@@ -1,67 +1,63 @@
-<refentry id="AuthPAM">
-<?dbhtml filename="config_ref_AuthPAM.html">
+<refentry id="TLSCertificateChainFile">
+<?dbhtml filename="config_ref_TLSCertificateChainFile.html">
 <refentryinfo>
   <keywordset>
-    <keyword>
-      mod_auth_pam
-    </keyword>
+    <keyword>mod_tls</keyword>
   </keywordset>
 </refentryinfo>
 <refmeta>
 <refentrytitle>
-<indexterm><primary>AuthPAM</primary></indexterm>
-AuthPAM
+<indexterm><primary>TLSCertificateChainFile</primary></indexterm>
+TLSCertificateChainFile
 </refentrytitle>
 </refmeta>
 <refnamediv>
-<refname>AuthPAM</refname>
-<refpurpose>Enable/Disable PAM authentication</refpurpose>
+<refname>TLSCertificateChainFile</refname>
+<refpurpose>FIXFIXFIX</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>AuthPAM</command>
+<command>TLSCertificateChainFile</command>
 <arg choice="opt">
-  <option>on|off</option>
+  <option>"name" limit|regex|ip value</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
 -->
 </cmdsynopsis>
-
+ 
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-on
+FIXFIXFIX
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config,&lt;VirtualHost&gt;, &lt;Global&gt;
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_auth_pam
+mod_tls
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.0rc1 and later
+1.2.8rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
-</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
-This directive determines whether PAM is used as an authentication 
-method by ProFTPD.  Enabled by default to fit in with the design 
-policy of using PAM as the primary authentication mechanism.</para>
+FIX FIX FIX
+</para>
 </refsect1>
 
 <refsect1>
@@ -75,12 +71,15 @@ policy of using PAM as the primary authentication mechanism.</para>
 
 <refsect1>
 <title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
 
+<literallayout>
+FIXFIXFIX
+</literallayout>
+
+<para>
+FIXFIX
+</para>
+
+</refsect1>
 </refentry>
+
