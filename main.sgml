@@ -4844,7 +4844,6 @@ Classes on
 Class local limit 50
 Class default limit 20
 Class local regex .*ftech.co.uk
-Class local regex .*ftech.net
 Class local ip 195.200.0.0/19
 Class local ip 212.32.0.0/17
 Class local ip 192.168.0.0/16
