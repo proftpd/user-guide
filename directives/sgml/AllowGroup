@@ -15,7 +15,7 @@ AllowGroup
 <cmdsynopsis>
 <command>AllowGroup</command>
 <arg choice="opt">
-  <option>AllowGroup group-expression</option>
+  <option>group-expression</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

@@ -15,7 +15,7 @@ AllowRetrieveRestart
 <cmdsynopsis>
 <command>AllowRetrieveRestart</command>
 <arg choice="opt">
-  <option>AllowRetrieveRestart on|off</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

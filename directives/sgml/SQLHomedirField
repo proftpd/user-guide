@@ -8,14 +8,14 @@ SQLHomedirField
 </refmeta>
 <refnamediv>
 <refname>SQLHomedirField</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>SQL field holding home directory information</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLHomedirField</command>
 <arg choice="opt">
-  <option>SQLHomedirField foo1 foo2 foo3</option>
+  <option>fieldname</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -25,13 +25,13 @@ SQLHomedirField
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-None known
+none
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-&lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;,.ftpaccess
+server config
 </para> </listitem>
 </varlistentry>
 
@@ -51,9 +51,11 @@ at least 1.2.0 and later
 <refsect1>
 <title>Description</title>
 <para>
-The SQLHomedirField directive ....
-Example:
-SQLHomedirField
+Specifies what field holds the home directory, for users authenticated
+with this module.  The directory can also be defined for all users
+using SQLHomedir.  If no homedir is set with either directive,
+authentication is turned off.
+
 </refsect1>
 
 <refsect1>
@@ -68,6 +70,7 @@ SQLHomedirField
 <refsect1>
 <title>Examples</title>
 <para>
+SQLHomedirField custhomedir
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

@@ -15,7 +15,7 @@ AuthGroupFile
 <cmdsynopsis>
 <command>AuthGroupFile</command>
 <arg choice="opt">
-  <option>AuthGroupFile path</option>
+  <option>path</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

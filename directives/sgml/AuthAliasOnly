@@ -15,7 +15,7 @@ AuthAliasOnly
 <cmdsynopsis>
 <command>AuthAliasOnly</command>
 <arg choice="opt">
-  <option>AuthAliasOnly on|off</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

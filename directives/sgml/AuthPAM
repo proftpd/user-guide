@@ -15,7 +15,7 @@ AuthPAM
 <cmdsynopsis>
 <command>AuthPAM</command>
 <arg choice="opt">
-  <option>AuthPAM on|off</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

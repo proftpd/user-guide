@@ -31,7 +31,7 @@ None known
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-&lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;,.ftpaccess
+server config, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -51,9 +51,11 @@ at least 1.2.0 and later
 <refsect1>
 <title>Description</title>
 <para>
-The PostgresInfo directive ....
-Example:
-PostgresInfo
+Configures the Posgresql database driver (the database may be remote).
+A connection isn't made until use of a SQL feature requires it, after
+which it may be held open for the lifetime of the FTP session
+depending on the directives in use.
+
 </refsect1>
 
 <refsect1>
@@ -68,6 +70,11 @@ PostgresInfo
 <refsect1>
 <title>Examples</title>
 <para>
+
+<literallayout>
+PostgresInfo myserver.example.com proftpd wibble ftpusers
+</literallayout>
+
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

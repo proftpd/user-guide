@@ -8,14 +8,14 @@ SQLHomedir
 </refmeta>
 <refnamediv>
 <refname>SQLHomedir</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the default user home directory</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLHomedir</command>
 <arg choice="opt">
-  <option>SQLHomedir foo1 foo2 foo3</option>
+  <option>directory path</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -25,13 +25,13 @@ SQLHomedir
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-None known
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-&lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;,.ftpaccess
+server config
 </para> </listitem>
 </varlistentry>
 
@@ -51,9 +51,10 @@ at least 1.2.0 and later
 <refsect1>
 <title>Description</title>
 <para>
-The SQLHomedir directive ....
-Example:
-SQLHomedir
+Specifies the homedir to use for all users authenticated with this
+module, overriding any SQLHomedirField directive.  If no homedir is
+set with either directive, authentication is turned off.
+
 </refsect1>
 
 <refsect1>
@@ -68,6 +69,7 @@ SQLHomedir
 <refsect1>
 <title>Examples</title>
 <para>
+SQLHomedir /ftp/vhostb
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

@@ -15,7 +15,7 @@ AllowUser
 <cmdsynopsis>
 <command>AllowUser</command>
 <arg choice="opt">
-  <option>AllowUser user-expression</option>
+  <option>user-expression</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

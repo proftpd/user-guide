@@ -8,14 +8,14 @@ AllowOverwrite
 </refmeta>
 <refnamediv>
 <refname>AllowOverwrite</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Enable files to be overwritten</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>AllowOverwrite</command>
 <arg choice="opt">
-  <option>AllowOverwrite on|off</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

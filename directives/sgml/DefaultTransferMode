@@ -8,14 +8,14 @@ DefaultTransferMode
 </refmeta>
 <refnamediv>
 <refname>DefaultTransferMode</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the default method of data transfer</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>DefaultTransferMode</command>
 <arg choice="opt">
-  <option>DefaultTransferMode ascii|binary</option>
+  <option>ascii|binary</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

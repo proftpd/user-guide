@@ -15,7 +15,7 @@ Class
 <cmdsynopsis>
 <command>Class</command>
 <arg choice="opt">
-  <option>Class "name" limit|regex|ip value</option>
+  <option>"name" limit|regex|ip value</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

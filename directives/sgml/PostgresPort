@@ -8,14 +8,14 @@ PostgresPort
 </refmeta>
 <refnamediv>
 <refname>PostgresPort</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Sets the port postgres is listening on</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>PostgresPort</command>
 <arg choice="opt">
-  <option>PostgresPort foo1 foo2 foo3</option>
+  <option>portnumber</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -31,7 +31,7 @@ None known
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-&lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;,.ftpaccess
+server config, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -51,9 +51,9 @@ at least 1.2.0 and later
 <refsect1>
 <title>Description</title>
 <para>
-The PostgresPort directive ....
-Example:
-PostgresPort
+Specifies which TCP/IP port to use for connecting.  Default is 5432,
+or UNIX socket for localhost.
+</para>
 </refsect1>
 
 <refsect1>
@@ -68,6 +68,9 @@ PostgresPort
 <refsect1>
 <title>Examples</title>
 <para>
+<literallayout>
+PostgresPort 3306
+</Literallayout>
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

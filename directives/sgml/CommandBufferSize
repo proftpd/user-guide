@@ -8,14 +8,14 @@ CommandBufferSize
 </refmeta>
 <refnamediv>
 <refname>CommandBufferSize</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Limit the maximum command length</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>CommandBufferSize</command>
 <arg choice="opt">
-  <option>CommandBufferSize size</option>
+  <option>size</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

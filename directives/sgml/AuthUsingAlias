@@ -15,7 +15,7 @@ AuthUsingAlias
 <cmdsynopsis>
 <command>AuthUsingAlias</command>
 <arg choice="opt">
-  <option>AuthUsingAlias on|off</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

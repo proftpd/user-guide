@@ -15,7 +15,7 @@ CDPath
 <cmdsynopsis>
 <command>CDPath</command>
 <arg choice="opt">
-  <option>CDPath directory</option>
+  <option>directory</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

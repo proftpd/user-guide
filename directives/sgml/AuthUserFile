@@ -15,7 +15,7 @@ AuthUserFile
 <cmdsynopsis>
 <command>AuthUserFile</command>
 <arg choice="opt">
-  <option>AuthUserFile path</option>
+  <option>path</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

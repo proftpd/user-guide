@@ -8,14 +8,14 @@ DefaultServer
 </refmeta>
 <refnamediv>
 <refname>DefaultServer</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the default server</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>DefaultServer</command>
 <arg choice="opt">
-  <option>DefaultServer on|off</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

@@ -15,7 +15,7 @@ AllowChmod
 <cmdsynopsis>
 <command>AllowChmod</command>
 <arg choice="opt">
-  <option>bool</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

@@ -15,7 +15,7 @@ DefaultRoot
 <cmdsynopsis>
 <command>DefaultRoot</command>
 <arg choice="opt">
-  <option>DefaultRoot directory [group-expression]</option>
+  <option>directory [group-expression]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

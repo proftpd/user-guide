@@ -8,14 +8,14 @@ SQLKey
 </refmeta>
 <refnamediv>
 <refname>SQLKey</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set match value for SQLKeyField</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLKey</command>
 <arg choice="opt">
-  <option>SQLKey key-value</option>
+  <option>key-value</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -31,7 +31,7 @@ none
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, Global, VirtualHost
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -51,15 +51,10 @@ mod_sqlpw
 <refsect1>
 <title>Description</title>
 <para>
-SQLKey  (ROOT, GLOBAL, VIRTUAL) sets the value that the
-SQLKeyField column needs to match.
-Syntax: SQLKeyField column-name
-Default: none
-Context: server config, Global, VirtualHost
-Module: mod_sqlpw
-Compatibility: 1.2.0 and later
-SQLKeyField  (ROOT, GLOBAL) designates a table field
-that's used to distinguish what logins belong to what virtual host.
+
+SQLKey &lt;key-value&gt; (ROOT, GLOBAL, VIRTUAL) sets the value that the
+SQLKeyField column needs to match.  
+
 </refsect1>
 
 <refsect1>
@@ -74,6 +69,7 @@ that's used to distinguish what logins belong to what virtual host.
 <refsect1>
 <title>Examples</title>
 <para>
+SQLKey ftp.vhost1
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

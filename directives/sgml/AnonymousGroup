@@ -15,7 +15,7 @@ AnonymousGroup
 <cmdsynopsis>
 <command>AnonymousGroup</command>
 <arg choice="opt">
-  <option>AnonymousGroup group-expression</option>
+  <option>group-expression</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

@@ -15,7 +15,7 @@ AllowStoreRestart
 <cmdsynopsis>
 <command>AllowStoreRestart</command>
 <arg choice="opt">
-  <option>AllowStoreRestart on|off</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

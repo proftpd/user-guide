@@ -15,7 +15,7 @@ Allow
 <cmdsynopsis>
 <command>Allow</command>
 <arg choice="opt">
-  <option>Allow [&quot;from&quot;] &quot;all&quot;|&quot;none&quot;|host|network[,host|network[,...]]</option>
+  <option>[&quot;from&quot;] &quot;all&quot;|&quot;none&quot;|host|network[,host|network[,...]]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

@@ -15,7 +15,7 @@ DefaultQuota
 <cmdsynopsis>
 <command>DefaultQuota</command>
 <arg choice="opt">
-  <option>DefaultQuota value in bytes</option>
+  <option>value in bytes</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

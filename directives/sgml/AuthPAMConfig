@@ -15,7 +15,7 @@ AuthPAMConfig
 <cmdsynopsis>
 <command>AuthPAMConfig</command>
 <arg choice="opt">
-  <option>AuthPAMConfig service</option>
+  <option>service</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

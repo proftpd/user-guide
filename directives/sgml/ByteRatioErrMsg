@@ -15,7 +15,7 @@ ByteRatioErrMsg
 <cmdsynopsis>
 <command>ByteRatioErrMsg</command>
 <arg choice="opt">
-  <option>ByteRatioErrMsg foo1 foo2 foo3</option>
+  <option>foo1 foo2 foo3</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

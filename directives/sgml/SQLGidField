@@ -8,14 +8,14 @@ SQLGidField
 </refmeta>
 <refnamediv>
 <refname>SQLGidField</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the field holding GID information</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLGidField</command>
 <arg choice="opt">
-  <option>SQLGidField foo1 foo2 foo3</option>
+  <option>fieldname</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -25,13 +25,13 @@ SQLGidField
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-None known
+none, GID is 65533
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-&lt;Directory&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;,.ftpaccess
+server config
 </para> </listitem>
 </varlistentry>
 
@@ -51,9 +51,11 @@ at least 1.2.0 and later
 <refsect1>
 <title>Description</title>
 <para>
-The SQLGidField directive ....
-Example:
-SQLGidField
+Specifes what field holds the gid number, for users authenticated with
+this module.  Default is to use the compiled-in default 65533.  If the
+retrieved gid is in the range reserved for admin accounts (0-9999),
+65533 is used instead.
+
 </refsect1>
 
 <refsect1>
@@ -68,6 +70,7 @@ SQLGidField
 <refsect1>
 <title>Examples</title>
 <para>
+SQLGidField custgid
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

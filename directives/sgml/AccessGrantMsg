@@ -8,14 +8,14 @@ AccessGrantMsg
 </refmeta>
 <refnamediv>
 <refname>AccessGrantMsg</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Customise the response on successful authentication</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>AccessGrantMsg</command>
 <arg choice="opt">
-  <option>AccessGrantMsg message</option>
+  <option>"message"</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

@@ -8,14 +8,14 @@ SQLAuthoritative
 </refmeta>
 <refnamediv>
 <refname>SQLAuthoritative</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set SQL as the authoriative authentication source</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLAuthoritative</command>
 <arg choice="opt">
-  <option>SQLAuthoritative bool</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -25,7 +25,7 @@ SQLAuthoritative
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-None known
+off
 </para> </listitem>
 </varlistentry>
 
@@ -51,11 +51,10 @@ at least 1.2.0 and later
 <refsect1>
 <title>Description</title>
 <para>
-This directive allows you to control whether or not SQL is the
-ultimate authority on authentication. Setting this directive to
-on will cause authentication to fail if SQL authentication
-fails. The default setting, off, allows other modules and
-directives to authenticate users, should SQL authentication fail. 
+Specifies whether authentication stops at mod_mysql, or whether other
+possibilites (like standard UNIX logins) are tried.  Default is off -
+others are tried.
+
 </refsect1>
 
 <refsect1>
@@ -70,6 +69,7 @@ directives to authenticate users, should SQL authentication fail.
 <refsect1>
 <title>Examples</title>
 <para>
+SQLAuthoritative on
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

@@ -15,7 +15,7 @@ Anonymous
 <cmdsynopsis>
 <command>Anonymous</command>
 <arg choice="opt">
-  <option>&lt;Anonymous root-directory&gt;</option>
+  <option>root-directory</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

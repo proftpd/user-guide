@@ -15,7 +15,7 @@ AuthPAMAuthoritative
 <cmdsynopsis>
 <command>AuthPAMAuthoritative</command>
 <arg choice="opt">
-  <option>AuthPAMAuthoritative on|off</option>
+  <option>on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
