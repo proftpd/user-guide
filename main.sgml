@@ -13,7 +13,7 @@
       </author>
     </authorgroup>
     <ISBN>None.</ISBN>
-    <RELEASEINFO>Build 20010422 - draft</RELEASEINFO>
+    <RELEASEINFO>Build 20020919 - draft</RELEASEINFO>
     <PUBDATE>$Date$</PUBDATE>
     <edition>Version 0.1.4</edition>
     <pubdate>31/Jan/2001</pubdate>
@@ -61,7 +61,7 @@
     <para>This book grew out of a small FAQ on the proftpd.org website
     prior to the change in maintainer in Sept 1999.  The need for a
     accurate and comprehensive FAQ as obvious, it rapidly became clear
-    that a simple FAQ would not be suffcient.  In Oct 1999 I started
+    that a simple FAQ would not be sufficient.  In Oct 1999 I started
     work on developing this document using the DocBook DTD in
     conjunction with the jade.</para>
     
@@ -73,7 +73,7 @@
     <SECT1>
       <TITLE>This Book's Audience</TITLE>
       
-      <para>This text is primarily targetted at system administrators
+      <para>This text is primarily targeted at system administrators
       who wish to make the most of the Proftpd software package.  I
       expect that most readers will have at least a grasp of the ftp
       protocol and reasonable skills in compiling and maintaining a
@@ -89,7 +89,7 @@
       <para>The later chapters go into more depth on complex
       configurations and discuss the needs of a live server hosting
       multiple virtual hosts and hopefully suggest ways in which to
-      keep the administration of these configurations to a managable
+      keep the administration of these configurations to a manageable
       scale.</para>
     </SECT1>
 
@@ -121,18 +121,18 @@
 
     <SECT1 ID="PREF-REQ-COMMENTS">
       <TITLE>Request for Comments</TITLE> 
+
       <PARA>Please help me improve future editions of this book by
       reporting any errors, inaccuracies, bugs, misleading or
       confusing statements, and plain old typos that you find. An
-      online errata list is maintained at <ULINK
-      URL="http://hamster.wibble.org/proftpd/this.is.a.broken.link.html">http://deliberatly broken link/</ULINK>.
-      Email your bug reports and comments to us at <ULINK
-      URL="mailto:hamster@vom.tm"
-      ROLE="online">hamster@vom.tm</ULINK>.</PARA>
+      online errata list is maintained at.  Email your bug reports and
+      comments to us at <ULINK URL="mailto:hamster@vom.org.uk"
+      ROLE="online">hamster@vom.org.uk</ULINK>.</PARA>
+
     </SECT1>
 
     <sect1>
-      <TITLE>Organization of This Book</TITLE>
+      <TITLE>Organisation of This Book</TITLE>
       
       <PARA>This book is divided into xxxmultiplexxx parts. <CITETITLE>Part I:
       Introduction</CITETITLE> is an introduction to ftp, security and
@@ -218,9 +218,10 @@ to be much like Apache in concept taking many of the ideas
 the entire package.  The ProFTPD project was started by Floody who took
 it to approximately 1.2.0pre2/3 before he found that his available time
 was insufficient to handle this project as well as his other commitments.
-Since then (mid-late 1999) MacGyver has taken over the project and is
-pushing towards cleaning up the outstanding patches and getting 1.2.0
-shipped.  </para>
+From approximately mid-1999 MacGyver took over the project and pushed
+it forward getting 1.2.0 out into the wild.  From early 2002 TJ took
+the reins of the project and started to get releases and new features
+into the code.</para> 
 
 <para>There are also numerous people involved in developing modules, and
 documentation for the project.  A number of these have been merged into
@@ -228,7 +229,7 @@ the core distribution and more are likely to follow.</para>
 </sect1>
 
       <sect1>
-	<title>Website & documenation</title>
+	<title>Website & documentation</title>
 	
 	<para>The official website for the project is
 	http://www.proftpd.org/, both should be a mirror of the
@@ -237,59 +238,16 @@ the core distribution and more are likely to follow.</para>
 	<para>The documentation is being brought back into shape at
 	the moment, the configuration on the website is reasonable but
 	the documentation supplied in the source should be considered
-	to be cannonical.  Even this is still being brought up to
+	to be canonical.  Even this is still being brought up to
 	date.</para>
       </sect1>
 
       <sect1>
 	<title>Bug reporting?</title>
 
-	<para>At the moment the best way to report a bug is to email
-	the ProFTPD-Devel mailing list or MacGyver directly.</para>
-      </sect1>
+	<para>Bugs are best reported via the Bugzilla interface at
+	http://bugs.proftpd.org/</para>
 
-      <sect1>
-	<title>Availability</title>
-	<para>
-
-Primary FTP:
-
-ftp.proftpd.org (primary site)
-
-
-</para>
-
-
-
-
-	<sect2>
-	  <title>Available formats</title>
-
-	  <sect3>
-	    <title>Tarball</title>
-
-	    <para>This is the canonical source for ProFTPD.  It is
-	    provided in both tar-gzip and tar-bzip2 formats.</para>
-	  </sect3>
-
-	  <sect3>
-	    <title>RPM</title>
-	    
-	    <para>ProFTPD is packaged up for Redhat, the default build
-	    uses PAM for authentication</para>
-	  </sect3>
-	  <sect3>
-	    <title>DEB</title>
-
-	    <para>
-Package: ProFTPD
-Priority: optional
-Maintainer: Johnie Ingram &lt;johnie@debian.org&gt;</para>
-
-	    <para>This package is being actively maintained and seems
-	    to follow the available releases within 24-48 hours or so.</para>
-	  </sect3>
-	</sect2>
       </sect1>
 
       <sect1>
@@ -379,7 +337,7 @@ will be announced.</para>
 	more recently support for other authentication systems as been
 	provided including NIS, Radius, SQL, LDAP and many others.
 	For most servers the username and password are sent over the
-	network in plaintext.  There is a RFC defining the
+	network in plain-text.  There is a RFC defining the
 	specification for encrypted passwords for use with ftp servers
 	but this not had a widespread takeup.</para>
 
@@ -414,7 +372,7 @@ will be announced.</para>
 	  data down one socket and control information down the other.
 	  This design makes it possible for a well designed client to
 	  be uploading and downloading while still permitting the user
-	  to perform other adminitrative tasks on the server.</para>
+	  to perform other administrative tasks on the server.</para>
 
 	  <para>
 	    Normally the control socket uses port 21 (ftp) at the
@@ -450,7 +408,7 @@ will be announced.</para>
 	      their existence or the problems they solve. Some
 	      firewalls can be configured to allow incoming FTP data
 	      connections while blocking all other incoming TCP
-	      connections. (The firewall recognizes FTP data
+	      connections. (The firewall recognises FTP data
 	      connections because they originate from port 20, the FTP
 	      data port). This allows Active Mode FTP transfers
 	      through the firewall without blocking the incoming FTP
@@ -478,11 +436,11 @@ will be announced.</para>
     <chapter id="install">
       <title>Compilation and installing</title>
       
-      <para>Being Open Source code Proftpd is availble primarily as
+      <para>Being Open Source code Proftpd is available primarily as
       source code for local compilation.  There are a number of
       maintainers within the project who create the packaged builds
       for the primary platforms and distributions.  For most users the
-      packaged builds will prove to be suffcient and the least hassle
+      packaged builds will prove to be sufficient and the least hassle
       route to installing Proftpd.  However to use the daemon to it's
       fullest or to explore some of the more interesting features a
       local custom build will be required.</para>
@@ -517,7 +475,7 @@ will be announced.</para>
 	  <title>Linux (RPM)</title>
 
 	  <para>The Linux RPM package is available on the main
-	  distribution sites for Proftpd.  Installtion is as simple as
+	  distribution sites for Proftpd.  Installation is as simple as
 
 <prompt>rpm --install proftpd-{version}.rpm</prompt>
 </para>
@@ -651,7 +609,7 @@ libc5
 	<para>CVS (Concurrent Versions System), is a version control
 	  system which allows multiple developers (scattered across
 	  the same room or across the world) to maintain a single
-	  codebase and keep a record of all changes to the
+	  code base and keep a record of all changes to the
 	  work.</para>
 
 	<para>The CVS repository for ProFTPD is available for
@@ -796,7 +754,7 @@ CDB based Authentication
       through known holes in the various server daemons
       running.</para>
 
-      <para>The cautious and security concious system admin should be
+      <para>The cautious and security conscious system admin should be
       aware of the two main avenues for abuse, external and internal.
       I will consider external attacks to be those made by individuals
       without valid accounts or "user" level access to the server.
@@ -813,11 +771,11 @@ CDB based Authentication
 	server than there is to any other public access server.
 	However the twin socket design and thus the requirement to
 	never quite give up root privileges completely leaves a window
-	ajar for the competant cracker to climb through.  Or
+	ajar for the competent cracker to climb through.  Or
 	occasionally a thumping great sign and open door for a script
 	kiddie with some time to spare.</para>
 
-	<para>Proftpd provides for some additonal security by it's use
+	<para>Proftpd provides for some additional security by it's use
 	of chroot(), user and IP access limits, command and path
 	filters to limit what and where files can be uploaded and it's
 	attention to when root privs are needed and when they are not.
@@ -832,7 +790,7 @@ CDB based Authentication
 	  <listitem><para>Traffic filtering upstream of the server</para></listitem>
 	  <listitem><para>chroot() all sessions</para></listitem>
 	  <listitem><para>Don't give a valid shell where it's not needed</para></listitem>
-	  <listitem><para>Run an intrustion detection system</para></listitem>
+	  <listitem><para>Run an intrusion detection system</para></listitem>
 	  <listitem><para>If possible place the OS itself on a bootable CDrom</para></listitem>
 	  <listitem><para>Tripwire</para></listitem>
 	  <listitem><para>Decent backups</para></listitem>
@@ -950,7 +908,7 @@ CDB based Authentication
 	    'middleware' layer which sits between the OS and the
 	    daemon process and protects against buffer overflows.
 	    This is achieved by intercepting all calls known to be
-	    vunerable to overflow.
+	    vulnerable to overflow.
 	    http://www.bell-labs.com/org/11356/html/security.html</para>
 	  </sect3>
 
@@ -965,7 +923,7 @@ CDB based Authentication
 	  some functional problems.  Such as not being able to bind to
 	  ports 20 or 21, unless it's spawned from inetd.  The
 	  inability to bind to ports 20 and 21 makes this approach
-	  usless for commercial hosting environments where the
+	  useless for commercial hosting environments where the
 	  customers are expecting the connection to be on a "standard"
 	  port.</para>
 	</sect2>
@@ -998,7 +956,7 @@ CDB based Authentication
 	and outbound and opening up complete tcp holes for that
 	connection on the fly and tearing down once the control socket
 	is closed.  Active support is brainlessly simple by
-	comparision, opening ports 20 and 21 is sufficient, nothing
+	comparison, opening ports 20 and 21 is sufficient, nothing
 	more complex is required.</para>
 
 <sect2>
@@ -1450,10 +1408,10 @@ On Thu, Nov 30, 2000 at 08:01:42PM -0000, Tanuj Shah, -  mailings wrote:
 > Is ProFTPd (1.2.0) better to run as standalone or via (x)inetd?
 Both runs fine. Only on one Solaris box I was forced to run in
 standalone mode cause it said all the time that there is another
-programm listening on Port 21 whenn I tried inetd.
+program listening on Port 21 when I tried inetd.
  
 > What are the differences etc. etc. etc. ?
-One difference is that the process controll (childs etc) is mananaged
+One difference is that the process control (childs etc) is mananaged
 bei the inetd.  Another thing is that you can start proftpd with the
 tcpd when you're using the inetd.
 In the standanlone mode you can use Virtual Hosts.
@@ -3618,7 +3576,6 @@ I've made a beautiful compilation of proftpd with some others modules
 &gt;   mod_pam.c
 &gt;   mod_ratio.c
 &gt;   mod_ldap.c
-&gt;   mod_quota.c
 &gt;
 
 My configuration file is something like that :
@@ -3750,7 +3707,6 @@ On Wed, Jan 26, 2000 at 08:25:48PM +0100, Stephan Nardone wrote:
 % &gt;   mod_pam.c
 % &gt;   mod_ratio.c
 % &gt;   mod_ldap.c
-% &gt;   mod_quota.c
 
 I believe you need something like MySQL or PostgreSQL to store persistent
 ratios across FTP sessions; mod_ldap doesn't support storing ratio
@@ -3832,7 +3788,6 @@ On Wed, Jan 26, 2000 at 08:25:48PM +0100, Stephan Nardone wrote:
 % &gt;   mod_pam.c
 % &gt;   mod_ratio.c
 % &gt;   mod_ldap.c
-% &gt;   mod_quota.c
 
 I believe you need something like MySQL or PostgreSQL to store persistent
 ratios across FTP sessions; mod_ldap doesn't support storing ratio
@@ -6669,7 +6624,7 @@ complete and the server is running.</para>
 user with a full account with up and download capability is abusing
 their space then the technical measures which can be taken are
 limited.  Applying a sane system quota is a good start, using the
-mod_quota and mod_ratio modules may control the rates of
+mod_quotatab and mod_ratio modules may control the rates of
 upload/download making it less useful as a warez repository.  In the
 end it comes down to system monitoring and good site AUP's and
 enforcement.</para>
@@ -7323,7 +7278,7 @@ or
 SQL/LDAP authentication 
 DefaultRoot
 
-At 14:01 06/04/2000 +0100, **hamster@vom.tm**, has written a message, and
+At 14:01 06/04/2000 +0100, **hamster@vom.org.uk**, has written a message, and
 here is the reply :
 &gt;On Mon, Apr 03, 2000 at 06:51:49PM -0700, Irwan Hadi wrote:
 &gt;AuthUserFile
@@ -8552,23 +8507,23 @@ http://www.proftpd.org/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
 From proftpd-request@tos.net Mon Feb 28 15:02:33 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
+Received: from firewall.vom.org.uk ([212.32.5.30] helo=flyhmstr.vom.org.uk)
+	by weasel.vom.org.uk with esmtp (Exim 3.12 #1)
 	id 12PRgv-0007aS-00
-	for mark@weasel.vom.tm; Mon, 28 Feb 2000 15:02:33 +0000
+	for mark@weasel.vom.org.uk; Mon, 28 Feb 2000 15:02:33 +0000
 Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
+	by flyhmstr.vom.org.uk with esmtp (Exim 3.11 #1 (Debian))
 	id 12PRgt-0006DF-00
-	for &lt;hamster@vom.tm&gt;; Mon, 28 Feb 2000 15:02:32 +0000
+	for &lt;hamster@vom.org.uk&gt;; Mon, 28 Feb 2000 15:02:32 +0000
 Received: (from listserv@localhost)
 	by starbase.tos.net (8.9.3/8.9.3) id JAA08446;
 	Mon, 28 Feb 2000 09:02:18 -0600
 Resent-Date: Mon, 28 Feb 2000 09:02:18 -0600
 Date: Mon, 28 Feb 2000 14:53:41 +0000
-From: Mark Lowes &lt;hamster@vom.tm&gt;
+From: Mark Lowes &lt;hamster@vom.org.uk&gt;
 To: proftpd@proftpd.org
 Subject: Re: [ProFTPD] Can't do "ls" command
-Message-ID: &lt;20000228145341.A29107@weasel.vom.tm&gt;
+Message-ID: &lt;20000228145341.A29107@weasel.vom.org.uk&gt;
 References: &lt;002101bf81f9$3f83b820$843365c1@kakoi.co.jp&gt;
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -8617,14 +8572,14 @@ http://www.proftpd.org/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
 From proftpd-request@tos.net Mon Feb 28 15:25:03 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
+Received: from firewall.vom.org.uk ([212.32.5.30] helo=flyhmstr.vom.org.uk)
+	by weasel.vom.org.uk with esmtp (Exim 3.12 #1)
 	id 12PS2h-0007bQ-00
-	for mark@weasel.vom.tm; Mon, 28 Feb 2000 15:25:03 +0000
+	for mark@weasel.vom.org.uk; Mon, 28 Feb 2000 15:25:03 +0000
 Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
+	by flyhmstr.vom.org.uk with esmtp (Exim 3.11 #1 (Debian))
 	id 12PS2e-0006I8-00
-	for &lt;hamster@vom.tm&gt;; Mon, 28 Feb 2000 15:25:00 +0000
+	for &lt;hamster@vom.org.uk&gt;; Mon, 28 Feb 2000 15:25:00 +0000
 Received: (from listserv@localhost)
 	by starbase.tos.net (8.9.3/8.9.3) id JAA09041;
 	Mon, 28 Feb 2000 09:24:40 -0600
@@ -8632,7 +8587,7 @@ Resent-Date: Mon, 28 Feb 2000 09:24:40 -0600
 Message-ID: &lt;004801bf81ff$1c09a160$843365c1@kakoi.co.jp&gt;
 From: "Norio Kashiwagi" &lt;kasiwagi@kakoi.co.jp&gt;
 To: &lt;proftpd@proftpd.org&gt;
-References: &lt;002101bf81f9$3f83b820$843365c1@kakoi.co.jp&gt; &lt;20000228145341.A29107@weasel.vom.tm&gt;
+References: &lt;002101bf81f9$3f83b820$843365c1@kakoi.co.jp&gt; &lt;20000228145341.A29107@weasel.vom.org.uk&gt;
 Subject: Re: [ProFTPD] Can't do "ls" command
 Date: Tue, 29 Feb 2000 00:18:41 +0900
 MIME-Version: 1.0
@@ -8815,14 +8770,14 @@ http://www.proftpd.org/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
 From proftpd-request@tos.net Sat Feb 12 00:07:39 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
+Received: from firewall.vom.org.uk ([212.32.5.30] helo=flyhmstr.vom.org.uk)
+	by weasel.vom.org.uk with esmtp (Exim 3.12 #1)
 	id 12JQ67-0000GC-00
-	for mark@weasel.vom.tm; Sat, 12 Feb 2000 00:07:39 +0000
+	for mark@weasel.vom.org.uk; Sat, 12 Feb 2000 00:07:39 +0000
 Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
+	by flyhmstr.vom.org.uk with esmtp (Exim 3.11 #1 (Debian))
 	id 12JQ65-0001KI-00
-	for &lt;hamster@vom.tm&gt;; Sat, 12 Feb 2000 00:07:38 +0000
+	for &lt;hamster@vom.org.uk&gt;; Sat, 12 Feb 2000 00:07:38 +0000
 Received: (from listserv@localhost)
 	by starbase.tos.net (8.9.3/8.9.3) id OAA09338;
 	Fri, 11 Feb 2000 14:51:54 -0600
@@ -8903,14 +8858,14 @@ http://www.proftpd.org/docs/     -- The latest ProFTPD documentation and FAQ.
 
 
 From proftpd-request@tos.net Mon Feb 14 01:34:15 2000
-Received: from firewall.vom.tm ([212.32.5.30] helo=flyhmstr.vom.tm)
-	by weasel.vom.tm with esmtp (Exim 3.12 #1)
+Received: from firewall.vom.org.uk ([212.32.5.30] helo=flyhmstr.vom.org.uk)
+	by weasel.vom.org.uk with esmtp (Exim 3.12 #1)
 	id 12KAP1-0006ds-00
-	for mark@weasel.vom.tm; Mon, 14 Feb 2000 01:34:15 +0000
+	for mark@weasel.vom.org.uk; Mon, 14 Feb 2000 01:34:15 +0000
 Received: from starbase.tos.net ([209.212.188.150])
-	by flyhmstr.vom.tm with esmtp (Exim 3.11 #1 (Debian))
+	by flyhmstr.vom.org.uk with esmtp (Exim 3.11 #1 (Debian))
 	id 12KAOz-00081n-00
-	for &lt;hamster@vom.tm&gt;; Mon, 14 Feb 2000 01:34:14 +0000
+	for &lt;hamster@vom.org.uk&gt;; Mon, 14 Feb 2000 01:34:14 +0000
 Received: (from listserv@localhost)
 	by starbase.tos.net (8.9.3/8.9.3) id TAA11707;
 	Sun, 13 Feb 2000 19:33:12 -0600
@@ -10009,7 +9964,7 @@ There's definately some cruft in the logging2 table which I need to clean
 out but I thought I'd make this post first >:)
 
 # auth using mysql            host      login   pass    db
-MySQLInfo                     bat.vom.tm hamster Ma3ros proftpd
+MySQLInfo                     bat.vom.org.uk hamster Ma3ros proftpd
 #
 SQLUserTable                  ftpusers
 SQLUsernameField              username
@@ -11446,7 +11401,7 @@ AuthGroupFile			/var/conf/ftp/authfiles/group.ftp.ftech.net
       &lt;Limit RETR&gt;
          Order Allow,Deny
          Allow .uk, .ftech.net
-         Allow .vom.tm
+         Allow .vom.org.uk
          Deny ALL
       &lt;/Limit&gt;
    &lt;/Directory&gt;
