@@ -8,14 +8,14 @@ MySQLInfo
 </refmeta>
 <refnamediv>
 <refname>MySQLInfo</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Configures the MySQL driver</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>MySQLInfo</command>
 <arg choice="opt">
-  <option>MySQLInfo hostname sqluser sqlpass dbname</option>
+  <option>hostname sqluser sqlpass dbname</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -50,8 +50,13 @@ at least 1.2.0 and later
 
 <refsect1>
 <title>Description</title>
-<para>
---STILL NEEDS WORK--
+
+<para>Configures the MySQL database driver (the database may be
+remote).  A connection isn't made until use of a SQL feature requires
+it, after which it may be held open for the lifetime of the FTP
+session depending on the directives in use.  Use `""' to specify a
+null password.
+
 </refsect1>
 
 <refsect1>
