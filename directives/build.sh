@@ -1,8 +1,8 @@
 #!/bin/bash
 BASE=`pwd`
-INSTALL_ROOT="$HOME/Repository/"
-WEB="$INSTALL_ROOT/hamster.wibble.org/proftpd/"
-FTP="$INSTALL_ROOT/ftp.linux.co.uk/proftpd/"
+INSTALL_ROOT="$HOME/Proftpd/"
+WEB="$INSTALL_ROOT/www.pdd/"
+FTP="$INSTALL_ROOT/ftp.pdd/"
 DSL="/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl"
 
 function build
@@ -97,8 +97,8 @@ function install
 	cd $BASE/other/
 	cp * $WEB/directives/
 	cp * $FTP/directives/
-	echo -n "userguide "
-	cp $BASE/other/directive_list.sgml $BASE/../userguide/
+	#echo -n "userguide "
+	#cp $BASE/other/directive_list.sgml $BASE/../userguide/
 	echo "done"
 }
 #

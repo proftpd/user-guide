@@ -28,7 +28,7 @@ cut -d : -f 2 module_by_directive.lst | sort | uniq > module.lst
 # Start building pages...
 #
 echo -n "Working on "
-mkdir by_module
+mkdir -p by_module
 for mod in `cat module.lst`
 do
 	target="by_module/${mod}.sgml"

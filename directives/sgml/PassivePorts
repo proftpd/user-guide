@@ -59,8 +59,8 @@ the server will default to a normal kernel-assigned port, and a
 message logged.</para>
 
 <para>The port range selected must be in the non-privileged range
-(<i>eg</i> greater than or equal to 1024); it is <b>STRONGLY
-RECOMMENDED</b> that the chosen range be large enough to handle many
+(eg. greater than or equal to 1024); it is STRONGLY
+RECOMMENDED that the chosen range be large enough to handle many
 simultaneous passive connections (for example, 49152-65534, the
 IANA-registered ephemeral port range).</para>
 

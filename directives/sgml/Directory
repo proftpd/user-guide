@@ -87,7 +87,7 @@ Example:
 &lt;Directory ~/anon-ftp&gt;
 &lt;Limit WRITE&gt;
 DenyAll
-&lt;/Limit READ&gt;
+&lt;/Limit&gt;
 &lt;/Directory&gt;
 </refsect1>
 

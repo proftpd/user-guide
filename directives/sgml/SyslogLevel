@@ -8,7 +8,7 @@ SyslogLevel
 </refmeta>
 <refnamediv>
 <refname>SyslogLevel</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the verbosity level of system logging</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -43,7 +43,7 @@ mod_core
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.0rc2 later
+1.2.0rc2+cvs and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
