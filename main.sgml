@@ -1022,7 +1022,7 @@ firewall.
 
 	<para>The chroot() system call simply moves the root (or "/")
 	  directory to a specified point within the filesystem.  When
-	  implmented properly this has the effect of jailing a user
+	  implemented properly this has the effect of jailing a user
 	  into a particular branch of the filesystem directory
 	  structure.  The security advantages of this approach are
 	  easily seen and it is a common method used by programmers
