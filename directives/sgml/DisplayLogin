@@ -15,7 +15,7 @@ DisplayLogin
 </refmeta>
 <refnamediv>
 <refname>DisplayLogin</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the file to display on login</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

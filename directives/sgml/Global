@@ -15,7 +15,7 @@ Global
 </refmeta>
 <refnamediv>
 <refname>Global</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set some directives to apply across the entire daemon</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -63,6 +63,9 @@ The Global configuration block is used to create a set of configuration directiv
 which is applied universally to both the main server configuration and all VirtualHost 
 configurations. Most, but not all other directives can be used 
 inside a Global block.
+</para>
+
+<para>
 In addition, multiple &lt;Global&gt; blocks can be created. At runtime, all 
 Global blocks are merged together and finally into each server's configuration. 
 Global blocks are terminated by a matching &lt;/Global&gt; directive.</para>

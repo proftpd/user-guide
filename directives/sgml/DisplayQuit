@@ -15,7 +15,7 @@ DisplayQuit
 </refmeta>
 <refnamediv>
 <refname>DisplayQuit</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the file to display on quit</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

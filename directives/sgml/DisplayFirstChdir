@@ -15,7 +15,7 @@ DisplayFirstChdir
 </refmeta>
 <refnamediv>
 <refname>DisplayFirstChdir</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the file to display when first entering a directory</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

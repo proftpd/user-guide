@@ -15,7 +15,7 @@ DisplayGoAway
 </refmeta>
 <refnamediv>
 <refname>DisplayGoAway</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the file to display to a rejected connection</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
