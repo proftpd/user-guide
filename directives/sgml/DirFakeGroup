@@ -38,7 +38,7 @@ DirFakeGroup Off
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, .ftpaccess
 </para> </listitem>
 </varlistentry>
 
