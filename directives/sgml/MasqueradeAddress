@@ -1,0 +1,79 @@
+<refentry id="MasqueradeAddress">
+<?dbhtml filename="config_ref_MasqueradeAddress.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MasqueradeAddress</primary></indexterm>
+MasqueradeAddress
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MasqueradeAddress</refname>
+<refpurpose>Configure the server address presented to clients</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MasqueradeAddress</command>
+<arg choice="opt">
+  <option>MasqueradeAddress ip-address|dns-hostname</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+MasqueradeAddress causes the server to display the network information for
+the specified IP address or DNS hostname to the client, on the assumption
+that that IP address or DNS host is acting as a NAT gateway or port forwarder
+for the server.
+</para>
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+    MasqueradeAddress nat-gw.mydomain.com
+</literallayout>
+
+<para>
+</para>
+</refsect1>
+</refentry>
+

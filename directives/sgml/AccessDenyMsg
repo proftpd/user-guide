@@ -1,0 +1,82 @@
+<refentry id="AccessDenyMsg">
+<?dbhtml filename="config_ref_AccessDenyMsg.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>AccessDenyMsg</primary></indexterm>
+AccessDenyMsg
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>AccessDenyMsg</refname>
+<refpurpose>Customise the response on failed authentication</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>AccessDenyMsg</command>
+<arg choice="opt">
+  <option>"message"</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+Dependent on login type
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+Normally, a 530 response message is sent to an FTP client immediately after 
+a failed authentication attempt, with a standard message indicating the the
+reason of failure.  In the case of a wrong password, the reason is usually
+"Login incorrect."  It is this message can be customized with the AccessDenyMsg
+directive. In the message argument, the magic cookie '%u' is replaced with
+the username specified by the client during login.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<para>
+AccessDenyMsg &quot;Guest access denied for %u.&quot;
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>
