@@ -22,7 +22,7 @@ UserAlias
 <cmdsynopsis>
 <command>UserAlias</command>
 <arg choice="opt">
-  <option>UserAlias login-user userid</option>
+  <option>login-user real-user</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
