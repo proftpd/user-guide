@@ -15,7 +15,7 @@ LogFormat
 </refmeta>
 <refnamediv>
 <refname>LogFormat</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Specify a logging format</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -65,7 +65,10 @@ format can be referenced by the specified nickname.
 The format-string argument can consist of any combination 
 of letters, numbers and symbols. The special character % is 
 used to start a meta-sequence (see below). To insert a literal % character, 
-use %%. The following meta sequences are available and are replaced as indicated 
+use %%.</para>
+
+<para>
+The following meta sequences are available and are replaced as indicated 
 when logging.
 %A
 &nbsp;
@@ -122,15 +125,13 @@ Numeric FTP response code (status)
 %u
 &nbsp;
 Local authenticated userid
-See Also: ExtendedLog, TransferLog</para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="ExtendedLog">ExtendedLog</link>, 
+<link linkend="TransferLog">TransferLog</link>
 </para>
 </refsect1>
 

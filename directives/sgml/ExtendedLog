@@ -69,7 +69,9 @@ command classes and formats) can be created.  Optionally, the command-classes
 argument can be used to control which types of commands are logged. If not
 command classes are specified, proftpd logs all commands by default (passwords
 are hidden).  command-classes is a comma delimited (no whitespace!) list of
-which commands to log. The following are valid classes:
+which commands to log.</para>
+
+<para>The following are valid classes:
 NONE
 No commands
 AUTH
@@ -86,26 +88,27 @@ MISC
 Miscellaneous commands (SITE, etc)
 ALL
 All commands (default)
-If a format-nickname argument is supplied, ExtendedLog 
+</para>
+
+<para>If a format-nickname argument is supplied, ExtendedLog 
 will use the predefined logformat (created by LogFormat). 
 Otherwise, the default format of &quot;%h %l %u %t \&quot;%r\&quot; %s %b&quot; 
 is used.
-For example, to log all read and write operations to /var/log/ftp.log (using 
-the default format), you could:</para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-AllowLogSymlinks, LogFormat, TransferLog
-<!--
-<link linkend=""></link>
--->
+<link linkend="AllowLogSymlinks">AllowLogSymlinks</link>,
+<link linkend="LogFormat">LogFormat</link>,
+<link linkend="TransferLog">TransferLog</link>
 </para>
 </refsect1>
 
 <refsect1>
 <title>Examples</title>
+<para>For example, to log all read and write operations to /var/log/ftp.log (using 
+the default format), you could:</para>
 <programlisting>
 ExtendedLog /var/log/ftp.log read,write
 </programlisting>

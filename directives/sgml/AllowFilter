@@ -15,7 +15,7 @@ AllowFilter
 </refmeta>
 <refnamediv>
 <refname>AllowFilter</refname>
-<refpurpose>Control what commands are accepted by the server</refpurpose>
+<refpurpose>Regular expression of command arguments to be accepted</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -58,16 +58,18 @@ mod_core
 
 <refsect1>
 <title>Description</title>
-<para>
-AllowFilter allows the configuration of a regular expression that must
-be matched for all commands sent to ProFTPD. It is extremely useful
-in controlling what characters may be sent in a command to ProFTPD,
-preventing some possible types of attacks against ProFTPD. The regular
-expression is applied against the entire command sent by the client,
-so care must be taken when creating a proper regex. Commands that fail
-the regex match result in a "Forbidden command" error being returned
-to the client.  If the regular-expression argument contains whitespace,
-it must be enclosed in quotes.</para>
+
+<para>AllowFilter allows the configuration of a regular expression
+that must be matched for all command arguments sent to ProFTPD. It is
+extremely useful in controlling what characters may be sent in a
+command to ProFTPD, preventing some possible types of attacks against
+ProFTPD. The regular expression is applied against the arguments to
+the command sent by the client, so care must be taken when creating a
+proper regex.  Commands that fail the regex match result in a
+"Forbidden command" error being returned to the client.  If the
+regular-expression argument contains whitespace, it must be enclosed
+in quotes.</para>
+
 </refsect1>
 
 <refsect1>

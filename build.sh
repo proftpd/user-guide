@@ -42,7 +42,7 @@ function build
 	# 
 	echo -n "linked "
 	cd $BASE/linked/
-	jade -t sgml -d $DSL $BASE/main.sgml
+	jade -t sgml -E 20 -d $DSL $BASE/main.sgml
 	#
 	# Building single html 
 	#

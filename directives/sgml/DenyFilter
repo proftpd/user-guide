@@ -15,7 +15,7 @@ DenyFilter
 </refmeta>
 <refnamediv>
 <refname>DenyFilter</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Regular expression of command arguments to be blocked</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -59,11 +59,18 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-Similar to AllowFilter, DenyFilter specifies a regular 
-expression which must not match any command. If the regex does 
-match, a "Forbidden command" error is returned to the client. This can be especially 
-useful for forbidding certain command combinations from ever reaching ProFTPD.
+Similar to AllowFilter, DenyFilter specifies a regular expression
+which must not match any of the command arguments. If the regex does
+match, a "Forbidden command" error is returned to the client. This can
+be especially useful for forbidding certain command argument
+combinations from ever reaching ProFTPD.
 </para>
+
+<para>
+<emphasis>Notes:</emphasis> The 'PASV' command cannot be blocked using
+this directive.
+</para>
+
 </refsect1>
 
 <refsect1>

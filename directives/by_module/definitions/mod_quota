@@ -8,7 +8,7 @@ mod_quota
 </refmeta>
 <refnamediv>
 <refname>mod_quota</refname>
-<refpurpose>FIX ME FIX ME</refpurpose>
+<refpurpose>Module to implement per-user quotas</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -24,7 +24,15 @@ FIXME
 FIXME
 FIXME
 </para>
+</refsect1>
 
+<refsect1>
+<title>Notes</title>
+<para>
+mod_quota forces a quota recalculation when the .quota file is
+missing.  It is therefore possible to tie normal shell logins into
+deleting the file to force recalcualtions.
+</para>
 </refsect1>
 
 <refsect1>

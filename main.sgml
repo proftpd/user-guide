@@ -1303,7 +1303,6 @@ LOGFORMAT (%j %M %d %h:%n:%j %Y %t %S %b %r %j %j %j %j %u %j %j %j)
 
 	    <varlistentry>
 	      <term>Others</term>
-        </sect2>
 	      <listitem>
 		<para>Logsurfer (need URL) and a Perl custom reporting
 		module
@@ -1313,8 +1312,6 @@ LOGFORMAT (%j %M %d %h:%n:%j %Y %t %S %b %r %j %j %j %j %u %j %j %j)
 
 	  </variablelist>
         </sect2>
-
-	</sect2>
 
 	<sect2>
 	  <title>Custom Logging</title>
@@ -2117,7 +2114,7 @@ command, and (C) can't even talk to the machine on ports other than
 <para>
 However, I am getting one strange problem.  I've got this in my 
 config:
-</sect2>
+
 &lt;Directory ~&gt;
   &lt;Limit ALL&gt;
     Order	deny,allow
@@ -2133,9 +2130,11 @@ config:
 &lt;/Directory&gt;
 </para>
 
+<para>
 That long line I split a couple times isn't actually like that in my
 config.. it's all one line.
 </para>
+
 <para>
 Strangely enough, this results in users who are not members of group
 public to be denied access to NLST while in their home directories.
@@ -6381,12 +6380,9 @@ configuration file and add or edit the ServerType directive to read:
 ServerType standalone
 </screen>
 </sect2>
-</para>
-
 
 <sect2>
-<title>I'm having problems with FTP clients behind firewalls
-</title>
+<title>I'm having problems with FTP clients behind firewalls</title>
 
 <para>The FTP Specification defines that two sockets should be used for
 all communications.  The first runs over port 21 and is the control
@@ -6844,7 +6840,6 @@ few catches and special considerations for this, however.</para>
 order to run the server without root privileges:</para>
 
 <variablelist>
-</para>
 <varlistentry>
 <term>Port</term>
 <listitem>
@@ -6878,8 +6873,6 @@ permissions on your custom files allow for the daemon to read them
 <para>PAM authentication requires root privileges. This directive will need to be set off.</para>
 </listitem>
 </varlistentry>
-</sect2>
-</sect1>
 
 <varlistentry>
 <term>WtmpLog</term>
@@ -8280,7 +8273,9 @@ should be able to. Now, if I do this:
   UserAlias	joe virtual
 #  AuthAliasOnly off
 &lt;/Anonymous&gt;
-</sect1>
+</para>
+
+<para>
 ...it _does_ allow me to login anonymously with "virtual".
 
 In other words, "AuthAliasOnly off" doesn't work. If I want the functionality
