@@ -51,14 +51,17 @@ mod_auth
 <refsect1>
 <title>Description</title>
 <para>
-The UserAlias directive creates a mapping from a login name transmitted by 
-a client (login-user) to a real system userid (userid). 
-If the user logs in as the alias, authentication is performed as though they 
-were actually logging in as the real user. This directive is often used inside 
-an &lt;Anonymous&gt; block in order 
-to allow multiple login names to activate an anonymous login. Note: If 
-the login-user parameter is the same 
-as a real system userid, the real userid will no longer be recognized by proftpd.
+ProFTPD requires a real username/uid when authenticating users as
+provided by PAM, AuthUserFile or another authentication mechanism.
+There are however times when additional aliases are required but it is
+undesirable to provide additional login accounts.</para>
+
+<para>UserAlias provides a mechanism to do this, a typical and common
+example is within Anonymous configuration blocks.  It is normal for the
+server to use 'ftp' as the primary authentication user, however it is
+common practice for users to login using "anonymous".  This is achieved
+by adding the following to the config file.</para>
+
 </refsect1>
 
 <refsect1>
@@ -73,6 +76,11 @@ as a real system userid, the real userid will no longer be recognized by proftpd
 <refsect1>
 <title>Examples</title>
 <para>
+
+<literallayout>
+UserAlias anonymous ftp
+</literallayout>
+
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

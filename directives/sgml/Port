@@ -56,6 +56,12 @@ running in standalone mode. It has no effect when
 used upon a server running in inetd mode (see ServerType). 
 The directive can be used in conjunction with &lt;VirtualHost&gt; in order to run a virtual server on 
 the same IP address as the master server, but listening on a different port.
+
+<para>The Port directive is REQUIRED when operating in standalone mode
+and ignored in ident mode.</para>
+
+	  
+
 </refsect1>
 
 <refsect1>
