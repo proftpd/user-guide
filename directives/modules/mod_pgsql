@@ -8,7 +8,7 @@ mod_pgsql
 </refmeta>
 <refnamediv>
 <refname>mod_pgsql</refname>
-<refpurpose>FIX ME FIX ME</refpurpose>
+<refpurpose>Postgres SQL support</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

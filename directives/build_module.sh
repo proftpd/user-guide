@@ -55,13 +55,14 @@ echo ""
 #
 # Right built all the sgml... 
 #
+echo "Building by_module_source.sgml"
 rm -f $ROOT/by_module_source.sgml
 cd $ROOT/by_module/
 for mod in `cat ${ROOT}/module.lst`
 do
 	cat ${mod}.sgml >> ${ROOT}/by_module_source.sgml
 done
-cp ${ROOT}/by_module_source.sgml $HOME/Proftpd/www.pdd/userguide/
+#cp ${ROOT}/by_module_source.sgml $HOME/Proftpd/www.pdd/userguide/
 #
 #
 #

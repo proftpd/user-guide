@@ -8,7 +8,7 @@ mod_mysql
 </refmeta>
 <refnamediv>
 <refname>mod_mysql</refname>
-<refpurpose>FIX ME FIX ME</refpurpose>
+<refpurpose>MySQL support</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

@@ -8,7 +8,7 @@ mod_sample
 </refmeta>
 <refnamediv>
 <refname>mod_sample</refname>
-<refpurpose>FIX ME FIX ME</refpurpose>
+<refpurpose>Example module</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -20,9 +20,8 @@ mod_sample
 <refsect1>
 <title>Description</title>
 <para>
-FIXME
-FIXME
-FIXME
+This module only provides an example set of code as a template for a budding 
+module programmer.
 </para>
 
 </refsect1>

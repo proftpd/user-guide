@@ -8,7 +8,7 @@ mod_ldap
 </refmeta>
 <refnamediv>
 <refname>mod_ldap</refname>
-<refpurpose>FIX ME FIX ME</refpurpose>
+<refpurpose>LDAP authentication support</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
