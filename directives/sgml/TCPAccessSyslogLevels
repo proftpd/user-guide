@@ -15,7 +15,7 @@ TCPAccessSyslogLevels
 <cmdsynopsis>
 <command>TCPAccessSyslogLevels</command>
 <arg choice="opt">
-  <option>&lt;match&gt; &lt;remote-server&gt;</option>
+  <option>allow-level deny-level</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -56,6 +56,12 @@ ProFTPD can log when a connection is allowed, or denied, as the result
 of rules in the files specified in TCPAccessFiles, to the Unix syslog
 mechanism. A discussion on the syslog levels which can be used is given
 in the SyslogLevel directive.
+</para>
+
+<para>
+The allow-level parameter sets the syslog level at which allowed connections
+are logged; the deny-level parameter sets the syslog level for denied
+connections. 
 </para>
 
 </refsect1>
