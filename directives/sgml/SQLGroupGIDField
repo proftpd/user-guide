@@ -1,0 +1,80 @@
+<refentry id="SQLGroupGIDField">
+<?dbhtml filename="config_ref_SQLGroupGIDField.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLGroupGIDField</primary></indexterm>
+SQLGroupGIDField
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLGroupGIDField</refname>
+<refpurpose>FIXFIXFIX</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLGroupGIDField</command>
+<arg choice="opt">
+  <option>"name" limit|regex|ip value</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+ 
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+FIXFIXFIX
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.5rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+FIX FIX FIX
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+FIXFIXFIX
+</literallayout>
+
+<para>
+FIXFIX
+</para>
+
+</refsect1>
+</refentry>
+
