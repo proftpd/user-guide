@@ -105,8 +105,8 @@ $ proftpd -DDoSomething
 --[ proftpd.conf ]--
 &lt;IfDefine DoSomething&gt;
 # do something here
+&lt;/IfDefine&gt;
 --[ end ]--
-</IfDefine>
 
 </literallayout>
 
