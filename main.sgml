@@ -4738,10 +4738,10 @@ for "warez"):</para>
   RequireValidShell off
 
   &lt;Directory pub/incoming/&gt;
-     &lt;Limit STOR CWD&gt;
+     &lt;Limit STOR CWD XCWD&gt;
         AllowAll
      &lt;/Limit&gt;
-     &lt;Limit READ RMD DELE MKD&gt;
+     &lt;Limit READ DELE MKD RMD XMKD XRMD&gt;
         DenyAll
      &lt;/Limit&gt;
   &lt;/Directory&gt;
@@ -7249,7 +7249,7 @@ DefaultRoot /ftp
 {/Directory}
 
 {Directory /ftp/upload_here}
- {Limit STOR RETR MKD RMD CWD}
+ {Limit CWD STOR RETR MKD RMD XCWD XMKD XRMD}
   Allow All
  {/Limit}
 {/Directory}
