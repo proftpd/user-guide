@@ -65,7 +65,9 @@ At least one module name must be given; there is no maximum number of modules
 that can be listed.  The listed module names must the full name of the source
 file, e.g. "mod_auth_unix.c".  To see a full list of module names, use
 "proftpd -l".  Do not use "mod_auth.c", as that module is the authentication
-front end module, and is necessary.
+front end module, and is necessary.  Also, do not use "mod_auth_pam.c", as
+that module does not provide, by itself, all of the information proftpd needs.
+
 </para>
 </refsect1>
 
