@@ -13,14 +13,14 @@ MaxStoreFileSize
 </refmeta>
 <refnamediv>
 <refname>MaxStoreFileSize</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Restrict size of uploaded files</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>MaxStoreFileSize</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>number|"*" units ["user"|"group"|"class" expression]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ MaxStoreFileSize
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, .ftpaccess
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,34 @@ mod_xfer
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+When uploading files from a client (eg serving a STOR request), the
+server will check for any configured limit against the size of the file
+being sent, and abort any transfers if/when the given file's size
+exceeds the configured limit.
+</para>
+
+<para>
+A single "*" argument configures unlimited file sizes, and is used
+primarily to override any inherited restrictions from higher contexts.
+The given number is the number of bytes for the limit, and is followed
+by a units specifier of (case-insensitive) "Gb" (Gigabytes),
+"Mb" (Megabytes), "Kb" (Kilobytes), or "B" (bytes).  The given number of
+bytes is multiplied by the appropriate factor.
+</para>
+
+<para>
+The optional parameters are used to restrict the file size limits only
+to specific users.  If the "user" restriction is given, then expression is a
+user-expression specifying to which users the rule applies.  Similarly for the
+"group" restriction.  For the "class" restriction, the expression is simply
+the name of connection class for whom the rule will apply.  If no matching
+user, group, or class expression is found for the current user (in that
+order), then a limit with no expression (ie no "user", "group", or "class"
+identifier) is applied.
+</para>
+
+<para>
+See Also: MaxRetrieveFileSize
 </para>
 </refsect1>
 
@@ -73,12 +100,14 @@ FIX FIX FIX
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
-</literallayout>
+  # Restrict upload to only 3 megabytes
+  MaxStoreFileSize 3 Mb
 
-<para>
-FIXFIX
-</para>
+  # Restrict anonymous uploads to 50k, but allow unlimited upload size for
+  # everyone else
+  MaxStoreFileSize 50 Kb user anonymous
+  MaxStoreFileSize *
+</literallayout>
 
 </refsect1>
 </refentry>
