@@ -1,5 +1,5 @@
 <refentry id="LDAPDoUIDLookups">
-	<?dbhtml filename="config_ref_LDAPDoUIDLookups.html">
+<?dbhtml filename="config_ref_LDAPDoUIDLookups.html">
 <refentryinfo>
   <keywordset>
     <keyword>
@@ -7,91 +7,91 @@
     </keyword>
   </keywordset>
 </refentryinfo>
-	<refmeta>
-		<refentrytitle>
-			<indexterm><primary>LDAPDoUIDLookups</primary></indexterm>
-			LDAPDoUIDLookups
-		</refentrytitle>
-	</refmeta>
+  <refmeta>
+    <refentrytitle>
+      <indexterm><primary>LDAPDoUIDLookups</primary></indexterm>
+      LDAPDoUIDLookups
+    </refentrytitle>
+  </refmeta>
 
-	<refnamediv>
-		<refname>LDAPDoUIDLookups</refname>
-		<refpurpose>
-			Enable LDAP lookups for UIDs in directory listings
-		</refpurpose>
-	</refnamediv>
+  <refnamediv>
+    <refname>LDAPDoUIDLookups</refname>
+    <refpurpose>
+      Enable LDAP lookups for UIDs in directory listings
+    </refpurpose>
+  </refnamediv>
 
-	<refsynopsisdiv>
-		<cmdsynopsis>
-			<command>LDAPDoUIDLookups</command>
-			<arg choice="opt">
-				<option>on</option>
-				<option>off</option>
-			</arg>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>LDAPDoUIDLookups</command>
+      <arg choice="opt">
+        <option>on</option>
+        <option>off</option>
+      </arg>
 
-			<arg choice="opt">
-				<option>"search-filter-template"</option>
-			</arg>
+      <arg choice="opt">
+        <option>"uid-base-prefix"</option>
+      </arg>
 
-			<arg choice="opt">
-				<option>"uid-base-prefix"</option>
-			</arg>
-		</cmdsynopsis>
+      <arg choice="opt">
+        <option>"search-filter-template"</option>
+      </arg>
+    </cmdsynopsis>
 
-	<variablelist>
-		<title></title>
+  <variablelist>
+    <title></title>
 
-		<varlistentry>
-			<term><synopsis>Default</synopsis></term>
-			<listitem><para>
-				LDAPDoUIDLookups off
-			</para></listitem>
-		</varlistentry>
+    <varlistentry>
+      <term><synopsis>Default</synopsis></term>
+      <listitem><para>
+        LDAPDoUIDLookups off
+      </para></listitem>
+    </varlistentry>
 
-		<varlistentry>
-			<term><synopsis>Context</synopsis></term>
-			<listitem><para>
-				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
-			</para></listitem>
-		</varlistentry>
+    <varlistentry>
+      <term><synopsis>Context</synopsis></term>
+      <listitem><para>
+        server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+      </para></listitem>
+    </varlistentry>
 
-		<varlistentry>
-			<term><synopsis>Module</synopsis></term>
-			<listitem><para>
+    <varlistentry>
+      <term><synopsis>Module</synopsis></term>
+      <listitem><para>
 mod_ldap
-			</para></listitem>
-		</varlistentry>
+      </para></listitem>
+    </varlistentry>
 
-		<varlistentry>
-			<term><synopsis>Compatibility</synopsis></term>
-			<listitem><para>
-				mod_ldap v2.0 and later
-			</para></listitem>
-		</varlistentry>
-	</variablelist>
+    <varlistentry>
+      <term><synopsis>Compatibility</synopsis></term>
+      <listitem><para>
+        mod_ldap v2.0 and later
+      </para></listitem>
+    </varlistentry>
+  </variablelist>
 </refsynopsisdiv>
 
-	<refsect1>
-		<title>Description</title>
+  <refsect1>
+    <title>Description</title>
 
-		<para>This configuration directive activates LDAP UID-to-name
-		lookups in directory listings. The second argument to this directive
-		is the LDAP prefix to use for UID-to-name lookups. The third
-		argument is a template to be used for the search filter; %v will be
-		replaced with the UID that is being looked up. By default, the
-		search filter template
-		"(&amp;(uidNumber=%v)(objectclass=posixAccount))" is used. Search
-		filter templates are only supported in mod_ldap v2.7 and
-		later.</para>
-	</refsect1>
+    <para>This configuration directive activates LDAP UID-to-name
+    lookups in directory listings. The second argument to this directive
+    is the LDAP prefix to use for UID-to-name lookups. The third
+    argument is a template to be used for the search filter; %v will be
+    replaced with the UID that is being looked up. By default, the
+    search filter template
+    "(&amp;(uidNumber=%v)(objectclass=posixAccount))" is used. Search
+    filter templates are only supported in mod_ldap v2.7 and
+    later.</para>
+  </refsect1>
 
-	<refsect1>
-		<title>See also</title>
-		<para></para>
-	</refsect1>
+  <refsect1>
+    <title>See also</title>
+    <para></para>
+  </refsect1>
 
-	<refsect1>
-		<title>Examples</title>
-		<para></para>
-	</refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para></para>
+  </refsect1>
 </refentry>
