@@ -85,9 +85,8 @@ An unrestricted HideFiles directive and an unrestriected ShowFiles directive
 cannot be used simultaneously in the context.
 </para>
 
-<para>
-Example:
-
+<title>Examples:</title>
+<programlisting>
   # Hide configuration and passwd files from view
   HideFiles "(\\.conf|passwd)$"
 
@@ -103,7 +102,7 @@ Example:
 
   # Only let users of the webmaster group see HTML files, but nothing else
   HideFiles !(\.htm|\.html)$ group webmaster
-</para>
+</programlisting>
 
 <para>
 See Also: HideGroup, HideUser, HideNoAccess
