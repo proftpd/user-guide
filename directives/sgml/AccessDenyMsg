@@ -62,7 +62,7 @@ mod_auth
 Normally, a 530 response message is sent to an FTP client immediately after 
 a failed authentication attempt, with a standard message indicating the the
 reason of failure.  In the case of a wrong password, the reason is usually
-"Login incorrect."  It is this message can be customized with the AccessDenyMsg
+"Login incorrect."  This message can be customized with the AccessDenyMsg
 directive. In the message argument, the magic cookie '%u' is replaced with
 the username specified by the client during login.</para>
 </refsect1>

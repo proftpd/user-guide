@@ -15,7 +15,7 @@ HideUser
 </refmeta>
 <refnamediv>
 <refname>HideUser</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Enable hiding of files based on user owner</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
