@@ -1,26 +1,26 @@
-<refentry id="LinuxPrivsCapabilities">
-<?dbhtml filename="config_ref_LinuxPrivsCapabilities.html">
+<refentry id="EnableCapabilities">
+<?dbhtml filename="config_ref_EnableCapabilities.html">
 <refentryinfo>
   <keywordset>
     <keyword>
-      mod_linuxprivs
+      mod_cap
     </keyword>
   </keywordset>
 </refentryinfo>
 <refmeta>
 <refentrytitle>
-<indexterm><primary>LinuxPrivsCapabilities</primary></indexterm>
-LinuxPrivsCapabilities
+<indexterm><primary>EnableCapabilities</primary></indexterm>
+EnableCapabilities
 </refentrytitle>
 </refmeta>
 <refnamediv>
-<refname>LinuxPrivsCapabilities</refname>
+<refname>EnableCapabilities</refname>
 <refpurpose>Configure the set of Linux capabilities processed</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>LinuxPrivsCapabilities</command>
+<command>EnableCapabilities</command>
 <arg choice="opt" rep="repeat">
   <option>[+/-]capability</option>
 </arg>
@@ -29,7 +29,7 @@ LinuxPrivsCapabilities
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-LinuxPrivsCapabilities +CAP_CHOWN
+EnableCapabilities +CAP_CHOWN
 </para> </listitem>
 </varlistentry>
 
@@ -41,7 +41,7 @@ server config, &lt;VirtualHost&gt;, &lt;Global&gt;
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_linuxprivs
+mod_cap
 </para> </listitem>
 </varlistentry>
 
@@ -56,14 +56,14 @@ mod_linuxprivs
 <refsect1>
   <title>Description</title>
 
-  <para>By default, mod_linuxprivs removes all but two capabilities from the
+  <para>By default, mod_cap removes all but two capabilities from the
   session-handling process: CAP_NET_BIND_SERVICE, for binding to ports lower
   than 1024 (required for active data transfers), and CAP_CHOWN, for
   allowing a process to change a file's ownership to a different user. The
   latter capability is only strictly necessary if the UserOwner
   configuration directive is in use; if not being used, the CAP_CHOWN
-  capability is best removed. The LinuxPrivsCapabilities directive is used
-  to manipulate the set of capabilities that mod_linuxprivs grants.</para>
+  capability is best removed. The EnableCapabilities directive is used
+  to manipulate the set of capabilities that mod_cap grants.</para>
 
   <para>To remove a capability, prefix the name with a '-'; to enable a
   capability, use '+'. At present, this directive only supports one
@@ -73,9 +73,9 @@ mod_linuxprivs
 <refsect1>
 <title>Example</title>
 <para>
-  &lt;IfModule mod_linuxprivs.c&gt;
-    LinuxPrivsEngine on
-    LinuxPrivsCapabilities -CAP_CHOWN
+  &lt;IfModule mod_cap.c&gt;
+    CapabilitiesEngine on
+    EnableCapabilities -CAP_CHOWN
   &lt;/IfModule&gt;
 </para>
 </refsect1>

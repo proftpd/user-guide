@@ -1,26 +1,26 @@
-<refentry id="LinuxPrivsEngine">
-<?dbhtml filename="config_ref_LinuxPrivsEngine.html">
+<refentry id="CapabilitiesEngine">
+<?dbhtml filename="config_ref_CapabilitiesEngine.html">
 <refentryinfo>
   <keywordset>
     <keyword>
-      mod_linuxprivs
+      mod_cap
     </keyword>
   </keywordset>
 </refentryinfo>
 <refmeta>
 <refentrytitle>
-<indexterm><primary>LinuxPrivsEngine</primary></indexterm>
-LinuxPrivsEngine
+<indexterm><primary>CapabilitiesEngine</primary></indexterm>
+CapabilitiesEngine
 </refentrytitle>
 </refmeta>
 <refnamediv>
-<refname>LinuxPrivsEngine</refname>
-<refpurpose>Enable/disable mod_linuxprivs</refpurpose>
+<refname>CapabilitiesEngine</refname>
+<refpurpose>Enable/disable mod_cap</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>LinuxPrivsEngine</command>
+<command>CapabilitiesEngine</command>
 <arg choice="opt">
   <option>on</option>
   <option>off</option>
@@ -30,7 +30,7 @@ LinuxPrivsEngine
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-LinuxPrivsEngine On, if running on a Linux hosts that supports capabilities
+CapabilitiesEngine On, if running on a Linux hosts that supports capabilities
 </para> </listitem>
 </varlistentry>
 
@@ -42,7 +42,7 @@ server config, &lt;VirtualHost&gt;, &lt;Global&gt;
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_linuxprivs
+mod_cap
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,7 @@ mod_linuxprivs
 
 <refsect1>
   <title>Description</title>
-  <para>The LinuxPrivsEngine directive enables or disables the module's
+  <para>The CapabilitiesEngine directive enables or disables the module's
   runtime capabilities engine. If set to off, this module does no runtime
   capabilities processing at all. Use this directive to disable the
   module.</para>
