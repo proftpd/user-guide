@@ -55,7 +55,7 @@ The TimeoutStalled directive sets the maximum number of seconds a data connectio
 between the proftpd server and an FTP client can exist but have no actual 
 data transferred (i.e. &quot;stalled&quot;). If the seconds 
 argument is set to 0, data transfers are allowed to stall 
-indefinitely (the default).
+indefinitely.
 </refsect1>
 
 <refsect1>
