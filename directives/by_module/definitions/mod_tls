@@ -1,0 +1,50 @@
+<refentry id="mod-tls">
+<?dbhtml filename="config_ref_mod_tls.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_tls</primary></indexterm>
+mod_tls
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_tls</refname>
+<refpurpose>TLS/SSL support module</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_tls</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+This module provides the necessary support for encrypting you ftp sessions.
+</para>
+</refsect1>
+
+<refsect1>
+<title>Installation</title>
+<para>
+The mod_tls module is distributed with ProFTPD. Simply follow the normal steps
+for using third-party modules in proftpd:
+
+  ./configure --with-modules=mod_tls
+  make
+  make install
+
+You may need to specify the location of the OpenSSL header and library files
+in your configure command, e.g.:
+
+ ./configure --with-modules=mod_tls \
+    --with-includes=/usr/local/openssl/include \
+    --with-libraries=/usr/local/openssl
+
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+
