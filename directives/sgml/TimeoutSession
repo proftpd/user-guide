@@ -96,12 +96,9 @@ Example:
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
+# Kick the user off after 60 minutes
+TimeoutSession 3600
 </literallayout>
-
-<para>
-FIXFIX
-</para>
 
 </refsect1>
 </refentry>

@@ -15,7 +15,7 @@ SQLGidField
 </refmeta>
 <refnamediv>
 <refname>SQLGidField</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Set the field holding gid information (deprecated)</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

@@ -15,7 +15,7 @@ SQLUidField
 </refmeta>
 <refnamediv>
 <refname>SQLUidField</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Set the field holding uid information (deprecated)</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
