@@ -15,7 +15,7 @@ ScoreboardFile
 </refmeta>
 <refnamediv>
 <refname>ScoreboardFile</refname>
-<refpurpose>Sets the path to the scoreboard file</refpurpose>
+<refpurpose>Sets the name and path of the scoreboard file</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -62,6 +62,11 @@ mod_core
 The ScoreboardFile directive sets the path to the file where the daemon will
 store its run-time "scoreboard" session information.  This file is necessary
 for MaxClients to work properly, as well as other utilities (such as ftpwho and ftpcount).</para> 
+</para>
+
+<para>
+This directive deprecates ScoreboardPath.
+</para>
 </refsect1>
 
 <refsect1>
@@ -76,6 +81,7 @@ for MaxClients to work properly, as well as other utilities (such as ftpwho and 
 <refsect1>
 <title>Examples</title>
 <para>
+ScoreboardFile /var/run/proftpd.scoreboard
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

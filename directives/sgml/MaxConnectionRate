@@ -13,14 +13,14 @@ MaxConnectionRate
 </refmeta>
 <refnamediv>
 <refname>MaxConnectionRate</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Maximum TCP socket connection rate</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>MaxConnectionRate</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>connections per second</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,7 +30,7 @@ MaxConnectionRate
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+none
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,16 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+Set the maxiumum rate at which new TCP connections are accepted, this
+applies to the entire server, therefore too low a value on a high
+traffic server can result in all VirtualHosts being made unavailable
+due to normal traffic levels.
+</para>
+
+<para>
+The value is the number of connections in a given second at which
+the block comes into effect, thus a value of "1" will result in all
+connections being blocked.
 </para>
 </refsect1>
 
@@ -73,7 +82,7 @@ FIX FIX FIX
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
+MaxConnectionRate	4
 </literallayout>
 
 <para>
