@@ -20,7 +20,7 @@ Allow
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>Allow</command>
+<command>AllowLogSymlinks</command>
 <arg choice="opt">
   <option>&quot;on&quot;|&quot;off&quot;</option>
 </arg>
