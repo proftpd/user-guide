@@ -2933,6 +2933,10 @@ AuthPAMAuthorative off
       <sect1>
 	<title>SQL</title>
 
+<epigraph>
+<para>You are in a maze of twisty SQL statements, none alike.</para>
+</epigraph>
+
 	<para>WARNING THIS SECTION IS (TECH SPEAK TIME) ROUGH AS F*CK,
 	you have been warned</para>
 
@@ -3003,10 +3007,11 @@ mysql> select * from proftp;
 </programlisting>
 </example>
 
-<para>
-(take care : uid and gid must be > 500. or change
-the source code of the module).
-</para>
+<tip>
+<para>The uid and gid used in the database must be greater than or
+equal to 1000 unless a manual modification is made to the source for
+the module.</para>
+</tip>
 
 <example>
 <title>Typical configuration for SQL support</title>
@@ -3124,6 +3129,7 @@ toto at root@localhost:3306
 	  </example>
 	  </sect2>
 
+<!--
 	<sect2>
 	  <title>Limitations on UID/GID</title>
 
@@ -3133,7 +3139,7 @@ toto at root@localhost:3306
 	    for some reason the only solution is to alter the source
 	    code and change the definition of MOD_SQL_MIN_ID</para>
 	</sect2>
-
+-->
 	<sect2>
 	  <title>Cookbook examples</title>
 	    
