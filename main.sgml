@@ -1055,6 +1055,7 @@ ServerIdent  Off
 	  containing a message to be displayed prior to login.</para>
 
 	  <para>DisplayConnect /ftp/ftp.virtualhost/login.msg</para>
+	</sect2>
 
 	<sect2>
 	  <title>I want to display a message after login</title>
@@ -1063,6 +1064,7 @@ ServerIdent  Off
 	  ASCII file to the connected user.</para>
 
 	  <para>DisplayLogin       /etc/proftp.msg</para>
+	</sect2>
 
 	<sect2>
 	  <title>Can I have a custom welcome response?</title>
@@ -1882,13 +1884,11 @@ been using the Umask configuration directive as shown below:
 
 Umask		0137	0027
 </para>
-
+	</sect2>
 </sect1>
 
 <sect1>
 <title>proftpd.umask</title>
-<para>
-
 
 <para>I am having some trouble. I looked through all of the FAQs, but couldn't
 find anything. I looked in the different configurations, and it wasn't
@@ -4221,7 +4221,7 @@ DefaultRoot ~
 	security, a chroot jail can be broken, it is not a trivial
 	matter but it's nowhere near impossible.  DefaultRoot should
 	be used as part of a general system of security not the only
-	security measure.
+	security measure.</para>
 
 	<para>A more detailed discussion on this subject and on the
 	  breaking of chroot jails has been written by Simon Burr
@@ -9733,9 +9733,9 @@ This should ensure that support is properly enabled, in addiiton to
 <para></para>
 
 <example>
-<title>
-<prompt>mysql&gt; show fields from proftp;</prompt>
+	    <title></title>
 <programlisting>
+<prompt>mysql&gt; show fields from proftp;</prompt>
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -9792,11 +9792,12 @@ This should ensure that support is properly enabled, in addiiton to
 	configured with the appropriate accesses and tables for yor
 	setup.  This is covered in later sections of this chapter.
 </para>
+	  </sect3>
 
 <sect3>
 <title>SQL Authentication</title>
 
-<Para>
+<para>
 o Install MySQL
 o Compile Proftpd with the --with-modules=mod_sqlpw:mod_mysql flags
 </para>
@@ -9894,9 +9895,8 @@ Does the user proftpd is using have the right permissions?
 <para></para>
 
 <example>
-<title>
+	      <title></title><programlisting>
 <prompt>mysql&gt; show fields from proftp;</prompt>
-<programlisting>
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -10214,7 +10214,7 @@ between the disk and the tcp socket.  The call copied from the page
 cache directly rather than requiring a kernel -> user space -> kernel
 space copy for every read() and write() call.  Generally the
 advantages are only felt on heavily loaded servers.  The call is
-supported in ProFTPD for Linux and FreeBSD.
+supported in ProFTPD for Linux and FreeBSD.</para>
 
 <sect2>
 <title>Linux 2.0.x 
@@ -10222,20 +10222,20 @@ supported in ProFTPD for Linux and FreeBSD.
 
 <para>sendfile is not supported under 2.0.x, this is not an issue when
 compiling for 2.0.x on a 2.0.x system. However when compiling on a
-2.2.x system for use on 2.0.x use the --disable-sendfile flag.
+2.2.x system for use on 2.0.x use the --disable-sendfile flag.</para>
 </sect2>
 
 <sect2><title>Runtime detection of sendfile()
 </title>
 
 <para>There are two patches available for runtime detection of
-sendfile() which gets round the 2.0.x problems.
+sendfile() which gets round the 2.0.x problems.</para>
 
 <para>Johnie Ingram (aka netgod)'s:
-http://www.proftpd.org/proftpd-devel-archive/99-10/msg00073.html
+http://www.proftpd.org/proftpd-devel-archive/99-10/msg00073.html</para>
 
 <para>John Pierce &lt;hawkfan@pyrotechnics.com&gt;
-http://www.proftpd.org/proftpd-devel-archive/99-10/msg00112.html
+http://www.proftpd.org/proftpd-devel-archive/99-10/msg00112.html</para>
 </sect2>
 
 <sect2><title>What are these log lines in pre8?
@@ -10244,7 +10244,7 @@ http://www.proftpd.org/proftpd-devel-archive/99-10/msg00112.html
 <para>The pre8 code has some additional debug logging going on 
 tracking how sendfile is working.  Nothing to get excited 
 about it's probably a case of MacGyver forgetting to comment 
-it out.
+it out.</para>
 </sect2>
 
 </sect1>
@@ -10253,7 +10253,8 @@ it out.
 <title>Regular expressions
 </title>
 
-<para>ProFTPD uses POSIX-style regexps.
+	<para>ProFTPD uses POSIX-style regexps.</para>
+      </sect1>
 </chapter>
 
 
@@ -10318,7 +10319,7 @@ formatting from elsewhere and am busy hacking it around to what i want</Para>
 
 <PARA>placeholer for references and resources... ideas please.. I
       guess Mysql, postgres, rfc information etc should go here.
-      Scripts for auto generating configs?  Links to linux resources?
+      Scripts for auto generating configs?  Links to linux resources?</para>
 
 <PARA>The quantity of information about <ACRONYM>SGML</ACRONYM> and
 <ACRONYM>XML</ACRONYM> is growing
@@ -10336,7 +10337,6 @@ Although not all of these resources are focused specifically on
 DocBook, they still provide helpful information for DocBook
 
 users.</PARA>
-
 
 <SECT1>
 

@@ -7,82 +7,256 @@
     </keyword>
   </keywordset>
 </refentryinfo>
+
 <refmeta>
-<refentrytitle>
-<indexterm><primary>SQLAuthenticate</primary></indexterm>
-SQLAuthenticate
-</refentrytitle>
+  <refentrytitle>
+    <indexterm><primary>SQLAuthenticate</primary></indexterm>
+    SQLAuthenticate
+  </refentrytitle>
 </refmeta>
+
 <refnamediv>
-<refname>SQLAuthenticate</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+  <refname>SQLAuthenticate</refname>
+  <refpurpose>
+    Specify authentication methods and what to authenticate 
+  </refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
-<cmdsynopsis>
-<command>SQLAuthenticate</command>
-<arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
-</arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
-</cmdsynopsis>
+  <cmdsynopsis>
+    <command>SQLAuthenticate</command>
+    <group choice="req">
+      <arg>on</arg>
+      <arg>off</arg>
+    </group>
+  </cmdsynopsis>
+
+  <para>&nbsp;&nbsp;or</para>
+
+  <cmdsynopsis>
+    <command>SQLAuthenticate</command>
+    <arg>
+      users<arg>*</arg>
+    </arg>
+    <arg>
+      group<arg>*</arg>
+    </arg>
+    <arg>
+      userset<arg>fast</arg>
+    </arg>
+    <arg>
+      groupset<arg>fast</arg>
+    </arg>
+  </cmdsynopsis>
  
-<variablelist><title></title>
-<varlistentry><term><synopsis>Default</synopsis></term>
-<listitem> <para>
-FIXFIXFIX
-</para> </listitem>
-</varlistentry>
+  <variablelist><title></title>
+    <varlistentry><term><synopsis>Default</synopsis></term>
+      <listitem>
+        <para>
+          SQLAuthenticate <computeroutput>on</computeroutput> 
+        </para> 
+      </listitem>
+    </varlistentry>
 
-<varlistentry><term><synopsis>Context</synopsis></term>
-<listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
-</para> </listitem>
-</varlistentry>
+    <varlistentry><term><synopsis>Context</synopsis></term>
+      <listitem> 
+        <para>
+          server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+        </para> 
+      </listitem>
+    </varlistentry>
 
-<varlistentry><term><synopsis>Module</synopsis></term>
-<listitem> <para>
-mod_sql
-</para> </listitem>
-</varlistentry>
+    <varlistentry><term><synopsis>Module</synopsis></term>
+      <listitem> 
+        <para>
+          mod_sql
+        </para> 
+      </listitem>
+    </varlistentry>
 
-<varlistentry><term><synopsis>Compatibility</synopsis></term>
-<listitem> <para>
-1.2.5rc1 and later
-</para> </listitem>
-</varlistentry>
-</variablelist>
+    <varlistentry><term><synopsis>Compatibility</synopsis></term>
+      <listitem> 
+        <para>
+          1.2.5rc1 and later
+        </para> 
+      </listitem>
+    </varlistentry>
+  </variablelist>
 </refsynopsisdiv>
 
 <refsect1>
-<title>Description</title>
-<para>
-FIX FIX FIX
-</para>
+  <title>Description</title>
+    <para>The SQLAuthenticate directive controls the behavior of mod_sql 
+regarding the authentication process.  SQLAuthenticate can provide fine grained 
+control over authentication of logins and file access for both users and groups. 
+  Using this directive, mod_sql can be configured to be the authoritative 
+authentication mechanism - in that case, mod_sql provides authentication and all
+ other authentication mechanisms will be bypassed.</para>
+    <para>The syntax for SQLAuthenticate can take one of two possible formats.  
+The simplest syntax is a simple <computeroutput>on | off</computeroutput> format:
+
+    <variablelist><title></title>
+      <varlistentry><term>on</term>
+        <listitem>
+          <para>mod_sql will perform login authentication and will also control 
+file access using both user ID and group ID.  This is equivalent to the 
+following alternative syntax:
+            <blockquote>
+              <para><computeroutput>
+                SQLAuthenticate users groups userset groupset
+              </computeroutput></para>
+            </blockquote>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>off</term>
+        <listitem>
+          <para>mod_sql will not perform user or group lookups nor will it 
+control file access or functionality.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    </para>
+
+    <para>A more complex syntax is provided to provide finer control of the 
+behavior of mod_sql.  Two features in particular may be controlled via this 
+syntax:
+      <itemizedlist>
+        <listitem>
+          <para>
+          Authorititative lookups and authentication</para>
+        </listitem>
+        <listitem>
+	      <para>
+          File access or functionality control based on UID or GID</para>
+        </listitem>
+      </itemizedlist>
+      The following command options are used to control these features.  Note 
+that each of these options may be listed in any order.
+    </para>
+
+    <variablelist><title></title>
+      <varlistentry><term>users[*]</term>
+        <listitem>
+          <para>If this option is present, user lookups will take place.  
+Appending an asterisk to <computeroutput>users</computeroutput> will cause 
+mod_sql to become authoritiative for user lookups.  All other user 
+authentication methods will be ignored.  If this option is not included, mod_sql
+ will not perform any user lookups.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>groups[*]</term>
+        <listitem>
+          <para>If this option is present, group lookups will take place.  
+Appending an asterisk to <computeroutput>groups</computeroutput> will cause 
+mod_sql to become authoritiative for group lookups.  All other authentication 
+methods will be ignored.  If this option is not included, mod_sql will not 
+perform any group lookups.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>userset[fast]</term>
+        <listitem>
+          <para>If this option is present, mod_sql will control file access or 
+functionality by processing the (get|set|end)pwent calls. These calls are used 
+to determine file access rights based on username.  This option has no effect if
+ the <computeroutput>user[*]</computeroutput> option is not present.</para>
+          <para>If mod_sql is used to authenticate a significant number of 
+users, the (set|get|end)pwent calls can become expensive.  The number of queries
+ will be n+1, where n is the number of users to be looked up.  On a large 
+system, this can significantly slow logins.  Using the 
+<computeroutput>usersetfast</computeroutput> option will cause a single query
+ to be performed to lookup all users, speeding up the login process.  The 
+drawback to this option is that memory utilization will be increased. 
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>groupset[fast]</term>
+        <listitem>
+          <para>If this option is present, mod_sql will control file access or 
+functionality by processing the (get|set|end)grent calls. These calls are used 
+to determine file access rights based on groupname.  This option has no effect 
+if the <computeroutput>group[*]</computeroutput> option is not present.</para>
+          <para>If mod_sql is used to authenticate a significant number of 
+groups, the (set|get|end)grent calls can become expensive.  The number of 
+queries will be n+1, where n is the number of groups to be looked up.  On a 
+large system, this can significantly slow logins. Using the 
+<computeroutput>groupsetfast</computeroutput> option will cause a single query 
+to be performed to lookup all groups, speeding up the login process.  The 
+drawback to this option is that memory utilization will be increased. 
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Turning off (not including) userset or groupset affects the 
+functionality of mod_sql.  Not allowing these lookups may remove the ability to 
+control access or control functionality by group membership, depending on your 
+other auth handlers and the data available to them.  At the same time, choosing 
+not to do these lookups may dramatically speed login for many large sites.
+    </para>
+    <para>The 'fast' suffix is not appropriate for every site.  Normally, 
+mod_sql will retrieve a list of users and groups, and get information from the 
+database on a per-user or per-group basis.  This is query intensive -- it 
+requires (n+1) queries, where n is the number of users or groups to lookup.  By 
+choosing 'fast' lookups, mod_sql will make a single SELECT query to get 
+information from the database.
+    </para>
+    <para>In exchange for the radical reduction in the number of queries, the 
+single query will increase the memory consumption of the process -- all group 
+or user information will be read at once rather than in discrete chunks.
+    </para>
+
+    <para><emphasis role="bold">Note:</emphasis>If the 
+<computeroutput>groupset</computeroutput> option is specified, mod_sql requires 
+that the SQL group table contain only a single record for each group.  All 
+members of a group must be specified in the single record.  Make sure that the 
+group table is created with a sufficent column size for group members - for 
+example, a MySQL group table should use type 
+<computeroutput>TEXT</computeroutput> for the group members column, providing 
+65535 characters for listing all of the group members in a comma-separated list.
+    </para>
 </refsect1>
 
 <refsect1>
-<title>See also</title>
-<para>
-<!--
-<link linkend=""></link>
--->
-</para>
+  <title>See also</title>
+    <para>
+      <link linkend="SQLUserTable">SQLUserTable</link>&nbsp;, 
+      <link linkend="SQLGroupTable">SQLGroupTable</link>&nbsp;,
+      <link linkend="SQLuserInfo">SQLUserInfo</link>&nbsp;,
+      <link linkend="SQLGroupInfo">SQLGroupInfo</link>
+    </para>
 </refsect1>
 
 <refsect1>
-<title>Examples</title>
+  <title>Examples</title>
+    <para>If user and group lookups are desired, but other means will be used to
+ perform file access control, and the user/group lookups are not to be 
+authoritatuve, the following directive syntax is appropriate.  This is not a 
+particuarly interesting configuration.</para>
+    <blockquote>
+      <para>
+        <computeroutput>SQLAuthenticate users groups</computeroutput>
+      </para>
+    </blockquote>
 
-<literallayout>
-FIXFIXFIX
-</literallayout>
+    <para>A more interesting configuration for mod_sql is shown below.  In this 
+configuration, mod_sql is authoritative for both users and groups, and also 
+performs access control based on both user name and group membership.  Utilizing
+ a configuration such as this removes the need to provide a shell account for 
+users on the server, while still providing &quot;non-anonymous&quot; ftp access with 
+access control. The &quot;fast&quot; option is also used to speed up logins, at the 
+expense of increased memory utilization.</para>
 
-<para>
-FIXFIX
-</para>
-
+    <blockquote>
+      <para>
+        <computeroutput>
+          SQLAuthenticate users* groups* usersetfast groupsetfast
+        </computeroutput> 
+      </para>
+    </blockquote>
 </refsect1>
 </refentry>
 

@@ -93,7 +93,7 @@ All commands (default)
 <para>If a format-nickname argument is supplied, ExtendedLog 
 will use the predefined logformat (created by LogFormat). 
 Otherwise, the default format of &quot;%h %l %u %t \&quot;%r\&quot; %s %b&quot; 
-is used.
+is used.</para>
 </refsect1>
 
 <refsect1>
