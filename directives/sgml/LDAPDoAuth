@@ -28,7 +28,7 @@
 			</arg>
 
 			<arg choice="opt">
-				<option>"auth-base-prefix"</option>
+				<option>"auth-base-dn"</option>
 			</arg>
 
 			<arg choice="opt">
@@ -73,7 +73,7 @@ mod_ldap
 		<title>Description</title>
 
 		<para>This configuration directive activates LDAP authentication.
-		The second argument to this directive is the LDAP prefix to use for
+		The second argument to this directive is the LDAP base DN to use for
 		authentication.  The third argument is a template to be used for the
 		search filter; %v will be replaced with the username that is being
 		authenticated. By default, the search filter template

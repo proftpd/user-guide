@@ -30,7 +30,7 @@
       </arg>
 
       <arg choice="opt">
-        <option>"uid-base-prefix"</option>
+        <option>"uid-base-dn"</option>
       </arg>
 
       <arg choice="opt">
@@ -76,7 +76,7 @@ mod_ldap
 
     <para>This configuration directive activates LDAP UID-to-name
     lookups in directory listings. The second argument to this directive
-    is the LDAP prefix to use for UID-to-name lookups. The third
+    is the LDAP base DN to use for UID-to-name lookups. The third
     argument is a template to be used for the search filter; %v will be
     replaced with the UID that is being looked up. By default, the
     search filter template
