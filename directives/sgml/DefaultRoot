@@ -69,6 +69,15 @@ client is chroot jailed into their home directory.
 </para>
 
 <para>
+When the specified chroot directory is a symlink this will be resolved
+to it's parent first before setting up the chroot.  This can have
+unwanted side effects.  For example if a chroot is to be configured
+within space to which a user as shell access, the chroot directory
+could be converted to a symlink pointing at '/'.  Thus the chroot
+would be to the root directory of the server.
+</para>
+
+<para>
 If the DefaultRoot directive specifies a directory which disallows
 access to the logged-in user's home directory, the user's current
 working directory after login is set to the DefaultRoot instead of their
