@@ -64,7 +64,9 @@ mod_xfer
 <para>
 The TransferRate directive is used to set transfer rates limits on the transfer
 of data.  This directive allows for transfer rates to be set in a wide variety
-of contexts, on a per-command basis, and for certain subsets of users.
+of contexts, on a per-command basis, and for certain subsets of users.  Note
+that this limit only applies to a single connection, and not to the overall
+transfer rate of the server.
 </para>
 
 <para>
