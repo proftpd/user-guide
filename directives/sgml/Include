@@ -15,7 +15,7 @@ Include
 </refmeta>
 <refnamediv>
 <refname>Include</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Load additional configuration directives from a file</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

@@ -15,7 +15,7 @@ Order
 </refmeta>
 <refnamediv>
 <refname>Order</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Configures the precedence of the Limit directives</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

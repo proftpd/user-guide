@@ -15,7 +15,7 @@ MaxClientsPerHost
 </refmeta>
 <refnamediv>
 <refname>MaxClientsPerHost</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Limits the connections per client machine</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

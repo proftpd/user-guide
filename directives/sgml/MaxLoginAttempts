@@ -15,7 +15,7 @@ MaxLoginAttempts
 </refmeta>
 <refnamediv>
 <refname>MaxLoginAttempts</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Sets how many password attempts are allowed before disconnection</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

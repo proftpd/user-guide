@@ -15,7 +15,7 @@ TimeoutStalled
 </refmeta>
 <refnamediv>
 <refname>TimeoutStalled</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Sets the timeout on stalled downloads</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

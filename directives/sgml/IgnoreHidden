@@ -15,7 +15,7 @@ IgnoreHidden
 </refmeta>
 <refnamediv>
 <refname>IgnoreHidden</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Treat 'hidden' files as if they don't exist</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

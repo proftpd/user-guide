@@ -15,7 +15,7 @@ SocketBindTight
 </refmeta>
 <refnamediv>
 <refname>SocketBindTight</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Controls how TCP/IP sockets are created</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

@@ -15,7 +15,7 @@ MaxClients
 </refmeta>
 <refnamediv>
 <refname>MaxClients</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Limits the number of users that can connect</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
