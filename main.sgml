@@ -1,6 +1,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
-<!ENTITY alldirectives SYSTEM "directives/other/directive_list.sgml">
-<!ENTITY directivesbymodule SYSTEM "directives/by_module_source.sgml">
+<!ENTITY directivesbyname    SYSTEM "directives/output/by_name_source.sgml">
+<!ENTITY directivesbymodule  SYSTEM "directives/output/by_module_source.sgml">
+<!ENTITY directivesbycontext SYSTEM "directives/output/by_context_source.sgml">
 ]>
 <book ID="PROFTPD"><?dbhtml filename="userguide.html">
 <bookinfo>
@@ -14426,9 +14427,7 @@ This is a list of all the configuration directives
 </para>
 </epigraph>
 </partintro>
-
-&alldirectives;
-
+&directivesbyname;
 </reference>
 
 <reference>
@@ -14437,15 +14436,22 @@ This is a list of all the configuration directives
 <para>This is a list of all the configuration directives organised by
 the module in which they are defined with details of each module, it's
 purpose and the development team behind it.  </para>
-<epigraph>
-<para>"Understanding is a three-edged sword." -- Ambassador Kosh, "Deathwalker"
-</para>
-</epigraph>
 </partintro>
-
 &directivesbymodule;
-
 </reference>
+
+<reference>
+<title>Configuration by Context</title>
+<partintro>
+<para>This is a list of all the configuration directives organised by
+the module in which they are defined with details of each module, it's
+purpose and the development team behind it.  </para>
+</partintro>
+&directivesbycontext;
+</reference>
+
+
+
 </part>
 
   <PART ID="PROFTPD-APP">
