@@ -72,8 +72,11 @@ it must be enclosed in quotes.
 <refsect1>
 <title>Examples</title>
 <programlisting>
-# Only allow filenames containing alphanumeric characters
-PathAllowFilter &quot;.*/[a-zA-Z0-9]+$&quot;
+# Only allow a-z 0-9 . - _ in file names,
+PathAllowFilter ^[a-z0-9._-]+$
+
+# as above but with upper case characters as well
+PathAllowFilter ^[A-Za-z0-9._-]+$
 </programlisting>
 <para>
 <!--
