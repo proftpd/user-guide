@@ -13,30 +13,27 @@ ScoreboardPath
 </refmeta>
 <refnamediv>
 <refname>ScoreboardPath</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>(deprecated)</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>ScoreboardPath</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>path</option>
 </arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
 </cmdsynopsis>
  
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +45,7 @@ mod_core
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.0pre10 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,30 +53,16 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+Deprecated.  Use ScoreboardFile instead.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="ScoreboardFile">ScoreboardFile</link>
 </para>
 </refsect1>
 
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-FIXFIXFIX
-</literallayout>
-
-<para>
-FIXFIX
-</para>
-
-</refsect1>
 </refentry>
 
