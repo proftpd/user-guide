@@ -13,14 +13,14 @@ StoreUniquePrefix
 </refmeta>
 <refnamediv>
 <refname>StoreUniquePrefix</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Set the prefix to be added to uniquely generated filenames</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>StoreUniquePrefix</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>"prefix"</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ StoreUniquePrefix
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+none
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;, &lt;Directory&gt; .ftpaccess
 </para> </listitem>
 </varlistentry>
 
@@ -56,8 +56,13 @@ mod_xfer
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+The StoreUniquePrefix is used to configure a prefix for the generated
+unique random filenames used for the STOU FTP command.  The last
+six characters of the filename will be random.  Slashes are not allowed
+in the prefix string.
 </para>
+
+<para>All valid filename characters are allowed except '/'</para>
 </refsect1>
 
 <refsect1>

@@ -13,14 +13,14 @@ Define
 </refmeta>
 <refnamediv>
 <refname>Define</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Initialises Defines for IfDefine</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>Define</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>parameter-name</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ Define
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+none
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+any context
 </para> </listitem>
 </varlistentry>
 
@@ -56,13 +56,15 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+This directive is used to initialise defines for use in conjunction with
+the IfDefine directive
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
+<link linkend="IfDefine">IfDefine</link>
 <!--
 <link linkend=""></link>
 -->
@@ -73,12 +75,9 @@ FIX FIX FIX
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
+IfDefine LoadLimiting
+IfDefine HighPerformanceSetup
 </literallayout>
-
-<para>
-FIXFIX
-</para>
 
 </refsect1>
 </refentry>
