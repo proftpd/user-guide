@@ -566,7 +566,7 @@ directory.</para>
 <example>
 <title>Configuring for additional modules</title>
 <programlisting>
-./configure --with-module=mod_module1:mod_module2
+./configure --with-modules=mod_module1:mod_module2
 make
 make install
 </programlisting>
@@ -9669,7 +9669,7 @@ To include support for sql the appropriate module has to be added
 	prior to building the binary for the host system
 
 <programlisting>
-./configure --with-module=mod_sqlpw:mod_mysql
+./configure --with-modules=mod_sqlpw:mod_mysql
 make 
 make install
 </programlisting>
@@ -9736,7 +9736,7 @@ To include support for sql the appropriate module has to be added
 	prior to building the binary for the host system
 
 <programlisting>
-./configure --with-module=mod_mysql
+./configure --with-modules=mod_mysql
 make 
 make install
 </programlisting>
@@ -10008,7 +10008,7 @@ zeroed before use.  Will ponder on this.
 <para>I'm trying to build Proftp pre8 from the FreeBSD ports
 collection with mod_mysql and having some troubles.  The port's
 Makefile uses only the mod_ratio module by default.  I thought I'd be
-able to build it with mod_mysql just by adding --with-module=mod_mysql
+able to build it with mod_mysql just by adding --with-modules=mod_mysql
 into the Makefile, but did not meet with success.  Checking out the
 unpacked Proftpd I see links in the modules dir pointing to mod_ratio
 and mod_pgsql, so I tried it again with mod_pgsql instead.  In both
@@ -10101,7 +10101,7 @@ Hello:
 I'm trying to build Proftp pre8 from the FreeBSD ports collection with
 mod_mysql and having some troubles.  The port's Makefile uses only the
 mod_ratio module by default.  I thought I'd be able to build it with
-mod_mysql just by adding --with-module=mod_mysql into the  Makefile, but
+mod_mysql just by adding --with-modules=mod_mysql into the  Makefile, but
 did not meet with success.  Checking out the unpacked Proftpd I see links
 in the modules dir pointing to mod_ratio and mod_pgsql, so I tried it again
 with mod_pgsql instead.  In both instances only the mod_ratio module was
