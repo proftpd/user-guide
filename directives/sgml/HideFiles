@@ -42,7 +42,7 @@ server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_code
+mod_core
 </para> </listitem>
 </varlistentry>
 
