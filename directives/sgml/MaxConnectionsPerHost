@@ -1,0 +1,93 @@
+<refentry id="MaxConnectionsPerHost">
+<?dbhtml filename="config_ref_MaxConnectionsPerHost.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_auth
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MaxConnectionsPerHost</primary></indexterm>
+MaxConnectionsPerHost
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MaxConnectionsPerHost</refname>
+<refpurpose>Limits the unathenticated connections per client machine</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MaxConnectionsPerHost</command>
+<arg choice="opt">
+  <option>MaxConnectionsPerHost number|none [message]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+MaxConnectionsPerHost none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Anonymous&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_auth
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.11rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The MaxConnectionsPerHost directive configures the maximum number of
+unauthenticated clients allowed to connect per host. The optional argument
+message may be used which will be displayed to a client attempting to exceed
+the maximum value. If message is not supplied, a default message of
+"Sorry, the maximum number of connections (%m) from your host are already connected." is used. </para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+MaxClients, MaxClientsPerHost, MaxHostsPerUser
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+MaxConnectionsPerHost 1 &quot;Sorry, you may not connect more than one time.&quot;
+Results in: 530 Sorry, you may not connect more than one time.
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>
