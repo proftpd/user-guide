@@ -4983,12 +4983,12 @@ address 192.168.1.2.</para>
   ipchains -I forward -s 192.168.1.2 -j MASQ
 </screen>
 
-<para>Now we load the autofw kernel module and forward ports 20 and 21
-to the FTP server:</para>
+<para>Now we load the autofw kernel module and forward port 21 to the FTP
+server:</para>
 
 <screen>
   insmod ip_masq_autofw
-  ipmasqadm autofw -A -r tcp 20 21 -h 192.168.1.2
+  ipmasqadm autofw -A -r tcp 21 21 -h 192.168.1.2
 </screen>
 
 <para>Then we forward ports for Passive FTP. In our etc/proftpd.conf
@@ -5192,8 +5192,8 @@ TimeoutIdle                     900
 
 	  <para>Setting the various timeouts too high can result in
 	    problems because of connections being held open too long.
-	    Setting the timeout to zero is definately recommended
-	    against, infinate timeouts are bad without a very good
+	    Setting the timeout to zero is definitely recommended
+	    against, infinite timeouts are bad without a very good
 	    reason.</para>
 
 	  <informalexample>
@@ -7126,7 +7126,7 @@ PII machines. Let's use i386 one.
 </para><para>
 3. 6 files in i386 directory, ...core...  ...inetd... and ...standalone...
 for versions 9 and 10
-OK, I want standalone version 10 so I definatelly need that small 4,21 file
+OK, I want standalone version 10 so I definitely need that small 4,21 file
 ...  and I presume that core file for version 10 is needed as well ...
 </para><para>
 Too many maybe's. I am not far from giving up (wuftpd). Was it SO hard to
@@ -9958,7 +9958,7 @@ mysql> show columns from logging2;
 </example>
 
 
-There's definately some cruft in the logging2 table which I need to clean
+There's definitely some cruft in the logging2 table which I need to clean
 out but I thought I'd make this post first >:)
 
 # auth using mysql            host      login   pass    db
