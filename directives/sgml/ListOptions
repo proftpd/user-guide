@@ -22,11 +22,11 @@ ListOptions
 <cmdsynopsis>
 <command>ListOptions</command>
 <arg choice="opt">
-  <option>LsDefaultOptions "options string" ["strict"]</option>
+  <option>"options string"</option>
 </arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
+<arg choice="opt">
+  <option>["strict"]</option>
+</arg>
 </cmdsynopsis>
 
 <variablelist><title></title>

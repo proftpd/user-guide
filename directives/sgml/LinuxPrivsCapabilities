@@ -21,18 +21,15 @@ LinuxPrivsCapabilities
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>LinuxPrivsCapabilities</command>
-<arg choice="opt">
-  <option>LinuxPrivsCapabilities [+/- cap]</option>
+<arg choice="opt" rep="repeat">
+  <option>[+/-]capability</option>
 </arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
 </cmdsynopsis>
 
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-None
+LinuxPrivsCapabilities +CAP_CHOWN
 </para> </listitem>
 </varlistentry>
 
@@ -57,22 +54,20 @@ mod_linuxprivs
 </refsynopsisdiv>
 
 <refsect1>
-<title>Description</title>
-<para>
-By default, mod_linuxprivs removes all but two capabilities from the
-session-handling process: CAP_NET_BIND_SERVICE, for binding to ports lower than
-1024 (required for active data transfers), and CAP_CHOWN, for allowing a process
-to change a file's ownership to a different user. The latter capability is only
-strictly necessary if the UserOwner configuration directive is in use; if not
-being used, the CAP_CHOWN capability is best removed. The
-LinuxPrivsCapabilities directive is used to manipulate the set of capabilities
-that mod_linuxprivs grants. 
-</para>
+  <title>Description</title>
 
-<para>
-To remove a capability, prefix the name with a '-'; to enable a capability, use
-'+'. At present, this directive only supports one capability: CAP_CHOWN. 
-</para>
+  <para>By default, mod_linuxprivs removes all but two capabilities from the
+  session-handling process: CAP_NET_BIND_SERVICE, for binding to ports lower
+  than 1024 (required for active data transfers), and CAP_CHOWN, for
+  allowing a process to change a file's ownership to a different user. The
+  latter capability is only strictly necessary if the UserOwner
+  configuration directive is in use; if not being used, the CAP_CHOWN
+  capability is best removed. The LinuxPrivsCapabilities directive is used
+  to manipulate the set of capabilities that mod_linuxprivs grants.</para>
+
+  <para>To remove a capability, prefix the name with a '-'; to enable a
+  capability, use '+'. At present, this directive only supports one
+  capability: CAP_CHOWN.</para>
 </refsect1>
 
 <refsect1>
@@ -80,7 +75,7 @@ To remove a capability, prefix the name with a '-'; to enable a capability, use
 <para>
   &lt;IfModule mod_linuxprivs.c&gt;
     LinuxPrivsEngine on
-    LinuxPrivsCapabilities -CHOWN
+    LinuxPrivsCapabilities -CAP_CHOWN
   &lt;/IfModule&gt;
 </para>
 </refsect1>

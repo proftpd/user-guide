@@ -21,12 +21,9 @@ AuthOrder
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>AuthOrder</command>
-<arg choice="opt">
-  <option>AuthOrder module1 ...</option>
+<arg choice="opt" rep="repeat">
+  <option>module-name</option>
 </arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
 </cmdsynopsis>
 
 <variablelist><title></title>

@@ -22,11 +22,8 @@ ServerLog
 <cmdsynopsis>
 <command>ServerLog</command>
 <arg choice="opt">
-  <option>ServerLog path</option>
+  <option>path</option>
 </arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
 </cmdsynopsis>
 
 <variablelist><title></title>

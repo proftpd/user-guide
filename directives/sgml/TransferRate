@@ -22,11 +22,14 @@ TransferRate
 <cmdsynopsis>
 <command>TransferRate</command>
 <arg choice="opt">
-  <option>TransferRate cmds kilobytes-per-sec[:free-bytes] ["user"|"group"|"class" expression]</option>
+  <option>cmds</option>
 </arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
+<arg choice="opt">
+  <option>kilobytes-per-sec[:free-bytes]</option>
+</arg>
+<arg choice="opt">
+  <option>["user"|"group"|"class" expression]</option>
+</arg>
 </cmdsynopsis>
 
 <variablelist><title></title>
