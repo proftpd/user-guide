@@ -1,0 +1,88 @@
+<refentry id="SQLNegativeCache">
+	<?dbhtml filename="config_ref_SQLNegativeCache.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
+</refentryinfo>
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>SQLNegativeCache</primary></indexterm>
+			SQLNegativeCache
+		</refentrytitle>
+	</refmeta>
+
+	<refnamediv>
+		<refname>SQLNegativeCache</refname>
+		<refpurpose>Enable negative caching for SQL lookups</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>SQLNegativeCache</command>
+			<arg choice="opt">
+				<option>on</option>
+				<option>off</option>
+			</arg>
+		</cmdsynopsis>
+
+	<variablelist>
+		<title></title>
+
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				SQLNegativeCache off
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+mod_sql
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_sql v4.10 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
+</refsynopsisdiv>
+
+	<refsect1>
+		<title>Description</title>
+
+		<para>SQLNegativeCache specifies whether or not to cache negative
+		responses from SQL lookups when using SQL for UID/GID lookups.
+		Depending on your SQL tables, there can be a significant delay
+                when a directory listing is performed as the UIDs not in the
+                SQL database are repeatedly looked up in an attempt to present
+                usernames instead of UIDs in directory listings. With
+                SQLNegativeCache set to on, negative ("not found") responses from
+		SQL queries will be cached and speed will improve on directory
+		listings that contain many users not present in the SQL
+		database.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
+</refentry>
