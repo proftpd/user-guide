@@ -1,0 +1,30 @@
+<refentry id="mod-radius">
+<?dbhtml filename="config_ref_mod_radius.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_radius</primary></indexterm>
+mod_radius
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_radius</refname>
+<refpurpose>RADIUS based authentication support</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_radius</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+This module provides RADIUS authentication and accounting support.
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
