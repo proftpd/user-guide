@@ -56,7 +56,7 @@ connects. Setting this to off displays "[hostname]
 FTP server ready." If set to on, the directive 
 can take an optional string argument, which will be displayed instead of the 
 default text. Sites desiring to give out minimal information will probably 
-want a setting like ServerIdent "FTP Server ready.", which won't 
+want a setting like ServerIdent on "FTP Server ready.", which won't 
 even reveal the hostname. 
 </refsect1>
 
@@ -72,6 +72,7 @@ even reveal the hostname.
 <refsect1>
 <title>Examples</title>
 <para>
+ServerIdent on "Welcome to ftp.linux.co.uk"
 <!--
 For examples, see 
 <link linkend="Class">Class</link>

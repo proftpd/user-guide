@@ -1,0 +1,92 @@
+<refentry id="PassivePorts">
+<?dbhtml filename="config_ref_PassivePorts.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>PassivePorts</primary></indexterm>
+PassivePorts
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>PassivePorts</refname>
+<refpurpose>Specify the ftp-data port range to be used</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>PassivePorts</command>
+<arg choice="opt">
+  <option>PassivePorts min-pasv-port max-pasv-port</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.0rc2 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+
+<para>PassivePorts restricts the range of ports from which the server
+will select when sent the PASV command from a client.  The server will
+randomly choose a number from within the specified range until an open
+port is found.  Should no open ports be found within the given range,
+the server will default to a normal kernel-assigned port, and a
+message logged.</para>
+
+<para>The port range selected must be in the non-privileged range
+(<i>eg</i> greater than or equal to 1024); it is <b>STRONGLY
+RECOMMENDED</b> that the chosen range be large enough to handle many
+simultaneous passive connections (for example, 49152-65534, the
+IANA-registered ephemeral port range).</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+# Use the IANA registered ephemeral port range
+PassivePorts 49152 65534
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>
