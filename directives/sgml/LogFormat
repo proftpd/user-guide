@@ -70,46 +70,49 @@ use %%.</para>
 <para>
 The following meta sequences are available and are replaced as indicated 
 when logging.
+%a
+&nbsp;
+Remote client IP address
 %A
 &nbsp;
 Anonymous username (password given), or UNKNOWN if non-anonymous
 %b
 &nbsp;
 Bytes sent for request
+%{FOOBAR}e
+&nbsp;
+Contents of environment variable FOOBAR.  Note that the server does not set
+any environment variables itself.
 %f
 &nbsp;
 Filename stored or retrieved, absolute path (not chrooted)
 %F
 &nbsp;
 Filename stored or retrieved, as the client sees it
-%{FOOBAR}e
-&nbsp;
-Contents of environment variable FOOBAR.  Note that the server does not set
-any environment variables itself.
 %h
 &nbsp;
-Remote host name
-%a
-&nbsp;
-Remote IP address
+Remote client DNS name
 %l
 &nbsp;
 Remote username (from ident), or UNKNOWN if ident lookup failed
+%L
+&nbsp;
+Local server IP address
 %m
 &nbsp;
 Command (method) name received from client, e.g., RETR
 %p
 &nbsp;
 Local server port number
-%v
-&nbsp;
-Local server name
 %P
 &nbsp;
 Local server process id (pid)
 %r
 &nbsp;
 Full command line received from client
+%s
+&nbsp;
+Numeric FTP response code (status)
 %t
 &nbsp;
 Current local time
@@ -119,12 +122,15 @@ Current local time formatted (strftime(3) format)
 %T
 &nbsp;
 Time taken to transmit/receive file, in seconds 
-%s
-&nbsp;
-Numeric FTP response code (status)
 %u
 &nbsp;
 Local authenticated userid
+%v
+&nbsp;
+ServerName of server handling session
+%V
+&nbsp;
+DNS name of server handling session
 </para>
 </refsect1>
 
