@@ -90,7 +90,7 @@ period (i.e. .proftpd.net for the entire proftpd.net domain).
 <title>Examples</title>
 <programlisting>
 &lt;Limit LOGIN&gt;
-Order Allow,Deny
+Order allow,deny
 Allow from 128.44.26.,128.44.26.,myhost.mydomain.edu,.trusted-domain.org
 Deny from all
 &lt;/Limit&gt;
