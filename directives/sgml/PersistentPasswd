@@ -15,7 +15,7 @@ PersistentPasswd
 </refmeta>
 <refnamediv>
 <refname>PersistentPasswd</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Sets handling of unix auth files</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

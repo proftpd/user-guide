@@ -15,7 +15,7 @@ ExtendedLog
 </refmeta>
 <refnamediv>
 <refname>ExtendedLog</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Specify custom logfiles</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

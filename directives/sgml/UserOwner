@@ -69,9 +69,7 @@ restricted to groups that the current user is a member of.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="GroupOwner">GroupOwner</link>
 </para>
 </refsect1>
 

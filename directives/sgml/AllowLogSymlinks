@@ -10,7 +10,7 @@
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowLogSymlinks</primary></indexterm>
-Allow
+AllowLogSymlinks
 </refentrytitle>
 </refmeta>
 <refnamediv>

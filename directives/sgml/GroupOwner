@@ -15,7 +15,7 @@ GroupOwner
 </refmeta>
 <refnamediv>
 <refname>GroupOwner</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Change default group for new files and directories</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -75,9 +75,7 @@ in the same context, this restriction is lifted.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="UserOwner">UserOwner</link>
 </para>
 </refsect1>
 

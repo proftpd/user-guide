@@ -15,7 +15,7 @@ Directory
 </refmeta>
 <refnamediv>
 <refname>Directory</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Directory-limited configuration directives</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -108,7 +108,7 @@ all user's home directories, or sub-directories thereof.
 <programlisting>
 #Default usage of the directory directive
 &lt;Directory /users/robroy/private&gt;
-  HideNoAccess
+  HideNoAccess on
 &lt;/Directory&gt;
 
 #Example with username-expanding

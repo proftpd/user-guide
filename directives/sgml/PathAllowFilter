@@ -15,7 +15,7 @@ PathAllowFilter
 </refmeta>
 <refnamediv>
 <refname>PathAllowFilter</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Only allow new files which match a specified pattern</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -71,9 +71,7 @@ it must be enclosed in quotes.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="PathDenyFilter">PathDenyFilter</link>
 </para>
 </refsect1>
 
