@@ -4346,9 +4346,9 @@ ke a
 	<para>...</para>
 
 	<sect2>
-	  <title>NIS</title>
-	  <para>
-	  </para>
+	  <title>NIS/YP</title>
+	  <para>Be sure to read the documentation on the PersistentPasswd
+            configuration directive.</para>
 	</sect2>
 
 	<sect2>
