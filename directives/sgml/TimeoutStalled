@@ -1,5 +1,10 @@
 <refentry id="TimeoutStalled">
 <?dbhtml filename="config_ref_TimeoutStalled.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TimeoutStalled</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="MaxHostsPerUser">
 <?dbhtml filename="config_ref_MaxHostsPerUser.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>MaxHostsPerUser</primary></indexterm>

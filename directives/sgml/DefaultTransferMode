@@ -1,5 +1,10 @@
 <refentry id="DefaultTransferMode">
 <?dbhtml filename="config_ref_DefaultTransferMode.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DefaultTransferMode</primary></indexterm>

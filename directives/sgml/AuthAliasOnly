@@ -1,5 +1,10 @@
 <refentry id="AuthAliasOnly">
 <?dbhtml filename="config_ref_AuthAliasOnly.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AuthAliasOnly</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="AllowGroup">
 <?dbhtml filename="config_ref_AllowGroup.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowGroup</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="ServerType">
 <?dbhtml filename="config_ref_ServerType.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>ServerType</primary></indexterm>

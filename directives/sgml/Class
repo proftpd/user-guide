@@ -1,5 +1,10 @@
 <refentry id="Class">
 <?dbhtml filename="config_ref_Class.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Class</primary></indexterm>

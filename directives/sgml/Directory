@@ -1,5 +1,10 @@
 <refentry id="Directory">
 <?dbhtml filename="config_ref_Directory.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Directory</primary></indexterm>

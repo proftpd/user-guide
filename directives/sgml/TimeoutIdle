@@ -1,5 +1,10 @@
 <refentry id="TimeoutIdle">
 <?dbhtml filename="config_ref_TimeoutIdle.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TimeoutIdle</primary></indexterm>

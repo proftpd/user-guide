@@ -1,5 +1,10 @@
 <refentry id="DenyGroup">
 <?dbhtml filename="config_ref_DenyGroup.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DenyGroup</primary></indexterm>

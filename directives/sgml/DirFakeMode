@@ -1,5 +1,10 @@
 <refentry id="DirFakeMode">
 <?dbhtml filename="config_ref_DirFakeMode.html">
+  <keywordset>
+    <keyword>
+      mod_ls
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DirFakeMode</primary></indexterm>

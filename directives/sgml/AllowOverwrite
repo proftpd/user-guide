@@ -1,5 +1,10 @@
 <refentry id="AllowOverwrite">
 <?dbhtml filename="config_ref_AllowOverwrite.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowOverwrite</primary></indexterm>

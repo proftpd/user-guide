@@ -1,5 +1,10 @@
 <refentry id="Limit">
 <?dbhtml filename="config_ref_Limit.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Limit</primary></indexterm>

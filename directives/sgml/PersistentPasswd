@@ -1,5 +1,10 @@
 <refentry id="PersistentPasswd">
 <?dbhtml filename="config_ref_PersistentPasswd.html">
+  <keywordset>
+    <keyword>
+      mod_unixpw
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>PersistentPasswd</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="DefaultRoot">
 <?dbhtml filename="config_ref_DefaultRoot.html">
+  <keywordset>
+    <keyword>
+      mod_auth
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DefaultRoot</primary></indexterm>

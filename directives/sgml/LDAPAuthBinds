@@ -1,5 +1,10 @@
 <refentry id="LDAPAuthBinds">
 	<?dbhtml filename="config_ref_LDAPAuthBinds.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPAuthBinds</primary></indexterm>

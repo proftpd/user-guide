@@ -1,5 +1,10 @@
 <refentry id="CDPath">
 <?dbhtml filename="config_ref_CDPath.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>CDPath</primary></indexterm>

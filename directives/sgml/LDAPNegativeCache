@@ -1,5 +1,10 @@
 <refentry id="LDAPNegativeCache">
 	<?dbhtml filename="config_ref_LDAPNegativeCache.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPNegativeCache</primary></indexterm>

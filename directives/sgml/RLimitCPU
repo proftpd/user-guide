@@ -1,5 +1,10 @@
 <refentry id="RLimitCPU">
 <?dbhtml filename="config_ref_RLimitCPU.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>RLimitCPU</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="TCPUserAccessFiles">
 <?dbhtml filename="config_ref_TCPUserAccessFiles.html">
+  <keywordset>
+    <keyword>
+      mod_wrap
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TCPUserAccessFiles</primary></indexterm>

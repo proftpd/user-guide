@@ -1,5 +1,10 @@
 <refentry id="ShowDotFiles">
 <?dbhtml filename="config_ref_ShowDotFiles.html">
+  <keywordset>
+    <keyword>
+      mod_ls
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>ShowDotFiles</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="UseFtpUsers">
 <?dbhtml filename="config_ref_UseFtpUsers.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>UseFtpUsers</primary></indexterm>

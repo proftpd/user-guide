@@ -1,5 +1,10 @@
 <refentry id="LDAPDefaultAuthScheme">
 	<?dbhtml filename="config_ref_LDAPDefaultAuthScheme.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPDefaultAuthScheme</primary></indexterm>

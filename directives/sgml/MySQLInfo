@@ -1,5 +1,10 @@
 <refentry id="MySQLInfo">
 <?dbhtml filename="config_ref_MySQLInfo.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>MySQLInfo</primary></indexterm>

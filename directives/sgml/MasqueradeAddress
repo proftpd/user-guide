@@ -1,5 +1,10 @@
 <refentry id="MasqueradeAddress">
 <?dbhtml filename="config_ref_MasqueradeAddress.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>MasqueradeAddress</primary></indexterm>

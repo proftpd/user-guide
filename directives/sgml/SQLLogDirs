@@ -1,5 +1,10 @@
 <refentry id="SQLLogDirs">
 <?dbhtml filename="config_ref_SQLLogDirs.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLLogDirs</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="UserAlias">
 <?dbhtml filename="config_ref_UserAlias.html">
+  <keywordset>
+    <keyword>
+      mod_auth
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>UserAlias</primary></indexterm>

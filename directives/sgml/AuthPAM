@@ -1,5 +1,10 @@
 <refentry id="AuthPAM">
 <?dbhtml filename="config_ref_AuthPAM.html">
+  <keywordset>
+    <keyword>
+      mod_pam
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AuthPAM</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="FileRatioErrMsg">
 <?dbhtml filename="config_ref_FileRatioErrMsg.html">
+  <keywordset>
+    <keyword>
+      mod_ratio
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>FileRatioErrMsg</primary></indexterm>

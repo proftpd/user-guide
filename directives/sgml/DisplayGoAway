@@ -1,5 +1,10 @@
 <refentry id="DisplayGoAway">
 <?dbhtml filename="config_ref_DisplayGoAway.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DisplayGoAway</primary></indexterm>

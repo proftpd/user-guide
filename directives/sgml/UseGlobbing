@@ -1,5 +1,10 @@
 <refentry id="UseGlobbing">
 <?dbhtml filename="config_ref_UseGlobbing.html">
+  <keywordset>
+    <keyword>
+      mod_ls
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>UseGlobbing</primary></indexterm>

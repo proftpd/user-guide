@@ -1,5 +1,10 @@
 <refentry id="PassivePorts">
 <?dbhtml filename="config_ref_PassivePorts.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>PassivePorts</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="LDAPUseTLS">
 	<?dbhtml filename="config_ref_LDAPUseTLS.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPUseTLS</primary></indexterm>

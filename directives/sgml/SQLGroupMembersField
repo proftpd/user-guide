@@ -1,5 +1,10 @@
 <refentry id="SQLGroupMembersField">
 <?dbhtml filename="config_ref_SQLGroupMembersField.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLGroupMembersField</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="LDAPForceDefaultGID">
 	<?dbhtml filename="config_ref_LDAPForceDefaultGID.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPForceDefaultGID</primary></indexterm>

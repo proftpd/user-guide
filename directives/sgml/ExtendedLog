@@ -1,5 +1,10 @@
 <refentry id="ExtendedLog">
 <?dbhtml filename="config_ref_ExtendedLog.html">
+  <keywordset>
+    <keyword>
+      mod_log
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>ExtendedLog</primary></indexterm>

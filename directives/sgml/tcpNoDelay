@@ -1,5 +1,10 @@
 <refentry id="tcpNoDelay">
 <?dbhtml filename="config_ref_tcpNoDelay.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>tcpNoDelay</primary></indexterm>

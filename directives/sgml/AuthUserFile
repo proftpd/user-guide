@@ -1,5 +1,12 @@
 <refentry id="AuthUserFile">
 <?dbhtml filename="config_ref_AuthUserFile.html">
+
+  <keywordset>
+    <keyword>
+      mod_unixpw
+    </keyword>
+  </keywordset>
+
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AuthUserFile</primary></indexterm>

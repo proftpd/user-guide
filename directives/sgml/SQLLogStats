@@ -1,5 +1,10 @@
 <refentry id="SQLLogStats">
 <?dbhtml filename="config_ref_SQLLogStats.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLLogStats</primary></indexterm>

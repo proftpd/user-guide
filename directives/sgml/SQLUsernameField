@@ -1,5 +1,10 @@
 <refentry id="SQLUsernameField">
 <?dbhtml filename="config_ref_SQLUsernameField.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLUsernameField</primary></indexterm>

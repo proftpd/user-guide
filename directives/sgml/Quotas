@@ -1,5 +1,10 @@
 <refentry id="Quotas">
 <?dbhtml filename="config_ref_Quotas.html">
+  <keywordset>
+    <keyword>
+      mod_quota
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Quotas</primary></indexterm>

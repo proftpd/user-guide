@@ -1,5 +1,10 @@
 <refentry id="Order">
 <?dbhtml filename="config_ref_Order.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Order</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="LDAPDoAuth">
 	<?dbhtml filename="config_ref_LDAPDoAuth.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPDoAuth</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="HideNoAccess">
 <?dbhtml filename="config_ref_HideNoAccess.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>HideNoAccess</primary></indexterm>

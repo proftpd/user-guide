@@ -1,5 +1,10 @@
 <refentry id="PostgresInfo">
 <?dbhtml filename="config_ref_PostgresInfo.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>PostgresInfo</primary></indexterm>

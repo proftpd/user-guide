@@ -1,5 +1,10 @@
 <refentry id="SQLShellField">
 <?dbhtml filename="config_ref_SQLShellField.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLShellField</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="SQLAuthenticate">
 <?dbhtml filename="config_ref_SQLAuthenticate.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLAuthenticate</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="TCPGroupAccessFiles">
 <?dbhtml filename="config_ref_TCPGroupAccessFiles.html">
+  <keywordset>
+    <keyword>
+      mod_wrap
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TCPGroupAccessFiles</primary></indexterm>

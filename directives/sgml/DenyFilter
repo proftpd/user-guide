@@ -1,5 +1,10 @@
 <refentry id="DenyFilter">
 <?dbhtml filename="config_ref_DenyFilter.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DenyFilter</primary></indexterm>

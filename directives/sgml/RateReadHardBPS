@@ -1,5 +1,10 @@
 <refentry id="RateReadHardBPS">
 <?dbhtml filename="config_ref_RateReadHardBPS.html">
+  <keywordset>
+    <keyword>
+      mod_xfer
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>RateReadHardBPS</primary></indexterm>

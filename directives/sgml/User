@@ -1,5 +1,10 @@
 <refentry id="User">
 <?dbhtml filename="config_ref_User.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>User</primary></indexterm>

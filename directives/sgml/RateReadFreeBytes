@@ -1,5 +1,10 @@
 <refentry id="RateReadFreeBytes">
 <?dbhtml filename="config_ref_RateReadFreeBytes.html">
+  <keywordset>
+    <keyword>
+      mod_xfer
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>RateReadFreeBytes</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="LDAPSearchScope">
 	<?dbhtml filename="config_ref_LDAPSearchScope.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPSearchScope</primary></indexterm>

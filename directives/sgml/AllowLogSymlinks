@@ -1,5 +1,10 @@
 <refentry id="AllowLogSymlinks">
 <?dbhtml filename="config_ref_AllowLogSymlinks.html">
+  <keywordset>
+    <keyword>
+      mod_log
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowLogSymlinks</primary></indexterm>

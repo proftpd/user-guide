@@ -1,5 +1,10 @@
 <refentry id="SQLHomedirField">
 <?dbhtml filename="config_ref_SQLHomedirField.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLHomedirField</primary></indexterm>

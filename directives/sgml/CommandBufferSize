@@ -1,5 +1,10 @@
 <refentry id="CommandBufferSize">
 <?dbhtml filename="config_ref_CommandBufferSize.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>CommandBufferSize</primary></indexterm>

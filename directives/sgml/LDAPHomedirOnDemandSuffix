@@ -1,5 +1,10 @@
 <refentry id="LDAPHomedirOnDemandSuffix">
 	<?dbhtml filename="config_ref_LDAPHomedirOnDemandSuffix.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPHomedirOnDemandSuffix</primary></indexterm>

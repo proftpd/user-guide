@@ -1,5 +1,10 @@
 <refentry id="RatioTempFile">
 <?dbhtml filename="config_ref_RatioTempFile.html">
+  <keywordset>
+    <keyword>
+      mod_ratio
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>RatioTempFile</primary></indexterm>

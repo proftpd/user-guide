@@ -1,5 +1,10 @@
 <refentry id="SQLDefaultUID">
 <?dbhtml filename="config_ref_SQLDefaultUID.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLDefaultUID</primary></indexterm>

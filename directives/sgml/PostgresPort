@@ -1,5 +1,10 @@
 <refentry id="PostgresPort">
 <?dbhtml filename="config_ref_PostgresPort.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>PostgresPort</primary></indexterm>

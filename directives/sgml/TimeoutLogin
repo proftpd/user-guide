@@ -1,5 +1,10 @@
 <refentry id="TimeoutLogin">
 <?dbhtml filename="config_ref_TimeoutLogin.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TimeoutLogin</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="UserRatio">
 <?dbhtml filename="config_ref_UserRatio.html">
+  <keywordset>
+    <keyword>
+      mod_ratio
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>UserRatio</primary></indexterm>

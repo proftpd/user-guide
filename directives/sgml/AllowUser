@@ -1,5 +1,10 @@
 <refentry id="AllowUser">
 <?dbhtml filename="config_ref_AllowUser.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowUser</primary></indexterm>

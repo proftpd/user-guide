@@ -1,5 +1,10 @@
 <refentry id="AllowForeignAddress">
 <?dbhtml filename="config_ref_AllowForeignAddress.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowForeignAddress</primary></indexterm>

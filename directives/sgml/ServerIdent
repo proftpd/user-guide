@@ -1,5 +1,10 @@
 <refentry id="ServerIdent">
 <?dbhtml filename="config_ref_ServerIdent.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>ServerIdent</primary></indexterm>

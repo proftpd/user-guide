@@ -1,5 +1,10 @@
 <refentry id="SQLDefaultGID">
 <?dbhtml filename="config_ref_SQLDefaultGID.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLDefaultGID</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="MaxLoginAttempts">
 <?dbhtml filename="config_ref_MaxLoginAttempts.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>MaxLoginAttempts</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="QuotaExempt">
 <?dbhtml filename="config_ref_QuotaExempt.html">
+  <keywordset>
+    <keyword>
+      mod_quota
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>QuotaExempt</primary></indexterm>

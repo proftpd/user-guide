@@ -1,5 +1,10 @@
 <refentry id="DisplayQuit">
 <?dbhtml filename="config_ref_DisplayQuit.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>DisplayQuit</primary></indexterm>

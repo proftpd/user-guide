@@ -1,5 +1,10 @@
 <refentry id="LDAPHomedirOnDemandPrefixNoUsername">
 <?dbhtml filename="config_ref_LDAPHomedirOnDemandPrefixNoUsername.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>LDAPHomedirOnDemandPrefixNoUsername</primary></indexterm>

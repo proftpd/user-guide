@@ -1,5 +1,10 @@
 <refentry id="RootLogin">
 <?dbhtml filename="config_ref_RootLogin.html">
+  <keywordset>
+    <keyword>
+      mod_auth
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>RootLogin</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="HiddenStor">
 <?dbhtml filename="config_ref_HiddenStor.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>HiddenStor</primary></indexterm>

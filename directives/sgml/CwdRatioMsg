@@ -1,5 +1,10 @@
 <refentry id="CwdRatioMsg">
 <?dbhtml filename="config_ref_CwdRatioMsg.html">
+  <keywordset>
+    <keyword>
+      mod_ratio
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>CwdRatioMsg</primary></indexterm>

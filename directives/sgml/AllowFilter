@@ -1,5 +1,10 @@
 <refentry id="AllowFilter">
 <?dbhtml filename="config_ref_AllowFilter.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>AllowFilter</primary></indexterm>

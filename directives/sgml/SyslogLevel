@@ -1,5 +1,10 @@
 <refentry id="SyslogLevel">
 <?dbhtml filename="config_ref_SyslogLevel.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SyslogLevel</primary></indexterm>

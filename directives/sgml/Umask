@@ -1,5 +1,10 @@
 <refentry id="Umask">
 <?dbhtml filename="config_ref_Umask.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Umask</primary></indexterm>

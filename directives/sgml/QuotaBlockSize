@@ -1,5 +1,10 @@
 <refentry id="QuotaBlockSize">
 <?dbhtml filename="config_ref_QuotaBlockSize.html">
+  <keywordset>
+    <keyword>
+      mod_quota
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>QuotaBlockSize</primary></indexterm>

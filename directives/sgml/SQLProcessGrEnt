@@ -1,5 +1,10 @@
 <refentry id="SQLProcessGrEnt">
 <?dbhtml filename="config_ref_SQLProcessGrEnt.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLProcessGrEnt</primary></indexterm>

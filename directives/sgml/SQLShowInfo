@@ -1,5 +1,10 @@
 <refentry id="SQLShowInfo">
 <?dbhtml filename="config_ref_SQLShowInfo.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLShowInfo</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="Include">
 <?dbhtml filename="config_ref_Include.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>Include</primary></indexterm>

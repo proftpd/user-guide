@@ -1,5 +1,10 @@
 <refentry id="TimeoutNoTransfer">
 <?dbhtml filename="config_ref_TimeoutNoTransfer.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>TimeoutNoTransfer</primary></indexterm>

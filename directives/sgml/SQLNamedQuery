@@ -1,5 +1,10 @@
 <refentry id="SQLNamedQuery">
 <?dbhtml filename="config_ref_SQLNamedQuery.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLNamedQuery</primary></indexterm>

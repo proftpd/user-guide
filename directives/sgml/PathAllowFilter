@@ -1,5 +1,10 @@
 <refentry id="PathAllowFilter">
 <?dbhtml filename="config_ref_PathAllowFilter.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>PathAllowFilter</primary></indexterm>

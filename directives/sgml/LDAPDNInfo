@@ -1,5 +1,10 @@
 <refentry id="LDAPDNInfo">
 	<?dbhtml filename="config_ref_LDAPDNInfo.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPDNInfo</primary></indexterm>

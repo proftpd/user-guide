@@ -1,5 +1,10 @@
 <refentry id="SQLUserInfo">
 <?dbhtml filename="config_ref_SQLUserInfo.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLUserInfo</primary></indexterm>

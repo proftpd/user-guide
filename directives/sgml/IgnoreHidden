@@ -1,5 +1,10 @@
 <refentry id="IgnoreHidden">
 <?dbhtml filename="config_ref_IgnoreHidden.html">
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>IgnoreHidden</primary></indexterm>

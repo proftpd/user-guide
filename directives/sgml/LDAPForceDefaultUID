@@ -1,5 +1,10 @@
 <refentry id="LDAPForceDefaultUID">
 	<?dbhtml filename="config_ref_LDAPForceDefaultUID.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPForceDefaultUID</primary></indexterm>

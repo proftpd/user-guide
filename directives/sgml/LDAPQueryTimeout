@@ -1,5 +1,10 @@
 <refentry id="LDAPQueryTimeout">
 	<?dbhtml filename="config_ref_LDAPQueryTimeout.html">
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
 	<refmeta>
 		<refentrytitle>
 			<indexterm><primary>LDAPQueryTimeout</primary></indexterm>

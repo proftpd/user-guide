@@ -1,5 +1,10 @@
 <refentry id="SQLMinUserUID">
 <?dbhtml filename="config_ref_SQLMinUserUID.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLMinUserUID</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="SQLWhereClause">
 <?dbhtml filename="config_ref_SQLWhereClause.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLWhereClause</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="SQLGroupTable">
 <?dbhtml filename="config_ref_SQLGroupTable.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLGroupTable</primary></indexterm>

@@ -1,5 +1,10 @@
 <refentry id="SQLHomedirOnDemand">
 <?dbhtml filename="config_ref_SQLHomedirOnDemand.html">
+  <keywordset>
+    <keyword>
+      mod_sql
+    </keyword>
+  </keywordset>
 <refmeta>
 <refentrytitle>
 <indexterm><primary>SQLHomedirOnDemand</primary></indexterm>
