@@ -77,13 +77,10 @@ as being the primary IP.
 <literallayout>
 ServerName "Default FTP Server"
 Port 21
+
 # We want the main server instance to listen on a specific IP
 DefaultAddress 192.168.10.30
 </literallayout>
-
-<para>
-FIXFIX
-</para>
 
 </refsect1>
 </refentry>
