@@ -63,7 +63,7 @@ mod_core
 <para>The HideNoAccess directive configures a &lt;Directory&gt; or
 &lt;Anonymous&gt; block to hide all directory entries in a directory
 listing (via the LIST or NLST FTP commands) to which the current
-logged-in, authenticated user has no access to. Normal Unix-style
+logged-in, authenticated user has no access. Normal Unix-style
 permissions always apply, so that although a user may not be able to
 see a directory entry that has HideNoAccess applied, they will receive
 a normal &quot;Permission denied&quot; error message when attempting
