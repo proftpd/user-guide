@@ -22,7 +22,7 @@ DenyUser
 <cmdsynopsis>
 <command>DenyUser</command>
 <arg choice="opt">
-  <option>DenyUser user-expression</option>
+  <option>[&quot;AND&quot;|&quot;OR&quot;|&quot;regex&quot;] user-expression</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -62,9 +62,17 @@ mod_core
 DenyUser specifies a user-expression that is specifically denied within
 the context of the &lt;Limit&gt; block it is applied to.  user-expression
 is a comma delimited list of users or &quot;not&quot; users (by prefixing
-a user name with the `!' character). The expression is parsed as a boolean
-&quot;OR&quot; list, meaning that any elements of the expression must
-evaluate to logically true in order for the explicit deny to apply.</para>
+a user name with the `!' character).
+</para>
+
+<para>
+By default, the expression is parsed as a boolean &quot;OR&quot; list, meaning
+that ANY elements of the expression must evaluate to logically true in order
+to the explicit allow to apply.  In order to treat the expression as a boolean
+&quot;AND&quot; list, meaning that ALL of the elements must evalue to logically
+true, use the optional &quot;AND&quot; keyword.  Similarly, to treat the
+expression as a regular expression, use the &quot;regex&quot; keyword.
+</para>
 </refsect1>
 
 <refsect1>
@@ -79,10 +87,13 @@ evaluate to logically true in order for the explicit deny to apply.</para>
 <refsect1>
 <title>Examples</title>
 <para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
+<programlisting>
+  # A regular expression AllowUser directive
+  AllowUser regex ^ftp
+
+  # An AND-evalued DenyUser directive
+  DenyUser AND system,test
+</programlisting>
 </para>
 </refsect1>
 

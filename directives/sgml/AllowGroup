@@ -22,7 +22,7 @@ AllowGroup
 <cmdsynopsis>
 <command>AllowGroup</command>
 <arg choice="opt">
-  <option>group-expression</option>
+  <option>[&quot;AND&quot;|&quot;OR&quot;|&quot;regex&quot;] group-expression</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -64,9 +64,16 @@ permitted within the context of the &lt;Limit&gt; block it is applied
 to. group-expression has the same format as that used in DefaultRoot, in
 that it should contain a comma separated list of groups or &quot;not&quot;
 groups (by prefixing a group name with the `!' character) that are to
-be allowed access to the block. The expression is parsed as a boolean
-&quot;and&quot; list, meaning that ALL elements of the expression must
-evaluate to logically true in order for the explicit allow to apply.
+be allowed access to the block.
+</para>
+
+<para>
+By default, the expression is parsed as a boolean &quot;AND&quot; list, meaning
+that ALL elements of the expression must evaluate to logically true in order
+to the explicit allow to apply.  In order to treat the expression as a boolean
+&quot;OR&quot; list, meaning that ANY of the elements must evalue to logically
+true, use the optional &quot;AND&quot; keyword.  Similarly, to treat the
+expression as a regular expression, use the &quot;regex&quot; keyword.
 </para>
 </refsect1>
 
@@ -82,10 +89,13 @@ evaluate to logically true in order for the explicit allow to apply.
 <refsect1>
 <title>Examples</title>
 <para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
+<programlisting>
+  # An OR-evalued AllowGroup directive
+  AllowGroup OR www,doc
+
+  # A regular expression DenyGroup directive
+  DenyGroup regex ^sys
+</programlisting>
 </para>
 </refsect1>
 

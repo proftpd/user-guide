@@ -22,7 +22,7 @@ AllowUser
 <cmdsynopsis>
 <command>AllowUser</command>
 <arg choice="opt">
-  <option>user-expression</option>
+  <option>[&quot;AND&quot;|&quot;OR&quot;|&quot;regex&quot;] user-expression</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -59,33 +59,42 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-AllowUser specifies a user-expression that is specifically 
-permitted access within the context of the &lt;Limit&gt; 
-block it is applied to. user-expression has a similar 
-syntax as that used in AllowGroup, in that it should 
-contain a comma delimited list of users or &quot;not&quot; users (by prefixing 
-a user name with the `!' character) that are to be allowed access to the block. 
-The expression is parsed as a boolean &quot;OR&quot; list, meaning that ANY 
-elements of the expression must evaluate to logically true in order to the
-explicit allow to apply.</para>
+AllowUser specifies a user-expression that is specifically permitted access
+within the context of the &lt;Limit&gt; block it is applied to. user-expression
+has a similar syntax as that used in AllowGroup, in that it should contain a
+comma delimited list of users or &quot;not&quot; users (by prefixing a user
+name with the `!' character) that are to be allowed access to the block.
+</para>
+
+<para>
+By default, the expression is parsed as a boolean &quot;OR&quot; list, meaning
+that ANY elements of the expression must evaluate to logically true in order
+to the explicit allow to apply.  In order to treat the expression as a boolean
+&quot;AND&quot; list, meaning that ALL of the elements must evalue to logically
+true, use the optional &quot;AND&quot; keyword.  Similarly, to treat the
+expression as a regular expression, use the &quot;regex&quot; keyword.
+</para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
 <link linkend="DenyUser">DenyUser</link>
-<link linkend="DenyGroup">DenyGroup</link>
 <link linkend="AllowGroup">AllowGroup</link>
+<link linkend="DenyGroup">DenyGroup</link>
 </para>
 </refsect1>
 
 <refsect1>
 <title>Examples</title>
 <para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
+<programlisting>
+  # A regular expression AllowUser directive
+  AllowUser regex ^ftp
+
+  # An AND-evalued DenyUser directive
+  DenyUser AND system,test
+</programlisting>
 </para>
 </refsect1>
 
