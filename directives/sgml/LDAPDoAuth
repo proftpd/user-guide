@@ -75,9 +75,9 @@ mod_ldap
 		<para>This configuration directive activates LDAP authentication.
 		The second argument to this directive is the LDAP prefix to use for
 		authentication.  The third argument is a template to be used for the
-		search filter; %u will be replaced with the username that is being
+		search filter; %v will be replaced with the username that is being
 		authenticated. By default, the search filter template
-		"(&amp;(uid=%u)(objectclass=posixAccount))" is used. Search filter
+		"(&amp;(uid=%v)(objectclass=posixAccount))" is used. Search filter
 		templates are only supported in mod_ldap v2.7 and later.</para>
 	</refsect1>
 
