@@ -1,0 +1,67 @@
+<refentry id="LinuxPrivsEngine">
+<?dbhtml filename="config_ref_LinuxPrivsEngine.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_linuxprivs
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>LinuxPrivsEngine</primary></indexterm>
+LinuxPrivsEngine
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>LinuxPrivsEngine</refname>
+<refpurpose>Enable/disable mod_linuxprivs</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>LinuxPrivsEngine</command>
+<arg choice="opt">
+  <option>LinuxPrivsEngine on|off</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_linuxprivs
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.8rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+The LinuxPrivsEngine directive enables or disables the module's runtime
+capabilities engine. If it is set to off this module does no runtime
+capabilities processing at all. Use this directive to disable the module. 
+</para>
+</refsect1>
+</refentry>
