@@ -19,7 +19,9 @@
 		<cmdsynopsis>
 			<command>LDAPHomedirOnDemandSuffix</command>
 			<arg choice="opt">
-				<option>additional-directory</option>
+				<option>additional-directory1</option>
+				<option>additional-directory2</option>
+				<option>additional-directory3</option>
 			</arg>
 		</cmdsynopsis>
 	<refsynopsisdiv>
@@ -51,7 +53,9 @@
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.6 and later
+				mod_ldap v2.6 and later. mod_ldap >= 2.8 supports multiple
+				suffix arguments and does not require LDAPHomedirOnDemand to
+				be enabled.
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
@@ -62,9 +66,9 @@
 		<para>to be created within a user's home directory when it is
 		created on demand. For example, if a user's home directory is
 		"/home/user", setting this configuration directive to "public_html"
-		will also create "/home/user/public_html" on demand. To use this
-		feature, you must also activate LDAPHomedirOnDemand in your
-		configuration.</para>
+		will also create "/home/user/public_html" on demand. In mod_ldap
+		v2.7.6 and earlier, you must also activate LDAPHomedirOnDemand in
+		your configuration.</para>
 	</refsect1>
 
 	<refsect1>
