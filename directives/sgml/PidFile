@@ -15,7 +15,7 @@ PidFile
 </refmeta>
 <refnamediv>
 <refname>PidFile</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the filepath to hold the pid of the master server</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

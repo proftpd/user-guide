@@ -15,7 +15,7 @@ Port
 </refmeta>
 <refnamediv>
 <refname>Port</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the port for the control socket</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

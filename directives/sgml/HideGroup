@@ -15,7 +15,7 @@ HideGroup
 </refmeta>
 <refnamediv>
 <refname>HideGroup</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Enable hiding of files based on group owner</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

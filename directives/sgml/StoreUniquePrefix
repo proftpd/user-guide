@@ -78,12 +78,8 @@ in the prefix string.
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
+StoreUniquePrefix "Wibble"
 </literallayout>
-
-<para>
-FIXFIX
-</para>
 
 </refsect1>
 </refentry>

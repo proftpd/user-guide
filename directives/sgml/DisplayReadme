@@ -15,7 +15,7 @@ DisplayReadme
 </refmeta>
 <refnamediv>
 <refname>DisplayReadme</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Enable display of file modification times on a file pattern</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

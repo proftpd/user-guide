@@ -15,7 +15,7 @@ Group
 </refmeta>
 <refnamediv>
 <refname>Group</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the group the server normally runs as</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

@@ -15,7 +15,7 @@ MultilineRFC2228
 </refmeta>
 <refnamediv>
 <refname>MultilineRFC2228</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Enable RFC2228 multiline response mode</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
