@@ -47,13 +47,14 @@ mod_pam
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 This directive determines whether PAM is used as an authentication 
 method by ProFTPD.  Enabled by default to fit in with the design 
-policy of using PAM as the primary authentication mechanism.
+policy of using PAM as the primary authentication mechanism.</para>
 </refsect1>
 
 <refsect1>

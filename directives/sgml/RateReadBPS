@@ -47,6 +47,7 @@ mod_xfer
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ mod_xfer
 RateReadBPS sets the allowed byte per second download bandwidth in the given 
 config context. Zero means no bandwidth limit. (See RateReadFreeBytes 
 about limiting bandwidth only after some amount of downloaded bytes.) The 
-usual place for this directive is in &lt;VirtualHost&gt; or  &lt;Directory&gt; sections. 
+usual place for this directive is in &lt;VirtualHost&gt; or  &lt;Directory&gt; sections. </para>
 </refsect1>
 
 <refsect1>

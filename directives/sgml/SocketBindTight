@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -88,7 +89,7 @@ is that connections to non-bound addresses will result in a &quot;connection
 refused&quot; message rather than the typical &quot;500 Sorry, no server available 
 to handle request on xxx.xxx.xxx.xxx.&quot;, due to the fact that no listen 
 socket has been bound to the particular address/port pair. This may or may 
-not be aesthetically desirable, depending on your circumstances.
+not be aesthetically desirable, depending on your circumstances.</para>
 </refsect1>
 
 <refsect1>

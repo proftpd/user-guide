@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -77,7 +78,7 @@ levels of higher significance will be reported as well.
 E.g., when SyslogLevel info is specified, then
 messages with log levels of notice and
 warn will also be posted.
-Using a level of at least crit is recommended.
+Using a level of at least crit is recommended.</para>
 </refsect1>
 
 <refsect1>

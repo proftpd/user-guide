@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -61,7 +62,7 @@ cannot be acted upon. IgnoreHidden configures a &lt;Limit&gt; block to
 completely ignore any hidden directory entries for the set of limited FTP
 commands. This has the effect of returning an error similar to &quot;No
 such file or directory&quot; when the client attempts to use the limited
-command upon a hidden directory or file.
+command upon a hidden directory or file.</para>
 </refsect1>
 
 <refsect1>

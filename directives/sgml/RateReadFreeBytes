@@ -47,6 +47,7 @@ mod_xfer
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ mod_xfer
 RateReadFreeBytes is the amount of bytes to be transferred without any bandwidth 
 limits, so with that option you can give full bandwidth for small files 
 while limiting big ones. (See RateReadHardBPS 
-on further info about what happens after the free amount was transferred.) 
+on further info about what happens after the free amount was transferred.) </para>
 </refsect1>
 
 <refsect1>

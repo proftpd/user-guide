@@ -47,13 +47,14 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The ServerAdmin directive sets the email address of the administrator for 
 the server or virtualhost. This address is displayed in magic cookie replacements 
-(see DisplayLogin and DisplayFirstChdir).
+(see DisplayLogin and DisplayFirstChdir).</para>
 </refsect1>
 
 <refsect1>

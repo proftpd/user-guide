@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -74,7 +75,7 @@ Generally it is not necessary to use a tcpBackLog directive, unless you intend
 to service a large number of virtual hosts (see &lt;VirtualHost&gt;), 
 or have a consistently heavy system load. If you begin to notice or hear of 
 &quot;connection refused&quot; messages from remote clients, try setting a 
-slightly higher value to this directive.
+slightly higher value to this directive.</para>
 </refsect1>
 
 <refsect1>

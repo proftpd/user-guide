@@ -47,12 +47,13 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The Group directive configures which group the server daemon will normally 
-run at. See User for more details.
+run at. See User for more details.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ The RequireValidShell directive configures the server, virtual host or anonymous
 login to allow or deny logins which do not have a shell binary listed in /etc/shells. 
 By default, proftpd disallows logins if the user's default shell is not listed 
 in /etc/shells. If /etc/shells cannot be found, all default shells are assumed 
-to be valid.
+to be valid.</para>
 </refsect1>
 
 <refsect1>

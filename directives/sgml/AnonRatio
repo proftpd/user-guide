@@ -8,7 +8,7 @@ AnonRatio
 </refmeta>
 <refnamediv>
 <refname>AnonRatio</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Ratio directive</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -47,11 +47,12 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
-The AnonRatio directive ....
+The AnonRatio directive ....</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -56,7 +57,7 @@ any given login can connection at any given time.  The optional argument
 message may be used which will be displayed to a client attempting
 to exceed the maximum value. If message is not supplied, a default
 message of "Sorry, the maximum number of hosts (%m) for this user
-already connected."
+already connected."</para>
 </refsect1>
 
 <refsect1>

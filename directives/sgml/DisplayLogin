@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -60,6 +61,7 @@ logins, the file must reside inside the chroot()ed file system space. If
 the file cannot be found or accessed, no error occurs and nothing is logged 
 or displayed to the client.
 DisplayLogin supports the same &quot;magic cookies&quot; as DisplayFirstChdir.
+</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ from client to server). By default restarting (via the REST command) is
 not permitted when sending files to the server. Care should be taken to
 disallow anonymous ftp &quot;incoming&quot; transfers to be restarted,
 as this will allow clients to corrupt or increase the size of previously
-stored files (even if not their own).
+stored files (even if not their own).</para>
 </refsect1>
 
 <refsect1>

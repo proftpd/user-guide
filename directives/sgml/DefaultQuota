@@ -47,12 +47,13 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The DefaultQuota directive sets the default quota in bytes, this
-value is used if the .quota file does not exist.
+value is used if the .quota file does not exist.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -63,7 +64,7 @@ as the default root directory. If a DefaultRoot directive also applies
 to the user, this directory is used instead of the user's home dir.
 Great care should be taken when using AnonymousGroup, as improper
 configuration can open up user home directories to full read/write access
-to the entire world.
+to the entire world.</para>
 </refsect1>
 
 <refsect1>

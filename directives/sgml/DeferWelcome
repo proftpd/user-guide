@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -58,7 +59,7 @@ until a client has successfully authenticated. If enabled, the initial welcome
 message will be exceedingly generic and will not give away any type of information 
 about the host that the daemon is actively running on. This can be used by security-conscious 
 administrators to limit the amount of &quot;probing&quot; possible from non-trusted 
-networks/hosts.
+networks/hosts.</para>
 </refsect1>
 
 <refsect1>

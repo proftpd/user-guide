@@ -7,11 +7,18 @@ ROOT=`pwd`
 BASE=${ROOT}/by-name/
 OUTPUT=${ROOT}/output/
 SRC=${ROOT}/sgml/
-#DSL="/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl"
+if [ "$DSSSL_STYLESHEET_PATH" != "" ]
+then
+  DSL="$DSSSL_STYLESHEET_PATH/html/docbook.dsl"
+else
+  DSL="/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl"
+fi
 
 function build
 {
 rm -fv ${OUTPUT}/by_name_source.sgml
+rm -fv $ROOT/other/directive_list.sgml
+
 echo -n "Building "
 #
 # Building directive file
@@ -25,7 +32,7 @@ do
 		cat ${i} >> $OUTPUT/by_name_source.sgml
 	fi
 done
-#jade -t sgml -E 1200 -d $DSL $BASE/by_name/index.sgml
+#jade -t sgml -d $DSL $BASE/index.sgml
 }
 
 build

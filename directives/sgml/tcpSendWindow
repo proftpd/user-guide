@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ mod_core
 The tcpSendWindow directive configures the size (in octets) of all data connections' 
 tcp send windows. It is only used when sending a file from the server to a 
 client on the data connection. For a detailed description of receive/send 
-window sizes see tcpReceiveWindow.
+window sizes see tcpReceiveWindow.</para>
 </refsect1>
 
 <refsect1>

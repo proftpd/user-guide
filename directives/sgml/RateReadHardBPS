@@ -47,6 +47,7 @@ mod_xfer
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ of file was transfered. This means that if the user have huge bandwidth and
 downloaded the "free" amount fast, HardBPS will stop the transfer until the 
 average goes down to the given limit. If the amount of FreeBytes is high and 
 the ReadBPS is low then the user may wait for extended periods of time until 
-the transfer continues. :-)
+the transfer continues. :-)</para>
 </refsect1>
 
 <refsect1>

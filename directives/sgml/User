@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -71,7 +72,7 @@ after login.
 Note: When an authorized unix user is authenticated and logs in, all former 
 privileges are released, the daemon switches permanently to the logged in 
 user's uid/gid, and is never again capable of switching back to root or any 
-other user/group.
+other user/group.</para>
 </refsect1>
 
 <refsect1>

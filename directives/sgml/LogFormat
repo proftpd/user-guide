@@ -47,6 +47,7 @@ mod_log
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -114,7 +115,7 @@ Numeric FTP response code (status)
 %u
 &nbsp;
 Local authenticated userid
-See Also: ExtendedLog, TransferLog
+See Also: ExtendedLog, TransferLog</para>
 </refsect1>
 
 <refsect1>

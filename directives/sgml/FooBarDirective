@@ -47,12 +47,13 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 FooBarDirective is a dummy directive to be used as a coding
-example only.
+example only.</para>
 </refsect1>
 
 <refsect1>

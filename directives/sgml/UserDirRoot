@@ -47,6 +47,7 @@ mod_auth
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ When set to true, the chroot base directory becomes a subdirectory of the
 anonymous ftp directory, based on the username of the current user.  For 
 example, assuming user "foo" is aliased to "ftp", logging in as "foo" causes
 proftpd to run as real user ftp, but to chroot into ~ftp/foo
-instead of just ~ftp.
+instead of just ~ftp.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_readme
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -66,7 +67,7 @@ Please read the file README
 it was last modified on Tue Jan 25 04:47:48 2000 - 0 days ago
 Please read the file README.first
 it was last modified on Tue Jan 25 04:48:04 2000 - 0 days ago
-Being displayed to the user on a cwd. 
+Being displayed to the user on a cwd. </para>
 </refsect1>
 
 <refsect1>

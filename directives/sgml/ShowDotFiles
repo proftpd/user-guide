@@ -47,6 +47,7 @@ mod_ls
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -56,7 +57,7 @@ directories '.' and '..', will be displayed in
 directory listings.  This directive has been deprecated in favor of 
 LsDefaultOptions -- e.g., LsDefaultOptions
 "-A" -- and may be removed in future versions.
-See Also: LsDefaultOptions
+See Also: LsDefaultOptions</para>
 </refsect1>
 
 <refsect1>

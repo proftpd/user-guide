@@ -47,12 +47,13 @@ mod_ls
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The UseGlobbing directive controls use of glob() functionality, which is
-needed for supporting wildcard characters such as *.
+needed for supporting wildcard characters such as *.</para>
 </refsect1>
 
 <refsect1>

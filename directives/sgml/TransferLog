@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ and/or VirtualHost.
 Additionally, the special keyword NONE can be used, 
 which disables wu-ftpd style transfer logging for the context in which the 
 directive is used (only applicable to version 1.1.7 and later).
-See Also: ExtendedLog, LogFormat
+See Also: ExtendedLog, LogFormat</para>
 </refsect1>
 
 <refsect1>

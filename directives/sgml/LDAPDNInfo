@@ -39,7 +39,7 @@
 
 		<varlistentry><term><synopsis>Module</synopsis></term>
 			<listitem><para>
-			mod_ldap
+mod_ldap
 			</para></listitem>
 		</varlistentry>
 
@@ -49,6 +49,7 @@
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
+</refsynopsisdiv>
 
 	<refsect1>
 		<title>Description</title>

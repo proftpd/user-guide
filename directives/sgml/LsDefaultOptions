@@ -47,6 +47,7 @@ mod_ls
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ displayed and the format they are displayed in. Using the LsDefaultOptions
 directive can alter the default behavior of such listings, but implying that 
 a certain option (or options) is always present. For example, to force all 
 directory listings to always display ".dotfiles", one might:
-LsDefaultOptions "-a"
+LsDefaultOptions "-a"</para>
 </refsect1>
 
 <refsect1>

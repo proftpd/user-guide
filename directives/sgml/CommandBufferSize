@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ mod_core
 The CommandBufferSize directive controls the maximum command length permitted 
 to be sent to the server. This allows you to effectively control what the longest 
 command the server may accept it, and can help protect the server from various 
-Denial of Service or resource-consumption attacks. 
+Denial of Service or resource-consumption attacks. </para>
 </refsect1>
 
 <refsect1>

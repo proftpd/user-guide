@@ -47,6 +47,7 @@ mod_xfer
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -61,7 +62,7 @@ the transfer continues. :-)
 RateWriteHardBPS
 RatioFile (mod_ratio) Incomplete
 Ratios (mod_ratio) Incomplete
-RatioTempFile (mod_ratio) Incomplete
+RatioTempFile (mod_ratio) Incomplete</para>
 </refsect1>
 
 <refsect1>

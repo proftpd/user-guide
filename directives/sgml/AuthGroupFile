@@ -47,6 +47,7 @@ mod_unixpw
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -63,7 +64,7 @@ that virtual FTP servers can each have their own authentication database
 <para>
 Note that this file need not reside inside a chroot()ed directory
 structure for Anonymous or DefaultRoot logins, as it is held open for
-the duration of client connections.
+the duration of client connections.</para>
 </refsect1>
 
 <refsect1>

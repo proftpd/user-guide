@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -61,7 +62,7 @@ allowed. Additional connections beyond the configured limit are syslog'd and
 silently disconnected. The MaxInstances directive can be used to prevent undesirable 
 denial-of-service attacks (repeatedly connecting to the ftp port, causing 
 proftpd to fork-bomb). By default, no limit is placed on the number of child 
-processes that may run at one time.
+processes that may run at one time.</para>
 </refsect1>
 
 <refsect1>

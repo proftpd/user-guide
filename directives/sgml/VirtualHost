@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -82,7 +83,7 @@ of addresses being monitored. Note that it may be necessary to increase
 the
 tcpBackLog value on heavily loaded 
 servers in order to avoid kernel rejected client connections (&quot;Connection 
-refused&quot;).
+refused&quot;).</para>
 </refsect1>
 
 <refsect1>

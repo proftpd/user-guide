@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ FTP server ready." If set to on, the directive
 can take an optional string argument, which will be displayed instead of the 
 default text. Sites desiring to give out minimal information will probably 
 want a setting like ServerIdent on "FTP Server ready.", which won't 
-even reveal the hostname. 
+even reveal the hostname. </para>
 </refsect1>
 
 <refsect1>

@@ -47,13 +47,14 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The ScoreboardPath directive sets the directory where proftpd run-time scoreboard 
 files (proftpd-*) are kept. These file(s) are necessary for MaxClients 
-to work properly, as well as other utilities (such as ftpwho and ftpcount). 
+to work properly, as well as other utilities (such as ftpwho and ftpcount).</para> 
 </refsect1>
 
 <refsect1>

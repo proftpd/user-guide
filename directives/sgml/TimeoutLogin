@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ The TimeoutLogin directive configures the maximum number of seconds a client
 is allowed to spend authenticating. The login timer is not reset when a client 
 transmits data, and is only removed once a client has transmitted an acceptable 
 USER/PASS command combination.
-See Also: TimeoutIdle, TimeoutNoTransfer
+See Also: TimeoutIdle, TimeoutNoTransfer</para>
 </refsect1>
 
 <refsect1>

@@ -47,11 +47,12 @@ mod_ls
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
-See DirFakeGroup
+See DirFakeGroup</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -60,7 +61,7 @@ is generally a bad idea as a &quot;hung&quot; tcp connection which is never
 properly disconnected (the remote network may have become disconnected from 
 the Internet, etc) will cause a child server to never exit (at least not for 
 a considerable period of time) until manually killed
-See Also: TimeoutLogin, TimeoutNoTransfer
+See Also: TimeoutLogin, TimeoutNoTransfer</para>
 </refsect1>
 
 <refsect1>

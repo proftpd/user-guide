@@ -27,16 +27,28 @@ do
 	echo -n "."
 	if [ -f ${i} ]
 	then
+###
+#
+# watch out! the regex requires `mod_' to be the first characters on a 
+# line.  this means that when parsing the directive source files to 
+# determine the module to which a directive refers, the module name
+# as entered in the source file MUST be at the very beginning of a line.
+# This places a formatting restriction on the sgml source files that 
+# must be remembered by authors.
+#
+###
 		module=`grep -s -A 3 "Module" ${i} | grep "^mod_"`
 		file=`echo ${i} | sed "s/\/.*\///"` 
 		echo "${file}:$module" >> module_by_directive.lst
 	fi
 done
 echo "..done"
+
 #
 # List of modules
 #
 cut -d : -f 2 module_by_directive.lst | sort | uniq > module.lst
+
 #
 # Start building pages...
 #

@@ -47,12 +47,13 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 DefaultTransferMode sets the default transfer mode of the server.  By default, 
-carriage-return/linefeed translation will be performed (ASCII mode).
+carriage-return/linefeed translation will be performed (ASCII mode).</para>
 </refsect1>
 
 <refsect1>

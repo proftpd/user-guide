@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ renamed to just &quot;filename&quot;. This provides a
 degree of atomicity and helps prevent 1) incomplete uploads and 2) files being 
 used while they're still in the progress of being uploaded. Note: 
 if the temporary file name is already in use (e.g., a server crash during upload), 
-it will prevent the file from being uploaded.
+it will prevent the file from being uploaded.</para>
 </refsect1>
 
 <refsect1>

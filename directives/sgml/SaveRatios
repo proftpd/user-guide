@@ -47,13 +47,14 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The SaveRatios directive ....
 Example:
-SaveRatios
+SaveRatios</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -59,7 +60,7 @@ in that it should contain a comma separated list of groups or &quot;not&quot;
 groups (by prefixing a group name with the `!' character) that are to be denied 
 access to the block. The expression is parsed as a boolean &quot;and&quot; list, 
 meaning that ALL elements of the expression must evaluate to logically true 
-in order for the explicit deny to apply.
+in order for the explicit deny to apply.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -59,7 +60,7 @@ It is often useful to be able to send the server a signal, so
 that it closes and then reopens its ErrorLog and TransferLog, and
 re-reads its configuration files. This is done by sending a SIGHUP
 (kill -1) signal to the process id of the master daemon listed in
-the PidFile.
+the PidFile.</para>
 </refsect1>
 
 <refsect1>

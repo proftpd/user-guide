@@ -47,6 +47,7 @@ mod_log
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -58,7 +59,7 @@ path, and should not be to a file in a nonexistent directory, in a
 world-writeable directory, or be a symbolic link (unless AllowLogSymlinks
 is set to on). Use of this directive overrides any facility set by the
 SyslogFacility directive.  Additionally, the special keyword NONE can be used 
-which disables all syslog style logging for the entire configuration.
+which disables all syslog style logging for the entire configuration.</para>
 </refsect1>
 
 <refsect1>

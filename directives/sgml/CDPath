@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -58,7 +59,7 @@ CDPath    /var/devel
 This allows a user to cd into any directory directly under /home/public or /var/devel, 
 provided they have the appropriate rights. So, if /home/public/proftpd exists, 
 cd proftpd will bring the user to that directory, regardless of where 
-they currently are in the directory tree.
+they currently are in the directory tree.</para>
 </refsect1>
 
 <refsect1>

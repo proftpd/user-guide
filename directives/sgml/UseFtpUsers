@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ Legacy FTP servers generally check a special authorization file (typically
 /etc/ftpusers) when a client attempts to authenticate. If the user's name 
 is found in this file, FTP access is denied. For compatibility sake, proftpd 
 defaults to checking this file during authentication. This behavior can be 
-suppressed using the UseFtpUsers configuration directive.
+suppressed using the UseFtpUsers configuration directive.</para>
 </refsect1>
 
 <refsect1>

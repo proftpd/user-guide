@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -58,7 +59,7 @@ method of completely denying access to a directory, anonymous ftp or
 limit block. Because of its precedence, it should not be intermixed with
 normal  Order/Deny directives. The DenyAll directive can be overridden
 at a lower level directory by using AllowAll. DenyAll and AllowAll are
-mutually exclusive.
+mutually exclusive.</para>
 </refsect1>
 
 <refsect1>

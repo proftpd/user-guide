@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -66,7 +67,7 @@ format, which may be more compatible with certain web browsers and clients.
 Also note that this is NOT the same as wu-ftpd's multiline responses, 
 which do not comply with any RFC. Using this method of multilines is more likely 
 to be compatible with all clients, although it isn't strictly RFC, and is thus 
-not enabled by default. 
+not enabled by default.</para> 
 </refsect1>
 
 <refsect1>

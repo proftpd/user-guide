@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -97,7 +98,7 @@ meaningless).
 &lt;Limit&gt; command restrictions should not be confused with file/directory 
 access permission. While limits can be used to restrict a command on a certain 
 directory, they cannot be used to override the file permissions inherent to 
-the base operating/file system.
+the base operating/file system.</para>
 </refsect1>
 
 <refsect1>

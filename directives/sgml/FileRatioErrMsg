@@ -47,13 +47,14 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The FileRatioErrMsg directive ....
 Example:
-FileRatioErrMsg
+FileRatioErrMsg</para>
 </refsect1>
 
 <refsect1>

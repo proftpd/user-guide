@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -70,7 +71,7 @@ window sizes; in order to maximize the reception/transmission performance
 kernel tcp/ip stack). The tradeoff, of course, is memory; both kernel- and 
 user-space. If running proftpd on a memory tight host (and on a low-bandwidth 
 connection), it might be advisable to decrease both the tcpReceiveWindow and 
-tcpSendWindow sizes.
+tcpSendWindow sizes.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ at least 1.2.0 and later
 The QuotaType directive defines what happens to files which break 
 the quota limits as they are uploaded.  Setting the type to hard
 ensures that the file which violates the quota is deleted.
-uploaded.
+uploaded.</para>
 </refsect1>
 
 <refsect1>

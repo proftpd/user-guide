@@ -47,6 +47,7 @@ mod_ls
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -62,7 +63,7 @@ Will result in:
 drwxr-x--- ... arbitrary.directory 
 As with DirFakeUser, and DirFakeGroup, 
 the "fake" permissions shown in directory listings are cosmetic only, they do 
-not affect real permissions or access control in any way.
+not affect real permissions or access control in any way.</para>
 </refsect1>
 
 <refsect1>

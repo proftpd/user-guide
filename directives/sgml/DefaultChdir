@@ -47,6 +47,7 @@ mod_auth
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ Determines the directory a user is placed in after logging in.
 By default, the user is put in their home directory.  The specified
 directory can be relative to the user's home directory.
 NOTE: if the specified directory is not available
-the user will not be able to log in.
+the user will not be able to log in.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,6 +56,7 @@ The DisplayGoAway directive specifies an ASCII text filename which will be
 displayed to the user if the class they're a member of has too many users logged
 in and their login request has been denied.
 DisplayGoAway supports the same &quot;magic cookies&quot; as DisplayFirstChdir.
+</para>
 </refsect1>
 
 <refsect1>

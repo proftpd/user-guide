@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -56,7 +57,7 @@ authentication, with a standard message indicating that the user has either
 logged in or that anonymous access has been granted. This message 
 can be customized with the AccessGrantMsg directive. In the message argument, 
 the magic cookie '%u' is replaced with the username specified by the client 
-during login.
+during login.</para>
 </refsect1>
 
 <refsect1>

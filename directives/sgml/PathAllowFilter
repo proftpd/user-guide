@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ applied against the entire pathname specified by the client, so care must
 be taken when creating a proper regex. Paths that fail the regex match result 
 in a "Forbidden filename" error being returned to the client.
 If the regular-expression argument contains whitespace, 
-it must be enclosed in quotes.
+it must be enclosed in quotes.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ The TimeoutNoTransfer directive configures the maximum number of seconds
 a client is allowed to spend connected, after authentication, without issuing 
 a command which results in creating an active or passive data connection (i.e. 
 sending/receiving a file, or receiving a directory listing).
-See Also: TimeoutIdle, TimeoutLogin
+See Also: TimeoutIdle, TimeoutLogin</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_unixpw
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ authentication to fail if PAM authentication fails. The default setting,
 off, allows other modules and directives such as AuthUserFile and friends
 to authenticate users, should PAM authentication fail. If you are having
 problems with PAM and using other directives like AuthUserFile, set this
-directive to off.
+directive to off.</para>
 </refsect1>
 
 <refsect1>

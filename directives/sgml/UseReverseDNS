@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -59,7 +60,7 @@ checked and the only possible resolution is via DNS. If for some reason, DNS
 is not available or improperly configured this can result in proftpd blocking 
 (&quot;stalling&quot;) until the libc resolver code times out. Disabling this 
 directive prevents proftpd from attempting to reverse-lookup data connection 
-IP addresses. 
+IP addresses. </para>
 </refsect1>
 
 <refsect1>

@@ -47,12 +47,13 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 This directive allows you to include another configuration file within your current configuration file.  The given file argument must be the full path to
-the file to be included.
+the file to be included.</para>
 </refsect1>
 
 <refsect1>

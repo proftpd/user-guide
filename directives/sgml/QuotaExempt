@@ -47,6 +47,7 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ The QuotaExempt directive lists the UIDs which are not subject to
 quota controls, using UIDs rather than symbolic user names speeds up
 the loading and resolution process.
 Example:
-QuotaExempt 3000,3401,500
+QuotaExempt 3000,3401,500</para>
 </refsect1>
 
 <refsect1>

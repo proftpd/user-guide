@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -63,7 +64,7 @@ The facility-level argument must be one of the
 following: AUTH (or AUTHPRIV), CRON, 
 DAEMON, KERN, LPR, MAIL, NEWS, USER, UUCP, LOCAL0, LOCAL1, LOCAL2, LOCAL3, 
 LOCAL4, LOCAL5, LOCAL6 or LOCAL7.
-See Also: SystemLog
+See Also: SystemLog</para>
 </refsect1>
 
 <refsect1>

@@ -47,12 +47,13 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The AllowOverwrite directive permits newly transfered files to overwrite
-existing files. By default, ftp clients cannot overwrite existing files.
+existing files. By default, ftp clients cannot overwrite existing files.</para>
 </refsect1>
 
 <refsect1>

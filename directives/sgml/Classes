@@ -47,12 +47,13 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 Controls class based access. Enables class based access control.
-see: Class
+see: Class</para>
 </refsect1>
 
 <refsect1>

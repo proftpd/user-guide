@@ -47,13 +47,14 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 Compatibility: 1.2.0pre9 and later
 The TimesGMT option causes the server to report all ls and MDTM times in
-GMT and not local time.
+GMT and not local time.</para>
 </refsect1>
 
 <refsect1>

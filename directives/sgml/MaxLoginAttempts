@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ mod_core
 The MaxLoginAttempts directive configures the maximum number of times a client 
 may attempt to authenticate to the server during a given connection. After 
 the number of attempts exceeds this value, the user is disconnected and an 
-appropriate message is logged via the syslog mechanism.
+appropriate message is logged via the syslog mechanism.</para>
 </refsect1>
 
 <refsect1>

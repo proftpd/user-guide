@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -65,7 +66,7 @@ Exit with default implicit ALLOW
 Order deny,allow
 Check Deny directives. If one or more apply, exit with result: DENY
 Check Allow directives. If one or more apply, exit with result: ALLOW
-Exit with default implicit: DENY
+Exit with default implicit: DENY</para>
 </refsect1>
 
 <refsect1>

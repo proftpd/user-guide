@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -56,7 +57,7 @@ will explicitly be denied access to a given &lt;Limit&gt; context block. The mag
 and none can be used to indicate that all hosts are 
 denied access, or that no hosts are explicitly denied (respectively). For more 
 information on the syntax and usage of Deny see: Allow 
-and Order.
+and Order.</para>
 </refsect1>
 
 <refsect1>

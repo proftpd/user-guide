@@ -47,6 +47,7 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ The QuotaBlockName directive is used in conjunction with the QuotaBlockSize dire
 output from the module.  This directive specifies the name given to
 the values displayed (ie byte, kilobyte, kb etc etc).  
 Example:
-QuotaBlockName kb
+QuotaBlockName kb</para>
 </refsect1>
 
 <refsect1>

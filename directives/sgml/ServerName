@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ mod_core
 The ServerName directive configures the string that will be displayed to 
 a user connecting to the server (or virtual server if the directive is located 
 in a &lt;VirtualHost&gt; block). 
-See Also: &lt;VirtualHost&gt;
+See Also: &lt;VirtualHost&gt;</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -58,7 +59,7 @@ qualified domain name or a numeric dotted-quad IP address. Incoming
 connections destined to an additional address added by Bind are serviced
 by the context containing the directive. Additionally, if SocketBindTight
 is set to on, a specific listen connection is created for each additional
-address.
+address.</para>
 </refsect1>
 
 <refsect1>

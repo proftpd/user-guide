@@ -47,13 +47,14 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The DeleteAbortedStores directive controls whether ProFTPD
 deletes partially uploaded files if the transfer is stopped via
-the ABOR command rather than a connection failure.
+the ABOR command rather than a connection failure.</para>
 </refsect1>
 
 <refsect1>

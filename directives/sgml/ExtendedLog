@@ -47,6 +47,7 @@ mod_log
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -83,7 +84,7 @@ will use the predefined logformat (created by LogFormat).
 Otherwise, the default format of &quot;%h %l %u %t \&quot;%r\&quot; %s %b&quot; 
 is used.
 For example, to log all read and write operations to /var/log/ftp.log (using 
-the default format), you could:
+the default format), you could:</para>
 </refsect1>
 
 <refsect1>

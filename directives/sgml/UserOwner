@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ The UserOwner directive configures which user all newly created directories
 and files will be owned by, within the context that UserOwner is applied to. 
 The user ID of username cannot be 0 (root).
 Where it is used, the GroupOwner directive is not
-restricted to groups that the current user is a member of.
+restricted to groups that the current user is a member of.</para>
 </refsect1>
 
 <refsect1>

@@ -8,7 +8,7 @@ GroupRatio
 </refmeta>
 <refnamediv>
 <refname>GroupRatio</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Ratio directive</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -47,13 +47,14 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 The GroupRatio directive ....
 Example:
-GroupRatio
+GroupRatio</para>
 </refsect1>
 
 <refsect1>

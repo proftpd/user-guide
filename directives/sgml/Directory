@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -89,6 +90,7 @@ Example:
 DenyAll
 &lt;/Limit&gt;
 &lt;/Directory&gt;
+</para>
 </refsect1>
 
 <refsect1>

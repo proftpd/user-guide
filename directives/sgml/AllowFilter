@@ -8,7 +8,7 @@ AllowFilter
 </refmeta>
 <refnamediv>
 <refname>AllowFilter</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Control what commands are accepted by the server</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -59,7 +60,7 @@ expression is applied against the entire command sent by the client,
 so care must be taken when creating a proper regex. Commands that fail
 the regex match result in a "Forbidden command" error being returned
 to the client.  If the regular-expression argument contains whitespace,
-it must be enclosed in quotes.
+it must be enclosed in quotes.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ mod_core
 The WtmpLog directive controls proftpd's logging of ftp
 connections to the host system's wtmp file (used by such commands as
 `last'). By default, all connections are logged via wtmp.
-Please report any corrections or additions via http://bugs.proftpd.net/
+Please report any corrections or additions via http://bugs.proftpd.net/ </para>
 </refsect1>
 
 <refsect1>

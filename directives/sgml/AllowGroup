@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -60,8 +61,6 @@ be allowed access to the block. The expression is parsed as a boolean
 &quot;and&quot; list, meaning that ALL elements of the expression must
 evaluate to logically true in order for the explicit allow to apply.
 </para>
-
-<para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_code
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -109,7 +110,7 @@ Current number of connections from the user's class
 &nbsp;
 Max number of connections from the user's class
 NOTE: not all of these may have a rational value, depending 
-on the context in which they're used (e.g., %u if ident lookups are off).
+on the context in which they're used (e.g., %u if ident lookups are off).</para>
 </refsect1>
 
 <refsect1>

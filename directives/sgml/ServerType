@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -59,7 +60,7 @@ New connections are passed from inetd to proftpd and serviced immediately.
 standalone
 The daemon starts and begins listening to the configured port for incoming connections. New connections 
 result in spawned child processes dedicated to servicing all requests from 
-the newly connected client.
+the newly connected client.</para>
 </refsect1>
 
 <refsect1>

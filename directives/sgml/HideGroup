@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ entries owned by the specified group, unless the group is the primary
 group of the currently logged-in, authenticated user . Normally, hidden 
 directories and files cannot be seen via LIST or NLST commands but can 
 be operated on via other FTP commands (CWD, DELE, RETR, etc). This behavior 
-can be modified via the IgnoreHidden directive.
+can be modified via the IgnoreHidden directive.</para>
 </refsect1>
 
 <refsect1>

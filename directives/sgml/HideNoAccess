@@ -48,6 +48,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -61,7 +62,7 @@ see a directory entry that has HideNoAccess applied, they will receive
 a normal &quot;Permission denied&quot; error message when attempting
 to blindly manipulate the file system object. The directory or file
 can be made completely invisible to all FTP commands by applying
-IgnoreHidden in conjunction with HideNoAccess.
+IgnoreHidden in conjunction with HideNoAccess.</para>
 
 </refsect1>
 

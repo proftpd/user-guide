@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -67,7 +68,7 @@ MaxClients 5 &quot;Sorry, the maximum number of allowed users are already
 connected (%m)&quot;
 Results in:
 530 Sorry, the maximum number of allowed users are already connected 
-(5)
+(5)</para>
 </refsect1>
 
 <refsect1>

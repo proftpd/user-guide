@@ -47,6 +47,7 @@ mod_xfer
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ RateWriteBPS sets the allowed byte per second upload bandwidth
 in the given config context. Zero means no bandwidth limit. (See
 RateWriteFreeBytes about limiting bandwidth only after some amount
 of uploaded bytes.) The usual place for this directive is in
-&lt;VirtualHost&gt; or &lt;Directory&gt; sections.
+&lt;VirtualHost&gt; or &lt;Directory&gt; sections.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ at least 1.2.0 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -54,7 +55,7 @@ at least 1.2.0 and later
 The QuotaCalc directive controls whether calculation is done on
 the fly.  If the directive is set to 'on' and either there is no
 .quota file or the quota would go negative then calculation is done
-on the fly rather than at the end of the session.
+on the fly rather than at the end of the session.</para>
 </refsect1>
 
 <refsect1>

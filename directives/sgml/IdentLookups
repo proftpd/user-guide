@@ -47,13 +47,14 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
 <para>
 Normally, when a client initially connects to proftpd, the ident protocol
 (RFC1413) is used to attempt to identify the remote username. This can
-be controlled via the IdentLookups directive.
+be controlled via the IdentLookups directive.</para>
 </refsect1>
 
 <refsect1>

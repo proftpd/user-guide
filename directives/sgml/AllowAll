@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ The AllowAll directive explicitly allows access to a &lt;Directory&gt;,
 &lt;Anonymous&gt; or &lt;Limit&gt; block. Although proftpd's default
 behavior is to allow access to a particular object, the default is
 an implicit allow. AllowAll creates an explicit allow, overriding any
-higher level denial directives.
+higher level denial directives.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_code
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ login. The filename can be either relative or absolute. In the case of a
 relative filename, the file is searched for starting in the home directory
 of the user the server is running as. As this can lead confusion, absolute
 pathnames are suggested. If the file cannot be found or accessed, no
-error occurs and nothing is logged or displayed to the client.
+error occurs and nothing is logged or displayed to the client.</para>
 </refsect1>
 
 <refsect1>

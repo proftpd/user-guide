@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -57,7 +58,7 @@ to a real userid by the UserAlias directive. Turning AuthAliasOnly `on'
 in a particular context will cause proftpd to completely ignore all
 non-aliased logins for the entire context. If no contexts are available
 without AuthAliasOnly set to `on', proftpd rejects the client login and
-sends an appropriate message to syslog.
+sends an appropriate message to syslog.</para>
 </refsect1>
 
 <refsect1>

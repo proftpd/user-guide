@@ -47,7 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
-
+</refsynopsisdiv>
 <refsect1>
 <title>Description</title>
 <para>
@@ -62,7 +62,7 @@ is off, proftpd displays the link as a directory entry of type 'l' (link)
 with the ownership and permissions of the actual link.
 Under ProFTPD versions 1.1.5 and higher, the default behavior in regard to 
 ShowSymlinks has been changed so that symbolic links are always displayed 
-as such (in all cases), unless ShowSymlinks off is explicitly set.
+as such (in all cases), unless ShowSymlinks off is explicitly set.</para>
 </refsect1>
 
 <refsect1>

@@ -47,6 +47,7 @@ mod_core
 </para> </listitem>
 </varlistentry>
 </variablelist>
+</refsynopsisdiv>
 
 <refsect1>
 <title>Description</title>
@@ -55,7 +56,7 @@ The AllowRetrieveRestart directive permits or denies clients from
 performing &quot;restart&quot; retrieve file transfers via the FTP
 REST command. By default this is enabled, so that clients may resume
 interrupted file transfers at a later time without losing previously
-collected data.
+collected data.</para>
 </refsect1>
 
 <refsect1>
