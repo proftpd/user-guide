@@ -75,17 +75,17 @@ which commands to log.</para>
 NONE
 No commands
 AUTH
-Authentication commands (USER, PASS)
+Authentication commands (ACCT, PASS, REIN, USER)
 INFO
-Informational commands (PWD, SYST, etc)
+Informational commands (FEAT, HELP, MDTM, QUIT, PWD, STAT, SIZE, SYST, XPWD)
 DIRS
-Directory commands (LIST, CWD, MKD, etc)
+Directory commands (CDUP, CWD, LIST, MKD, NLST, RMD, XCWD, XCUP, XMKD, XRMD)
 READ
 File reading (RETR)
 WRITE
-File/directory writing or creation
+File/directory writing or creation (APPE, MKD, RMD, RNFR, RNTO, STOR, STOU, XMKD, XRMD)
 MISC
-Miscellaneous commands (SITE, etc)
+Miscellaneous commands (ABOR, ALLO, EPRT, EPSV, MODE, NOOP, OPTS, PASV, PORT, REST, RNFR, RNTO, SITE, SMNT, STRU, TYPE)
 ALL
 All commands (default)
 </para>
