@@ -22,7 +22,7 @@ my @list;
 ## source for 1.2 lives in $PROFTPD/proftpd-1.2
 ## userguide lives in $PROFTPD/Userguide
 ##
-chdir( "$ENV{PROFTPD}/Uerguide/sgml" );
+chdir( "$ENV{PROFTPD}/Userguide/sgml" );
 
 @list = <*>;
 while( $directive = shift @list ) {
