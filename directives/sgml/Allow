@@ -79,7 +79,7 @@ solely on named addresses causes security to depend a great deal upon
 DNS servers which may themselves be vulnerable to attack or spoofing.
 Numeric addresses which specify an entire network should end in a
 trailing period (i.e. 10.0.0. for the entire 10.0.0 subnet). Named
-address which specify an entire network should begin with a trailing
+addresses which specify an entire network should begin with a leading
 period (i.e. .proftpd.net for the entire proftpd.net domain).
 </para>
 

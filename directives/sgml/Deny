@@ -60,8 +60,8 @@ mod_core
 <title>Description</title>
 <para>
 The Deny directive is used to create a list of hosts and/or networks which 
-will explicitly be denied access to a given &lt;Limit&gt; context block. The magic keywords all 
-and none can be used to indicate that all hosts are 
+will explicitly be denied access to a given &lt;Limit&gt; context block. The
+magic keywords "ALL" and "NONE" can be used to indicate that all hosts are 
 denied access, or that no hosts are explicitly denied (respectively). For more 
 information on the syntax and usage of Deny see: Allow 
 and Order.</para>
