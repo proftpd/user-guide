@@ -8,7 +8,7 @@ tcpBackLog
 </refmeta>
 <refnamediv>
 <refname>tcpBackLog</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Control the tcp backlog in standalone mode</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

@@ -8,7 +8,7 @@ UserAlias
 </refmeta>
 <refnamediv>
 <refname>UserAlias</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Alias a username to a system user</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

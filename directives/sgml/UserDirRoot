@@ -8,7 +8,7 @@ UserDirRoot
 </refmeta>
 <refnamediv>
 <refname>UserDirRoot</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the chroot directory to a subdirectory of the anonymous server</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
