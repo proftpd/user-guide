@@ -1,0 +1,81 @@
+<refentry id="UnsetEnv">
+<?dbhtml filename="config_ref_UnsetEnv.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>mod_core</keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>UnsetEnv</primary></indexterm>
+UnsetEnv
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>UnsetEnv</refname>
+<refpurpose>(docs incomplete)</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>UnsetEnv</command>
+<arg choice="opt">
+  <option>key</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+ 
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.10rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+(docs incomplete)
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+(docs incomplete)
+</literallayout>
+
+</refsect1>
+</refentry>
+
