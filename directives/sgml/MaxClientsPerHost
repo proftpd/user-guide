@@ -3,7 +3,7 @@
 <refentryinfo>
   <keywordset>
     <keyword>
-      mod_core
+      mod_auth
     </keyword>
   </keywordset>
 </refentryinfo>
@@ -44,7 +44,7 @@ server config, &lt;Anonymous&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_core
+mod_auth
 </para> </listitem>
 </varlistentry>
 
