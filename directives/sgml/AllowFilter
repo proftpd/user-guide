@@ -15,7 +15,7 @@ AllowFilter
 <cmdsynopsis>
 <command>AllowFilter</command>
 <arg choice="opt">
-  <option>AllowFilter regular-expression</option>
+  <option>regular-expression</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

@@ -15,7 +15,7 @@ ScoreboardPath
 <cmdsynopsis>
 <command>ScoreboardPath</command>
 <arg choice="opt">
-  <option>ScoreboardPath path</option>
+  <option>path</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
