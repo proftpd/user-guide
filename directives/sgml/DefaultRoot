@@ -71,10 +71,10 @@ client is chroot jailed into their home directory.
 <para>
 When the specified chroot directory is a symlink this will be resolved
 to it's parent first before setting up the chroot.  This can have
-unwanted side effects.  For example if a chroot is to be configured
-within space to which a user as shell access, the chroot directory
-could be converted to a symlink pointing at '/'.  Thus the chroot
-would be to the root directory of the server.
+unwanted side effects.  For example if an user has write-access to the
+symlink he could modify it so that it points to '/'.  Thus the chroot
+would be the root directory of the server, resulting in no or insufficient
+restrictions.
 </para>
 
 <para>
@@ -120,13 +120,14 @@ as there are potentially ways that a user can &quot;escape&quot; the jail.
 <title>Examples</title>
 <programlisting>
 Example of a DefaultRoot configuration:
+
 ServerName &quot;A test ProFTPD Server&quot;
 ServerType inetd
 User ftp
 Group ftp
 #
 # This causes proftpd to perform a chroot into the authenticating user's directory 
-immediately after login.
+# immediately after login.
 # Once this happens, the user is unable to &quot;see&quot; higher level directories.
 # Because a group-expression is included, only users who are a member of
 # the group 'users' and NOT a member of 'staff' will have their default
