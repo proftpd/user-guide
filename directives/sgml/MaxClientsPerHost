@@ -54,13 +54,15 @@ mod_core
 The MaxClientsPerHost directive configures the maximum number of clients 
 allowed to connect per host. The optional argument message 
 may be used which will be displayed to a client attempting to exceed the maximum 
-value. If message is not supplied, a system-wide 
-default message is used. 
+value. If message is not supplied, a default message of
+"Sorry, the maximum number clients (%m) from your host are already connected."
+is used. 
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
+MaxClients, MaxHostsPerUser
 <!--
 <link linkend=""></link>
 -->
