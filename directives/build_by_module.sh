@@ -1,14 +1,27 @@
 #!/bin/bash
 #
-# Build the pages for the directive by module listing
+# This script builds the list of modules into 
+# a single file
 #
 ROOT=`pwd`
+BASE="$ROOT/by_module/"
+OUTPUT=${ROOT}/output/
 SRC="$ROOT/sgml/"
+#DSL="/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl"
 #
-rm *.lst
-rm -f by_module/*
-#
+
+echo "Cleaning up before starting"
+rm -fv $BASE/*.lst
+rm -fvr $BASE/working
+
 echo -n "Working..."
+cd $BASE
+mkdir -p linked
+mkdir -p other
+mkdir -p working
+##
+##
+##
 for i in `/bin/ls $SRC/* | sort -f`
 do
 	echo -n "."
@@ -28,14 +41,17 @@ cut -d : -f 2 module_by_directive.lst | sort | uniq > module.lst
 # Start building pages...
 #
 echo -n "Working on "
-mkdir -p by_module
+mkdir -p $BASE/working
 for mod in `cat module.lst`
 do
-	target="by_module/${mod}.sgml"
-	if [ -f modules/${mod} ]
+	target="$BASE/working/${mod}.sgml"
+	if [ -f ${BASE}/definitions/${mod} ]
 	then
-		cp modules/${mod} ${target}
+		cp ${BASE}/definitions/${mod} ${target}
 	else
+		echo ""
+		echo "Can't find ${BASE}/definitions/${mod}"
+		echo "touching ${target}"
 		touch ${target}
 	fi
 	echo -n "${target} "
@@ -56,13 +72,12 @@ echo ""
 # Right built all the sgml... 
 #
 echo "Building by_module_source.sgml"
-rm -f $ROOT/by_module_source.sgml
-cd $ROOT/by_module/
-for mod in `cat ${ROOT}/module.lst`
+rm -f $OUTPUT/by_module_source.sgml
+cd $BASE/working/
+for mod in `cat ${BASE}/module.lst`
 do
-	cat ${mod}.sgml >> ${ROOT}/by_module_source.sgml
+	cat ${mod}.sgml >> ${OUTPUT}/by_module_source.sgml
 done
-#cp ${ROOT}/by_module_source.sgml $HOME/Proftpd/www.pdd/userguide/
 #
 #
 #
