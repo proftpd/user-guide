@@ -60,29 +60,29 @@ mod_auth_unix
 <title>Description</title>
 <para>
 The PersistentPasswd directive controls how proftpd handles authentication, 
-user/group lookups, and user/group to name mapping. If set to On, proftpd 
-will attempt to open the system-wide /etc/passwd, /etc/group (and /etc/shadow, 
-potentially) files itself, holding them open even during a chroot()ed login 
-(note that /etc/shadow is never held open, for security reasons). On some 
-platforms, you must turn this option on, as the libc functions are incapable 
-of accessing these databases from inside of a chroot(). At configure-time, 
-the configuration script will attempt to detect whether or not you need this 
-support, and make it the default. However, such &quot;guessing&quot; may fail, 
-and you will have to manually enable or disable the feature. If you cannot 
-see user or group names when performing a directory listing inside an anonymous 
-chrooted login, this indicates you must enable the directive. Use of the AuthUserFile 
-or 
-AuthGroupFile directives will force partial support 
-for persistent user or group database files; regardless of PersistentPasswd's 
-setting.
+user/group lookups, and user/group to name mapping. If set to &quot;on&quot;,
+proftpd will attempt to open the system-wide /etc/passwd, /etc/group (and
+/etc/shadow, potentially) files itself, holding them open even during a
+chroot()ed login.  Note that /etc/shadow is never held open, for security
+reasons). On some platforms, you must turn this option on, as the libc
+functions are incapable of accessing these databases from inside of a chroot().
+At configure-time, the configuration script will attempt to detect whether or
+not you need this support, and make it the default. However, such
+&quot;guessing&quot; may fail, and you will have to manually enable or disable
+the feature. If you cannot see user or group names when performing a directory
+listing inside an anonymous chrooted login, this indicates you must enable the
+directive. Use of the AuthUserFile or AuthGroupFile directives will force
+partial support for persistent user or group database files, regardless of
+PersistentPasswd's setting.
 </para>
 
 <para>
-Note: NIS or NIS+ users will most likely want to disable this feature,
+Note: NIS/NIS+ and NSS users will most likely want to disable this feature,
 regardless of proftpd's detected configuration defaults. Failure to disable
-this will make your NIS/NIS+ maps not work! On certain systems, you may also
-need to compile ProFTPD with the --enable-autoshadow option in order to
-authenticate both users from NIS maps and local users.</para>
+this will make your NIS/NIS+ maps and NSS lookups not work! On certain systems,
+you may also need to compile ProFTPD with the --enable-autoshadow option in
+order to authenticate both users from NIS maps or NSS lookups, and local
+users.</para>
 </refsect1>
 
 <refsect1>
