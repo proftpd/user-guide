@@ -666,7 +666,7 @@ libc5
 	    <programlisting>
 cvs -z 3
 update -Pd
-diff -uw
+diff -u
 	    </programlisting>
 	  </informalexample>
 	</sect2>
@@ -701,13 +701,13 @@ diff -uw
 	<para>Any patches should be submitted in Universal format,
 	this makes integrating them into the main cvs source a lot
 	easier.  When generating a diff against the current cvs source
-	use "cvs diff -uw" to generate the patch.
+	use "cvs diff -u" to generate the patch.
 
-cvs diff -uw filename > filename.patch
+cvs diff -u filename > filename.patch
 
 or
 
-cvs diff -uw > bigger.patch
+cvs diff -u > bigger.patch
 </para>
 
 	<para>Patches that add configuration directives without proper
