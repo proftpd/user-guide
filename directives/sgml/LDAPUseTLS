@@ -1,0 +1,77 @@
+<refentry id="LDAPUseTLS">
+	<?dbhtml filename="config_ref_LDAPUseTLS.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPUseTLS</primary></indexterm>
+			LDAPUseTLS
+		</refentrytitle>
+	</refmeta>
+
+	<refnamediv>
+		<refname>LDAPUseTLS</refname>
+		<refpurpose>Enable TLS/SSL connections to the LDAP server.</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>Syntax: LDAPUseTLS</command>
+			<arg choice="opt">
+				<option>on</option>
+				<option>off</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+
+	<variablelist>
+		<title></title>
+
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPUseTLS off
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.8 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+	<refsect1>
+		<title>Description</title>
+
+		<para>By default, mod_ldap connects to the LDAP server via a
+		non-encrypted connection. Enabling this option causes mod_ldap to
+		use an encrypted (TLS/SSL) connection to the LDAP server. If a
+		secure connection to the LDAP server fails, mod_ldap will not
+		authenticate users (mod_ldap will *not* fall back to an unsecure
+		connection).</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
+</refentry>

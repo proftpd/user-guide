@@ -1,0 +1,77 @@
+<refentry id="LDAPForceDefaultUID">
+	<?dbhtml filename="config_ref_LDAPForceDefaultUID.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPForceDefaultUID</primary></indexterm>
+			LDAPForceDefaultUID
+		</refentrytitle>
+	</refmeta>
+
+	<refnamediv>
+		<refname>LDAPForceDefaultUID</refname>
+		<refpurpose>Force all LDAP-authenticated users to use the same UID.</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>Syntax: LDAPForceDefaultUID</command>
+			<arg choice="opt">
+				<option>on</option>
+				<option>off</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+
+	<variablelist>
+		<title></title>
+
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPForceDefaultUID off
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.8 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+	<refsect1>
+		<title>Description</title>
+
+		<para>Even when a <link linkend="LDAPDefaultUID">LDAPDefaultUID</link>
+		is configured, mod_ldap will allow individual users to have
+		uidNumber attributes that will override this default UID. With
+		LDAPForceDefaultUID enabled, all LDAP-authenticated users are given
+		the default UID; UIDs may not be overridden by uidNumber
+		attributes.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
+</refentry>

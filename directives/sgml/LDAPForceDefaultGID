@@ -1,0 +1,77 @@
+<refentry id="LDAPForceDefaultGID">
+	<?dbhtml filename="config_ref_LDAPForceDefaultGID.html">
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPForceDefaultGID</primary></indexterm>
+			LDAPForceDefaultGID
+		</refentrytitle>
+	</refmeta>
+
+	<refnamediv>
+		<refname>LDAPForceDefaultGID</refname>
+		<refpurpose>Force all LDAP-authenticated users to use the same GID.</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>Syntax: LDAPForceDefaultGID</command>
+			<arg choice="opt">
+				<option>on</option>
+				<option>off</option>
+			</arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+
+	<variablelist>
+		<title></title>
+
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				LDAPForceDefaultGID off
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>
+				mod_ldap
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.8 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+	<refsect1>
+		<title>Description</title>
+
+		<para>Even when a <link linkend="LDAPDefaultGID">LDAPDefaultGID</link>
+		is configured, mod_ldap will allow individual users to have
+		gidNumber attributes that will override this default GID. With
+		LDAPForceDefaultGID enabled, all LDAP-authenticated users are given
+		the default GID; GIDs may not be overridden by gidNumber
+		attributes.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
+</refentry>
