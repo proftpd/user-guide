@@ -43,7 +43,7 @@ mod_core
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.1 and later
+1.2.2 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
