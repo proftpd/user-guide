@@ -9,14 +9,23 @@
 
 	<refnamediv>
 		<refname>LDAPDoAuth</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>Enable LDAP authentication</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPDoAuth</command>
 			<arg choice="opt">
-				<option>LDAPDoAuth on|off "auth-base-prefix" "search-filter-template"</option>
+				<option>on</option>
+				<option>off</option>
+			</arg>
+
+			<arg choice="opt">
+				<option>"auth-base-prefix"</option>
+			</arg>
+
+			<arg choice="opt">
+				<option>"search-filter-template"</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>

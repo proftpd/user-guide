@@ -9,14 +9,18 @@
 
 	<refnamediv>
 		<refname>LDAPDefaultAuthScheme</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>
+			Set the authentication scheme/hash that is used when no leading
+			{hashname} is present.
+		</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPDefaultAuthScheme</command>
 			<arg choice="opt">
-				<option>LDAPDefaultAuthScheme crypt|clear</option>
+				<option>crypt</option>
+				<option>clear</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>

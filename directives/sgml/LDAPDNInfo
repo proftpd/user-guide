@@ -9,7 +9,7 @@
 
 	<refnamediv>
 		<refname>LDAPDNInfo</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>Set DN information to be used for initial bind</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>

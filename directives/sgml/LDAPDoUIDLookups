@@ -9,14 +9,25 @@
 
 	<refnamediv>
 		<refname>LDAPDoUIDLookups</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>
+			Enable LDAP lookups for UIDs in directory listings
+		</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPDoUIDLookups</command>
 			<arg choice="opt">
-				<option>LDAPDoUIDLookups on|off "uid-base-prefix" "search-filter-template"</option>
+				<option>on</option>
+				<option>off</option>
+			</arg>
+
+			<arg choice="opt">
+				<option>"search-filter-template"</option>
+			</arg>
+
+			<arg choice="opt">
+				<option>"uid-base-prefix"</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>
@@ -27,7 +38,7 @@
 		<varlistentry>
 			<term><synopsis>Default</synopsis></term>
 			<listitem><para>
-			LDAPDoUIDLookups off
+				LDAPDoUIDLookups off
 			</para></listitem>
 		</varlistentry>
 

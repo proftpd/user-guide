@@ -9,14 +9,14 @@
 
 	<refnamediv>
 		<refname>LDAPQueryTimeout</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>Set a timeout for LDAP queries</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPQueryTimeout</command>
 			<arg choice="opt">
-				<option>LDAPQueryTimeout timeout-seconds</option>
+				<option>timeout-seconds</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>

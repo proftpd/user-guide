@@ -9,14 +9,21 @@
 
 	<refnamediv>
 		<refname>LDAPHomedirOnDemand</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>
+			Enable the creation of user home directories on demand
+		</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPHomedirOnDemand</command>
 			<arg choice="opt">
-				<option>LDAPHomedirOnDemand on|off directory-mode</option>
+				<option>on</option>
+				<option>off</option>
+			</arg>
+
+			<arg choice="opt">
+				<option>directory-mode</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>

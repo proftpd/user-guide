@@ -9,14 +9,26 @@
 
 	<refnamediv>
 		<refname>LDAPDoGIDLookups</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>
+			Enable LDAP lookups for user group membership and GIDs in
+			directory listings
+		</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPDoGIDLookups</command>
 			<arg choice="opt">
-				<option>LDAPDoGIDLookups on|off "uid-base-prefix" "search-filter-template"</option>
+				<option>on</option>
+				<option>off</option>
+			</arg>
+
+			<arg choice="opt">
+				<option>"uid-base-prefix"</option>
+			</arg>
+
+			<arg choice="opt">
+				<option>"search-filter-template"</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>

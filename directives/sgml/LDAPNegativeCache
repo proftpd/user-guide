@@ -9,14 +9,15 @@
 
 	<refnamediv>
 		<refname>LDAPNegativeCache</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>Enable negative caching for LDAP lookups</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPNegativeCache</command>
 			<arg choice="opt">
-				<option>LDAPNegativeCache on|off</option>
+				<option>on</option>
+				<option>off</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>

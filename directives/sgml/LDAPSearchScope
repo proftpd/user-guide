@@ -9,14 +9,15 @@
 
 	<refnamediv>
 		<refname>LDAPSearchScope</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>Specify the search scope used in LDAP queries</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPSearchScope</command>
 			<arg choice="opt">
-				<option>LDAPSearchScope onelevel|subtree</option>
+				<option>onelevel</option>
+				<option>subtree</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>

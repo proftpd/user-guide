@@ -9,7 +9,10 @@
 
 	<refnamediv>
 		<refname>LDAPHomedirOnDemandSuffix</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>
+			Specify an additional directory to be created inside a user's
+			home directory on demand.
+		</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>

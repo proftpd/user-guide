@@ -9,14 +9,17 @@
 
 	<refnamediv>
 		<refname>LDAPDefaultUID</refname>
-		<refpurpose>FIXME FIXME</refpurpose>
+		<refpurpose>
+			Set the default GID to be assigned to users when no uidNumber
+			attribute is found.
+		</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
 			<command>LDAPDefaultUID</command>
 			<arg choice="opt">
-				<option>LDAPDefaultUID default-uid</option>
+				<option>default-uid</option>
 			</arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>
