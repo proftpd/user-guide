@@ -3,7 +3,7 @@
 <refentryinfo>
   <keywordset>
     <keyword>
-      mod_core
+      mod_xfer
     </keyword>
   </keywordset>
 </refentryinfo>
@@ -44,7 +44,7 @@ server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;, &lt;Gl
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_core
+mod_xfer
 </para> </listitem>
 </varlistentry>
 
