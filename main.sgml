@@ -15,7 +15,7 @@
     <ISBN>None.</ISBN>
     <RELEASEINFO>Build 20010422 - draft</RELEASEINFO>
     <PUBDATE>$Date$</PUBDATE>
-    <edition>Version 0.1.3</edition>
+    <edition>Version 0.1.4</edition>
     <pubdate>31/Jan/2001</pubdate>
     <copyright><year>2001</year>
       <holder>Mark Lowes</holder>
@@ -4597,23 +4597,23 @@ DenyAll
 </programlisting>
 </example>
 
-<para>This will allow ftp clients to login to your site with the username
-"private" and their e-mail address as a password. You can change the
-AnonRequirePassword directive to "on" if you want clients to be
-forced to transmit the correct password for the 'private' account.
-This sample configuration allows clients to change into, list and read
-all directories, but denies write access of any kind.
+	<para>This will allow ftp clients to login to your site with
+	the username "private" and their e-mail address as a
+	password. You can change the AnonRequirePassword directive to
+	"on" if you want clients to be forced to transmit the correct
+	password for the 'private' account.  This sample configuration
+	allows clients to change into, list and read all directories,
+	but denies write access of any kind.</para>
 
-<sect1>
-<title>How do I provide a secure upload facility?
-</title>
-<para>
-The following snippet from a sample configuration file
+<sect1>	
+<title>How do I provide a secure upload facility?</title>
+
+<para>The following snippet from a sample configuration file
 illustrates how to protect an "upload" directory in such a fashion
 (which is a very good idea if you don't want people using your site
-for "warez"):
+for "warez"):</para>
 
-
+<programlisting>
 &lt;Anonymous /home/ftp&gt;
   # All files uploaded are set to username.usergroup ownership
   User username
@@ -4631,18 +4631,134 @@ for "warez"):
      &lt;/Limit&gt;
   &lt;/Directory&gt;
 &lt;/Anonymous&gt;
+</programlisting>
 
+	<para>This denies all write operations to the anonymous root
+	directory and sub-directories, except "incoming/" where the
+	permissions are reversed and the client can store but not
+	read. If you used &lt;Limit WRITE&gt; instead of &lt;Limit
+	STOR&gt; on &lt;Directory incoming&gt;, ftp clients would be
+	allowed to perform all write operations to the sub-dir,
+	including deleting, renaming and creating directories.</para>
+	</sect1>
+    </chapter>
 
-<para>This denies all write operations to the anonymous root directory
-and sub-directories, except "incoming/" where the permissions are
-reversed and the client can store but not read. If you used &lt;Limit
-WRITE&gt; instead of &lt;Limit STOR&gt; on &lt;Directory incoming&gt;,
-ftp clients would be allowed to perform all write operations to the
-sub-dir, including deleting, renaming and creating directories.
+    <chapter id="config-ftpoverssh">
+	<?dbhtml filename="config_ftpoverssh.html">
+      <title>Configuring ProFTPD for FTP over SSH</title>
+<authorblurb>
+<para>
+Chapter by TJ Saunders
+</para>
+</authorblurb>
+
+<sect1>
+<title>Basic premise</title>
+
+<para>The File Transfer Protocol is an old protocol, and like many of
+the older protocols it was developed in a time when security was not
+of such a paramount concern. One aspect of FTP that reflects this is
+the transmission of passwords, used to prove to the server that the
+client is who they say they are, "in the clear", unencrypted, visible
+to any packet sniffer. Protocols like SSH, and its scp program, are
+replacing FTP as a means to securely transfer files among
+hosts.</para>
+
+<para>However, many people still prefer to use their standard FTP
+clients. What would be easiest would be a way to allow such clients to
+function while transparently providing the encryption necessary for
+today's networks. Can this be done? Yes - after a fashion. This
+document aims to describe how to tunnel FTP over an SSH channel,
+providing for secure transmission of the user's password.</para>
 </sect1>
 
+<sect1>
+<title>Client Configuration</title>
 
-    </chapter>
+<para>The trick to encrypting the password is to make use of ssh's
+local port forwarding capability. It works by creating a sort of proxy
+on the local host that listens to some high-numbered port. Any traffic
+sent to that port is encrypted, and forwarded to the configured remote
+address and port. (Note: the prior instructions' flaw was that the
+local port forwarding request was sent to localhost, rather than to
+the remote server, which effectively set up the encrypted channel
+between localhost and itself). Here's how to set up a local port
+forward:</para>
+
+<screen>
+ssh -Llocal-port:remote-addr:remote-port user@host
+</screen>
+
+<para>This says to listen on port local-port on localhost, and to send
+that encrypted traffic to host's remote-addr at port remote-port. To
+use this trick to secure an FTP session (to be specific, the control
+channel, through which passwords are transmitted, will be encrypted;
+the data channel will not), it would look like:</para>
+
+<screen>
+ssh -f -L3000:ftpserver:21 ftpserver 'exec sleep 10' && ftp localhost 3000
+</screen>
+
+<para>Note that the choice of local-port is arbitrary. Using port 3000
+is not a requirement. This trick also requires that the ftp client use
+passive mode data transfers, so make sure to use a client that
+understands FTP passive mode.</para>
+
+<para>Remember that only the control connection is encrypted, not the
+data connection: any data you transfer (eg directory listings, files
+uploaded or downloaded) are still sent "in the clear". Your password
+(and the other FTP commands sent by the client) is not.</para>
+</sect1>
+
+<sect1>
+<title>Server Configuration</title>
+
+<para>The server side of the connection needs some configuration to
+make the ssh tunneling work as well. First, the client need a valid
+account on the remote host is necessary in order to support the ssh
+tunnel. A valid shell is not strictly necessary for these ssh tunnels,
+though; something like:</para>
+
+<screen>
+#!/bin/sh
+  sleep 10
+</screen>
+
+<para>would suffice. This would prevent the FTP users from logging in,
+yet give them enough time to establish a port forwarded ssh
+connection. With this sort of quasi-shell (although, strictly
+speaking, there are better, more restrictive shells than this example,
+as it could be escaped from), one can ssh over any command:</para>
+
+<screen>
+ssh -l test -f -L3000:ftpserver:21 ftpserver true && ftp localhost 3000
+</screen>
+
+<para>You'll also need to use the AllowForeignAddress configuration
+directive to your configuration file:</para>
+
+<screen>AllowForeignAddress on</screen>
+
+<para>or proftpd will reject the passive transfer connections and log:</para>
+
+<screen>
+SECURITY VIOLATION: Passive connection from {host} rejected
+</screen>
+
+<para>Note that the use of the server host's DNS name, or its IP
+address, in the setting up of the ssh tunnel assumes that the routing
+of traffic to the host's own IP address will be short-circuited in the
+kernel and thus not actually be transmitted on the wire. On modern
+kernels this is a fair assumption, but may not always be the case. For
+the truly paranoid, use of localhost or 127.0.0.1 as the remote-addr
+parameter in the ssh tunnel command would cause traffic on host to be
+sent over its loopback address, and not over the network. However,
+this will prevent data transfers from working altogether. The author
+is presently developing a patch for scenarios like this; if
+interested, please contact him directly via email.</para>
+
+</sect1>
+</chapter>
 
 </part>
 
@@ -5586,31 +5702,183 @@ for servers with no shell access a simple file filter which blocks
 functionality.  There are also implications for letting untrained and
 inexperienced end users from generating their own files as they may
 lock themselves out of their space or leave it less secure than they
-intend.</para> 
+intend.</para>
+
+</sect1>
+</chapter>
+
+<chapter id="debugging">
+<?dbhtml filename="debugging-problems.html">
+<title>Debugging Problems</title>
+<authorblurb>
+<para>Originally by TJ Saunders</para>
+</authorblurb>
+
+<para>Users of ProFTPD will often encounters problems. It happens with
+all software, not just ProFTPD. How, then, does the user track down
+the cause of the problem, and fix it? This is the art of
+debugging. When users post these problems are the mailing lists, it is
+extremely helpful to include the following bits of information to help
+find the answer. Even better is when the user follows these steps and
+determines the solution for themselves.</para>
+
+<sect1>
+<title>Know the version</title>
+
+<para>Various problems afflict various versions of the code, so when tracking down problems, it is good to know the version being used:</para>
+
+<screen>
+proftpd -vv
+</screen>
+
+<para>It is possible that the problem you are encountering is due to some bug that may already be fixed in a more current version, fixed in the CVS repository, or has a bug report with an attached patch. Searching http://bugs.proftpd.org will often yield useful information, depending on the keywords used in the search.</para>
+</sect1>
+<sect1>
+
+<title>Know the modules</title>
+
+<para>System administrators who compile and install the server from
+the souce code distribution will probably already know this, but
+administrators who install using RPMs or other package formats may not
+know the specifics of the contained pre-built binary. To list the
+modules compiled into the server:</para> 
+
+<screen>
+proftpd -l
+</screen>
+
+<para>Knowing the modules helps to pinpoint the source of error
+messages (e.g. mod_tls and certificate files).</para> 
 
 </sect1>
 
-    </chapter>
+<sect1>
+<title>Perform syntax checks</title>
+
+<para>When making changes to the configuration file, it is often
+helpful to make sure that your changes are valid. The easiest way to
+do this is to do an informative syntax check:</para> 
+
+<screen>
+proftpd -td5
+</screen>
+
+<para>The -t option directs the server to parse the configuration file
+but stop before actually starting its operations as a server. The -d5
+will cause the server to display debugging messages during this
+testing of the configuration file. Another useful command is:</para> 
+
+<screen>
+proftpd -c /path/to/new/config/file -td5
+</screen>
+
+<para>which lets you test the syntax of some new configuration file
+before it is put into production.</para> 
+
+</sect1>
+
+<sect1>
+<title>Common problems</title>
+
+<para>One common question is: "I changed the configuration file, but
+the new configuration is not being seen!" The solution depends on your
+configured ServerType. Almost certainly it will be standalone, as
+inetd-mode servers pick up configuration changes almost instantly (the
+server is started from the ground up for each connection). For
+configuration changes to be seen by a standalone server, you need to
+either stop, then start the server (the hard way), or to send the HUP
+signal the the daemon process.</para> 
+
+<para>Another common question involves use of ProFTPD's &lt;Limit&gt;
+directive to restrict certain FTP commands. These limits always
+function in addition to the normal filesystem permissions, not instead
+of them. If having problems writing, deleting, or updating files,
+check your directory and file permissions first.</para>
+
+</sect1>
+
+<sect1>
+<title>Locate log files</title>
+
+<para>A common response on the mailing lists to a posted question is:
+"What do your server logs say?" Locating the server's log files can be
+troublesome, depending on your configuration. If the SystemLog
+configuration directive is in effect, you know exactly where the
+server's log file is. If not, then by default the server uses syslog
+for logging. The location of syslog'd log files is set in your
+system's /etc/syslog.conf file. You may need to read your system's man
+pages for syslog.conf or syslogd to understand the format of that
+file. Note that the server will log using a syslog facility of daemon
+for most of its messages; during authentication, messages are logged
+using the authpriv facility.</para>
+</sect1>
+
+<sect1>
+<title>Collect debug information</title>
+
+<para>The code has built-in debug information reporting capabilities -
+the trick is in enabling that reporting, and tracking down where it is
+sent. The easiest way to get the debugging information is to start the
+server from the command line using:</para> 
+
+<screen>proftpd -nd5</screen>
+
+<para>This will display lots of information on the connected
+terminal's screen, both as the server starts up and during the
+servicing of any clients. If clients are having trouble logging in or
+authenticating, the debug messages reported by the server when a
+client connects are much more useful than knowing the messages
+displayed by the client, as the client does not know why it cannot log
+in. If asked to send debugging information to the mailing list, you
+can send the relevant snippets (if you know what the relevant debug
+messages are), or you can capture the debug output to a file:</para> 
+
+<screen>
+proftpd -nd5 2>&1 >& /path/to/debug/file
+</screen>
+
+<para>and send that file, compressed, along with your post.</para>
+
+<para>The above method works if you have ServerType standalone in your
+configuration file. If you run the server in inetd mode instead, and
+are unable or unwilling to make the changes necessary to run the
+server in standalone mode for the sake of debugging, then use of the
+SystemLog configuration directive is necessary for capturing the debug
+information. Add this directive to your configuration file, and add
+-d5 to your /etc/inetd.conf's ftp line, or to the server_args tag in
+your xinetd configuration file for the server. Be sure to restart
+inetd/xinetd so that your configuration changes will take
+effect.</para>
+
+<para>Note that use of the SystemLog directive is not necessarily
+confined to inetd mode servers. If you are interested in letting your
+standalone server run unattended and want to have that debugging
+information in the log file, use SystemLog and add -d5 (or whatever
+your preferred debug level is) to the server startup script.</para> 
+
+<para>Once you have the debug output and various other information,
+and are still in need of help, search the FAQ, Userguide, and mailing
+list archives for material related to the problem. If you're unable to
+find anything helpful in these sources, post your question to the
+appropriate mailing list. Be sure to include the version used, your
+proftpd.conf, and possibly any debug information.</para> 
+
+<para>The following document describes how to ask good questions that
+are likely to be answered:</para>
+
+<screen>
+http://www.tuxedo.org/~esr/faqs/smart-questions.html
+</screen>
+</sect1>
+
+
+</chapter>
 
 <chapter id="troubleshoot">
-<title>Troubleshooting</title>
-
-<sect1>
-<title>ProFTPD doesn't seem to work.
-</title>
-
-<para>Starting ProFTPD in standalone mode it doesn't show in 'ps' It
-could be many things, possibly something like not running ProFTPD as
-root (it needs to be run as root initially, but will switch to a
-non-privileged user). Regardless, ProFTPD logs all errors via the
-standard syslog mechanism. You need to check your system logs in order
-to determine what the problem is.</para>
-</sect1>
-
-<sect1>
 <title>Common Problems</title>
-<para>
-</para>
+
+<sect1>
+<title></title>
    
 <sect2>
 <title>"inet_create_connection() failed: Operation not permitted".
@@ -5633,7 +5901,6 @@ Proftpd is unable to take control of port 21 (or whatever port has
 been defined) at startup.  This is normally down to one of two
 reasons.
 </para>
-
 
 <sect3>
 <title>Clash with inetd</title>
@@ -5785,10 +6052,9 @@ to 0 disables that check.
 
 <para>The directives are HostRatio (matches FQDN, wildcards allowed),
 AnonRatio (matches password entered at login), UserRatio (accepts "*"
-for 'any user'), and GroupRatio. 
+for 'any user'), and GroupRatio. </para>
 
-
-
+<programlisting>
 Ratios on                                    # enable module
 UserRatio ftp 0 0 0 0
 HostRatio master.debian.org 0 0 0 0          # leech access (default)
@@ -5796,8 +6062,7 @@ GroupRatio proftpd 100 10 5 100000           # 100:1 files, 10 file cred
 5:1 bytes, 100k byte cred
 AnonRatio billg@microsoft.com 1 0 1 0        # 1:1 ratio, no credits
 UserRatio * 5 5 5 50000                      # special default case
-
-
+</programlisting>
 
 <para>This example is for someone who (1) has downloaded 1 file of 82k,
 (2) has uploaded nothing, (3) has a ratio of 5:1 files and 5:1
@@ -5830,11 +6095,15 @@ on a per session basis and there is no ongoing tracking of usage.
 
 	<sect2>
 	  <title>Lots of "FTP session closed" messages</title>
-	  <para>
+
+	<para></para>
+
+<screen>
 Oct  7 12:30:48 salvage2 proftpd[8874]: FTP session closed.
 Oct  7 12:30:48 salvage2 proftpd[8874]: FTP session closed.
 Oct  7 12:30:48 salvage2 proftpd[8874]: FTP session closed.
-Oct  7 12:30:48 salvage2 proftpd[8874]: FTP session closed.</para>
+Oct  7 12:30:48 salvage2 proftpd[8874]: FTP session closed.
+</screen>
 
 
 	  <para>The above log extract is likely to be caused by a
@@ -5877,7 +6146,7 @@ To listen on a interfaces which are not the primary host interface
 Use the SocketBindTight directive, place your server configuration in
 a &lt;VirtualHost ftp.mydomain.com&gt; block and use "Port 0" for the
 main host configuration and and "Port 21" inside the VirtualHost
-block.
+block.</para>
 
 <sect2><title>inetd</title>
 
@@ -6158,10 +6427,131 @@ process, the call requires root privileges.  Without them it simply
 doesn't work, there doesn't appear to be any checking in the code of
 the uid/gid before calling chroot so using DefaultRoot in such a setup 
 will cause the server to fail.</para>
-
-
-
     </chapter>
+
+<chapter id="advconfig-chroot">
+<?dbhtml filename="advconfig-chroot">
+<title>Symlinks and chroot()</title>
+<authorblurb>
+<para>
+Contributor: Rod Whitworth &lt;rodw at witworx dot com&gt;
+</para>
+</authorblurb>
+
+<para>There have been many questions on the ProFTPD user mailing list
+about why symlinked directories are not visible to chrooted users
+(this includes &lt;Anonymous&gt; users as well as users restricted
+using DefaultRoot. This document is intended to clarify the issues and
+discuss some ways of achieving what is commonly desired.</para>
+
+<para>These issues are not specific to ProFTPD, but rather to the
+workings of a Unix system. First, a brief review of how links work,
+and why chroot(2) poses such a problem. Then a look at ways around the
+issue.</para>
+
+<sect1>
+<title>How Links Work</title>
+
+<para>There are two types of links in Unix: hard and symbolic.</para>
+
+<para>A hard link is a file that is, for all intents and purposes, the file
+to which it is linked. The difference between a hardlink and the
+linked file is one of placement in the filesystem. Editing the
+hardlink edits the linked file. One limitation of hard links is that
+linked files cannot reside on different filesystems. This means that
+if /var and /home are two different mount points in /etc/fstab (or
+/etc/vfstab), then a file in /var/tmp cannot be hardlinked with a file
+in /home:</para>
+
+<screen>
+&gt; pwd
+/var/tmp
+  &gt; ln /home/tj/tmp/tmpfile tmplink
+ln: cannot create hard link `tmplink' to `/home/tj/tmp/tmpfile': Invalid cross-device link
+</screen>
+
+<para>A symbolic link (also referred to as a "symlink") is a file
+whose contents contain the name of the file to which the symbolic link
+points. For example:</para>
+
+<screen>
+lrwxrwxrwx   1 root     root           11 Mar  2  2000 rmt -> /sbin/rmt
+</screen>
+
+<para>The file rmt contains the nine characters /sbin/rmt. The reason
+symbolic links fail when chroot(2) is used to change the position of
+the root (/)of the filesystem is that, once / is moved, the pointed-to
+file path changes. If, for example, if chroot(2) is used to change the
+filesystem root to /ftp, then the symlink above would be actually be
+pointing to /ftp/sbin/rmt. Chances that that link, if chroot(2) is
+used, now points to a path that does not exist. Symbolic links that
+point to nonexistent files are known as dangling symbolic links. Note
+that symbolic links to files underneath the new root, such as symlinks
+to a file in the same directory:</para>
+
+<screen>
+&gt; pwd
+/var/ftp
+  &gt; ls -l
+-rw-r--r--   1 root     root            0 Jan 16 11:50 tmpfile
+  lrwxrwxrwx   1 root     root            7 Jan 16 11:50 tmplink -&gt; tmpfile
+</screen>
+
+<para>will be unaffected; only paths that point outside/above the new
+root will be affected.</para>
+
+</sect1>
+
+<sect1>
+
+<title>Filesystem Tricks</title>
+
+<para>A typical scenario is one where "DefaultRoot ~" is used to
+restrict users to their home directories, and where the administrator
+would like to have a shared upload directory, say /var/ftp/incoming,
+in each user's home directory. Symbolic links would normally be used
+to provide an arrangement like this. As mentioned above, though, when
+chroot(2) is used (which is what the DefaultRoot directive does),
+symlinks that point outside the new root (the user's home directory in
+this case) will not work. To get around this apparent limitation, it
+is possible on modern operating systems to mount directories at
+several locations in the filesystem.</para>
+
+<para>To have an exact duplicate of the /var/ftp/incoming directory
+available in /home/bob/incoming and /home/dave/incoming, use one of
+these commands:</para>
+
+<screen>
+    * Linux (as of the 2.4.0 kernel):
+
+mount --bind /var/ftp/incoming /home/bob/incoming
+  mount --bind /var/ftp/incoming /home/dave/incoming
+
+    * BSD (as of 4.4BSD):
+
+mount_null /var/ftp/incoming /home/bob/incoming
+  mount_null /var/ftp/incoming /home/dave/incoming
+
+    * Solaris:
+
+mount -F lofs /var/ftp/incoming /home/bob/incoming
+  mount -F lofs /var/ftp/incoming /home/dave/incoming
+</screen>
+
+<para>The same technique can be used for &lt;Anonymous&gt; directories,
+which also operate in a chroot()ed environment.</para>
+
+<para>As usual, more information can be found by consulting the man
+pages for the appropriate command for your platform. The commands for
+other flavors of Unix will be added as needed.</para>
+
+<para>In order to have these tricks persist, to survive a system
+reboot, the /etc/fstab (or /etc/vfstab) file may need to have these
+mounts added. Consult your local fstab(5) (or vfstab(4) for Solaris)
+man pages for more information.</para>
+</sect1>
+</chapter>
+
 
   </part>
 

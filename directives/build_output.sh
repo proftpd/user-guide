@@ -5,6 +5,7 @@ OUTPUT=${ROOT}/output/
 SRC="$ROOT/sgml/"
 DSL="/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl"
 WWW=$HOME/Proftpd/www.proftpd.org/docs/
+FTP=$HOME/Proftpd/ftp.proftpd.org/docs/
 
 $ROOT/build_by_name.sh
 $ROOT/build_by_module.sh
@@ -22,6 +23,7 @@ htmldoc -t pdf configuration_full.html > configuration.pdf
 htmldoc -t ps configuration_full.html > configuration.ps
 
 rsync -av --delete $OUTPUT/ $WWW/directives/
+rsync -av --delete $OUTPUT/ $FTP/directives/
 #
 #
 #
