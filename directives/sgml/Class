@@ -1,0 +1,113 @@
+<refentry id="Class">
+<?dbhtml filename="config_ref_Class.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_core
+    </keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>Class</primary></indexterm>
+Class
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>Class</refname>
+<refpurpose>Define a class of client connections</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>VirtualHost</command>
+<arg choice="opt">
+  <option>&lt;Class name&gt;</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+None
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.10rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+When configuring proftpd, it is sometimes nice, or even necessary, to tag or
+label a client as belonging to some group, based on that client's IP address
+or DNS hostname. A "class" is the name for such connection-based groupings in
+ProFTPD terms. A class is defined to have a name, and as having certain
+criteria such as IP addresses, IP subnets/masks, and DNS hostnames. A client
+that connects to the daemon that has matching characteristics is then labeled
+as belonging to that class.
+</para>
+
+<para>
+Within a &lt;Class&gt; section, the From directive is used to list the
+IP addresses, IP subnet/masks, and DNS names that make up the class.
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="http://www.proftpd.org/docs/directives/linked/config_ref_From.html">From</link>
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<literallayout>
+  <Class internal>
+    From 192.168.0.0/16
+  </Class>
+</literallayout>
+<para>
+This defines a class named "internal"; any client connecting from
+192.168.0.0/16 will belong to this class. And if you wanted to define a class
+for all clients not connecting from 192.168.0.0/16 address space:
+</para>
+<literallayout>
+  <Class external>
+    From !192.168.0.0/16
+  </Class>
+</literallayout>
+<para>
+A more complicated class might include matching DNS names as well:
+</para>
+<literallayout>
+  <Class test>
+    From 1.2.3.4
+    From proxy.*.com
+    From my.example.com
+    From 5.6.7.8
+  </Class>
+</literallayout>
+</refsect1>
+
+</refentry>
