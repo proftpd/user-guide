@@ -72,7 +72,7 @@ access to the block.
 By default, the expression is parsed as a boolean &quot;AND&quot; list, meaning
 that ALL elements of the expression must evaluate to logically true in order
 to the explicit allow to apply.  In order to treat the expression as a boolean
-&quot;OR&quot; list, meaning that ANY of the elements must evalue to logically
+&quot;OR&quot; list, meaning that ANY of the elements must evaluate to logically
 true, use the optional &quot;AND&quot; keyword.  Similarly, to treat the
 expression as a regular expression, use the &quot;regex&quot; keyword.
 </para>
@@ -91,7 +91,7 @@ expression as a regular expression, use the &quot;regex&quot; keyword.
 <title>Examples</title>
 <para>
 <programlisting>
-  # An OR-evalued AllowGroup directive
+  # An OR-evaluated AllowGroup directive
   AllowGroup OR www,doc
 
   # A regular expression DenyGroup directive
