@@ -61,6 +61,12 @@ window sizes.  The maxseg parameter is used for setting a MSS (Maximum Segment
 Size) via setsockopt(2)'s TCP_MAXSEG option.  If the MSS is larger than the
 interface's MTU, it is ignored and has no effect.
 </para>
+
+<para>
+If the send/receive window size is increased, it is helpful for performance
+to increase the internal buffer size. See the
+<code>--enable-buffer-size</code> argument to <code>./configure</code>.
+</para>
 </refsect1>
 
 </refentry>
