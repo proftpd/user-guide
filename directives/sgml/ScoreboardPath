@@ -8,7 +8,7 @@ ScoreboardPath
 </refmeta>
 <refnamediv>
 <refname>ScoreboardPath</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Sets the path to the scoreboard file</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

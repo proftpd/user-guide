@@ -8,7 +8,7 @@ ShowSymlinks
 </refmeta>
 <refnamediv>
 <refname>ShowSymlinks</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Toggle the display of symlinks</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

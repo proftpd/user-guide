@@ -8,7 +8,7 @@ ServerAdmin
 </refmeta>
 <refnamediv>
 <refname>ServerAdmin</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Set the address for the server admin</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

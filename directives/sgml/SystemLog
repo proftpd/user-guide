@@ -8,7 +8,7 @@ SystemLog
 </refmeta>
 <refnamediv>
 <refname>SystemLog</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Redirect syslogging to a file</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

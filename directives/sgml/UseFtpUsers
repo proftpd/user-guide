@@ -8,7 +8,7 @@ UseFtpUsers
 </refmeta>
 <refnamediv>
 <refname>UseFtpUsers</refname>
-<refpurpose>FIXME FIXME</refpurpose>
+<refpurpose>Block based on /etc/ftpusers</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
