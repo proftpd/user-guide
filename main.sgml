@@ -11,17 +11,11 @@
 	<firstname>Mark</firstname><surname>Lowes</surname>
       </author>
     </authorgroup>
-    <PRINTHISTORY>
-<indexterm>
-<primary>July 2000: More work</primary>
-</indexterm>
-      <PARA>late 1999: initial drafts</PARA>
-    </PRINTHISTORY>
     <ISBN>None.</ISBN>
-    <RELEASEINFO>Build 20001005 - draft</RELEASEINFO>
+    <RELEASEINFO>Build 20010131 - draft</RELEASEINFO>
     <PUBDATE>$Date$</PUBDATE>
-    <edition>Version 0.1.1</edition>
-    <pubdate>07/Jan/2001</pubdate>
+    <edition>Version 0.1.2</edition>
+    <pubdate>31/Jan/2001</pubdate>
     <copyright><year>2001</year>
       <holder>Mark Lowes</holder>
     </copyright>
@@ -235,12 +229,9 @@ the core distribution and more are likely to follow.</para>
       <sect1>
 	<title>Website & documenation</title>
 	
-	<para>The website (http://www.proftpd.org/) is in need of a
-	major overhaul.  The existing documentation requires updating
-	and correcting for the current pre-release version of ProFTPD.
-	If you have any content to add to the site, contact MacGyver
-	and offer your assistance.  I'm sure you'll be welcomed with
-	open arms.  Don't complain, volunteer :)</para>
+	<para>The official websites for the project are
+	http://www.proftpd.org/ and http://www.proftpd.net/, both
+	should be a mirror of the other.</para>
 
 	<para>The documentation is being brought back into shape at
 	the moment, the configuration on the website is reasonable but
@@ -265,20 +256,10 @@ Primary FTP:
 ftp.tos.net (primary site)
 
 
-Mirrors
-
-ftp://ftp.linux.co.uk:/pub/packages/proftpd/ (UK)
-ftp://ftp.drenik.net:/linux/ftp/proftpd/ (Yugoslavia)
-ftp://ftp.stikman.com/pub/proftpd/ (US, Southern California)
 </para>
 
 
 
-	<para>Random patches are being collected at
-	ftp://ftp.linux.co.uk/pub/packages/proftpd-patches/
-
-	<para>Are there any other mirrors out there?  Please let me
-	know.
 
 	<sect2>
 	  <title>Available formats</title>
@@ -9279,6 +9260,44 @@ over the connecting clients.
 
 </sect1>
 
+<sect1>
+<title>.ftpaccess files</title>
+<para>The .ftpaccess file is used to give a measure of control to the
+administrator of the individual VirtualHost or directory structure
+within the site without having to disturb the sysadmin everytime a
+change is required.</para>
+
+<para>The file uses the same structure as the main daemon
+configuration, though there are a significant number of directives
+which have no meaning within the .ftpacess context.</para>
+
+<example>
+<title>.ftpaccess file</title>
+<programlisting>
+#
+# Simple .ftpaccess file to control which IPs
+# can access this directory structure
+#
+&lt;Limit&gt;
+	Allow 212.32.5.0/26
+	Allow 158.152.0.0/16
+	DenyAll
+&lt;/Limit&gt;
+#
+# end
+#
+</programlisting>
+</example>
+
+<para>There is no way to disable the use of .ftpaccess files, however
+for servers with no shell access a simple file filter which blocks
+.ftpaccess should suffice to prevent users from using the
+functionality.  There are also implications for letting untrained and
+inexperienced end users from generating their own files as they may
+lock themselves out of their space or leave it less secure than they
+intend.</para> 
+
+</sect1>
 
     </chapter>
 
