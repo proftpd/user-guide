@@ -1,0 +1,86 @@
+<refentry id="MaxHostsPerUser">
+<?dbhtml filename="config_ref_MaxHostsPerUser.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>MaxHostsPerUser</primary></indexterm>
+MaxHostsPerUser
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>MaxHostsPerUser</refname>
+<refpurpose>Limit the number of connections per userid</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>MaxHostsPerUser</command>
+<arg choice="opt">
+  <option>MaxHostsPerUser number|none [message]</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+MaxHostsPerUser none
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Anonymous&gt;, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_core
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.4 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The MaxHostsPerUser directive configures the maximum number of times
+any given login can connection at any given time.  The optional argument
+message may be used which will be displayed to a client attempting
+to exceed the maximum value. If message is not supplied, a default
+message of "Sorry, the maximum number of hosts (%m) for this user
+already connected."
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="MaxClients">MaxClients</link>,
+<link linkend="MaxClientsPerHost">MaxClientsPerHost</link>
+<!--
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+<programlisting>
+MaxHostsPerUser 1 &quot;Sorry, you may not connect more than one time.&quot;
+Results in: 530 Sorry, you may not connect more than one time.
+</programlisting>
+<para>
+<!--
+For examples, see 
+<link linkend="Class">Class</link>
+-->
+</para>
+</refsect1>
+
+</refentry>
