@@ -61,7 +61,7 @@ mod_core
 <para>
 The DenyAll directive is analogous to a combination of &quot;order
 deny,allow &lt;cr&gt; deny from all&quot;, with the exception that it
-has a higher precendance when parsed. It is provided as a convenient
+has a higher precedence when parsed. It is provided as a convenient
 method of completely denying access to a directory, anonymous ftp or
 limit block. Because of its precedence, it should not be intermixed with
 normal  Order/Deny directives. The DenyAll directive can be overridden
