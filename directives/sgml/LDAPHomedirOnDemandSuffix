@@ -53,9 +53,7 @@
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.6 and later. mod_ldap >= 2.8 supports multiple
-				suffix arguments and does not require LDAPHomedirOnDemand to
-				be enabled.
+				mod_ldap v2.6 and later.
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
@@ -69,6 +67,9 @@
 		will also create "/home/user/public_html" on demand. In mod_ldap
 		v2.7.6 and earlier, you must also activate LDAPHomedirOnDemand in
 		your configuration.</para>
+
+		<para>mod_ldap >= 2.8 supports multiple suffix arguments and does
+		not require LDAPHomedirOnDemand to be enabled.</para>
 	</refsect1>
 
 	<refsect1>

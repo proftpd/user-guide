@@ -65,13 +65,19 @@
 
 		<para>LDAPHomedirOnDemand activates on-demand home directory creation.
 		If a user logs in and does not yet have a home directory, a home
-		directory is created automatically. The home directory will be owned by
-		the same user and group that ProFTPD is running as (see the User and
-		Group configuration directives). The second argument allows you to
-		specify the mode (default permissions) to use when creating home
-		directories on demand. If no directory mode is specified, the default of
-		0755 is used. Directory mode setting is only supported in mod_ldap v2.7
-		or later.</para>
+		directory is created automatically.</para>
+
+		<para>In mod_ldap <= 2.7.6, the home directory will be owned by the
+		same user and group that ProFTPD runs as (see the User and Group
+		configuration directives). mod_ldap >= 2.8 can create home
+		directories for users with any UID/GID, not just those with the same
+		UID/GID as the main ProFTPD server.</para>
+
+		<para>The second argument allows you to specify the mode (default
+		permissions) to use when creating home directories on demand,
+		subject to ProFTPD's umask (see the Umask directive). If no
+		directory mode is specified, the default of 0755 is used. Directory
+		mode setting is only supported in mod_ldap v2.7 or later.</para>
 	</refsect1>
 
 	<refsect1>
