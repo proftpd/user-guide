@@ -13,14 +13,14 @@ TimeoutSession
 </refmeta>
 <refnamediv>
 <refname>TimeoutSession</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Sets a timeout for an entire session</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>TimeoutSession</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>seconds ["user"|"group"|"class" expression]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ TimeoutSession
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,30 @@ mod_auth
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+The TimeoutSession directive sets the maximum number of seconds a control
+connection between the proftpd server and an FTP client can exist after the
+client has successfully authenticated.  If the seconds argument is set to 0,
+sessions are allowed to last indefinitely (the default).
+</para>
+
+<para>
+The optional parameters are used to restrict the session time limit only
+to specific users.  If "user" restriction is given, then expression is a
+user-expression specifying to which users the time limit applies.  Similarly
+for the "group" restriction.  For the "class" restriction, the expression is
+simply the name of connection class for whom the time limit will apply.
+Note that use of the "user" or "group" classifiers within an &lt;Anonymous&gt;
+context will not make much sense.
+</para>
+
+<para>
+Example:
+
+  # set a draconian session time limit
+  TimeoutSession 60
+
+  # set session time limits for everyone except a few privileged users
+  TimeoutSession 300 user !bob,!dave,!jenni
 </para>
 </refsect1>
 
