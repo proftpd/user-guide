@@ -31,7 +31,7 @@ true
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;
+server config, &lt;Directory&gt;, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, .ftpaccess
 </para> </listitem>
 </varlistentry>
 
