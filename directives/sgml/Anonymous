@@ -102,25 +102,33 @@ the new root directory.
 <title>Examples</title>
 <programlisting>
 Example of a typical anonymous FTP configuration:
+
 &lt;Anonymous /home/ftp&gt;
-User ftp # After anonymous login, daemon runs as user ftp.
-Group ftp # After anonymous login, daemon runs as group ftp.
-UserAlias anonymous ftp # Client login as 'anonymous' is aliased to 'ftp'.
-# Deny write operations to all directories, underneath root-dir
-# Default is to allow, so we don't need a &lt;Limit&gt; for read operations.
+# After anonymous login, daemon runs as user/group ftp.
+User ftp
+Group ftp
+
+# The client login 'anonymous' is aliased to the "real" user 'ftp'.
+UserAlias anonymous ftp
+
+# Deny write operations to all directories, except for 'incoming' where 
+# 'STOR' is allowed (but 'READ' operations are prohibited)
+
 &lt;Directory *&gt;
-&lt;Limit WRITE&gt;
-DenyAll
-&lt;/Limit&gt;
+  &lt;Limit WRITE&gt;
+    DenyAll
+  &lt;/Limit&gt;
 &lt;/Directory&gt;
+
 &lt;Directory incoming&gt;
-&lt;Limit READ WRITE&gt;
-DenyAll
-&lt;/Limit&gt;
-&lt;Limit STOR&gt;
-AllowAll
-&lt;/Limit&gt;
+  &lt;Limit READ &gt;
+    DenyAll
+  &lt;/Limit&gt;
+  &lt;Limit STOR&gt;
+    AllowAll
+  &lt;/Limit&gt;
 &lt;/Directory&gt;
+
 &lt;/Anonymous&gt;
 </programlisting>
 <para>
