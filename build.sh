@@ -2,6 +2,7 @@
 #
 # Script to manage the building of the userguide
 #
+#
 BASE="$HOME/Proftpd/Userguide/"
 INSTALL_ROOT="$HOME/Proftpd/"
 WEB="$INSTALL_ROOT/www.pdd/"
