@@ -37,7 +37,7 @@ server config,&lt;VirtualHost&gt;, &lt;Global&gt;
 
 <varlistentry><term><synopsis>Module</synopsis></term>
 <listitem> <para>
-mod_unixpw
+mod_pam
 </para> </listitem>
 </varlistentry>
 
