@@ -88,7 +88,7 @@ control to be handled without interfering with the server access rules.
 <para>
 <link linkend="TCPGroupAccessFiles">TCPGroupAccessFiles</link>,
 <link linkend="TCPServiceName">TCPServiceName</link>,
-<link linkend="TCP">TCPUserAccessFiles</link>
+<link linkend="TCPUserAccessFiles">TCPUserAccessFiles</link>
 </para>
 </refsect1>
 

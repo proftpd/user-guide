@@ -1,0 +1,69 @@
+<refentry id="TCPServiceName">
+<?dbhtml filename="config_ref_TCPServiceName.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>TCPServiceName</primary></indexterm>
+TCPServiceName
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>TCPServiceName</refname>
+<refpurpose>Configures the name proftpd will use with mod_wrap</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>TCPServiceName</command>
+<arg choice="opt">
+  <option>name</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+TCPServiceName proftpd
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_wrap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.2.1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+
+<para>
+TCPServiceName is used to configure the name of the service under which mod_wrap will check the allow/deny files. By default, this is the name of the program started, i.e. "proftpd". However, some administrators may want to use a different, more generic service name, such as "ftpd"; use this directive for such needs.
+</para>
+
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend="TCPGroupAccessFiles">TCPGroupAccessFiles</link>,
+-->
+</para>
+</refsect1>
+
+</refentry>
