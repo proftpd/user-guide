@@ -3,7 +3,7 @@
 <refmeta>
 <refentrytitle>
 <indexterm><primary>mod_sql</primary></indexterm>
-mod_sqlpw
+mod_sql
 </refentrytitle>
 </refmeta>
 <refnamediv>
@@ -13,7 +13,7 @@ mod_sqlpw
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>mod_sqlpw</command>
+<command>mod_sql</command>
 </cmdsynopsis>
 </refsynopsisdiv>
 

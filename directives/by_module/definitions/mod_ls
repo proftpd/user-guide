@@ -8,7 +8,7 @@ mod_ls
 </refmeta>
 <refnamediv>
 <refname>mod_ls</refname>
-<refpurpose>FIX ME FIX ME</refpurpose>
+<refpurpose>file listing functionality</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>

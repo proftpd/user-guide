@@ -8,7 +8,7 @@ mod_log
 </refmeta>
 <refnamediv>
 <refname>mod_log</refname>
-<refpurpose>FIX ME FIX ME</refpurpose>
+<refpurpose>Logging support</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -20,9 +20,7 @@ mod_log
 <refsect1>
 <title>Description</title>
 <para>
-FIXME
-FIXME
-FIXME
+Logging support, including enhanced formatting options.
 </para>
 
 </refsect1>

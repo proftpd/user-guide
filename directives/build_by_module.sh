@@ -40,7 +40,7 @@ cut -d : -f 2 module_by_directive.lst | sort | uniq > module.lst
 #
 # Start building pages...
 #
-echo -n "Working on "
+echo "Working on "
 mkdir -p $BASE/working
 for mod in `cat module.lst`
 do
@@ -54,7 +54,7 @@ do
 		echo "touching ${target}"
 		touch ${target}
 	fi
-	echo -n "${target} "
+	echo "${target} "
 	for i in `cat module_by_directive.lst | grep ":${mod}$"`
 	do
 		directive=`echo ${i} | sed "s/:.*//"`

@@ -1,19 +1,19 @@
-<refentry id="mod-pam">
-<?dbhtml filename="config_ref_mod_pam.html">
+<refentry id="context-Anonymous">
+<?dbhtml filename="config_ref_context_Anonymous.html">
 <refmeta>
 <refentrytitle>
-<indexterm><primary>mod_pam</primary></indexterm>
-mod_pam
+<indexterm><primary>Anonymous</primary></indexterm>
+Anonymous
 </refentrytitle>
 </refmeta>
 <refnamediv>
-<refname>mod_pam</refname>
-<refpurpose>Pluggable authentication modules support</refpurpose>
+<refname>Anonymous</refname>
+<refpurpose>Anonymous</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>mod_pam</command>
+<command>Anonymous</command>
 </cmdsynopsis>
 </refsynopsisdiv>
 

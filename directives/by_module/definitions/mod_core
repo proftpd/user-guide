@@ -20,9 +20,8 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIXME
-FIXME
-FIXME
+This module provides all the core functionality ProFTPD needs to function, this 
+module must be compiled in.
 </para>
 
 </refsect1>

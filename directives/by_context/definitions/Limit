@@ -1,19 +1,19 @@
-<refentry id="mod-pam">
-<?dbhtml filename="config_ref_mod_pam.html">
+<refentry id="context-Limit">
+<?dbhtml filename="config_ref_context_Limit.html">
 <refmeta>
 <refentrytitle>
-<indexterm><primary>mod_pam</primary></indexterm>
-mod_pam
+<indexterm><primary>Limit</primary></indexterm>
+Limit
 </refentrytitle>
 </refmeta>
 <refnamediv>
-<refname>mod_pam</refname>
-<refpurpose>Pluggable authentication modules support</refpurpose>
+<refname>Limit</refname>
+<refpurpose>Limit</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>mod_pam</command>
+<command>Limit</command>
 </cmdsynopsis>
 </refsynopsisdiv>
 

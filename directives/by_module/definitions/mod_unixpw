@@ -8,7 +8,7 @@ mod_unixpw
 </refmeta>
 <refnamediv>
 <refname>mod_unixpw</refname>
-<refpurpose>FIX ME FIX ME</refpurpose>
+<refpurpose>UNIX style authentication methods</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -20,9 +20,8 @@ mod_unixpw
 <refsect1>
 <title>Description</title>
 <para>
-FIXME
-FIXME
-FIXME
+This module supports the password file (/etc/passwd) style of authentication
+methods.
 </para>
 
 </refsect1>
