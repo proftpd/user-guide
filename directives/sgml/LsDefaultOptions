@@ -68,6 +68,8 @@ directory listings to always display ".dotfiles", one might:
 LsDefaultOptions "-a"</para>
 </refsect1>
 
+<!-- 1.2.6rc1 -n flag added -->
+
 <refsect1>
 <title>See also</title>
 <para>

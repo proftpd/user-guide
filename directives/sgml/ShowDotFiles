@@ -50,7 +50,7 @@ mod_ls
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-0.99.0pl6 and later -- Deprecated
+0.99.0pl6 thru 1.2.5, removed in 1.2.6rc1
 </para> </listitem>
 </varlistentry>
 </variablelist>
