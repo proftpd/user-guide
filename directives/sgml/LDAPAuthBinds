@@ -28,7 +28,8 @@
 		<varlistentry>
 			<term><synopsis>Default</synopsis></term>
 			<listitem><para>
-				LDAPAuthBinds off
+				LDAPAuthBinds off in mod_ldap <= 2.7.6,
+				LDAPAuthBinds on in mod_ldap >= 2.8
 			</para></listitem>
 		</varlistentry>
 
@@ -57,16 +58,16 @@
 	<refsect1>
 		<title>Description</title>
 
-		<para>LDAP DN will be used to bind to the LDAP server to obtain user
-		information, including the userPassword attribute. If LDAPAuthBinds
-		is set to on, the DN specified by LDAPDNInfo will be used to fetch
-		all user information except the userPassword attribute. Then,
-		mod_ldap will bind to the LDAP server as the user who is logging in
-		via FTP with the user-supplied password. If this bind succeeds, the
-		user is considered authenticated and is allowed to log in. This
-		method of LDAP authentication has the added benefit of supporting
-		any password encryption scheme that your LDAP server
-		supports.</para>
+		<para>By default, the DN specified by LDAPDNInfo will be used to
+		bind to the LDAP server to obtain user information, including the
+		userPassword attribute. If LDAPAuthBinds is set to on, the DN
+		specified by LDAPDNInfo will be used to fetch all user information
+		except the userPassword attribute. Then, mod_ldap will bind to the
+		LDAP server as the user who is logging in via FTP with the
+		user-supplied password. If this bind succeeds, the user is
+		considered authenticated and is allowed to log in. This method of
+		LDAP authentication has the added benefit of supporting any password
+		encryption scheme that your LDAP server supports.</para>
 	</refsect1>
 
 	<refsect1>
