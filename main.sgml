@@ -515,15 +515,17 @@ apt-get install proftpd
 	  following platforms,</para>
 
 <programlisting>
-Linux 2.0.x &amp; 2.2.x (glibc 2.x only)
+Linux 2.0.x &amp; 2.2.x (glibc 2.x only), 2.4.x
 BSDI 3.1 & 4.0
 IRIX 6.2, 6.3, 6.4, 6.5
-Solaris 2.5.1, 2.6 & 2.7
-AIX 3.2 & 4.2
+Solaris 2.5.1, 2.6 & 2.7, 8, 9
+AIX 3.2, 4.2, 4.3.3
 OpenBSD 2.2/2.3
-FreeBSD 2.2.7 
-Digital UNIX 4.0A
+FreeBSD 2.2.7, 3.x, 4.x, 5.0
+Digital UNIX 4.0A, 5.1A, 5.1B
 DEC OFS/1
+UnixWare 7
+SCO OpenServer 5.0.5
 </programlisting>
 
 	  <para>Some platforms require that compilation is done with
@@ -738,7 +740,6 @@ Creating a web and GUI configuration interface to ProFTPD.
 	  <para>
 
 GUI based configuration tool
-CDB based Authentication
 </para>
 	</sect2>
 	</sect1>
@@ -1000,9 +1001,11 @@ firewall.
 	  default block.</para>
 
 	  <programlisting>
-ServerIdent  On "Linux.co.uk server"
+ServerIdent  on "Linux.co.uk server"
 
-ServerIdent  Off
+ServerIdent  off
+
+ServerIdent  on ""
 </programlisting>
 	</sect2>
 
@@ -1043,6 +1046,9 @@ ServerIdent  Off
       <sect1>
 	<title>How can I control what commands the server accepts?</title>
 
+        <para>The <Limit> context allows for fine-grained control over
+        which FTP commands will be accepted by the server.</para>
+
 	<para>Use a sane Allow/DenyFilter, these directives use
 	regular expressions to control all text sent over the control
 	socket.  (If anyone has some good examples please let me
@@ -1051,16 +1057,8 @@ ServerIdent  Off
       <sect1>
 	<title>Secure Sockets Layer (SSL)</title>
 
-	<para>There is currently no support and no plans by the
-	  primary developer to add support for SSL or any other
-	  security layer to the 1.2.x code tree.  There are plans to
-	  implement security layer hooks and functionlity into the
-	  next development branch (1.3.x/1.4.x).</para>
-
-	<para>The planned solution for 1.3.x will include a generic
-	  security layer onto which other methods can be placed.  This
-	  should provide a suitably generic position to start from
-	  allowing multiple solutions to be developed.</para>
+        <para>Support for SSL/TLS officially appeared in the 1.2.8rc1
+        release.</para>
       </sect1>
 
 
