@@ -59,6 +59,11 @@ not permitted when sending files to the server. Care should be taken to
 disallow anonymous ftp &quot;incoming&quot; transfers to be restarted,
 as this will allow clients to corrupt or increase the size of previously
 stored files (even if not their own).</para>
+
+<para>
+The REST (Restart STOR) command is automatically blocked when HiddenStor is
+enabled, with the server returning a 501 error code to the client.
+</para>
 </refsect1>
 
 <refsect1>

@@ -59,6 +59,11 @@ degree of atomicity and helps prevent 1) incomplete uploads and 2) files being
 used while they're still in the progress of being uploaded. Note: 
 if the temporary file name is already in use (e.g., a server crash during upload), 
 it will prevent the file from being uploaded.</para>
+
+<para>
+The REST (Restart STOR) command is automatically blocked when HiddenStor is
+enabled, with the server returning a 501 error code to the client.
+</para>
 </refsect1>
 
 <refsect1>
