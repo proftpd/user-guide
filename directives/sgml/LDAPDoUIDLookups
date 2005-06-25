@@ -34,7 +34,7 @@
       </arg>
 
       <arg choice="opt">
-        <option>"search-filter-template"</option>
+        <option>"uid-filter-template"</option>
       </arg>
     </cmdsynopsis>
 

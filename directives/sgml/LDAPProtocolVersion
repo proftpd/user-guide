@@ -1,0 +1,85 @@
+<refentry id="LDAPProtocolVersion">
+<?dbhtml filename="config_ref_LDAPProtocolVersion.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>mod_ldap</keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>LDAPProtocolVersion</primary></indexterm>
+LDAPProtocolVersion
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>LDAPProtocolVersion</refname>
+<refpurpose>Set the LDAP protocol version</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>LDAPProtocolVersion</command>
+<arg choice="opt">
+  <option>2 | 3</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+ 
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+3
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ldap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+2.8.13 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+FIX FIX FIX
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+FIXFIXFIX
+</literallayout>
+
+<para>
+FIXFIX
+</para>
+
+</refsect1>
+</refentry>
+
