@@ -18,7 +18,7 @@
 		<refname>LDAPHomedirOnDemandSuffix</refname>
 		<refpurpose>
 			Specify an additional directory to be created inside a user's
-			home directory on demand.
+			home directory on demand. [deprecated]
 		</refpurpose>
 	</refnamediv>
 
@@ -67,6 +67,10 @@ mod_ldap
 
 	<refsect1>
 		<title>Description</title>
+		<para>
+		This directive is deprecated and was removed from mod_ldap v2.8.13.
+		It has no replacement option.
+		</para>
 
 		<para>to be created within a user's home directory when it is
 		created on demand. For example, if a user's home directory is

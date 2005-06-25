@@ -1,5 +1,5 @@
-<refentry id="LDAPHomedirOnDemand">
-	<?dbhtml filename="config_ref_LDAPHomedirOnDemand.html">
+<refentry id="LDAPGenerateHomedir">
+	<?dbhtml filename="config_ref_LDAPGenerateHomedir.html">
 <refentryinfo>
   <keywordset>
     <keyword>
@@ -9,21 +9,21 @@
 </refentryinfo>
 	<refmeta>
 		<refentrytitle>
-			<indexterm><primary>LDAPHomedirOnDemand</primary></indexterm>
-			LDAPHomedirOnDemand
+			<indexterm><primary>LDAPGenerateHomedir</primary></indexterm>
+			LDAPGenerateHomedir
 		</refentrytitle>
 	</refmeta>
 
 	<refnamediv>
-		<refname>LDAPHomedirOnDemand</refname>
+		<refname>LDAPGenerateHomedir</refname>
 		<refpurpose>
-			Enable the creation of user home directories on demand [deprecated]
+			Enable the creation of user home directories on demand
 		</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
-			<command>LDAPHomedirOnDemand</command>
+			<command>LDAPGenerateHomedir</command>
 			<arg choice="opt">
 				<option>on</option>
 				<option>off</option>
@@ -40,7 +40,7 @@
 		<varlistentry>
 			<term><synopsis>Default</synopsis></term>
 			<listitem><para>
-				LDAPHomedirOnDemand off
+				LDAPGenerateHomedir off
 			</para></listitem>
 		</varlistentry>
 
@@ -61,7 +61,7 @@ mod_ldap
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.0 and later
+				mod_ldap v2.8.13 and later
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
@@ -70,11 +70,7 @@ mod_ldap
 	<refsect1>
 		<title>Description</title>
 
-    		<para>This directive has been deprecated with mod_ldap v2.8.13.
-	  	Please take a look at <link linkend="LDAPGenerateHomedir">LDAPGenerateHomedir</link>
-		</para>
-
-		<para>LDAPHomedirOnDemand activates on-demand home directory creation.
+		<para>LDAPGenerateHomedir activates on-demand home directory creation.
 		If a user logs in and does not yet have a home directory, a home
 		directory is created automatically.</para>
 
@@ -93,7 +89,11 @@ mod_ldap
 
 	<refsect1>
 		<title>See also</title>
-		<para><link linkend="LDAPGenerateHomedir">LDAPGenerateHomedir</link></para>
+		<para>
+		<link linkend="LDAPForceGeneratedHomedir">LDAPForceGeneratedHomedir</link>
+		<link linkend="LDAPGenerateHomedirPrefix">LDAPGenerateHomedirPrefix</link>
+		<link linkend="LDAPGenerateHomedirPrefixNoUsername">LDAPGenerateHomedirPrefixNoUsername</link>
+		</para>
 	</refsect1>
 
 	<refsect1>

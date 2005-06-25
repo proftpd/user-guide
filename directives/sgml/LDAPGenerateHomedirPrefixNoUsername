@@ -1,5 +1,5 @@
-<refentry id="LDAPHomedirOnDemandPrefixNoUsername">
-<?dbhtml filename="config_ref_LDAPHomedirOnDemandPrefixNoUsername.html">
+<refentry id="LDAPGenerateHomedirPrefixNoUsername">
+<?dbhtml filename="config_ref_LDAPGenerateHomedirPrefixNoUsername.html">
 <refentryinfo>
   <keywordset>
     <keyword>
@@ -9,20 +9,21 @@
 </refentryinfo>
 <refmeta>
 <refentrytitle>
-<indexterm><primary>LDAPHomedirOnDemandPrefixNoUsername</primary></indexterm>
-LDAPHomedirOnDemandPrefixNoUsername
+<indexterm><primary>LDAPGenerateHomedirPrefixNoUsername</primary></indexterm>
+LDAPGenerateHomedirPrefixNoUsername
 </refentrytitle>
 </refmeta>
 <refnamediv>
-<refname>LDAPHomedirOnDemandPrefixNoUsername</refname>
+<refname>LDAPGenerateHomedirPrefixNoUsername</refname>
 <refpurpose>(docs incomplete)</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>LDAPHomedirOnDemandPrefixNoUsername</command>
+<command>LDAPGenerateHomedirPrefixNoUsername</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>on</option>
+  <option>off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -50,7 +51,7 @@ mod_ldap
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.5rc1 and later
+mod_ldap 2.8.13 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -58,10 +59,6 @@ mod_ldap
 
 <refsect1>
 <title>Description</title>
-    	<para>This directive has been deprecated with mod_ldap v2.8.13.
-	Please take a look at <link linkend="LDAPGenerateHomedirPrefixNoUsername">LDAPGenerateHomedirPrefixNoUsername</link>
-	</para>
-
 <para>
 (docs incomplete)
 </para>
@@ -70,7 +67,9 @@ mod_ldap
 <refsect1>
 <title>See also</title>
 <para>
-<link linkend="LDAPGenerateHomedirPrefixNoUsername">LDAPGenerateHomedirPrefixNoUsername</link>
+		<link linkend="LDAPForceGeneratedHomedir">LDAPForceGeneratedHomedir</link>
+		<link linkend="LDAPGenerateHomedir">LDAPGenerateHomedir</link>
+		<link linkend="LDAPGenerateHomedirPrefix">LDAPGenerateHomedirPrefix</link>
 <!--
 <link linkend=""></link>
 -->

@@ -1,5 +1,5 @@
-<refentry id="LDAPForceHomedirOnDemand">
-  <?dbhtml filename="config_ref_LDAPForceHomedirOnDemand.html">
+<refentry id="LDAPForceGeneratedHomedir">
+  <?dbhtml filename="config_ref_LDAPForceGeneratedHomedir.html">
   <refentryinfo>
     <keywordset>
       <keyword>
@@ -10,22 +10,22 @@
 
   <refmeta>
     <refentrytitle>
-      <indexterm><primary>LDAPForceHomedirOnDemand</primary></indexterm>
-      LDAPForceHomedirOnDemand
+      <indexterm><primary>LDAPForceGeneratedHomedir</primary></indexterm>
+      LDAPForceGeneratedHomedir
     </refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>LDAPForceHomedirOnDemand</refname>
+    <refname>LDAPForceGeneratedHomedir</refname>
     <refpurpose>
       Force all LDAP-authenticated users to use the default HomeDironDemand
-      prefix/suffix. [deprecated]
+      prefix/suffix.
     </refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
     <cmdsynopsis>
-      <command>LDAPForceHomedirOnDemand</command>
+      <command>LDAPForceGeneratedHomedir</command>
       <arg choice="opt">
         <option>on</option>
         <option>off</option>
@@ -42,7 +42,7 @@
     <varlistentry>
       <term><synopsis>Default</synopsis></term>
       <listitem><para>
-        LDAPForceHomedirOnDemand off
+        LDAPForceGeneratedHomedir off
       </para></listitem>
     </varlistentry>
 
@@ -61,7 +61,7 @@
     <varlistentry>
       <term><synopsis>Compatibility</synopsis></term>
       <listitem><para>
-        mod_ldap v2.8.11 and later
+        mod_ldap v2.8.13 and later
       </para></listitem>
     </varlistentry>
   </variablelist>
@@ -69,11 +69,9 @@
 
   <refsect1>
     <title>Description</title>
-    <para>This directive has been deprecated with mod_ldap v2.8.13.
-	  Please take a look at <link linkend="LDAPForceGenerateHomedir">LDAPForceGenerateHomedir</link>
-    </para>
+
     <para>Even when a
-    <link linkend="LDAPHomeDironDemandPrefix">LDAPHomeDironDemandPrefix</link>
+    <link linkend="LDAPGenerateHomedirPrefix">LDAPGenerateHomedirPrefix</link>
     is configured, mod_ldap will allow individual users to have
     homeDirectory attributes that will override the default. With
     LDAPForceHomeDironDemand enabled, all LDAP-authenticated users are given
@@ -83,7 +81,11 @@
 
   <refsect1>
     <title>See also</title>
-    <para><link linkend="LDAPForceGenerateHomedir">LDAPForceGenerateHomedir</link></para>
+    <para>
+	<link linkend="LDAPGenerateHomedir">LDAPGenerateHomedir</link>
+	<link linkend="LDAPGenerateHomedirPrefix">LDAPGenerateHomedirPrefix</link>
+	<link linkend="LDAPGenerateHomedirPrefixNoUsername">LDAPGenerateHomedirPrefixNoUsername</link>
+   </para>
   </refsect1>
 
   <refsect1>

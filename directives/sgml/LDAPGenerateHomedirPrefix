@@ -1,5 +1,5 @@
-<refentry id="LDAPHomedirOnDemandPrefix">
-	<?dbhtml filename="config_ref_LDAPHomedirOnDemandPrefix.html">
+%<refentry id="LDAPGenerateHomedirPrefix">
+	<?dbhtml filename="config_ref_LDAPGenerateHomedirPrefix.html">
 <refentryinfo>
   <keywordset>
     <keyword>
@@ -9,21 +9,21 @@
 </refentryinfo>
 	<refmeta>
 		<refentrytitle>
-			<indexterm><primary>LDAPHomedirOnDemandPrefix</primary></indexterm>
-			LDAPHomedirOnDemandPrefix
+			<indexterm><primary>LDAPGenerateHomedirPrefix</primary></indexterm>
+			LDAPGenerateHomedirPrefix
 		</refentrytitle>
 	</refmeta>
 
 	<refnamediv>
-		<refname>LDAPHomedirOnDemandPrefix</refname>
+		<refname>LDAPGenerateHomedirPrefix</refname>
 		<refpurpose>
-			Enable the creation of user home directories on demand [deprecated]
+			Enable the creation of user home directories on demand
 		</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
-			<command>LDAPHomedirOnDemandPrefix</command>
+			<command>LDAPGenerateHomedirPrefix</command>
 			<arg choice="opt">
 				<option>leading-path</option>
 			</arg>
@@ -35,7 +35,7 @@
 		<varlistentry>
 			<term><synopsis>Default</synopsis></term>
 			<listitem><para>
-				LDAPHomedirOnDemandPrefix off
+				LDAPGenerateHomedirPrefix off
 			</para></listitem>
 		</varlistentry>
 
@@ -56,7 +56,7 @@ mod_ldap
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.8 and later
+				mod_ldap v2.8.13 and later
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
@@ -65,11 +65,7 @@ mod_ldap
 	<refsect1>
 		<title>Description</title>
 
-    		<para>This directive has been deprecated with mod_ldap v2.8.13.
-	  	Please take a look at <link linkend="LDAPGenerateHomedirPrefix">LDAPGenerateHomedirPrefix</link>
-		</para>
-
-		<para>LDAPHomedirOnDemandPrefix enables a prefix to be specified for
+		<para>LDAPGenerateHomedirPrefix enables a prefix to be specified for
 		on-demand home directory creation. This is most useful if mod_ldap
 		is being used to authenticate against an LDAP directory that does
 		not return a homeDirectory attribute, either because it cannot
@@ -80,16 +76,18 @@ mod_ldap
 		as the user "joe" would result in his home directory being created
 		as "/home/joe". The directory will be created with the mode
 		specified in <link
-		linkend="LDAPHomedirOnDemand">LDAPHomedirOnDemand</link>.  To use
+		linkend="LDAPGenerateHomedir">LDAPGenerateHomedir</link>.  To use
 		this directive, <link
-		linkend="LDAPHomedirOnDemand">LDAPHomedirOnDemand</link> must be
+		linkend="LDAPGenerateHomedir">LDAPGenerateHomedir</link> must be
 		enabled.</para>
 	</refsect1>
 
 	<refsect1>
 		<title>See also</title>
 		<para>
-		<link linkend="LDAPGenerateHomedirPrefix">LDAPGenerateHomedirPrefix</link>
+		<link linkend="LDAPForceGeneratedHomedir">LDAPForceGeneratedHomedir</link>
+		<link linkend="LDAPGenerateHomedir">LDAPGenerateHomedir</link>
+		<link linkend="LDAPGenerateHomedirPrefixNoUsername">LDAPGenerateHomedirPrefixNoUsername</link>
 		</para>
 	</refsect1>
 
