@@ -32,7 +32,7 @@
 			</arg>
 
 			<arg choice="opt">
-				<option>"search-filter-template"</option>
+				<option>"quota-filter-template"</option>
 			</arg>
 
 			<arg choice="opt">
@@ -65,7 +65,7 @@
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.8.11 and later
+				mod_ldap v2.8.12 and later
 			</para></listitem>
 		</varlistentry>
 	</variablelist>

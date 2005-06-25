@@ -80,7 +80,7 @@ mod_ldap
     argument is a template to be used for the search filter; %v will be
     replaced with the UID that is being looked up. By default, the
     search filter template
-    "(&amp;(uidNumber=%v)(objectclass=posixAccount))" is used. Search
+    "(&amp;(LDAPAttr_uidNumber=%v)(objectclass=posixAccount))" is used. Search
     filter templates are only supported in mod_ldap v2.7 and
     later.</para>
   </refsect1>
