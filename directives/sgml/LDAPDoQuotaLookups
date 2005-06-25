@@ -28,7 +28,7 @@
 			</arg>
 
 			<arg choice="opt">
-				<option>"auth-base-dn"</option>
+				<option>"base-dn"</option>
 			</arg>
 
 			<arg choice="opt">
@@ -79,7 +79,7 @@
 		quota limit search.  The third argument is a template to be used for
 		the search filter; %v will be replaced with the username that is
 		being authenticated. By default, the search filter template
-		"(&amp;(uid=%v)(objectclass=posixAccount))" is used. Search filter
+		"(&amp;(LDAPAttr_uid=%v)(objectclass=posixAccount))" is used. Search filter
 		templates are only supported in mod_ldap v2.7 and later.</para>
 
 		<para>If specified, the <option>default-quota<option> argument

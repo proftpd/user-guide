@@ -35,13 +35,13 @@
 			</arg>
 
 			<arg choice="opt">
-				<option>"search-filter-template"</option>
+				<option>"cn-filter-template"</option>
 			</arg>
 			<arg choice="opt">
-				<option>"gid-number-filter"</option>
+				<option>"gid-number-filter-template"</option>
 			</arg>
 			<arg choice="opt">
-				<option>"member-uid-filter"</option>
+				<option>"member-uid-filter-template"</option>
 			</arg>
 		</cmdsynopsis>
 
@@ -84,15 +84,14 @@ mod_ldap
 
 		<para>This configuration directive activates LDAP GID-to-name
 		lookups in directory listings. The second argument to this directive
-		is the LDAP base DN to use for GID-to-name lookups. The third
+		is the LDAP base DN to use for GID-to-name lookups. The third - fith
 		argument is a template to be used for the search filter; %v will be
 		replaced with the GID that is being looked up. By default, the
-		search filter template
-		"(&amp;(LDAPAttr_cn=%v)(objectclass=posixGroup))" is used.
-		For the "gid-number-filter" the default template is
-		"(&amp;(LDAPAttr_gidNumber=%v)(objectclass=posixGroup))".
-		The "member-uid-filter" default is
-		"(&amp;(LDAPAttr_memberUid=%v)(objectclass=posixGroup))"
+		search filter templates look like this:
+		cn_filter:        "(&(LDAPAttr_cn=%v)(objectclass=posixGroup))",
+		gidnumber_filter: "(&(LDAPAttr_gidNumber=%v)(objectclass=posixGroup))",
+		memberuid_filter: "(&(LDAPAttr_memberUid=%v)(objectclass=posixGroup))".
+		
 		Filter templates are only supported in mod_ldap v2.8.3 and
 		later.</para>
 	</refsect1>
