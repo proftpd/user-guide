@@ -37,6 +37,12 @@
 			<arg choice="opt">
 				<option>"search-filter-template"</option>
 			</arg>
+			<arg choice="opt">
+				<option>"gid-number-filter"</option>
+			</arg>
+			<arg choice="opt">
+				<option>"member-uid-filter"</option>
+			</arg>
 		</cmdsynopsis>
 
 
@@ -82,8 +88,12 @@ mod_ldap
 		argument is a template to be used for the search filter; %v will be
 		replaced with the GID that is being looked up. By default, the
 		search filter template
-		"(&amp;(gidNumber=%v)(objectclass=posixGroup))" is used. Search
-		filter templates are only supported in mod_ldap v2.7 and
+		"(&amp;(LDAPAttr_cn=%v)(objectclass=posixGroup))" is used.
+		For the "gid-number-filter" the default template is
+		"(&amp;(LDAPAttr_gidNumber=%v)(objectclass=posixGroup))".
+		The "member-uid-filter" default is
+		"(&amp;(LDAPAttr_memberUid=%v)(objectclass=posixGroup))"
+		Filter templates are only supported in mod_ldap v2.8.3 and
 		later.</para>
 	</refsect1>
 

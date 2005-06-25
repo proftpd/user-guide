@@ -1,0 +1,95 @@
+<refentry id="LDAPAttr">
+<?dbhtml filename="config_ref_LDAPAttr.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>mod_ldap</keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>LDAPAttr</primary></indexterm>
+LDAPAttr
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>LDAPAttr</refname>
+<refpurpose>Map LDAP Attributes to something non standard</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>LDAPAttr</command>
+<arg choice="opt">
+  <option>uid</option>
+  <option>uidNumber</option>
+  <option>gidNumber</option>
+  <option>homeDirectory</option>
+  <option>userPassword</option>
+  <option>loginShell</option>
+  <option>cn</option>
+  <option>memberUid</option>
+  <option>ftpQuota</option>
+</arg>
+<arg choice="opt">
+  <option>"NewAttribute"</option>
+</arg>
+</cmdsynopsis>
+ 
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_ldap
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+2.8.13 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+FIXMEFIXMEFIXME
+</para>
+<para>
+This dicrective has to be set before any of the LDAPDo* directives.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+FIXFIXFIX
+</literallayout>
+
+<para>
+FIXFIX
+</para>
+
+</refsect1>
+</refentry>
+
