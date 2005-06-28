@@ -17,7 +17,7 @@
 	<refnamediv>
 		<refname>LDAPDefaultUID</refname>
 		<refpurpose>
-			Set the default GID to be assigned to users when no uidNumber
+			Set the default UID to be assigned to users when no uidNumber
 			attribute is found.
 		</refpurpose>
 	</refnamediv>

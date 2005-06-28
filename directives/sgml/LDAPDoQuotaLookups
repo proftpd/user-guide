@@ -79,7 +79,11 @@
 		quota limit search.  The third argument is a template to be used for
 		the search filter; %v will be replaced with the username that is
 		being authenticated. By default, the search filter template
-		"(&amp;(LDAPAttr_uid=%v)(objectclass=posixAccount))" is used. Search filter
+		"(&amp;(LDAPAttr_uid=%v)(objectclass=posixAccount))" is used.
+		
+		The uid for the the search filter is taken from the
+		<link linkend="LDAPAttr">LDAPAttr</link> directive	
+		Search filter
 		templates are only supported in mod_ldap v2.7 and later.</para>
 
 		<para>If specified, the <option>default-quota<option> argument
@@ -90,7 +94,9 @@
 
 	<refsect1>
 		<title>See also</title>
-		<para></para>
+		<para>
+			<link linkend="LDAPAttr">LDAPAttr</link>
+		</para>
 	</refsect1>
 
 	<refsect1>

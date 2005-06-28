@@ -92,13 +92,17 @@ mod_ldap
 		gidnumber_filter: "(&(LDAPAttr_gidNumber=%v)(objectclass=posixGroup))",
 		memberuid_filter: "(&(LDAPAttr_memberUid=%v)(objectclass=posixGroup))".
 		
+		The uid for the the search filter is taken from the
+		<link linkend="LDAPAttr">LDAPAttr</link> directive
 		Filter templates are only supported in mod_ldap v2.8.3 and
 		later.</para>
 	</refsect1>
 
 	<refsect1>
 		<title>See also</title>
-		<para></para>
+		<para>
+			<link linkend="LDAPAttr">LDAPAttr</link>
+		</para>
 	</refsect1>
 
 	<refsect1>
