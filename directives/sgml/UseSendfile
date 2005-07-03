@@ -56,15 +56,29 @@ mod_xfer
 <refsect1>
 <title>Description</title>
 <para>
-The UseSendfile directive controls use of sendfile() functionality, which is
-an optimization for sending files to clients.
+The UseSendfile directive controls use of sendfile functionality, which is
+an optimization for sending files to clients.  Use of sendfile functionality
+avoids separate read and send operations, and buffer allocations.  But on some
+platforms or within some filesystems, it is better to disable this feature to
+avoid operational problems:
 </para>
+<programlisting>
+ *  Some platforms may have broken sendfile support that the build system
+    did not detect, especially if the binaries were built on another box
+    and moved to such a machine with broken sendfile support.
+
+ * On Linux the use of sendfile triggers TCP-checksum offloading bugs on
+   certain networking cards when using IPv6.
+
+ * With a network-mounted directories (e.g. NFS or SMB), the kernel may be
+   unable to serve the network file through its own cache.
+</programlisting>
 
 <para>
-Note that if sendfile() support is enabled, tools like ftpwho and ftptop
+Note that if sendfile support is enabled, tools like ftpwho and ftptop
 will not show the transfer rate for downloads.  These tools work by reading
 the ScoreboardFile, and the ScoreboardFile is updated periodically during
-uploads and downloads.  However, when sendfile() is used, the
+uploads and downloads.  However, when sendfile support is used, the
 ScoreboardFile does not have a chance to be updated.  This is only true for
 downloads; the tools will continue to show the transfer rate for uploads.
 </para>
