@@ -74,9 +74,7 @@ DisplayLogin supports the same &quot;magic cookies&quot; as DisplayFirstChdir.
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="DisplayFirstChdir">DisplayFirstChdir</link>
 </para>
 </refsect1>
 

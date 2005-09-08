@@ -71,9 +71,7 @@ error occurs and nothing is logged or displayed to the client.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="DisplayFirstChdir">DisplayFirstChdir</link>
 </para>
 </refsect1>
 

@@ -74,9 +74,7 @@ DisplayQuit supports the &quot;magic cookies&quot; listed under DisplayFirstChdi
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="DisplayFirstChdir">DisplayFirstChdir</link>
 </para>
 </refsect1>
 

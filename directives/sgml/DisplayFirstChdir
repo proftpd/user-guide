@@ -85,6 +85,10 @@ replaced with their respective strings before being displayed to the user.
 
 %i      The number of files uploaded (input) in this session
 
+%K	Total number of bytes transferred
+
+%k	Total number of bytes transferred, in units
+
 %L	Local host name
 
 %M	Max number of authenticated clients
@@ -110,6 +114,18 @@ replaced with their respective strings before being displayed to the user.
 %y	Current number of connections from the user's class
 
 %z	Max number of connections from the user's class
+
+%{total_bytes_in} The number of bytes uploaded (input) in this session
+
+%{total_bytes_out} The number of bytes downloaded (output) in this session
+
+%{total_bytes_xfer} The number of bytes transferred (uploaded and downloaded) in this session
+
+%(total_files_in} The number of files uploaded (input) in this session
+
+%(total_files_out} The number of files downloaded (output) in this session
+
+%(total_files_xfer} The number of files transferred (uploaded and downloaded) in this session
 
 </programlisting>
 <para>
