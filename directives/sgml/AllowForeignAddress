@@ -22,7 +22,7 @@ AllowForeignAddress
 <cmdsynopsis>
 <command>AllowForeignAddress</command>
 <arg choice="opt">
-  <option>on|off</option>
+  <option> on|off </option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>

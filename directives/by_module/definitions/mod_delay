@@ -1,0 +1,64 @@
+<refentry id="mod-delay">
+<?dbhtml filename="config_ref_mod_delay.html">
+<refmeta>
+<refentrytitle>
+<indexterm><primary>mod_delay</primary></indexterm>
+mod_delay
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>mod_tls</refname>
+<refpurpose>Prevent information leak through timing attacks</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>mod_delay</command>
+</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>
+When proftpd processes the USER and PASS
+FTP commands from a client, it has to perform checks against configured
+ACLs, look up user and group information, etc.  These checks are not done
+if the given username is known to not exist for the server, in order to
+not tie up system resources needlessly.  However, this does mean that more
+work is done when handling &quot;good&quot; users than when handling
+&quot;bad&quot; users.  This difference can be detected in the time it takes
+for proftpd to send a response to the USER and
+PASS commands.  This means it is possible for an attacker
+to look for these statistical timing differences, and determine which
+users are &quot;good&quot; and which are &quot;bad&quot;.  From there,
+a determined attacker can focus their attention on the known good usernames.
+Note that the timings will vary depending on server load, number of
+users in the user base, type of storage of user data (e.g.
+LDAP directories, SQL tables, RADIUS servers, flat files, etc).
+</para>
+
+<para>
+The mod_delay module attempts to prevent such timing differences
+by keeping track of the time taken to process the USER and
+PASS commands.  It does this for the most recent
+USER and PASS commands.  The timing data are
+stored in the module's DelayTable.  If the module detects
+that proftpd has not taken enough time to handle one of these
+commands, compared to its past response times, a small delay will be added
+to the response cycle.  The amount of delay is determined by the difference
+between the current time spent handling the command and the median time
+spent handling the same command in the past.
+</para>
+</refsect1>
+
+<refsect1>
+<title>Installation</title>
+<para>
+The mod_delay module is distributed with ProFTPD and compiled in by default.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+
