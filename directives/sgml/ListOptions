@@ -73,15 +73,51 @@ allow for their dash-prefixed equivalents, potentially given by a user, to
 be disabled, while still allowing other options to function normally.
 </para>
 
+<programlisting>
+      -1 List one file per line
+
+      -A List all files except "." and ".."
+    
+      -a List all files including those whose names start with "."
+    
+      -C List entries by columns
+    
+      -d List directory entries instead of directory contents
+    
+      -F Append file type indicator (one of "*", "/", "=", "@" or "|") to names
+    
+      -h Print file sizes in human-readable format (e.g. 1K, 234M, 2G)
+    
+      -L List files pointed to by symlinks
+    
+      -l Use a long listing format
+    
+      -n List numeric UIDs/GIDs instead of user/group names
+    
+      -R List subdirectories recursively
+    
+      -r Sort filenames in reverse order
+    
+      -S Sort by file size
+    
+      -t Sort by modification time 
+</programlisting>
+
 <para>
-In the optional "strict" keyword is used, then the configured options will
+If the optional "strict" keyword is used, then the configured options will
 override any options given by the user (i.e. the user's options will be
-ignored).
+ignored). In addition to "strict" the following keywords are supported:
 </para>
+
+<programlisting>
+      maxfiles Sets a maximum limit on the number of files listed in one directory listing
+
+      maxdirs Sets a maximum limit on the number of directories listed in one directory listing
+
+      maxdepth Sets a maximum recursion depth, if the -R option is allowed 
+</programlisting>
+
 </refsect1>
-
-<!-- 1.2.6rc1 -n flag added -->
-
 <refsect1>
 <title>See also</title>
 <para>
@@ -107,6 +143,12 @@ ignored).
 <para>
   # To allow only the basic listing, no options, always
   ListOptions "" strict
+</para>
+
+<para>
+	#limit maximum files given back to 2000 and recurse in to a max
+	#depth of 3 directories
+	ListOptions -a maxfiles 2000 maxdepth 3
 </para>
 </refsect1>
 

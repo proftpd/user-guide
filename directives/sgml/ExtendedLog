@@ -86,6 +86,8 @@ WRITE
 File/directory writing or creation (APPE, MKD, RMD, RNFR, RNTO, STOR, STOU, XMKD, XRMD)
 MISC
 Miscellaneous commands (ABOR, ALLO, EPRT, EPSV, MODE, NOOP, OPTS, PASV, PORT, REST, RNFR, RNTO, SITE, SMNT, STRU, TYPE)
+SEC
+RFC2228-related security FTP commands
 ALL
 All commands (default)
 </para>
