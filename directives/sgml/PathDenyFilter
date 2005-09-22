@@ -38,7 +38,7 @@ None
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;, &lt;Directory&gt;
+server config, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Global&gt;, &lt;Directory&gt;, .ftpaccess
 </para> </listitem>
 </varlistentry>
 
