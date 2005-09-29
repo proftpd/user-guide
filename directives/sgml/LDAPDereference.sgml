@@ -1,0 +1,70 @@
+<refentry id="LDAPDeref">
+<?dbhtml filename="config_ref_LDAPDereference.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>mod_ldap</keyword>
+  </keywordset>
+</refentryinfo>
+
+<refmeta>
+  <refentrytitle>
+    <indexterm><primary>LDAPDereference</primary></indexterm>
+    LDAPDereference
+  </refentrytitle>
+</refmeta>
+
+<refnamediv>
+  <refname>LDAPDereference</refname>
+  <refpurpose>Specify how LDAP alias dereferencing is done</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <cmdsynopsis>
+    <command>LDAPDereference</command>
+    <arg choice="opt">
+      <option>never</option>
+      <option>find</option>
+      <option>search</option>
+      <option>always</option>
+    </arg>
+  </cmdsynopsis>
+</refsynopsisdiv>
+ 
+<variablelist>
+  <varlistentry>
+    <term><synopsis>Default</synopsis></term>
+    <listitem><para>LDAPDereference never</para></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term><synopsis>Context</synopsis></term>
+    <listitem><para>server config, &lt;Global&gt;, &lt;VirtualHost&gt;</para></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term><synopsis>Module</synopsis></term>
+    <listitem><para>mod_ldap</para></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term><synopsis>Compatibility</synopsis></term>
+    <listitem><para>2.8.16 and later</para></listitem>
+  </varlistentry>
+</variablelist>
+
+<refsect1>
+  <title>Description</title>
+
+  <para>Should be one of never, always, search, or find to specify that
+  aliases are never dereferenced, always dereferenced, dereferenced when
+  searching, or dereferenced only when locating the base object for the
+  search.</para>
+</refsect1>
+
+<refsect1>
+  <title>Examples</title>
+
+  <para>LDAPDereference always</para>
+</refsect1>
+
+</refentry>
