@@ -1,5 +1,5 @@
-<refentry id="LDAPDeref">
-<?dbhtml filename="config_ref_LDAPDereference.html">
+<refentry id="LDAPAliasDereference">
+<?dbhtml filename="config_ref_LDAPAliasDereference.html">
 <refentryinfo>
   <keywordset>
     <keyword>mod_ldap</keyword>
@@ -8,19 +8,19 @@
 
 <refmeta>
   <refentrytitle>
-    <indexterm><primary>LDAPDereference</primary></indexterm>
-    LDAPDereference
+    <indexterm><primary>LDAPAliasDereference</primary></indexterm>
+    LDAPAliasDereference
   </refentrytitle>
 </refmeta>
 
 <refnamediv>
-  <refname>LDAPDereference</refname>
+  <refname>LDAPAliasDereference</refname>
   <refpurpose>Specify how LDAP alias dereferencing is done</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
   <cmdsynopsis>
-    <command>LDAPDereference</command>
+    <command>LDAPAliasDereference</command>
     <arg choice="opt">
       <option>never</option>
       <option>find</option>
@@ -33,7 +33,7 @@
 <variablelist>
   <varlistentry>
     <term><synopsis>Default</synopsis></term>
-    <listitem><para>LDAPDereference never</para></listitem>
+    <listitem><para>LDAPAliasDereference never</para></listitem>
   </varlistentry>
 
   <varlistentry>
@@ -64,7 +64,7 @@
 <refsect1>
   <title>Examples</title>
 
-  <para>LDAPDereference always</para>
+  <para>LDAPAliasDereference always</para>
 </refsect1>
 
 </refentry>
