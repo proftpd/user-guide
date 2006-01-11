@@ -62,8 +62,11 @@ mod_auth
 Determines the directory a user is placed in after logging in.
 By default, the user is put in their home directory.  The specified
 directory can be relative to the user's home directory.
-NOTE: if the specified directory is not available
-the user will not be able to log in.</para>
+NOTE: If the specified directory is not available then DefaultChdir
+is treated as if it wasn't there in the first place. In particular,
+in this case the directory a user is placed in after logging in is
+determined by the other settings in proftpd.conf.
+</para>
 </refsect1>
 
 <refsect1>
