@@ -1,0 +1,99 @@
+<refentry id="SQLEngine">
+<?dbhtml filename="config_ref_SQLEngine.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>mod_sql</keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLEngine</primary></indexterm>
+SQLEngine
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLEngine</refname>
+<refpurpose>Configure how mod_sql will operate</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLEngine</command>
+<arg choice="opt">
+  <option>on|off|auth|log</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+ 
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+SQLEngine on
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.3.0rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+The SQLEngine directive is used to specify how mod_sql will operate. By
+default, SQLEngine is on, and mod_sql will operate as normal. Setting
+SQLEngine to off will effectively disable the module.
+</para>
+
+<para>
+In addition to on and off, SQLEngine accepts two other values: auth and
+log. If you wish to use mod_sql for authentication and not for logging
+(via SQLLog), use auth. Conversely, to do only SQLLog-type logging, and
+no authentication, use log.
+</para>
+
+<para>
+This directive can be used to have &lt;Anonymous&gt; sections that do not use
+mod_sql (see the example below).
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+  &lt;Anonymous ~ftp&gt;
+    ...
+    SQLEngine off
+    ...
+  &lt;/Anonymous&gt;
+</literallayout>
+
+</refsect1>
+</refentry>
+
