@@ -1,0 +1,109 @@
+<refentry id="SQLBackend">
+<?dbhtml filename="config_ref_SQLBackend.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>mod_sql</keyword>
+  </keywordset>
+</refentryinfo>
+<refmeta>
+<refentrytitle>
+<indexterm><primary>SQLBackend</primary></indexterm>
+SQLBackend
+</refentrytitle>
+</refmeta>
+<refnamediv>
+<refname>SQLBackend</refname>
+<refpurpose>Set the SQL backend module</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis>
+<command>SQLBackend</command>
+<arg choice="opt">
+  <option>backend</option>
+</arg>
+<!--
+<arg choice="opt" rep="repeat">file</arg>
+-->
+</cmdsynopsis>
+ 
+<variablelist><title></title>
+<varlistentry><term><synopsis>Default</synopsis></term>
+<listitem> <para>
+Depends
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Context</synopsis></term>
+<listitem> <para>
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Module</synopsis></term>
+<listitem> <para>
+mod_sql
+</para> </listitem>
+</varlistentry>
+
+<varlistentry><term><synopsis>Compatibility</synopsis></term>
+<listitem> <para>
+1.3.0rc1 and later
+</para> </listitem>
+</varlistentry>
+</variablelist>
+
+<refsect1>
+<title>Description</title>
+<para>
+In 1.3.0rc1, the mod_sql module gained the ability to be compiled with multiple
+backend modules supported, e.g. to have both mod_sql_mysql and mod_sql_postgres
+usable in the same proftpd daemon. The SQLBackend directive configures which of
+these different database backends should be used.
+</para>
+
+<para>
+If there is only one backend module compiled in, the SQLBackend directive is not
+needed. If there are multiple backend modules compiled and no SQLBackend directive
+is specified, then mod_sql will default to using the first backend module listed.
+For instance, if you configured proftpd using a configure command such as:
+
+  ./configure --with-modules=mod_sql:mod_sql_postgres:mod_sql_mysql ...
+
+then mod_sql would default to using mod_sql_postgres as the backend module to use.
+</para>
+
+<para>
+You might have multiple &lt;VirtualHost&gt; sections which use different SQL backends.
+Use "mysql" for the mod_sql_mysql module, and "postgres" for the mod_sql_postgres
+module.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+  &lt;VirtualHost 1.2.3.4&gt;
+    SQLBackend mysql
+    ...
+  &lt;/VirtualHost&gt;
+
+  &lt;VirtualHost 5.6.7.8&gt;
+    SQLBackend postgres
+    ...
+  &lt;/VirtualHost&gt;
+</literallayout>
+
+</refsect1>
+</refentry>
+
