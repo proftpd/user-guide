@@ -15,14 +15,14 @@ SQLMinID
 </refmeta>
 <refnamediv>
 <refname>SQLMinID</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Set SQLMinUserGID and SQLMinUserID in one place</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLMinID</command>
 <arg choice="opt">
-  <option>minimumid</option>
+  <option>minimum-id</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -59,12 +59,19 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-SQLMinID is checked whenever retrieving a user's GID or UID.  If the
-retrieved values for GID or UID are less than the value of SQLMinID,
-they are reported as the values of, respectively, 'SQLDefaultGID' and
-'SQLDefaultUID'.
+SQLMinID is a quick way of setting both SQLMinUserGID and SQLMinUserUID.
+These values are checked whenever retrieving a user's GID or UID.
 </para>
 </refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="SQLMinUserGID">SQLMinUserGID</link>
+<link linkend="SQLMinUserUID">SQLMinUserUID</link>
+</para>
+</refsect1>
+
 
 </refentry>
 

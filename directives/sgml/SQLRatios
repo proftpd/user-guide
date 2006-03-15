@@ -32,7 +32,7 @@ SQLRatios
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
@@ -59,7 +59,8 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+mod_ratio is currently lacking a module maintainer. This directive is 
+left over and not officially supported.
 </para>
 </refsect1>
 

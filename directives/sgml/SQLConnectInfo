@@ -15,7 +15,7 @@ SQLConnectInfo
 </refmeta>
 <refnamediv>
 <refname>SQLConnectInfo</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Specify connection information for the backend</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -67,7 +67,8 @@ mod_sql
 <para>
 This directive deprecates 'MySQLInfo', 'PostgresInfo', and
 'PostgresPort'.
-
+</para>
+<para>
 Specifies connection information.  Connection-info specifies the
 database, host, port, and other backend-specific information.
 username and password specify the username and password to connect as,

@@ -15,7 +15,7 @@ SQLDefaultGID
 </refmeta>
 <refnamediv>
 <refname>SQLDefaultGID</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure the default GID for users</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -60,6 +60,14 @@ mod_sql
 <title>Description</title>
 <para>
 Sets the default GID for users.  Must be greater than SQLMinID.
+</para>
+</refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="SQLMinID">SQLMinID</link>
+<link linkend="SQLMinUserGID">SQLMinUserGID</link>
 </para>
 </refsect1>
 

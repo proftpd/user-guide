@@ -15,14 +15,14 @@ SQLShowInfo
 </refmeta>
 <refnamediv>
 <refname>SQLShowInfo</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Create a message to be sent to the user after any successful command</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLShowInfo</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>cmd-set numeric query-string</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -32,13 +32,13 @@ SQLShowInfo
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -59,7 +59,58 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+This directive creates a message to be sent to the user after any successful
+command.
+</para>
+
+<para>
+The first parameter, the cmd-set, is a comma separated (no spaces) list of
+FTP commands for which this log command will trigger. The list of commands
+is too long to list in entirety; commands include: CWD, DELE, HELP, LIST,
+MKD, MODE, NLST, PASS, PASV, PORT and many more. For the complete list check
+the FTP RFCs.
+</para>
+
+<para>
+FTP commands in the command set will only be triggered if they complete
+successfully. Prefixing any command with "ERR_" will show information only
+if there was an error in command processing. To send a message on both
+errors and successfull completion of a given command X, therefore, you'll
+need both "X" and "ERR_X" in your cmd-set.
+</para>
+
+<para>
+The special command "*" matches all FTP commands, while "ERR_*" matches
+all errors.
+</para>
+
+<para>
+The second parameter, numeric, specifies the numeric value of the message
+returned to the FTP client. Do not choose a number blindly: message numbers
+may be parsed by clients. In most cases you will want to use 214, the "Help
+message" numeric. It specifies that the information is only meant to be human
+readable.
+</para>
+
+<para>
+The third parameter, query-string, is exactly equivalent to the query-string
+parameter to the SQLLog directive, with one addition:
+</para>
+
+<itemizedlist mark='opencircle'>
+<listitem override='bullet'>
+<para>%{name}</para>
+<para>
+The first return value from the SQLNamedQuery  identified by "name". There
+is currently no way to retrieve more than one value from the database at
+a time.
+</para>
+</itemizedlist>
+
+<para>
+Any references to non-existent named queries, non-SELECT or -FREEFORM type
+queries, or references to queries which return a NULL first value, will be
+replaced with the string "{null}".
 </para>
 </refsect1>
 
@@ -74,10 +125,18 @@ mod_sql
 
 <refsect1>
 <title>Examples</title>
-
 <literallayout>
-(docs incomplete)
+  SQLNamedQuery count SELECT "count from users where userid='%u'"
+  SQLShowInfo PASS "230" "You've logged on %{count} times, %u"
 </literallayout>
+<para>
+As long as the information is in the database, these two directives specify
+that the user will be greeted with their login count each time they
+successfully login. Note the use of the "230" numeric, which means "User
+logged in, proceed". "230" is appropriate in this case because the message
+will be sent immediately after their password has been accepted and the
+session has started.
+</para>
 
 </refsect1>
 </refentry>

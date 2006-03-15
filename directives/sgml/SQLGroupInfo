@@ -15,14 +15,14 @@ SQLGroupInfo
 </refmeta>
 <refnamediv>
 <refname>SQLGroupInfo</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure the group table and fields that hold group information</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLGroupInfo</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>group-table group-name gid members</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -32,13 +32,13 @@ SQLGroupInfo
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+&quot;groups groupname gid members&quot;
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -59,7 +59,38 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The SQLGroupInfo directive configures the group table and fields that hold group information. The parameters for this directive are described below:
+</para>
+
+<itemizedlist mark='opencircle'>
+<listitem override='bullet'>
+<para>grouptable</para>
+<para>
+      Specifies the name of the table that holds group information.
+</para>
+
+<listitem override='bullet'>
+<para>groupname</para>
+<para>
+      Specifies the field in the group table that holds the group name.
+</para>
+
+<listitem override='bullet'>
+<para>gid</para>
+<para>
+      Specifies the field in the group table that holds the group's GID.
+</para>
+
+<listitem override='bullet'>
+<para>members</para>
+<para>
+      Specifies the field in the group table that holds the group members.
+</para>
+</itemizedlist>
+
+<para>
+If you need to change any of these field names from the default, you need
+to specify all of them.
 </para>
 </refsect1>
 
@@ -76,7 +107,6 @@ mod_sql
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
 </literallayout>
 
 </refsect1>

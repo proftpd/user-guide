@@ -15,14 +15,14 @@ SQLLog
 </refmeta>
 <refnamediv>
 <refname>SQLLog</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Log information to a database table</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLLog</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>cmd-set query-name [&quot;IGNORE_ERRORS&quot;</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -32,13 +32,13 @@ SQLLog
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -59,7 +59,56 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+This directive is used to log information to a database table. Multiple
+SQLLog directives can be in effect for any command; for example, a user
+changing directories can trigger multiple logging statements.
+</para>
+
+<para>
+The first parameter to SQLLog, the cmd-set, is a comma-separated (no spaces)
+list of FTP commands for which this log command will trigger. The list of
+commands is too long to list in entirety; commands include CWD, DELE, HELP,
+LIST, MKD, MODE, NLST, PASS, PASV, PORT and many more. For the complete list
+check the FTP RFCs. Normally mod_sql will log events after they have
+completed successfully; in the case of the QUIT command, mod_sql logs prior
+to the server's processing of the command. (Note, however, that the client
+may not issue a QUIT before logging out; in this case, use a command of EXIT
+rather than QUIT. EXIT is not a real FTP command, but it is used here to
+provide a means for having SQLLog work whenever a session ends.)
+</para>
+
+<para>
+FTP commands in the command set will only be logged if they complete
+successfully. Prefixing any command with "ERR_" will cause logging to occur
+only if there was an error in the command's processing. To log both errors
+and successful completion of a given command X, therefore, you'll need both
+"X" and "ERR_X" in your cmd-set.
+</para>
+
+<para>
+The special command "*" matches all FTP commands, while "ERR_*" matches all
+errors.
+</para>
+
+<para>
+The second parameter is the name of a query defined by a SQLNamedQuery
+directive. The query must be an UPDATE, INSERT, or FREEFORM type query;
+explicit SELECT queries will not be processed.
+</para>
+
+<para>
+The third parameter is optional. If you add "IGNORE_ERRORS" as the third
+parameter, SQLLog will not check for errors in the processing of the named
+query. Any value for this parameter other than the string "IGNORE_ERRORS"
+(case-insensitive) will not cause errors to be ignored.
+</para>
+
+<para>
+Normally, SQLLog directives are considered important enough that errors in
+their processing will cause mod_sql to abort the client session. References
+to non-existent named queries will not abort the client session, but may
+result in database corruption (in the sense that the expected database
+UPDATE or INSERT will not occur). Check your directives carefully.
 </para>
 </refsect1>
 
@@ -74,11 +123,38 @@ mod_sql
 
 <refsect1>
 <title>Examples</title>
+<literallayout>
+  SQLLog PASS updatecount
+  SQLNamedQuery updatecount UPDATE "count=count+1 WHERE userid='%u'" users
+</literallayout>
+<para>
+together, these replicate the deprecated "SQLLoginCountField count" directive;
+if the current user was "joe", this would translate into the query "UPDATE
+users SET count=count+1 WHERE userid='joe'". This query would run whenever a
+user was first authenticated.
+</para>
 
 <literallayout>
-(docs incomplete)
+  SQLLog CWD updatedir
+  SQLNamedQuery updatedir UPDATE "cwd='%d' where userid='%u'" users
 </literallayout>
+<para>
+together these replicate the logging side of the deprecated "SQLLogDirs cwd"
+directive; if the current user was "joe" and the current working directory
+were /tmp, this would translate into the query "UPDATE users SET cwd='/tmp'
+WHERE userid='joe'". This query would run whenever a user changed directories.
+</para>
 
+<literallayout>
+  SQLLog RETR,STOR insertfileinfo
+  SQLNamedQuery insertfileinfo INSERT "'%f', %b, '%u@%v', now()" filehistory
+</literallayout>
+<para>
+would log the name of any file stored or retrieved, the number of bytes
+transferred, the user and host doing the transfer, and the time of transfer
+(at least in MySQL). This would translate into a query like: "INSERT INTO
+filehistory VALUES ('somefile', 12345, 'joe@joe.org', '21-05-2001 20:01:00')"
+</para>
 </refsect1>
 </refentry>
 

@@ -15,14 +15,14 @@ SQLUserInfo
 </refmeta>
 <refnamediv>
 <refname>SQLUserInfo</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure the user table and fields that hold user information</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLUserInfo</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>user-table user-name passwd uid gid home-dir shell</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -32,13 +32,13 @@ SQLUserInfo
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+&quot;users userid passwd uid gid homedir shell&quot;
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -59,16 +59,95 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The SQLUserInfo directive configures the user table and fields that hold
+user information. If you need to change any of these field names from the
+default, you must specify all of them, whether NULL or not. The parameters
+are described below:
 </para>
+
+<itemizedlist mark='opencircle'>
+<listitem override='bullet'>
+<para>usertable</para>
+<para>
+Specifies the name of the table that holds user information.
+</para>
+
+<listitem override='bullet'>
+<para>username</para>
+<para>
+Specifies the field in the user table that holds the username.
+</para>
+
+<listitem override='bullet'>
+<para>passwd</para>
+<para>
+Specifies the field in the user table that holds the user's password.
+</para>
+
+<listitem override='bullet'>
+<para>uid</para>
+<para>
+Specifies the field in the user table that holds the user's UID. When a
+UID is retrieved from the database it is checked against the value of
+SQLMinUserUID. If the field name is specified as "NULL" the database will
+not be queried for this value and the user's UID will be set to the value
+of SQLDefaultUID.
+</para>
+
+<listitem override='bullet'>
+<para>gid</para>
+<para>
+Specifies the field in the user table that holds the user's GID. When a GID
+is retrieved from the database it is checked against the value of
+SQLMinUserGID. If the field name is specified as "NULL" the database will
+not be queried for this value and the user's GID will be set to the value
+of SQLDefaultGID.
+</para>
+
+<listitem override='bullet'>
+<para>homedir</para>
+<para>
+Specifies the field in the user table that holds the user's home directory.
+If the fieldname is specified as "NULL" the database will not be queried for
+this value and the user's home directory will be set to the value of
+SQLDefaultHomedir. If no home directory is set with either directive, user
+authentication will be automatically turned off.
+</para>
+
+<listitem override='bullet'>
+<para>shell</para>
+<para>
+Specifies the field in the user table that holds the user's shell. If the 
+fieldname is specified as "NULL" the database will not be queried and the
+shell will be reported as an empty string ("").
+</para>
+</itemizedlist>
+
+<para>
+As of 1.2.9rc1, the SQLUserInfo directive accepts an alternate syntax:
+</para>
+<literallayout>
+  SQLUserInfo custom:/name
+</literallayout>
+
+<para>
+where name refers to a configured SELECT SQLNamedQuery. This named query
+must return one row, and return the following columns, in this order:
+username, passwd, uid, gid, homedir, shell. The configured query may make use
+of the variables mentioned in the SQLLog description. This syntax allows the
+administrator a flexible way of constructing queries as needed. Note that if
+you want use the given USER name, you should use the %U variable, not %u; the
+latter requires the locally authenticated user name, which is exactly what
+SQLUserInfo is meant to provide.
+</para>
+
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="SQLLog">SQLLog</link>
+<link linkend="SQLNamedQuery">SQLNamedQuery</link>
 </para>
 </refsect1>
 
@@ -76,7 +155,6 @@ mod_sql
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
 </literallayout>
 
 </refsect1>

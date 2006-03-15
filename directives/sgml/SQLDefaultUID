@@ -15,7 +15,7 @@ SQLDefaultUID
 </refmeta>
 <refnamediv>
 <refname>SQLDefaultUID</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure the default UID for users</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -62,6 +62,15 @@ mod_sql
 Sets the default UID for users.  Must be greater than SQLMinID.
 </para>
 </refsect1>
+
+<refsect1>
+<title>See also</title>
+<para>
+<link linkend="SQLMinID">SQLMinID</link>
+<link linkend="SQLMinUserUID">SQLMinUserUID</link>
+</para>
+</refsect1>
+
 
 </refentry>
 

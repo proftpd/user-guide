@@ -15,14 +15,14 @@ SQLMinUserGID
 </refmeta>
 <refnamediv>
 <refname>SQLMinUserGID</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Set a minimum GID</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLMinUserGID</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>minimum-gid</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -32,13 +32,13 @@ SQLMinUserGID
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+999
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -59,7 +59,9 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+SQLMinUserGID is checked whenever retrieving a user's GID. If the retrieved
+value for GID is less than the value of SQLMinUserGID, it is reported as the
+value of SQLDefaultGID.
 </para>
 </refsect1>
 
@@ -76,7 +78,6 @@ mod_sql
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
 </literallayout>
 
 </refsect1>

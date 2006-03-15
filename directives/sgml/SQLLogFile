@@ -13,14 +13,14 @@ SQLLogFile
 </refmeta>
 <refnamediv>
 <refname>SQLLogFile</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Specify a log file for mod_sql reporting and debugging</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLLogFile</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>file</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ SQLLogFile
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -56,7 +56,17 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The SQLLogFile directive is used to a specify a log file for mod_sql
+reporting and debugging, and can be done a per-server basis. The file
+parameter must be the full path to the file to use for logging. Note
+that this path must not be to a world-writeable directory and, unless
+AllowLogSymlinks is explicitly set to on (generally a bad idea), the
+path must not be a symbolic link.
+</para>
+
+<para>
+If file is "none", no logging will be done at all; this setting can be
+used to override a SQLLogFile setting inherited from a ;lt&Global;gt& context. 
 </para>
 </refsect1>
 
@@ -73,7 +83,6 @@ mod_sql
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
 </literallayout>
 
 </refsect1>

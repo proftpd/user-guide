@@ -15,14 +15,14 @@ SQLDefaultHomedir
 </refmeta>
 <refnamediv>
 <refname>SQLDefaultHomedir</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure the default homedir</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLDefaultHomedir</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>path</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -32,13 +32,13 @@ SQLDefaultHomedir
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -59,16 +59,20 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The SQLDefaultHomedir directive configures a default home directory for all
+users authenticated with this module, overriding any (deprecated)
+SQLHomedirField directive. If no home directory is set with either directive,
+authentication fails. This directive does not change the data retrieved from
+the database: if you specify a home directory field to SQLUserInfo, that
+field's data will be returned as the user's home directory, whether that
+data is a legal directory, or an empty string, or NULL.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="SQLUserInfo">SQLUserInfo</link>
 </para>
 </refsect1>
 
@@ -76,7 +80,6 @@ mod_sql
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
 </literallayout>
 
 </refsect1>

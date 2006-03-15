@@ -59,8 +59,9 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-Specifies whether to automatically create a user's home directory if
-it doesn't exist at login.
+The SQLHomedirOnDemand directive configures mod_sql to automatically
+create a user's home directory if that directory does not exist during
+the login process.
 </para>
 </refsect1>
 

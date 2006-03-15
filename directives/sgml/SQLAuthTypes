@@ -15,7 +15,7 @@ SQLAuthTypes
 </refmeta>
 <refnamediv>
 <refname>SQLAuthTypes</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Specify the allowed authentication types and their check order</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -74,7 +74,9 @@ mod_sql
 This directive deprecates 'SQLEmptyPasswords',
 'SQLScrambledPasswords', 'SQLSSLHashedPasswords',
 'SQLPlaintextPasswords', and 'SQLEncryptedPasswords'.
+</para>
 
+<para>
 Specifies the allowed authentication types and their check order.  YOU
 MUST SPECIFY AT LEAST ONE AUTHENTICATION METHOD.  
 

@@ -15,14 +15,14 @@ SQLUserWhereClause
 </refmeta>
 <refnamediv>
 <refname>SQLUserWhereClause</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Configure a WHERE clause for every user query<</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>SQLUserWhereClause</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>where-clause</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -32,13 +32,13 @@ SQLUserWhereClause
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -59,7 +59,9 @@ mod_sql
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The directive is used to configure a WHERE clause that is added to every
+user query. The WHERE clause must contain all relevant punctuation, and
+must not contain a leading "and".
 </para>
 </refsect1>
 
@@ -75,10 +77,19 @@ mod_sql
 <refsect1>
 <title>Examples</title>
 
+<para>
+As an example of a possible use for this directive, imagine if your user
+table included a "LoginAllowed" field:
+</para>
 <literallayout>
-(docs incomplete)
+  SQLUserWhereClause "LoginAllowed = 'true'"
 </literallayout>
-
+<para>
+would be appended to every user-related query as the string:
+</para>
+<literallayout>
+  " WHERE (LoginAllowed = 'true')"
+</literallayout>
 </refsect1>
 </refentry>
 
