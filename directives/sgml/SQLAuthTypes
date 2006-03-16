@@ -87,8 +87,8 @@ method.</emphasis>
 The current supported authentication methods are:
 </para>
 
-<itemizedlist mark='opencircle'>
-              <listitem override='bullet'>
+<itemizedlist mark='bullet'>
+              <listitem>
               <para><emphasis role="bold">Backend</emphasis></para>
               <para>
 		Allows database-specific backend passwords. Not all
@@ -100,14 +100,16 @@ The current supported authentication methods are:
 		the user password <emphasis role="bold">will be visible
 		</emphasis>. You have been warned.
               </para>
+	      </listitem>
 
-              <listitem override='bullet'>
+              <listitem>
               <para><emphasis role="bold">Crypt</emphasis></para>
               <para>
 		Allows passwords in the database to be of Unix crypt(3) form.
               </para>
+	      </listitem>	      
 
-              <listitem override='bullet'>
+              <listitem>
               <para><emphasis role="bold">Empty</emphasis></para>
               <para>
 		Allows empty passwords in the database, which match
@@ -117,8 +119,9 @@ The current supported authentication methods are:
 		passwords. <emphasis role="bold">Be very careful if using
 		this authentication method.</emphasis>
               </para>
+	      </listitem>
 
-              <listitem override='bullet'>
+              <listitem>
               <para><emphasis role="bold">OpenSSL</emphasis></para>
               <para>
 		Allows passwords in the database to be of the form
@@ -128,12 +131,14 @@ The current supported authentication methods are:
 		compile proftpd  and you link with OpenSSL's libcrypto
 		library.
               </para>
+	      </listitem>
 
-              <listitem override='bullet'>
+              <listitem>
               <para><emphasis role="bold">Plaintext</emphasis></para>
               <para>
 		Allows passwords in the database to be in plaintext.
               </para>
+	      </listitem>
 </itemizedlist>
 </refsect1>
 <refsect1>

@@ -96,36 +96,40 @@ appear in any order.
 <para>
 The available parameter values are:
 </para>
-<itemizedlist mark='opencircle'>
-	      <listitem override='bullet'>
+<itemizedlist mark='bullet'>
+	      <listitem>
 	      <para><emphasis role="bold">on</emphasis></para>
 	      <para>
 		Shorthand for SQLAuthenticate users groups userset groupset.
 	      </para>
-
-	      <listitem override='bullet'>
+	      </listitem>
+	      
+	      <listitem>
 	      <para><emphasis role="bold">off</emphasis></para>
 	      <para>
 		Disables all mod_sql authentication functions.
 	      </para>
+	      </listitem>
 
-	      <listitem override='bullet'>
+	      <listitem>
 	      <para><emphasis role="bold">users</emphasis></para>
 	      <para>
 		If present, mod_sql will do user lookups. If not present,
 		mod_sql will do no user lookups at all, including the
 		{set|get|end}pwent() calls (see below).
 	      </para>
+	      </listitem>
 
-	      <listitem override='bullet'>
+	      <listitem>
 	      <para><emphasis role="bold">groups</emphasis></para>
 	      <para>
 		If present, mod_sql will do group lookups. If not present,
 		mod_sql will do no group lookups at all, including the
 		{set|get|end}grent() calls (see below).
 	      </para>
+	      </listitem>
 
-	      <listitem override='bullet'>
+	      <listitem>
 	      <para><emphasis role="bold">userset[fast]</emphasis></para>
 	      <para>
 		If present, mod_sql will process the potentially expensive
@@ -137,8 +141,9 @@ The available parameter values are:
 		of increased memory use. This parameter will have no effect
 		if "users" is not specified.
 	      </para>
+	      </listitem>
 
-	      <listitem override='bullet'>
+	      <listitem>
 	      <para><emphasis role="bold">groupset[fast]</emphasis></para>
 	      <para>
 		If present, mod_sql will process the potentially expensive
@@ -150,6 +155,7 @@ The available parameter values are:
 		expense of increased memory use. This parameter will have no
 		effect if "groups" is not specified.
 	      </para>
+	      </listitem>
 </itemizedlist>
 
 <para>

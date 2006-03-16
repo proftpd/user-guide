@@ -97,14 +97,15 @@ The third parameter, query-string, is exactly equivalent to the query-string
 parameter to the SQLLog directive, with one addition:
 </para>
 
-<itemizedlist mark='opencircle'>
-<listitem override='bullet'>
+<itemizedlist mark='bullet'>
+<listitem>
 <para>%{name}</para>
 <para>
 The first return value from the SQLNamedQuery  identified by "name". There
 is currently no way to retrieve more than one value from the database at
 a time.
 </para>
+</listitem>
 </itemizedlist>
 
 <para>

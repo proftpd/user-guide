@@ -87,35 +87,38 @@ are exactly equivalent to the LogFormat directive except the following are
 not accepted:
 </para>
 
-<itemizedlist mark='opencircle'>
-<listitem override='bullet'>
+<itemizedlist bullet>
+<listitem>
 <para>%{FOOBAR}e</para>
 <para>
 For LogFormat, this logs the content of environment variable "FOOBAR". This
 is not bavailable in mod_sql.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>%{format}t and %t</para>
 <para>
 These two meta-sequences logged the local server time; they are not available
 in mod_sql. Your database undoubtedly provides another way to get the time;
 for example, MySQL provides the now() function.
 </para>
+</listitem>
 </itemizedlist>
 
 <para>
 and the following is in addition to the LogFormat meta-sequences:
 <para>
 
-<itemizedlist mark='opencircle'>
-<listitem override='bullet'>
+<itemizedlist bullet>
+<listitem>
 <para>%d</para>
 <para>
 The current working directory or "-" if none.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>%{n}</para>
 <para>
 This meta-sequence is used internally by mod_sql and other third-party
@@ -124,6 +127,7 @@ meta-sequence in anything other than an INSERT or UPDATE query is an
 error, and using this meta-sequence unless directed to by a third-party
 module or patch is also an error.
 </para>
+</listitem>
 </itemizedlist>
 
 <para>

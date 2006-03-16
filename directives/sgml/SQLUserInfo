@@ -65,26 +65,29 @@ default, you must specify all of them, whether NULL or not. The parameters
 are described below:
 </para>
 
-<itemizedlist mark='opencircle'>
-<listitem override='bullet'>
+<itemizedlist mark='bullet'>
+<listitem>
 <para>usertable</para>
 <para>
 Specifies the name of the table that holds user information.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>username</para>
 <para>
 Specifies the field in the user table that holds the username.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>passwd</para>
 <para>
 Specifies the field in the user table that holds the user's password.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>uid</para>
 <para>
 Specifies the field in the user table that holds the user's UID. When a
@@ -93,8 +96,9 @@ SQLMinUserUID. If the field name is specified as "NULL" the database will
 not be queried for this value and the user's UID will be set to the value
 of SQLDefaultUID.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>gid</para>
 <para>
 Specifies the field in the user table that holds the user's GID. When a GID
@@ -103,8 +107,9 @@ SQLMinUserGID. If the field name is specified as "NULL" the database will
 not be queried for this value and the user's GID will be set to the value
 of SQLDefaultGID.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>homedir</para>
 <para>
 Specifies the field in the user table that holds the user's home directory.
@@ -113,14 +118,16 @@ this value and the user's home directory will be set to the value of
 SQLDefaultHomedir. If no home directory is set with either directive, user
 authentication will be automatically turned off.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>shell</para>
 <para>
 Specifies the field in the user table that holds the user's shell. If the 
 fieldname is specified as "NULL" the database will not be queried and the
 shell will be reported as an empty string ("").
 </para>
+</listitem>
 </itemizedlist>
 
 <para>

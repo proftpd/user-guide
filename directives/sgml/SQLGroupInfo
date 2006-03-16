@@ -62,30 +62,34 @@ mod_sql
 The SQLGroupInfo directive configures the group table and fields that hold group information. The parameters for this directive are described below:
 </para>
 
-<itemizedlist mark='opencircle'>
-<listitem override='bullet'>
+<itemizedlist mark='bullet'>
+<listitem>
 <para>grouptable</para>
 <para>
       Specifies the name of the table that holds group information.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>groupname</para>
 <para>
       Specifies the field in the group table that holds the group name.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>gid</para>
 <para>
       Specifies the field in the group table that holds the group's GID.
 </para>
+</listitem>
 
-<listitem override='bullet'>
+<listitem>
 <para>members</para>
 <para>
       Specifies the field in the group table that holds the group members.
 </para>
+</listitem>
 </itemizedlist>
 
 <para>
