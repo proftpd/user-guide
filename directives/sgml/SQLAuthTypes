@@ -77,40 +77,90 @@ This directive deprecates 'SQLEmptyPasswords',
 </para>
 
 <para>
-Specifies the allowed authentication types and their check order.  YOU
-MUST SPECIFY AT LEAST ONE AUTHENTICATION METHOD.  
+The SQLAuthTypes directive specifies which authentication method
+are to be allowed, and their order of use.
+<emphasis role="bold">You must specify at least one authentication
+method.</emphasis>
+</para>
 
-For example:
+<para>
+The current supported authentication methods are:
+</para>
 
-SQLAuthTypes Crypt Empty
+<itemizedlist mark='opencircle'>
+              <listitem override='bullet'>
+              <para><emphasis role="bold">Backend</emphasis></para>
+              <para>
+		Allows database-specific backend passwords. Not all
+		backend databases support this option. For example,
+		MySQL datatabases use this option to authenticate MySQL
+		'PASSWORD()' encrypted passwords. The Postgres backend,
+		however, does nothing.<emphasis role="bold">Caveat
+		</emphasis>: if your MySQL activity log is world-readable,
+		the user password <emphasis role="bold">will be visible
+		</emphasis>. You have been warned.
+              </para>
 
-means check whether the password in the database matches in UNIX
-crypt() format; if that fails, check to see if the password in the
-database is empty (matching ANY given password); if that fails,
-mod_sql refuses to authenticate the user.
+              <listitem override='bullet'>
+              <para><emphasis role="bold">Crypt</emphasis></para>
+              <para>
+		Allows passwords in the database to be of Unix crypt(3) form.
+              </para>
 
-Current Types
+              <listitem override='bullet'>
+              <para><emphasis role="bold">Empty</emphasis></para>
+              <para>
+		Allows empty passwords in the database, which match
+		against <emphasis role="bold">any</emphasis> password
+		the user may give. The database field must be a truly
+		empty string; NULL values are not acceptable as empty
+		passwords. <emphasis role="bold">Be very careful if using
+		this authentication method.</emphasis>
+              </para>
 
-Plaintext: allows passwords in the database to be in plaintext
+              <listitem override='bullet'>
+              <para><emphasis role="bold">OpenSSL</emphasis></para>
+              <para>
+		Allows passwords in the database to be of the form
+		'{digest-name}hashed-value', where hashed-value
+		is the base64-encoded digest of the passsword.
+		Only available if you define HAVE_OPENSSL when you
+		compile proftpd  and you link with OpenSSL's libcrypto
+		library.
+              </para>
 
-OpenSSL:   allows passwords in the database to be of the form
-	   '{digestname}hashedvalue'.  This check is only available if
-	   you define 'HAVE_OPENSSL' when you compile proftd and you
-	   link with the OpenSSL 'crypto' library. 
-
-Crypt:     allows passwords in the database to be in UNIX crypt() form
-
-Backend:   a database-specific backend check function.  Not all
-	   backends support this.  Specifically, the MySQL backend
-	   uses this type to authenticate MySQL 'PASSWORD()' encrypted
-	   passwords.  The Postgres backend does nothing.
-
-Empty:     allows empty passwords in the database, which match against
-	   ANYTHING the user types in.  The database field must be a
-	   truly empty string -- that is, NULL values are never
-	   accepted.  BE VERY CAREFUL WITH THIS AUTHTYPE.
+              <listitem override='bullet'>
+              <para><emphasis role="bold">Plaintext</emphasis></para>
+              <para>
+		Allows passwords in the database to be in plaintext.
+              </para>
+</itemizedlist>
+</refsect1>
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
 </para>
 </refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+	SQLAuthTypes Crypt Empty
+</literallayout>
+<para>
+configures mod_sql to first attempt to verify the password using the
+Unix crypt(3) function, then, if that fails, determine if the password
+in the database is empty (thus matching any given password). If all of
+the configured authentication methods fail, mod_sql will fail to
+authenticate the user.
+</para>
+
+</refsect1>
+
 
 </refentry>
 

@@ -30,15 +30,15 @@ SQLConnectInfo
 <arg choice="opt">
   <option>[password]</option>
 </arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
+<arg choice="opt">
+  <option>[policy]</option>
+</arg>
 </cmdsynopsis>
 
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-none
+None
 </para> </listitem>
 </varlistentry>
 
@@ -68,51 +68,149 @@ mod_sql
 This directive deprecates 'MySQLInfo', 'PostgresInfo', and
 'PostgresPort'.
 </para>
+
 <para>
-Specifies connection information.  Connection-info specifies the
-database, host, port, and other backend-specific information.
-username and password specify the username and password to connect as,
-respectively.  Both default to NULL, which the backend will treat in
-some backend-specific manner. If you specify a password, you MUST
-specify a username.
+The SQLConnectInfo directive configures the information necessary to
+connect to the backend database. The connection-info parameter specifies
+the database, host, port, and other backend-specific information. The
+optional username and password parameters specify a username and password
+to use when connecting to the database. Both default to NULL, which the
+backend will treat in some backend-specific manner. If you specify a
+password, you <emphasis role="bold">must</emphasis> specify a username.
+If no SQLConnectInfo directive is specified, mod_sql will disable itself.
+</para>
 
-Any given backend has the opportunity (but not the responsibility) to
-check for syntax errors in the connection-info field at proftpd
-startup, but you shouldn't expect semantic errors (i.e., can't connect
-to the database) to be caught until mod_sql attempts to connect for a
-given host. 
+<para>
+Any given database backend has the opportunity, though not necessarily
+the responsibility, to check for syntax errors in the connection-info
+field at server startup, but you should not expect semantic errors
+(i.e., cannot connect to the database) to be caught until mod_sql 
+attempts to connect for a given host.
+</para>
 
-The MySQL and Postgres backends connection-info is expected to be of
-the form: 
+<para>
+A given database connection is governed by a connection policy that
+specifies when a connection should be opened and when it should be
+closed. There are three options:
+</para>
 
+<itemizedlist mark='bullet'>
+              <listitem>
+	      <para><emphasis role="bold">PERSESSION</emphasis></para>
+              <para>
+		Open a database connection at the start of the session
+		and close the database connection at the end of the session.
+              </para>
+	      </listitem>
+	      
+	      <listitem>
+              <para>number (<emphasis role="bold">TIMED</emphasis>)</para>
+              <para>
+		Timed database connections that close themselves
+		after number seconds of inactivity.
+              </para>
+	      </listitem>
+</itemizedlist>
+
+<para>
+If a connection policy is not specified, if the policy is not a number or
+is a number less than 1, or if the policy is the string "PERSESSION",
+the PERSESSION policy will be used.
+</para>
+
+<para>
+If the connection policy is any number greater than 0, it specifies the
+number of seconds that a connection will be held open without activity.
+After that many seconds of database inactivity, the connection to the
+database will be closed. As soon as database activity starts again,
+the connection will be opened and the timer will restart.
+</para>
+
+<para>
+The MySQL and Postgres backends' connection-info is expected to be of the form:
+</para>
+
+<para>
 database[@hostname][:port]
+</para>
 
-hostname will default to a backend-specific hostname (which happens to
-be 'localhost' for both the MySQL and Postgres backends), and port
-will default to a backend-specific default port (3306 for the MySQL
-backend, 5432 for the Postgres backend).
+<para>
+hostname will default to a backend-specific hostname (which happens to be
+'localhost' for both the MySQL and Postgres backends), and port will default
+to a backend-specific default port (3306 for the MySQL backend, 5432 for
+the Postgres backend).
+</para>
 
-Examples:
+<para>From the MySQL documentation:</para>
+<para>
+the value of host may be either a hostname or an IP address. If host is
+NULL or the string "localhost", a connection to the local host is assumed.
+If the OS supports sockets (Unix) or named pipes (Windows), they are used
+instead of TCP/IP to connect to the server.
+</para>
 
-SQLConnectInfo  ftpusers@foo.com
+<para>From the PostgreSQL documentation:</para>
+<para>
+If [the hostname] begins with a slash, it specifies Unix-domain
+communication rather than TCP/IP communication; the value is the
+name of the directory in which the socket file is stored. The default
+is to connect to a Unix-domain socket in /tmp.
+</para>
 
-means "Try connecting to the database 'ftpuser' via the default port
-at 'foo.com'.  Use a NULL username and a NULL password."
-
-SQLConnectInfo  ftpusers:3000 admin
-
-means "Try connecting to the database 'ftpuser' via port 3000 at
-'localhost'.  Use the username 'admin' and a NULL password."
-
-SQLConnectInfo  ftpusers@foo.com:3000 admin mypassword
-
-means "Try connecting to the database 'ftpuser' via port 3000 at
-'foo.com'.  Use the username 'admin' and the password 'mypassword'"
-
-Backends may require different information in the connection-info
-field; check your backend module for specifics.
+<para>
+If you plan to use the TIMED connection policy, consider the effect of
+directives such as DefaultRoot on local socket communication: once a user
+has been chroot()ed, the local socket file will probably not be available
+within the chroot directory tree, and attempts to reopen communication will
+fail. One way around this may be to use hardlinks within the user's
+directory tree. PERSESSION connections are not affected by this because
+the database will be opened prior to the chroot() call, and held open
+for the life of the session. Network communications are not affected by
+this problem. For example, while localhost would not work for MySQL since
+the MySQL client library will try to use socket communications for that
+host, 127.0.0.1 will work (as long as your database is setup to accept
+these connections).
 </para>
 </refsect1>
 
+<refsect1>
+<title>See also</title>
+<para>
+<!--
+<link linkend=""></link>
+-->
+</para>
+</refsect1>
+
+<refsect1>
+<title>Examples</title>
+
+<literallayout>
+  # Connect to the database 'ftpusers' via the default port at host
+  # 'foo.com'.  Use a NULL username and NULL password when connecting.
+  # A connection policy of PERSESSION is used.
+  SQLConnectInfo ftpusers@foo.com
+
+  # Connect to the database 'ftpusers' via port 3000 at host 'localhost'.
+  # Use the username 'admin' and a NULL password when connecting.
+  # A connection policy of PERSESSION is used.
+  SQLConnectInfo ftpusers:3000 admin
+
+  # Connect to the database 'ftpusers' via port 3000 at host 'foo.com'.
+  # Use the username 'admin' and password 'mypassword' when connecting.
+  # A connection policy of PERSESSION is used.
+  SQLConnectInfo ftpusers@foo.com:3000 admin mypassword
+
+  # Connect to the database 'ftpusers' via port 3000 at host 'foo.com'.
+  # Use a username of 'admin' and a password of 'mypassword' when
+  # connecting.  A 30 second timer of connection inactivity is activated.
+  SQLConnectInfo ftpusers@foo.com:3000 admin mypassword 30
+</literallayout>
+
+<para>
+Backends may require different information in the connection-info field;
+check your backend module for more detailed information.
+</para>
+</refsect1>
 </refentry>
 
