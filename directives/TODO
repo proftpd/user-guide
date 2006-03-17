@@ -1,12 +1,22 @@
-Module: wrap
-  HostsAllowSyslogLevel
-  HostsDenySyslogLevel
-  UseHostsAllowFile
-  UseHostsDenyFile
+Still "docs incomplete":
+ - HiddenStores (same as HiddenStor?)
+ - RewriteCondition
+ - RewriteEngine
+ - RewriteLock
+ - RewriteLog
+ - RewriteMap
+ - RewriteRule
+ - LDAPAuthBinds
+ - LDAPGenerateHomedirPrefixNoUsername (maybe deprecated?)
+ - LoginPasswordPrompt
+ - SetEnv
+ - UnsetEnv
 
-Module: core
-  MaxHostsPerUser
 
-o Directives can only be used once within a given context, add to faq/userguide
-
-
+Marked as deprecated:
+ - Bind
+ - LDAPForceHomedirOnDemand
+ - LDAPHomedirOnDemand
+ - LDAPHomedirOnDemandPrefix
+ - LDAPHomedirOnDemandPrefixNoUsername
+ - LDAPHomedirOnDemandSuffix
