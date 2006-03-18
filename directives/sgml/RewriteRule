@@ -13,14 +13,14 @@ RewriteRule
 </refmeta>
 <refnamediv>
 <refname>RewriteRule</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define a rewrite rule</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>RewriteRule</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>pattern substitution</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -36,7 +36,7 @@ None
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_rewrite
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.6rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,16 +56,174 @@ mod_rewrite
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The RewriteRule directive is the real rewriting workhorse. The configuration
+directive can occur more than once. Each directive defines a single
+rewriting rule. The order of definition of these rules is important,
+because this order is used when applying the rules at run-time.
 </para>
+
+<para>
+Pattern can be POSIX regular expression which gets applied to the current
+FTP command argument(s).
+</para>
+
+<para>
+Some hints about the syntax of regular expressions:
+</para>
+
+<itemizedlist bullet>
+	      <listitem>
+	      <para><emphasis role="bold">Text:</emphasis></para>
+	      <programlisting>
+	        .           Any single character
+  		[chars]     Character class: one of chars
+		[^chars]    Character class: none of chars
+  		text1|text2 Alternative: text1 or text2
+	      </programlisting>
+	      </listitem>
+
+	      <listitem>
+	      <para><emphasis role="bold">Quantifiers:</emphasis></para>
+	      <programlisting>
+	        ?           0 or 1 of the preceding text
+  		*           0 or N of the preceding text (N > 0)
+  		+           1 or N of the preceding text (N > 1)
+	      </programlisting>
+	      </listitem>
+
+	      <listitem>
+	      <para><emphasis role="bold">Grouping:</emphasis></para>
+	      <programlisting>
+ 	      (text)       Grouping of text
+              		   (either to set the borders of an alternative or
+              		   for making backreferences where the Nth group can 
+              		   be used on the RHS of a RewriteRule with $N)
+	      </programlisting>
+	      </listitem>
+
+	      <listitem>
+	      <para><emphasis role="bold">Anchors:</emphasis></para>
+	      <programlisting>
+	        ^           Start of line anchor
+  		$           End of line anchor
+	      </programlisting>
+	      </listitem>
+
+	      <listitem>
+	      <para><emphasis role="bold">Escaping:</emphasis></para>
+	      <programlisting>
+		\char       Escape that particular char
+              		    (for instance to specify the chars ".[]()" etc.)
+	      </programlisting>
+	      </listitem>
+</itemizedlist>
+
+<para>
+For more information about regular expressions have a look at your local
+regex(3) manpage. If you are interested in more detailed information about
+regular expressions and their variants (POSIX regex, Perl regex, etc.) have
+a look at the following dedicated book on this topic:
+</para>
+
+<para>
+Mastering Regular Expressions
+Jeffrey E.F. Friedl
+Nutshell Handbook Series
+O'Reilly & Associates, Inc. 1997
+ISBN 1-56592-257-3
+</para>
+
+<para>
+Additionally in mod_rewrite the NOT character ('!') is a possible pattern
+prefix. This gives you the ability to negate a pattern; to say, for instance:
+"if the current argument(s) does NOT match this pattern". This can be used
+for exceptional cases, where it is easier to match the negative pattern,
+or as a last default rule.
+</para>
+
+<para>
+<emphasis role="bold">Notice:</emphasis> When using the NOT character to
+negate a pattern you cannot have grouped wildcard parts in the pattern.
+This is impossible because when the pattern does NOT match, there are no
+contents for the groups. In consequence, if negated patterns are used,
+you cannot use $N in the substitution string.
+</para>
+
+<para>
+Substitution of a rewriting rule is the string which is substituted for
+(or replaces) the original argument(s) for which pattern matched. Beside
+plain text you can use:
+</para>
+
+<orderedlist numeration="Arabic">
+     <listitem>
+     <para>
+     $N backreferences to the RewriteRule pattern
+     </para>
+     </listitem>
+
+     <listitem>
+     <para>
+     %N backreferences to the last matched RewriteCondition pattern
+     </para>
+     </listitem>
+
+     <listitem>
+     <para>
+     variables as in RewriteCondition test strings
+     </para>
+     </listitem>
+
+     <listitem>
+     <para>
+     map function calls (${map-name:lookup-key|default-value}) 
+     </para>
+     </listitem>
+</orderedlist>
+
+<para>
+Backreferences are $<emphasis role="bold">N</emphasis>
+(<emphasis role="bold">N</emphasis>=0..9) identifiers which will be replaced
+by the contents of the <emphasis role="bold">N</emphasis>th group of the
+matched pattern. The variables are the same as for the condition of a
+<link linkend="RewriteCondition">RewriteCondition</link> directive, with two
+additions:
+</para>
+
+<itemizedlist>
+	<listitem>
+	<para>
+	%<emphasis role="bold">P</emphasis>
+	process ID
+	</para>
+	</listitem>
+
+	<listitem>
+	<para>
+	%<emphasis role="bold">t</emphasis>
+	Unix time since the epoch, in seconds
+	</para>
+	</listitem>
+</itemizedlist>
+
+<para>
+The map functions come from the <link linkend="RewriteMap">RewriteMap</link>
+directive and are explained there. These four types of variables are
+expanded in the order of the above list.
+</para>
+
+<para>
+All of the rewriting rules are applied to substitution. The command
+argument(s) is completely replaced by the substitution.
+</para>
+
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="RewriteCondition">RewriteCondition</link>
+<link linkend="RewriteMap">RewriteMap</link>
 </para>
 </refsect1>
 
@@ -73,7 +231,6 @@ mod_rewrite
 <title>Examples</title>
 
 <literallayout>
-(docs incomplete)
 </literallayout>
 
 </refsect1>

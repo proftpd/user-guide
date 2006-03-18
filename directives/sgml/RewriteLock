@@ -13,14 +13,14 @@ RewriteLock
 </refmeta>
 <refnamediv>
 <refname>RewriteLock</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Set the filename for synchronization lockfile</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>RewriteLock</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>filename</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -36,7 +36,7 @@ None
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_rewrite
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.6rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,7 +56,10 @@ mod_rewrite
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The RewriteLock directive sets the filename for a synchronization lockfile
+which mod_rewrite needs to communicate with RewriteMaps of type fifo. Set
+file to a local absolute path (not on a NFS-mounted device) when you want
+to use a rewriting FIFO. It is not required for other types of rewriting maps.
 </para>
 </refsect1>
 
@@ -69,13 +72,5 @@ mod_rewrite
 </para>
 </refsect1>
 
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-(docs incomplete)
-</literallayout>
-
-</refsect1>
 </refentry>
 

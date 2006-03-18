@@ -13,14 +13,14 @@ RewriteMap
 </refmeta>
 <refnamediv>
 <refname>RewriteMap</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Define a rewrite map</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>RewriteMap</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>map-name map-type:map-soure</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -36,7 +36,7 @@ None
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -48,7 +48,7 @@ mod_rewrite
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.8rc1 and later
+1.2.6rc1 and later
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -56,26 +56,335 @@ mod_rewrite
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The RewriteMap directive defines a rewriting map which can be used inside
+rule substitution strings by the mapping-functions to insert/substitute
+fields through a key lookup. The source of this lookup can be of various types.
+</para>
+
+<para>
+The map-name is the name of the map and will be used to specify a
+mapping-function for the substitution strings of a rewriting rule via
+one of the following constructs:
+</para>
+
+<para><emphasis role="bold">${ map-name :  lookup-key }</emphasis></para>
+<para><emphasis role="bold">${ map-name :  lookup-key</emphasis>
+ | 
+<emphasis role="bold">default-value</emphasis></para>
+
+<para>
+When such a construct occurs the map map-name is consulted and the key
+lookup-key is resolved. If the key is found, the map-function construct
+is substituted by subst-value. If the key is not found then it is
+substituted by default-value or by the empty string if no default-value
+was specified.
+</para>
+
+<para>
+The following combinations for map-type and map-src can be used:
+</para>
+
+<itemizedlist bullet>
+	      <listitem>
+		<para>
+			<emphasis role="bold">Standard Plain Text</emphasis>
+		</para>
+		<para>
+			map-type: txt, map-src: Unix filesystem path to
+			valid regular file.
+		</para>
+		<para>
+		This is the standard rewriting map feature where
+		the map-src is a plain ASCII file containing either blank
+		lines, comment lines (starting with a '#' character) or
+		pairs like the following - one per line.
+		</para>
+		<para>
+			<emphasis role="bold">matching-key subst-value</emphasis>
+		</para>
+		<example id="example-usermap"><title>Example Usermap</title>
+   		<programlisting>
+		    # --------------------------------------------
+    		    # usermap.txt -- map for rewriting user names
+    		    # --------------------------------------------
+
+    		    Dave.Admin      dave       # The Uber-admin
+    		    root            anonymous  # no one should be logging in as root anyway
+		</programlisting>
+		</example>
+		<para>
+			And, to configure this map to be used:
+		</para>
+		<programlisting>
+			RewriteMap real-to-user txt:/path/to/file/usermap.txt
+		</programlisting>
+	      </listitem>
+
+
+	      <listitem>
+		<para><emphasis role="bold">FIFO/Named Pipe</emphasis></para>
+		<para>
+			map-type: fifo, map-src: Unix filesystem path
+			to valid FIFO.
+		</para>
+		<para>
+		For this rewriting map, map-src is a FIFO (a.k.a. named pipe).
+		To create it, you can use the mkfifo(1) command. An
+		external program that opens the FIFO for reading and
+		writing <emphasis role="bold">must</emphasis>  be started
+		before proftpd is started. This program can communicate
+		with the rewriting engine via the FIFO. For each mapping
+		lookup, it can read the key to lookup as a newline-terminated
+		string from the FIFO. It then has to write back to the FIFO
+		the looked-up value as a newline-terminated string, or just
+		simply newline character (denoting an empty string) if there
+		is no corresponding value for the given key).
+		</para>
+		<para>
+		An example program which will implement a 1:1 mapping
+		(i.e., key == value) could be:
+		</para>
+		<example id="example-fifonamedpipe">
+		<title>Example FIFO/Named Pipe 1:1 mapping</title>
+   		<programlisting>
+#!/usr/bin/perl
+    use strict;
+
+    use File::Basename qw(basename);
+    use Getopt::Long;
+    use IO::Handle;
+    use IO::Select;
+
+    my $default_delay = 0.5;
+    my $program = basename($0);
+    my %opts = ();
+
+    GetOptions(\%opts, 'delay=f', 'fifo=s', 'help', 'verbose');
+
+    usage() if $opts{'help'};
+
+    my $delay = $opts{'delay'} ? $opts{'delay'} : $default_delay;
+
+    die "$program: missing required --fifo parameter\n" unless $opts{'fifo'};
+    my $fifo = $opts{'fifo'};
+
+    my $verbose = $opts{'verbose'} ? 1 : 0;
+
+    open(my $fifo_fh, "+> $fifo") or die "$program: unable to open $fifo: $!\n";
+
+    # Instantiate a Select object for knowing when to read from and write to
+    # the FIFO.
+    my $sel = IO::Select->new();
+
+    while (1) {
+
+      # Blocking select() for reading.
+      $sel->add($fifo_fh);
+
+      print STDERR "$program: selecting for reading\n" if $verbose;
+      my ($rfh) = $sel->can_read();
+
+      my $key = &lt;$rfh&gt;;
+      print STDERR "$program: read '$key'\n" if $verbose;
+
+      # Lookup a value for the given key.
+      my $value = lookup_value($key);
+
+      # Clear the Select object's filehandles.
+      $sel->remove();
+
+      print $fifo_fh "$value\n" if $verbose;
+      $fifo_fh->flush();
+
+      print STDERR "$program: wrote '$value'\n" if $verbose;
+
+      # Wait for the buffer's byte to be cleared before reading again.
+      wait_fifo($fifo_fh);
+    }
+
+    close($fifo_fh);
+    print STDOUT "$program: done\n" if $verbose;
+
+    exit 0;
+
+    # --------------------------------------------------------------------------
+    sub lookup_value {
+      my ($key) = @_;
+
+      # NOTE: do something to obtain a value for the given key here.
+      chomp(my $value = $key);
+
+      return $value;
+    }
+
+    # --------------------------------------------------------------------------
+    sub usage {
+      print STDOUT &lt;&lt;END_OF_USAGE;
+
+    usage: $program [options]
+
+      --delay         Configure the buffer check delay.
+                      The default is $default_delay seconds.
+
+      --fifo          Configure the path to the FIFO.  Required.
+
+      --help          Displays this message.
+
+      --verbose       Enables verbose output while $program runs.
+
+    END_OF_USAGE
+
+      exit 0;
+    }
+
+    # --------------------------------------------------------------------------
+    sub wait_fifo {
+      my ($fh) = @_;
+
+      # Now we get tricky.  Use ioctl(2) to poll the number of bytes to
+      # be read from the FIFO filehandle.  When the number drops to zero,
+      # it means that the data we just wrote has been read from the buffer
+      # by some other process, so we can go back to the top of this loop.
+      # Otherwise, if this program loops faster than the reader/writer on
+      # the other end of the FIFO, we'd end up reading the data we just
+      # wrote.  Quite annoying, actually.
+      #
+      # Note: this value must be manually extracted from the system header files
+      # using the following program:
+      #
+      # -------- fionread.c -------------------
+      #  #include &lt;sys/ioctl.h&gt;
+      #
+      #  int main(int argc, char *argv[]) {
+      #   printf("%#08x\n", FIONREAD);
+      #   return 0;
+      # }
+      # ---------------------------------------
+      #
+      # > cc -o fionread fionread.c
+      # > ./fionread
+
+      my $FIONREAD = 0x00541b;
+
+      my $size = pack('L', 0);
+      ioctl($fh, $FIONREAD, $size) or die "$program: unable to use ioctl: $!\n";
+      $size = unpack('L', $size);
+
+      while ($size != 0) {
+        print STDERR "$program: waiting for buffer to be read\n" if $verbose;
+        select(undef, undef, undef, $delay);
+
+        $size = pack('L', 0);
+        ioctl($fh, $FIONREAD, $size) or die "$program: unable to use ioctl: $!\n";
+        $size = unpack('L', $size);
+      }
+    }
+
+		</programlisting>
+		</example>
+		<para>
+		To make use of this example script, simply implement your
+		lookup code in the lookup_value() subroutine. Be very
+		careful with such scripts, though:
+		</para>
+		<orderedlist numeration="Arabic">
+			     <listitem>
+			     <para>
+			     "Keep it simple, stupid" (KISS), because if
+			      this program hangs it will hang proftpd when
+			      the rule occurs. Well, keep it as simple as
+			      possible...
+			     </para>
+			     </listitem>
+
+
+			     <listitem>
+			     <para>
+			     Avoid one common mistake: avoid buffered I/O
+			     if possible. This can cause a deadloop. If
+			     necessary, be sure to flush the filehandle
+			     before reading, and after writing.
+			     </para>
+			     </listitem>
+
+
+			     <listitem>
+			     <para>
+			     Use the RewriteLock directive to define a
+			     lockfile mod_rewrite can use to synchronize
+			     the communication to the FIFO program. By
+			     default no such synchronization takes place.
+			     </para>
+			     </listitem>
+		</orderedlist>
+	      </listitem>
+
+
+	      <listitem>
+		<para><emphasis role="bold">Internal Function</emphasis></para>
+		<para>
+			map-type: int, map-src: Internal mod_rewrite function.
+		</para>
+		<para>
+		Here the map-src is a mod_rewrite built-in function.
+		Currently you cannot create your own, but the following
+		functions already exist:
+		</para>
+
+		<itemizedlist>
+			<listitem>
+			<para><emphasis role="bold">toupper</emphasis></para>
+			<para>
+			Converts the looked up key to all upper case.
+			</para>
+			</listitem>
+
+			<listitem>
+			<para><emphasis role="bold">tolower</emphasis></para>
+			<para>
+			Converts the looked up key to all lower case.
+			</para>
+			</listitem>
+
+			<listitem>
+			<para><emphasis role="bold">unescape</emphasis></para>
+			<para>
+			Translates hex-encodings in the looked up key back
+			to special characters.
+			</para>
+			</listitem>
+
+			<listitem>
+			<para><emphasis role="bold">utf8trans</emphasis></para>
+			<para>
+			Translates UTF-8 encodings in the lookup up key into
+			Latin-1 characters.
+			</para>
+			</listitem>
+		</itemizedlist>
+	      </listitem>
+</itemizedlist>
+
+<para>
+The RewriteMap directive can occur more than once. For each mapping-function
+use one RewriteMap directive to declare its rewriting map name.
+</para>
+
+<para>
+<emphasis role="bold">Note:</emphasis> For plain text files the looked-up
+keys are cached in-core until the mtime of the text map file changes or
+the server does a restart. This way you can have map-functions in rules
+which are used for <emphasis role="bold">every</emphasis> request. This
+is no problem, because the parsing of the text files only happens once!
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="RewriteCondition">RewriteCondition</link>
 </para>
 </refsect1>
 
-<refsect1>
-<title>Examples</title>
-
-<literallayout>
-(docs incomplete)
-</literallayout>
-
-</refsect1>
 </refentry>
 
