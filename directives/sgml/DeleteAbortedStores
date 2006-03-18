@@ -67,7 +67,7 @@ the ABOR command rather than a connection failure.</para>
 <refsect1>
 <title>See also</title>
 <para>
-<link linkend="HiddenStor">HiddenStor</link>
+<link linkend="HiddenStores">HiddenStores</link>
 </para>
 </refsect1>
 

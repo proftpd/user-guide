@@ -68,7 +68,7 @@ as this will allow clients to corrupt or increase the size of previously
 stored files (even if not their own).</para>
 
 <para>
-The REST (Restart STOR) command is automatically blocked when HiddenStor is
+The REST (Restart STOR) command is automatically blocked when HiddenStores is
 enabled, with the server returning a 501 error code to the client.
 </para>
 </refsect1>
@@ -78,7 +78,7 @@ enabled, with the server returning a 501 error code to the client.
 <para>
 <link linkend="AllowRetrieveRestart">AllowRetrieveRestart</link>
 <link linkend="DeleteAbortedStores">DeleteAbortedStores</link>
-<link linkend="HiddenStor">HiddenStor</link>
+<link linkend="HiddenStores">HiddenStores</link>
 </para>
 </refsect1>
 
