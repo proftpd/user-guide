@@ -56,7 +56,7 @@ mod_xfer
 <refsect1>
 <title>Description</title>
 <para>
-The HiddenStor directive enables two-step file uploads: files are
+The HiddenStores directive enables two-step file uploads: files are
 uploaded as &quot;.in.filename.&quot; and once the upload is complete, 
 renamed to just &quot;filename&quot;. This provides a degree of
 atomicity and helps prevent 1) incomplete uploads and 2) files being
@@ -70,7 +70,7 @@ during upload), it will prevent the file from being uploaded
 
 <para>
 The REST (Restart STOR) command is automatically blocked when
-HiddenStor is enabled, with the server returning a 501 error code to
+HiddenStores is enabled, with the server returning a 501 error code to
 the client.
 </para>
 </refsect1>
