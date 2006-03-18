@@ -87,7 +87,7 @@ are exactly equivalent to the LogFormat directive except the following are
 not accepted:
 </para>
 
-<itemizedlist bullet>
+<itemizedlist mark='bullet'>
 <listitem>
 <para>%{FOOBAR}e</para>
 <para>
@@ -110,7 +110,7 @@ for example, MySQL provides the now() function.
 and the following is in addition to the LogFormat meta-sequences:
 <para>
 
-<itemizedlist bullet>
+<itemizedlist mark='bullet'>
 <listitem>
 <para>%d</para>
 <para>

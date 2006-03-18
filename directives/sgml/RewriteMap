@@ -84,7 +84,7 @@ was specified.
 The following combinations for map-type and map-src can be used:
 </para>
 
-<itemizedlist bullet>
+<itemizedlist mark='bullet'>
 	      <listitem>
 		<para>
 			<emphasis role="bold">Standard Plain Text</emphasis>

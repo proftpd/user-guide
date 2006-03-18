@@ -71,7 +71,7 @@ FTP command argument(s).
 Some hints about the syntax of regular expressions:
 </para>
 
-<itemizedlist bullet>
+<itemizedlist mark='bullet'>
 	      <listitem>
 	      <para><emphasis role="bold">Text:</emphasis></para>
 	      <programlisting>

@@ -68,7 +68,7 @@ Condition is a string which can contain the following expanded constructs
 in addition to plain text:
 </para>
 
-<itemizedlist bullet>
+<itemizedlist mark='bullet'>
 	      <listitem>
               <para>
 		<emphasis role="bold">RewriteRule backreferences</emphasis>
@@ -213,7 +213,7 @@ in addition to plain text:
 	      	</itemizedlist>
 
               </listitem>
-</itemizedlist
+</itemizedlist>
 
 <para>
 Pattern is the condition pattern, i.e., a regular expression which is
