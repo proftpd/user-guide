@@ -13,14 +13,14 @@ HiddenStores
 </refmeta>
 <refnamediv>
 <refname>HiddenStores</refname>
-<refpurpose>(docs incomplete)</refpurpose>
+<refpurpose>Enables more safe file uploads</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>HiddenStores</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>HiddenStores on|off</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ HiddenStores
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-(docs incomplete)
+HiddenStores off
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &ltGlobal&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -56,16 +56,30 @@ mod_xfer
 <refsect1>
 <title>Description</title>
 <para>
-(docs incomplete)
+The HiddenStor directive enables two-step file uploads: files are
+uploaded as &quot;.in.filename.&quot; and once the upload is complete, 
+renamed to just &quot;filename&quot;. This provides a degree of
+atomicity and helps prevent 1) incomplete uploads and 2) files being
+used while they're still in the progress of being uploaded.
+</para>
+
+<para> Note: 
+if the temporary file name is already in use (e.g., a server crash
+during upload), it will prevent the file from being uploaded
+</para>
+
+<para>
+The REST (Restart STOR) command is automatically blocked when
+HiddenStor is enabled, with the server returning a 501 error code to
+the client.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="AllowStoreRestart">AllowStoreRestart</link>
+<link linkend="DeleteAbortedStores">DeleteAbortedStores</link>
 </para>
 </refsect1>
 </refentry>

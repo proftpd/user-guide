@@ -1,5 +1,4 @@
 Still "docs incomplete":
- - HiddenStores (same as HiddenStor?)
  - LDAPAuthBinds
  - LDAPGenerateHomedirPrefixNoUsername (maybe deprecated?)
  - LoginPasswordPrompt

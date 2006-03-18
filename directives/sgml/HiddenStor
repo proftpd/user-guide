@@ -59,36 +59,16 @@ mod_xfer
 <refsect1>
 <title>Description</title>
 <para>
-The HiddenStor directive enables two-step file uploads: files are uploaded 
-as &quot;.in.filename.&quot; and once the upload is complete, 
-renamed to just &quot;filename&quot;. This provides a 
-degree of atomicity and helps prevent 1) incomplete uploads and 2) files being 
-used while they're still in the progress of being uploaded. Note: 
-if the temporary file name is already in use (e.g., a server crash during upload), 
-it will prevent the file from being uploaded.</para>
-
-<para>
-The REST (Restart STOR) command is automatically blocked when HiddenStor is
-enabled, with the server returning a 501 error code to the client.
+This directive is just an alias for
+<link linkend="HiddenStores">HiddenStores</link>
+and might be removed in the future entirely.
 </para>
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<link linkend="AllowStoreRestart">AllowStoreRestart</link>
-<link linkend="DeleteAbortedStores">DeleteAbortedStores</link>
+<link linkend="HiddenStores">HiddenStores</link>
 </para>
 </refsect1>
-
-<refsect1>
-<title>Examples</title>
-<para>
-<!--
-For examples, see 
-<link linkend="Class">Class</link>
--->
-</para>
-</refsect1>
-
 </refentry>
