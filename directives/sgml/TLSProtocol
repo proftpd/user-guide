@@ -36,7 +36,7 @@ SSLv23
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;
+server config
 </para> </listitem>
 </varlistentry>
 
