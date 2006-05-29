@@ -15,7 +15,7 @@ MaxConnectionsPerHost
 </refmeta>
 <refnamediv>
 <refname>MaxConnectionsPerHost</refname>
-<refpurpose>Limits the unathenticated connections per client machine</refpurpose>
+<refpurpose>Limits the unauthenticated connections per client machine</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
