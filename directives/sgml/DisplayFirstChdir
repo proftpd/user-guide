@@ -15,7 +15,7 @@ DisplayFirstChdir
 </refmeta>
 <refnamediv>
 <refname>DisplayFirstChdir</refname>
-<refpurpose>Set the file to display when first entering a directory</refpurpose>
+<refpurpose>Set the file to display when first entering a directory [deprecated]</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -50,7 +50,7 @@ mod_core
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-0.99.0 and later, magic cookies only in 0.99.0pl10 and later
+0.99.0 and later, magic cookies only in 0.99.0pl10 and later up to 1.3.1rc1
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -58,6 +58,10 @@ mod_core
 
 <refsect1>
 <title>Description</title>
+<para>
+This directive has been deprecated with Proftpd 1.3.1rc1.
+Please use <link linkend="DisplayChdir">DisplayChdir</link> instead.
+</para>
 <para>
 The DisplayFirstChdir directive configures an ASCII text filename which will
 be displayed to the user the first time they change into a directory (via
@@ -137,6 +141,7 @@ which they're used (e.g., %u if ident lookups are off).
 <refsect1>
 <title>See also</title>
 <para>
+<link linkend="DisplayChdir">DisplayChdir</link>
 <link linkend="DisplayConnect">DisplayConnect</link>
 <link linkend="DisplayLogin">DisplayLogin</link>
 <link linkend="DisplayQuit">DisplayQuit</link>
