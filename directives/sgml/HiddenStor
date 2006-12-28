@@ -15,7 +15,7 @@ HiddenStor
 </refmeta>
 <refnamediv>
 <refname>HiddenStor</refname>
-<refpurpose>Enables more safe file uploads</refpurpose>
+<refpurpose>Enables more safe file uploads [deprecated]</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -50,7 +50,7 @@ mod_xfer
 
 <varlistentry><term><synopsis>Compatibility</synopsis></term>
 <listitem> <para>
-1.2.0pre5 and later
+1.2.0pre5 up to 1.3.1rc1
 </para> </listitem>
 </varlistentry>
 </variablelist>
@@ -58,6 +58,10 @@ mod_xfer
 
 <refsect1>
 <title>Description</title>
+<para>
+This directive has been deprecated with Proftpd 1.3.1rc1.
+Please use <link linkend="HiddenStores">HiddenStores</link> instead.
+</para>
 <para>
 This directive is just an alias for
 <link linkend="HiddenStores">HiddenStores</link>
