@@ -13,14 +13,14 @@ UseIPv6
 </refmeta>
 <refnamediv>
 <refname>UseIPv6</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Disable IPv6 support</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>UseIPv6</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>&quot;on&quot;|&quot;off&quot;</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -30,13 +30,13 @@ UseIPv6
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+UseIPv6 on
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config
 </para> </listitem>
 </varlistentry>
 
@@ -56,8 +56,14 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-FIX FIX FIX
+This directive enables or disables the IPv6 support within proftpd. It's also
+possible to controll this behaviour with command-line options.
 </para>
+<literallayout>
+-4, --ipv4     Support IPv4 functionality only
+-6, --ipv6     Support IPv6 functionality
+</literallayout>
+
 </refsect1>
 
 <refsect1>
@@ -73,11 +79,11 @@ FIX FIX FIX
 <title>Examples</title>
 
 <literallayout>
-FIXFIXFIX
+proftpd -4
 </literallayout>
 
 <para>
-FIXFIX
+Start Proftpd only with IPv4 functionality enabled.
 </para>
 
 </refsect1>
