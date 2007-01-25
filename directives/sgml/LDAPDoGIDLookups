@@ -31,7 +31,7 @@
 			</arg>
 
 			<arg choice="opt">
-				<option>"uid-base-dn"</option>
+				<option>"gid-base-dn"</option>
 			</arg>
 
 			<arg choice="opt">
@@ -84,17 +84,23 @@ mod_ldap
 
 		<para>This configuration directive activates LDAP GID-to-name
 		lookups in directory listings. The second argument to this directive
-		is the LDAP base DN to use for GID-to-name lookups. The third - fith
-		argument is a template to be used for the search filter; %v will be
-		replaced with the GID that is being looked up. By default, the
-		search filter templates look like this:
+		is the LDAP base DN to use for GID-to-name lookups. The third
+		through fifth arguments are templates to be used for the search
+		filter; %v will be replaced with the GID that is being looked
+		up.</para>
+
+		<para>By default, the search filter templates look like this:</para>
+		<para>
 		cn_filter:        "(&(LDAPAttr_cn=%v)(objectclass=posixGroup))",
 		gidnumber_filter: "(&(LDAPAttr_gidNumber=%v)(objectclass=posixGroup))",
 		memberuid_filter: "(&(LDAPAttr_memberUid=%v)(objectclass=posixGroup))".
-		
-		The uid for the the search filter is taken from the
-		<link linkend="LDAPAttr">LDAPAttr</link> directive
-		Filter templates are only supported in mod_ldap v2.8.3 and
+		</para>
+
+		<para>The attribute names used in the default search filters are
+		taken from the <link linkend="LDAPAttr">LDAPAttr</link>
+		directive.</para>
+
+		<para>Filter templates are only supported in mod_ldap v2.8.3 and
 		later.</para>
 	</refsect1>
 
