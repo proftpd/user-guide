@@ -38,7 +38,7 @@ TimeoutIdle 600
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;
 </para> </listitem>
 </varlistentry>
 
