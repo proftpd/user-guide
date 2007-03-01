@@ -65,7 +65,7 @@ must not contain a leading "and".
 </para>
 
 <para>
-Starting with Proftpd v1.3.1rc1 the SQLGroupWhereClause also supports the
+Starting with ProFTPD 1.3.1rc1 the SQLGroupWhereClause also supports the
 variables supported by <link linkend="SQLNamedQuery">SQLNamedQuery</link>
 except for the &quot;%{n}&quot; variable
 </para>

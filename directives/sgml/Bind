@@ -59,7 +59,8 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-Cause of too much confusion this directive has been deprecated with Proftpd 1.3.0rc1.
+Cause of too much confusion this directive has been deprecated with
+ProFTPD 1.3.0rc1.
 Please take a look at the <link linkend="VirtualHost">VirtualHost</link> and
 <link linkend="DefaultAddress">DefaultAddress</link> directive.
 The Bind directive allows additional IP addresses to be bound to a main

@@ -59,7 +59,7 @@ mod_core
 <refsect1>
 <title>Description</title>
 <para>
-This directive has been deprecated with Proftpd 1.3.1rc1.
+This directive has been deprecated with ProFTPD 1.3.1rc1.
 Please use <link linkend="DisplayChdir">DisplayChdir</link> instead.
 </para>
 <para>

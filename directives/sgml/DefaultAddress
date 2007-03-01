@@ -61,7 +61,7 @@ to, the default behaviour is to select whatever IP the system reports
 as being the primary IP.
 </para>
 <para>
-Starting with Proftpd 1.3.0rc1 it's possible to use more than one FQDN or IP
+Starting with ProFTPD 1.3.0rc1 it's possible to use more than one FQDN or IP
 Address. With this change the old Bind directive has been deprecated.
 </para>
 </refsect1>

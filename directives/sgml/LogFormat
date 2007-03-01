@@ -97,7 +97,7 @@ when logging.
 %U		  USER name originally sent by the client
 %v		  ServerName of server handling session
 %V		  DNS name of server handling session
-%{version}	  Print Proftpd Version
+%{version}	  Print ProFTPD Version
 </programlisting>
 </refsect1>
 
