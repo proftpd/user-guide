@@ -122,6 +122,9 @@ Full command line received from client
 %s
 &nbsp;
 Numeric FTP response code (status)
+%S
+&nbsp;
+Response message send from the client (avaible since v1.3.1rc1)
 %t
 &nbsp;
 Current local time
