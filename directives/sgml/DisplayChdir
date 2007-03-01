@@ -13,30 +13,27 @@ DisplayChdir
 </refmeta>
 <refnamediv>
 <refname>DisplayChdir</refname>
-<refpurpose>FIXFIXFIX</refpurpose>
+<refpurpose>Set the file to display when entering a directory</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
 <command>DisplayChdir</command>
 <arg choice="opt">
-  <option>"name" limit|regex|ip value</option>
+  <option>DisplayChdir filename [ true ]</option>
 </arg>
-<!--
-<arg choice="opt" rep="repeat">file</arg>
--->
 </cmdsynopsis>
  
 <variablelist><title></title>
 <varlistentry><term><synopsis>Default</synopsis></term>
 <listitem> <para>
-FIXFIXFIX
+None
 </para> </listitem>
 </varlistentry>
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Limit&gt;, .ftpaccess
+server config, &lt;Global&gt;, &lt;VirtualHost&gt;, &lt;Anonymous&gt;, &lt;Directory&gt;
 </para> </listitem>
 </varlistentry>
 
@@ -55,31 +52,101 @@ mod_core
 
 <refsect1>
 <title>Description</title>
+The DisplayFirstChdir directive configures an ASCII text filename which will
+be displayed to the user everytime he changes into a directory.
+If you would like to have the old behaviour of DisplayFirstChdir back you've
+to use the option &quot;true&quot;. Then the file will only be displayed on the first
+time the user changes into the directory or if proftpd detects
+that its last modification time has changed since the previous CWD into a
+given directory.
+If the filename is relative, it is looked for in the new
+directory that the user has changed into. Note that for anonymous ftp logins
+(see &lt;Anonymous&gt;), the file must reside inside the chroot()ed file
+system space. If the file cannot be found or accessed, no error occurs and
+nothing is logged or displayed to the client.
+</para>
 <para>
-FIX FIX FIX
+DisplayChdir, DisplayConnect, DisplayLogin and DisplayQuit support the
+following &quot;magic cookies&quot; (only in 0.99.0pl10 and later), which are
+replaced with their respective strings before being displayed to the user.
+</para>
+<programlisting>
+%C	Current working directory
+
+%E	Server admin's e-mail address
+
+%F	Available space on file system, in bytes
+
+%f      Available space on file system, with units
+
+%i      The number of files uploaded (input) in this session
+
+%K	Total number of bytes transferred
+
+%k	Total number of bytes transferred, in units
+
+%L	Local host name
+
+%M	Max number of authenticated clients
+
+%N	Current number of authenticated clients
+
+%o      The number of files downloaded (output) in this session
+
+%R	Remote host name
+
+%T	Current Time
+
+%t      The number of files transfered (uploaded and downloaded) in this session
+
+%U	Username originally used in login
+
+%u	Username reported by ident protocol
+
+%V	Name of virtual host (if any)
+
+%x	The name of the user's class
+
+%y	Current number of connections from the user's class
+
+%z	Max number of connections from the user's class
+
+%{total_bytes_in} The number of bytes uploaded (input) in this session
+
+%{total_bytes_out} The number of bytes downloaded (output) in this session
+
+%{total_bytes_xfer} The number of bytes transferred (uploaded and downloaded) in this session
+
+%(total_files_in} The number of files uploaded (input) in this session
+
+%(total_files_out} The number of files downloaded (output) in this session
+
+%(total_files_xfer} The number of files transferred (uploaded and downloaded) in this session
+
+</programlisting>
+<para>
+NOTE: not all of these may have a rational value, depending on the context in
+which they're used (e.g., %u if ident lookups are off).
 </para>
 </refsect1>
+
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+	<link linkend="DisplayConnect">DisplayConnect</link>
+	<link linkend="DisplayLogin">DisplayLogin</link>
+	<link linkend="DisplayQuit">DisplayQuit</link>
 </para>
 </refsect1>
 
 <refsect1>
 <title>Examples</title>
-
 <literallayout>
-FIXFIXFIX
+	#Old way in the spirit of DisplayFirstChdir
+	DisplayChdir /home/ftp/filetodisplay true
 </literallayout>
-
-<para>
-FIXFIX
-</para>
-
 </refsect1>
+
 </refentry>
 
