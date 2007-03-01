@@ -63,14 +63,20 @@ The directive is used to configure a WHERE clause that is added to every
 group query. The WHERE clause must contain all relevant punctuation, and
 must not contain a leading "and".
 </para>
+
+<para>
+Starting with Proftpd v1.3.1rc1 the SQLGroupWhereClause also supports the
+variables supported by <link linkend="SQLNamedQuery">SQLNamedQuery</link>
+except for the &quot;%{n}&quot; variable
+</para>
+
+
 </refsect1>
 
 <refsect1>
 <title>See also</title>
 <para>
-<!--
-<link linkend=""></link>
--->
+<link linkend="SQLNamedQuery">SQLNamedQuery</link>
 </para>
 </refsect1>
 
