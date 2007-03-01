@@ -70,83 +70,35 @@ use %%.</para>
 <para>
 The following meta sequences are available and are replaced as indicated 
 when logging.
-%a
-&nbsp;
-Remote client IP address
-%A
-&nbsp;
-Anonymous username (password given), or UNKNOWN if non-anonymous
-%b
-&nbsp;
-Bytes sent for request
-%d
-Directory name (not full path) for CDUP, CWD, MKD, RMD, XCWD, XCUP, XMKD, XRMD
-&nbsp;
-%D
-Directory name (full path) for CDUP, CWD, MKD, RMD, XCWD, XCUP, XMKD, XRMD
-&nbsp;
-%{FOOBAR}e
-&nbsp;
-Contents of environment variable FOOBAR.  Note that the server does not set
-any environment variables itself.
-%f
-&nbsp;
-Filename stored or retrieved, absolute path (not chrooted)
-%F
-&nbsp;
-Filename stored or retrieved, as the client sees it
-%h
-&nbsp;
-Remote client DNS name
-%J
-&nbsp;
-Command arguments received from client, e.g. file.txt
-%l
-&nbsp;
-Remote username (from ident), or UNKNOWN if ident lookup failed
-%L
-&nbsp;
-Local server IP address
-%m
-&nbsp;
-Command (method) name received from client, e.g. RETR
-%p
-&nbsp;
-Local server port number
-%P
-&nbsp;
-Local server process id (pid)
-%r
-&nbsp;
-Full command line received from client
-%s
-&nbsp;
-Numeric FTP response code (status)
-%S
-&nbsp;
-Response message send from the client (avaible since v1.3.1rc1)
-%t
-&nbsp;
-Current local time
-%{format}t
-&nbsp;
-Current local time formatted (strftime(3) format)
-%T
-&nbsp;
-Time taken to transmit/receive file, in seconds 
-%u
-&nbsp;
-Local authenticated userid
-%U
-&nbsp;
-USER name originally sent by the client
-%v
-&nbsp;
-ServerName of server handling session
-%V
-&nbsp;
-DNS name of server handling session
 </para>
+<programlisting>
+%a		Remote client IP address
+%A		Anonymous username (password given), or UNKNOWN if non-anonymous
+%b		Bytes sent for request
+%d		Directory name (not full path) for CDUP, CWD, MKD, RMD, XCWD, XCUP, XMKD, XRMD
+%D		Directory name (full path) for CDUP, CWD, MKD, RMD, XCWD, XCUP, XMKD, XRMD
+%{FOOBAR}e	  Contents of environment variable FOOBAR.  Note that the server does not set any environment variables itself.
+%f		  Filename stored or retrieved, absolute path (not chrooted)
+%F		  Filename stored or retrieved, as the client sees it
+%h		  Remote client DNS name
+%J		  Command arguments received from client, e.g. file.txt
+%l		  Remote username (from ident), or UNKNOWN if ident lookup failed
+%L		  Local server IP address
+%m		  Command (method) name received from client, e.g. RETR
+%p		  Local server port number
+%P		  Local server process id (pid)
+%r		  Full command line received from client
+%s		  Numeric FTP response code (status)
+%S		  Response message send from the client (avaible since v1.3.1rc1)
+%t		  Current local time
+%{format}t	  Current local time formatted (strftime(3) format)
+%T		  Time taken to transmit/receive file, in seconds 
+%u		  Local authenticated userid
+%U		  USER name originally sent by the client
+%v		  ServerName of server handling session
+%V		  DNS name of server handling session
+%{version}	  Print Proftpd Version
+</programlisting>
 </refsect1>
 
 <refsect1>
