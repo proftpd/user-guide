@@ -87,6 +87,7 @@ are exactly equivalent to the LogFormat directive except the following are
 not accepted:
 </para>
 
+
 <itemizedlist mark='bullet'>
 <listitem>
 <para>%{FOOBAR}e</para>
@@ -128,6 +129,16 @@ error, and using this meta-sequence unless directed to by a third-party
 module or patch is also an error.
 </para>
 </listitem>
+
+<listitem>
+<para>%{env:VAR}</para>
+<para>
+Starting with Proftpd v1.3.1rc the SQLNamedQuery directive is able to make
+use of enviroment variables in the format &quot;%{env:VAR}&quot;. The value
+of the environment variable VAR will be substituted into the SQL statement.
+</para>
+</listitem>
+
 </itemizedlist>
 
 <para>
