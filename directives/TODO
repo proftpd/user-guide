@@ -1,9 +1,30 @@
+* Write down some rules for consistent formating
+  - ProFTPD should be always spelled this way when referring to the
+  project and proftpd when reffering to the binary.
+  - Options for directives should be seperated by " | "
+
 Still "docs incomplete":
  - LDAPAuthBinds
  - LDAPGenerateHomedirPrefixNoUsername (maybe deprecated?)
  - LoginPasswordPrompt
  - SetEnv
  - UnsetEnv
+ - DisplayFileTransfer
+ - SQLConnectInfo Mysql unix domain socket usage missing
+ - TLSPassPhraseProvider
+ - UseUTF8
+ - CreateHome (needs a complete remerge from the file in doc)
+
+Missing completly:
+ - Trace
+ - TraceLog
+ - SQLOption
+ - UseLastlog
+ - RadiusNASIdentifier
+ - FACLEngine
+ - QuotaOptions (complete quota docs are missing ...)
+ - TLSCryptoDevice
+
 
 
 Marked as deprecated:
@@ -13,3 +34,5 @@ Marked as deprecated:
  - LDAPHomedirOnDemandPrefix
  - LDAPHomedirOnDemandPrefixNoUsername
  - LDAPHomedirOnDemandSuffix
+ - DisplayFirstChdir
+
