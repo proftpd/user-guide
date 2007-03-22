@@ -57,7 +57,7 @@ mod_core
 <title>Description</title>
 <para>
 This directive enables or disables the IPv6 support within proftpd. It's also
-possible to controll this behaviour with command-line options.
+possible to control this behaviour with command-line options.
 </para>
 <literallayout>
 -4, --ipv4     Support IPv4 functionality only
