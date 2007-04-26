@@ -14,7 +14,7 @@ TimeoutLinger
 </refentrytitle>
 </refmeta>
 <refnamediv>
-<refname>TimeoutIdle</refname>
+<refname>TimeoutLinger</refname>
 <refpurpose>Sets the timeout used for lingering closes</refpurpose>
 </refnamediv>
 
@@ -22,7 +22,7 @@ TimeoutLinger
 <cmdsynopsis>
 <command>TimeoutLinger</command>
 <arg choice="opt">
-  <option>TimeoutIdle seconds</option>
+  <option>TimeoutLinger seconds</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
