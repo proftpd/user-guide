@@ -15,7 +15,7 @@ DeleteAbortedStores
 </refmeta>
 <refnamediv>
 <refname>DeleteAbortedStores</refname>
-<refpurpose>Enable automatic deletion of partially uploaded files</refpurpose>
+<refpurpose>Enable automatic deletion of partially uploaded HiddenStores files</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -60,7 +60,7 @@ mod_xfer
 <title>Description</title>
 <para>
 The DeleteAbortedStores directive controls whether ProFTPD
-deletes partially uploaded files if the transfer is stopped via
+deletes partially uploaded HiddenStores files if the transfer is stopped via
 the ABOR command rather than a connection failure.</para>
 </refsect1>
 
