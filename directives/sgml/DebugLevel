@@ -57,8 +57,9 @@ mod_core
 <title>Description</title>
 <para>
 The DebugLevel directive configures the debugging level the server will use
-when logging.  The level parameter must be between 0 and 9.  This configuration
-directive will take precedence over any command-line debugging options used.
+when logging.  The level parameter must be between 0 (lowest) and 10 (highest).
+This configuration directive will take precedence over any command-line
+debugging options used.
 </para>
 </refsect1>
 </refentry>
