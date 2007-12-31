@@ -38,7 +38,7 @@ TimeoutStalled 3600
 
 <varlistentry><term><synopsis>Context</synopsis></term>
 <listitem> <para>
-server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+server config, &lt;VirtualHost&gt;, &lt;Global&gt;, &lt;Anonymous&gt;
 </para> </listitem>
 </varlistentry>
 
