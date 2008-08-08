@@ -52,7 +52,7 @@ mod_core
 
 <refsect1>
 <title>Description</title>
-The DisplayFirstChdir directive configures an ASCII text filename which will
+The DisplayChdir directive configures an ASCII text filename which will
 be displayed to the user everytime he changes into a directory.
 If you would like to have the old behaviour of DisplayFirstChdir back you've
 to use the option &quot;true&quot;. Then the file will only be displayed on the first
