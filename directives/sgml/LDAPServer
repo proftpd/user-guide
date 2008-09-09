@@ -67,6 +67,11 @@ mod_ldap
 		port(s) of the LDAP server(s) to use for LDAP authentication. If no
 		LDAPServer configuration directive is present, the default LDAP
 		servers specified by your LDAP API will be used.</para>
+
+		<para>Note that the default search scope for LDAP URLs is 'base' if
+		a scope is not explicitly specified in the URL. This behavior
+		differs from the LDAPSearchScope directive, which defaults to
+		'subtree'.</para>
 	</refsect1>
 
 	<refsect1>
