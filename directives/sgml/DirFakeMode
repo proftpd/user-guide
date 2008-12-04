@@ -66,7 +66,10 @@ is added in listings if the "read" permission is specified by this directive.
 
 As with DirFakeUser, and DirFakeGroup, the "fake" permissions shown in
 directory listings are cosmetic only, they do not affect real permissions or
-access control in any way.
+access control in any way on the server.  Note that DirFakeMode can affect
+the real permissions, for example, for FTP mirroring tools.  Such tools tend
+to create a mirror from what the tool sees (e.g. DirFakeMode permissions)
+on the source FTP server.
 </para>
 </refsect1>
 
