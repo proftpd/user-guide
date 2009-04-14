@@ -80,11 +80,6 @@ user-expression specifying to which users the rule applies.  Similarly for the
 the name of connection class for whom the rule will apply.
 </para>
 
-<para>
-An unrestricted HideFiles directive and an unrestriected ShowFiles directive
-cannot be used simultaneously in the same context.
-</para>
-
 <title>Examples:</title>
 <programlisting>
   # Hide configuration and passwd files from view
