@@ -89,7 +89,7 @@ when logging.
 %P		  Local server process id (pid)
 %r		  Full command line received from client
 %s		  Numeric FTP response code (status)
-%S		  Response message send from the client (avaible since v1.3.1rc1)
+%S		  Response message send from the client (available since v1.3.1rc1)
 %t		  Current local time
 %{format}t	  Current local time formatted (strftime(3) format)
 %T		  Time taken to transmit/receive file, in seconds 
@@ -98,6 +98,7 @@ when logging.
 %v		  ServerName of server handling session
 %V		  DNS name of server handling session
 %{version}	  Print ProFTPD Version
+%{protocol}       Protocol used
 </programlisting>
 </refsect1>
 
