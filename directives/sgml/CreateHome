@@ -22,7 +22,7 @@ CreateHome
 <cmdsynopsis>
 <command>CreateHome</command>
 <arg choice="opt">
-  <option>off|on [&lt;mode&gt;] [skel &lt;path&gt;] [dirmode &lt;mode&gt;]</option>
+  <option>off|on [&lt;mode&gt;] [skel &lt;path&gt;] [dirmode &lt;mode&gt;] [uid &lt;uid&gt;] [gid &lt;gid&gt;]</option>
 </arg>
 <!--
 <arg choice="opt" rep="repeat">file</arg>
@@ -52,6 +52,9 @@ mod_auth
 <listitem> <para>
 1.2.8rc2 and later
 </para> </listitem>
+<listitem> <para>
+1.3.1rc1 and later for uid, gid arguments
+</para> </listitem>
 </varlistentry>
 </variablelist>
 </refsynopsisdiv>
@@ -80,11 +83,12 @@ files will be removed from the copied files in the target home directory.
 </para>
 
 <para>
-The optional dirmode parameter can be used to specify the mode for intermediate
-directories that may need to be created in order to create the target home
-directory.  By default, the mode for such intermediate directories will be 711.
-NOTE: using a mode that does not allow for the execute bit to be enabled can
-cause havoc.  You have been warned.
+The optional dirmode, uid, and gid parameters can be used to specify the
+mode, owner, and group for intermediate directories that may need to be
+created in order to create the target home directory. By default, the mode
+for such intermediate directories will be 711. NOTE: using a mode that does
+not allow for the execute bit to be enabled can cause havoc. You have been
+warned.
 </para>
 </refsect1>
 
