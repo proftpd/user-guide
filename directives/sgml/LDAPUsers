@@ -1,0 +1,103 @@
+<refentry id="LDAPUsers">
+<?dbhtml filename="config_ref_LDAPUsers.html">
+<refentryinfo>
+  <keywordset>
+    <keyword>
+      mod_ldap
+    </keyword>
+  </keywordset>
+</refentryinfo>
+	<refmeta>
+		<refentrytitle>
+			<indexterm><primary>LDAPUsers</primary></indexterm>
+			LDAPUsers
+		</refentrytitle>
+	</refmeta>
+
+	<refnamediv>
+		<refname>LDAPUsers</refname>
+		<refpurpose>Enable LDAP authentication/user lookups</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>LDAPUsers</command>
+			<arg choice="opt">
+				<option>"user-base-dn"</option>
+			</arg>
+			<arg choice="opt">
+				<option>"username-filter-template"</option>
+			</arg>
+			<arg choice="opt">
+				<option>"uid-number-filter-template"</option>
+			</arg>
+		</cmdsynopsis>
+
+	<variablelist>
+		<title></title>
+
+		<varlistentry>
+			<term><synopsis>Default</synopsis></term>
+			<listitem><para>
+				disabled
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Context</synopsis></term>
+			<listitem><para>
+				server config, &lt;VirtualHost&gt;, &lt;Global&gt;
+			</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Module</synopsis></term>
+			<listitem><para>mod_ldap</para></listitem>
+		</varlistentry>
+
+		<varlistentry>
+			<term><synopsis>Compatibility</synopsis></term>
+			<listitem><para>
+				mod_ldap v2.9.0 and later
+			</para></listitem>
+		</varlistentry>
+	</variablelist>
+</refsynopsisdiv>
+
+	<refsect1>
+		<title>Description</title>
+
+		<para>Activates LDAP authentication and UID to name mappings in
+		directory listings.</para>
+
+		<para>The first argument to this directive is the LDAP base DN to
+		use for authentication. The second argument is a template to be used
+		for the search filter when looking up users by username; %u will be
+		replaced with the username that is being authenticated. The third
+		argument is a template to be used for the search filter when looking
+		up users by UID number; %u will be replaced with the UID number that
+		is being looked up.</para>
+
+		<para>By default, the search filter templates look like this:</para>
+		<para>
+		username-filter-template: "(&(LDAPAttr_uid=%u)(objectclass=posixAccount))",
+		uid-number-filter-template: "(&(LDAPAttr_uidNumber=%u)(objectclass=posixAccount))",
+		</para>
+
+		<para>The attribute names used in the default search filters are
+		taken from the <link linkend="LDAPAttr">LDAPAttr</link>
+		directive.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>See also</title>
+		<para>
+			<link linkend="LDAPAttr">LDAPAttr</link>
+		</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para></para>
+	</refsect1>
+</refentry>

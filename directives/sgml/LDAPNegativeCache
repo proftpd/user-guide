@@ -55,7 +55,7 @@ mod_ldap
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v1.1 and later
+				mod_ldap v1.1 - 2.8.23
 			</para></listitem>
 		</varlistentry>
 	</variablelist>

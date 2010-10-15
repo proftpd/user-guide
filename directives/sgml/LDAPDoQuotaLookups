@@ -65,7 +65,9 @@
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.8.12 and later
+				mod_ldap <= v2.9.0, replaced by
+				<link linkend="LDAPUsers">LDAPUsers</link> and
+				<link linkend="LDAPDefaultQuota">LDAPDefaultQuota</link>
 			</para></listitem>
 		</varlistentry>
 	</variablelist>

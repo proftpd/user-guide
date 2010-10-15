@@ -1,5 +1,5 @@
-<refentry id="LDAPDoGIDLookups">
-	<?dbhtml filename="config_ref_LDAPDoGIDLookups.html">
+<refentry id="LDAPGroups">
+	<?dbhtml filename="config_ref_LDAPGroups.html">
 <refentryinfo>
   <keywordset>
     <keyword>
@@ -9,13 +9,13 @@
 </refentryinfo>
 	<refmeta>
 		<refentrytitle>
-			<indexterm><primary>LDAPDoGIDLookups</primary></indexterm>
-			LDAPDoGIDLookups
+			<indexterm><primary>LDAPGroups</primary></indexterm>
+			LDAPGroups
 		</refentrytitle>
 	</refmeta>
 
 	<refnamediv>
-		<refname>LDAPDoGIDLookups</refname>
+		<refname>LDAPGroups</refname>
 		<refpurpose>
 			Enable LDAP lookups for user group membership and GIDs in
 			directory listings
@@ -24,24 +24,18 @@
 
 	<refsynopsisdiv>
 		<cmdsynopsis>
-			<command>LDAPDoGIDLookups</command>
+			<command>LDAPGroups</command>
 			<arg choice="opt">
-				<option>on</option>
-				<option>off</option>
+				<option>"group-base-dn"</option>
 			</arg>
-
 			<arg choice="opt">
-				<option>"gid-base-dn"</option>
-			</arg>
-
-			<arg choice="opt">
-				<option>"cn-filter-template"</option>
+				<option>"group-name-filter-template"</option>
 			</arg>
 			<arg choice="opt">
 				<option>"gid-number-filter-template"</option>
 			</arg>
 			<arg choice="opt">
-				<option>"member-uid-filter-template"</option>
+				<option>"member-user-filter-template"</option>
 			</arg>
 		</cmdsynopsis>
 
@@ -52,7 +46,7 @@
 		<varlistentry>
 			<term><synopsis>Default</synopsis></term>
 			<listitem><para>
-				LDAPDoGIDLookups off
+				disabled
 			</para></listitem>
 		</varlistentry>
 
@@ -65,16 +59,13 @@
 
 		<varlistentry>
 			<term><synopsis>Module</synopsis></term>
-			<listitem><para>
-mod_ldap
-			</para></listitem>
+			<listitem><para>mod_ldap</para></listitem>
 		</varlistentry>
 
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap <= v2.9.0, replaced by
-				<link linkend="LDAPGroups">LDAPGroups</link>
+				mod_ldap v2.9.0 and later
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
@@ -83,26 +74,25 @@ mod_ldap
 	<refsect1>
 		<title>Description</title>
 
-		<para>This configuration directive activates LDAP GID-to-name
-		lookups in directory listings. The second argument to this directive
-		is the LDAP base DN to use for GID-to-name lookups. The third
-		through fifth arguments are templates to be used for the search
-		filter; %v will be replaced with the GID that is being looked
-		up.</para>
+		<para>Activates LDAP group membership lookups and GID to name
+		mappings in directory listings.</para>
+
+		<para>The first argument to this directive is the LDAP base DN to
+		use for group lookups. The second through fourth arguments are
+		templates to be used for the search filter; %u will be replaced with
+		the group name, GID number, or group member username that is being
+		looked up, respectively.</para>
 
 		<para>By default, the search filter templates look like this:</para>
 		<para>
-		cn_filter:        "(&(LDAPAttr_cn=%v)(objectclass=posixGroup))",
-		gidnumber_filter: "(&(LDAPAttr_gidNumber=%v)(objectclass=posixGroup))",
-		memberuid_filter: "(&(LDAPAttr_memberUid=%v)(objectclass=posixGroup))".
+		group-name-filter-template: "(&(LDAPAttr_cn=%u)(objectclass=posixGroup))",
+		gid-number-filter-template: "(&(LDAPAttr_gidNumber=%u)(objectclass=posixGroup))",
+		member-user-filter-template: "(&(LDAPAttr_memberUid=%u)(objectclass=posixGroup))".
 		</para>
 
 		<para>The attribute names used in the default search filters are
 		taken from the <link linkend="LDAPAttr">LDAPAttr</link>
 		directive.</para>
-
-		<para>Filter templates are only supported in mod_ldap v2.8.3 and
-		later.</para>
 	</refsect1>
 
 	<refsect1>

@@ -58,7 +58,8 @@
     <varlistentry>
       <term><synopsis>Module</synopsis></term>
       <listitem><para>
-mod_ldap
+        mod_ldap <= v2.9.0, replaced by
+        <link linkend="LDAPUsers">LDAPUsers</link>
       </para></listitem>
     </varlistentry>
 
