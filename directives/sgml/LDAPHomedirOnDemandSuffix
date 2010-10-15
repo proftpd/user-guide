@@ -59,7 +59,7 @@ mod_ldap
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.6 and later.
+				mod_ldap v2.6 - 2.8.12
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
@@ -67,10 +67,6 @@ mod_ldap
 
 	<refsect1>
 		<title>Description</title>
-		<para>
-		This directive is deprecated and was removed from mod_ldap v2.8.13.
-		It has no replacement option.
-		</para>
 
 		<para>to be created within a user's home directory when it is
 		created on demand. For example, if a user's home directory is

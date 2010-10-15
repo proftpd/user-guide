@@ -61,7 +61,7 @@ mod_ldap
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.0 and later
+				mod_ldap v2.0 - 2.8.12
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
@@ -69,10 +69,6 @@ mod_ldap
 
 	<refsect1>
 		<title>Description</title>
-
-    		<para>This directive has been deprecated with mod_ldap v2.8.13.
-	  	Please take a look at <link linkend="LDAPGenerateHomedir">LDAPGenerateHomedir</link>
-		</para>
 
 		<para>LDAPHomedirOnDemand activates on-demand home directory creation.
 		If a user logs in and does not yet have a home directory, a home

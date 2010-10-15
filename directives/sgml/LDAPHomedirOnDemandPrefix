@@ -56,7 +56,7 @@ mod_ldap
 		<varlistentry>
 			<term><synopsis>Compatibility</synopsis></term>
 			<listitem><para>
-				mod_ldap v2.8 and later
+				mod_ldap v2.8 - 2.8.12
 			</para></listitem>
 		</varlistentry>
 	</variablelist>
@@ -64,10 +64,6 @@ mod_ldap
 
 	<refsect1>
 		<title>Description</title>
-
-    		<para>This directive has been deprecated with mod_ldap v2.8.13.
-	  	Please take a look at <link linkend="LDAPGenerateHomedirPrefix">LDAPGenerateHomedirPrefix</link>
-		</para>
 
 		<para>LDAPHomedirOnDemandPrefix enables a prefix to be specified for
 		on-demand home directory creation. This is most useful if mod_ldap
