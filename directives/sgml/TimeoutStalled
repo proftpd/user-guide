@@ -15,7 +15,7 @@ TimeoutStalled
 </refmeta>
 <refnamediv>
 <refname>TimeoutStalled</refname>
-<refpurpose>Sets the timeout on stalled downloads</refpurpose>
+<refpurpose>Sets the timeout on stalled uploads</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -58,11 +58,10 @@ mod_xfer
 <refsect1>
 <title>Description</title>
 <para>
-The TimeoutStalled directive sets the maximum number of seconds a data connection 
-between the proftpd server and an FTP client can exist but have no actual 
-data transferred (i.e. &quot;stalled&quot;). If the seconds 
-argument is set to 0, data transfers are allowed to stall 
-indefinitely.</para>
+The TimeoutStalled directive sets the maximum number of seconds a data
+connection between the proftpd server and an FTP client can exist but have no
+actual data transferred (i.e. &quot;stalled&quot;). If the seconds argument is
+set to 0, data transfers are allowed to stall indefinitely.</para>
 </refsect1>
 
 <refsect1>
