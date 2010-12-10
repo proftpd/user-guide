@@ -15,7 +15,7 @@ TimeoutStalled
 </refmeta>
 <refnamediv>
 <refname>TimeoutStalled</refname>
-<refpurpose>Sets the timeout on stalled uploads</refpurpose>
+<refpurpose>Sets the timeout on stalled data transfers</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
