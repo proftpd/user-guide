@@ -91,7 +91,8 @@ When in deferred mode, the directory context is not hashed and sorted into the
 configuration tree at boot time, but rather this hashing is deferred until a 
 user authenticates, at which time the '~' character is replaced with the user's 
 home directory. This allows a global &lt;Directory&gt; block which applies to 
-all user's home directories, or sub-directories thereof.
+all user's home directories, or sub-directories thereof. This feature is not
+supported within an &lt;Anonymous&gt; block.
 </para>
 </refsect1>
 
