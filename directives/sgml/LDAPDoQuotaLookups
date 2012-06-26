@@ -76,22 +76,24 @@
 	<refsect1>
 		<title>Description</title>
 
-		<para>This configuration directive activates LDAP quota lookups. 
-		The second argument to this directive is the LDAP base DN to use for
-		quota limit search.  The third argument is a template to be used for
-		the search filter; %v will be replaced with the username that is
-		being authenticated. By default, the search filter template
-		"(&amp;(LDAPAttr_uid=%v)(objectclass=posixAccount))" is used.
-		
-		The uid for the the search filter is taken from the
-		<link linkend="LDAPAttr">LDAPAttr</link> directive	
-		Search filter
-		templates are only supported in mod_ldap v2.7 and later.</para>
+		<para>Activates LDAP quota lookups. The second argument is the LDAP
+		base DN to use for quota limit searches. The third argument is the
+		search filter template. The default search filter template is
+		"(&amp;(LDAPAttr_uid=%u)(objectclass=posixAccount))". The attribute
+		name used in the default search filter template is taken from the
+		<link linkend="LDAPAttr">LDAPAttr</link> directive, so if you re-map
+		an attribute, the default search filter reflects that
+		re-mapping.</para>
 
-		<para>If specified, the <option>default-quota<option> argument
-		specifies the quota limits to use if a user does not have a ftpQuota
-		attribute. This argument is formatted the same way as the ftpQuota
-		LDAP attribute.</para>
+		<para>In mod_ldap v2.7 or later, %u in the search filter template
+		will be replaced with the username, group, or class that is being
+		looked up. mod_ldap v2.9.3 or later will also expand %u in the
+		base DN.</para>
+
+		<para>The optional <option>default-quota<option> argument specifies
+		the quota limits to use if an entry does not have a ftpQuota
+		attribute, and has the same format as the ftpQuota LDAP attribute.
+		For example, "false,hard,100,100,100,100,100,100".</para>
 	</refsect1>
 
 	<refsect1>
