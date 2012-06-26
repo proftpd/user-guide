@@ -70,13 +70,20 @@
 		<para>Activates LDAP authentication and UID to name mappings in
 		directory listings.</para>
 
-		<para>The first argument to this directive is the LDAP base DN to
-		use for authentication. The second argument is a template to be used
-		for the search filter when looking up users by username; %u will be
-		replaced with the username that is being authenticated. The third
-		argument is a template to be used for the search filter when looking
-		up users by UID number; %u will be replaced with the UID number that
-		is being looked up.</para>
+		<para>The first argument is the LDAP base DN to use for user
+		lookups. During authentication, %u will be replaced with the
+		username that is being authenticated. When looking up users by UID
+		number, %u will not be replaced. Usually, %u in the base DN is only
+		useful in "virtual user" environments, since mod_ldap won't be able
+		to look up other users.</para>
+
+		<para>The second argument is a template to be used for the search
+		filter when looking up users by username; %u will be replaced with
+		the username that is being authenticated.</para>
+
+		<para>The third argument is a template to be used for the search
+		filter when looking up users by UID number; %u will be replaced with
+		the UID number that is being looked up.</para>
 
 		<para>By default, the search filter templates look like this:</para>
 		<para>
