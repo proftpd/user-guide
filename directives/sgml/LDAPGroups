@@ -77,13 +77,12 @@
 		<para>Activates LDAP group membership lookups and GID to name
 		mappings in directory listings.</para>
 
-		<para>The first argument to this directive is the LDAP base DN to
-		use for group lookups. The second through fourth arguments are
-		templates to be used for the search filter; %u will be replaced with
-		the group name, GID number, or group member username that is being
-		looked up, respectively.</para>
+		<para>The first argument is the LDAP base DN to use for group
+		lookups. The second through fourth arguments are search filter
+		templates; %u will be replaced with the group name, GID number, or
+		group member username that is being looked up, respectively.</para>
 
-		<para>By default, the search filter templates look like this:</para>
+		<para>The default search filter templates are:</para>
 		<para>
 		group-name-filter-template: "(&(LDAPAttr_cn=%u)(objectclass=posixGroup))",
 		gid-number-filter-template: "(&(LDAPAttr_gidNumber=%u)(objectclass=posixGroup))",
@@ -92,7 +91,8 @@
 
 		<para>The attribute names used in the default search filters are
 		taken from the <link linkend="LDAPAttr">LDAPAttr</link>
-		directive.</para>
+		directive, so if you re-map an attribute, the default search filter
+		reflects that re-mapping.</para>
 	</refsect1>
 
 	<refsect1>

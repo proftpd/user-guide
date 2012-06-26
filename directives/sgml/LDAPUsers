@@ -77,15 +77,15 @@
 		useful in "virtual user" environments, since mod_ldap won't be able
 		to look up other users.</para>
 
-		<para>The second argument is a template to be used for the search
-		filter when looking up users by username; %u will be replaced with
-		the username that is being authenticated.</para>
+		<para>The second argument is the search filter template for looking
+		up users by username; %u will be replaced with the username that is
+		being authenticated.</para>
 
-		<para>The third argument is a template to be used for the search
-		filter when looking up users by UID number; %u will be replaced with
-		the UID number that is being looked up.</para>
+		<para>The third argument is the search filter template for looking
+		up users by UID number; %u will be replaced with the UID number that
+		is being looked up.</para>
 
-		<para>By default, the search filter templates look like this:</para>
+		<para>The default search filter templates are:</para>
 		<para>
 		username-filter-template: "(&(LDAPAttr_uid=%u)(objectclass=posixAccount))",
 		uid-number-filter-template: "(&(LDAPAttr_uidNumber=%u)(objectclass=posixAccount))",
@@ -93,7 +93,8 @@
 
 		<para>The attribute names used in the default search filters are
 		taken from the <link linkend="LDAPAttr">LDAPAttr</link>
-		directive.</para>
+		directive, so if you re-map an attribute, the default search filter
+		reflects that re-mapping.</para>
 	</refsect1>
 
 	<refsect1>
