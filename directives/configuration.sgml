@@ -1,7 +1,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
-<!ENTITY byname SYSTEM "by_name_source.sgml">
-<!ENTITY bymodule SYSTEM "by_module_source.sgml"> 
-<!ENTITY bycontext SYSTEM "by_context_source.sgml"> 
+<!ENTITY byname SYSTEM "output/by_name_source.sgml">
+<!ENTITY bymodule SYSTEM "output/by_module_source.sgml"> 
+<!ENTITY bycontext SYSTEM "output/by_context_source.sgml"> 
 ]>
 
 

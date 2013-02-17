@@ -1,5 +1,5 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
-<!ENTITY all SYSTEM "../other/directive_list.sgml">
+<!ENTITY all SYSTEM "directive_list.sgml">
 ]>
 
 <reference>
