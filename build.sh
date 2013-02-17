@@ -92,17 +92,7 @@ build_by_module()
 
 build_by_name()
 {
-	local file directive
-
 	cat "$ROOT/directives/"* >>"$ROOT/output/by_name_source.sgml"
-
-	rm -f "$ROOT/output/directive_list.sgml"
-	for file in "$ROOT/directives/"*; do
-		directive=${file##*/}
-	
-		echo "<link linkend=\"$directive\">$directive</link>" \
-			>>"$ROOT/output/directive_list.sgml"
-	done
 }
 
 rm -rf "$ROOT/output"
