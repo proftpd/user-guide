@@ -15,9 +15,7 @@
 <chapter>
 <?dbhtml filename="by-name.html">
 <title>List of Directives</title>
-
 &byname;
-
 </chapter>
 
 <chapter>
