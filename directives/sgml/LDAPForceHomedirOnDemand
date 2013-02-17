@@ -70,7 +70,7 @@
   <refsect1>
     <title>Description</title>
     <para>This directive has been deprecated with mod_ldap v2.8.13.
-	  Please take a look at <link linkend="LDAPForceGenerateHomedir">LDAPForceGenerateHomedir</link>
+	  Please take a look at <link linkend="LDAPForceGeneratedHomedir">LDAPForceGeneratedHomedir</link>
     </para>
     <para>Even when a
     <link linkend="LDAPHomeDironDemandPrefix">LDAPHomeDironDemandPrefix</link>
@@ -83,7 +83,7 @@
 
   <refsect1>
     <title>See also</title>
-    <para><link linkend="LDAPForceGenerateHomedir">LDAPForceGenerateHomedir</link></para>
+    <para><link linkend="LDAPForceGeneratedHomedir">LDAPForceGeneratedHomedir</link></para>
   </refsect1>
 
   <refsect1>
