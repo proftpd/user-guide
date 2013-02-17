@@ -1,0 +1,4 @@
+To build ProFTPD's docs:
+
+- Install jade and the DocBook DSSSL stylesheets.
+- Run build.sh.
