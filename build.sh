@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Dependencies are DocBook DSSSL stylesheets and Jade (provided
+# by the Debian packages docbook-dsssl and jade, respectively).
+
 set -e
 DSL="/usr/share/sgml/docbook/stylesheet/dsssl/modular/html/docbook.dsl"
 
